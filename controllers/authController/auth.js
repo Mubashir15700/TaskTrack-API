@@ -13,7 +13,6 @@ exports.checkAuth = catchAsync(async (req, res) => {
     }
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
-    // console.log("decoded: ", decoded);
 
     let currentUser;
     if (decoded.role === 'admin') {
@@ -56,7 +55,18 @@ exports.adminLogin = catchAsync(async (req, res) => {
             // sameSite: 'None', // Uncomment and set appropriate value if needed
         });
 
-        return res.json({ status: "success", message: "Logged in successfully", token: token });
+        // Create a admin object without the password field
+        const adminDataToSend = {
+            _id: admin._id,
+            username: admin.username,
+        };
+
+        return res.json({
+            status: "success",
+            message: "Logged in successfully",
+            token,
+            currentUser: adminDataToSend,
+        });
     } else {
         return res.status(401).json({ status: "failed", message: "Invalid username or password" });
     }
@@ -106,10 +116,10 @@ exports.userSignUp = catchAsync(async (req, res) => {
     // Save the OTP to the user document (you should add an otp field to your User schema)
     newUser.otp = generatedOTP;
 
-    await newUser.save();
+    const user = await newUser.save();
 
     // Generate JWT Token
-    const token = jwt.sign({ userId: newUser._id, role: 'user' }, process.env.JWT_SECRET_KEY, { expiresIn: '7d' });
+    const token = jwt.sign({ userId: user._id, role: 'user' }, process.env.JWT_SECRET_KEY, { expiresIn: '7d' });
 
     res.cookie('userJwt', token, {
         maxAge: 60000 * 60 * 24 * 7,
@@ -121,12 +131,17 @@ exports.userSignUp = catchAsync(async (req, res) => {
     const options = {
         from: process.env.USER,
         to: email,
-        subject: 'TaskTrack varification OTP',
-        html: `<center> <h2>Varify Your Email </h2> <br> <h5>OTP :${generatedOTP} </h5><br><p>This otp is only valid for 5 minutes</p></center>`
+        subject: 'TaskTrack verification OTP',
+        html: `<center> <h2>Verify Your Email </h2> <br> <h5>OTP :${generatedOTP} </h5><br><p>This otp is only valid for 5 minutes</p></center>`
     }
     await sendMail(options);
 
-    res.status(201).send({ "status": "success", "message": "Registered user successfully", "token": token });
+    res.status(201).send({
+        status: "success",
+        message: "Registered user successfully",
+        token,
+        currentUser: user,
+    });
 });
 
 exports.userLogin = catchAsync(async (req, res) => {
@@ -155,10 +170,124 @@ exports.userLogin = catchAsync(async (req, res) => {
             // sameSite: 'None', // Uncomment and set appropriate value if needed
         });
 
-        return res.json({ status: "success", message: "Logged in successfully", token: token });
+        // Create a user object without the password field
+        const userDataToSend = {
+            _id: user._id,
+            username: user.username,
+            email: user.email,
+            phone: user.phone,
+            isJobSeeker: user.isJobSeeker,
+            isBlocked: user.isBlocked,
+            isVerified: user.isVerified,
+        };
+
+        return res.json({
+            status: "success",
+            message: "Logged in successfully",
+            token,
+            currentUser: userDataToSend,
+        });
     } else {
         return res.status(401).json({ status: "failed", message: "Invalid username or password" });
     }
+});
+
+exports.verifyOtp = catchAsync(async (req, res) => {
+    const otp = Number(req.body.otp);
+    const user = await User.findOne({ otp });
+    // console.log(otp, user);
+    if (!user) {
+        return res.status(401).json({ status: "failed", message: "Invalid" });
+    } else {
+        const verifiedUser = await User.findOneAndUpdate(
+            { email: req.body.email },
+            { $set: { isVerified: true } },
+            { new: true }
+        );
+        if (verifiedUser && verifiedUser.isVerified) {
+            return res.status(200).json({ status: 'success', message: 'You are verified' });
+        } else {
+            return res.status(401).json({ status: "failed", message: "Invalid" });
+        }
+    };
+});
+
+exports.resendOtp = catchAsync(async (req, res) => {
+    const email = req.body.email;
+
+    // Generate OTP
+    const generatedOTP = crypto.randomInt(100000, 999999); // Example OTP generation
+
+    // Update the user's OTP in the database
+    const user = await User.findOneAndUpdate(
+        { email },
+        { $set: { otp: generatedOTP } },
+        { new: true } // to return the updated document
+    );
+
+    if (!user) {
+        return res.status(404).json({ status: "failed", message: "User not found" });
+    }
+
+    const options = {
+        from: process.env.USER,
+        to: email,
+        subject: 'TaskTrack verification OTP',
+        html: `<center> <h2>Verify Your Email </h2> <br> <h5>OTP :${generatedOTP} </h5><br><p>This OTP is only valid for 5 minutes</p></center>`
+    };
+
+    await sendMail(options);
+    return res.status(200).json({ status: 'success', message: 'OTP resent successfully' });
+});
+
+exports.confirmEmail = catchAsync(async (req, res) => {
+    const email = req.body.email;
+
+    // Generate OTP
+    const generatedOTP = crypto.randomInt(100000, 999999); // Example OTP generation
+
+    // Update the user's OTP in the database
+    const user = await User.findOne({ email });
+
+    if (!user) {
+        return res.status(404).json({ status: "failed", message: "User not found" });
+    }
+
+    user.otp = generatedOTP;
+    await user.save();
+
+    const options = {
+        from: process.env.USER,
+        to: email,
+        subject: 'TaskTrack verification OTP',
+        html: `<center> <h2>Verify Your Email </h2> <br> <h5>OTP :${generatedOTP} </h5><br><p>This OTP is only valid for 5 minutes</p></center>`
+    };
+
+    await sendMail(options);
+    return res.status(200).json({ status: 'success', message: 'OTP sent successfully' });
+});
+
+exports.resetPassword = catchAsync(async (req, res) => {
+    const { userId, password, confirmPassword } = req.body;
+
+    if (password !== confirmPassword) {
+        return res.status(400).json({ status: "failed", message: "Passwords do not match" });
+    }
+
+    const user = await User.findById(userId);
+
+    if (!user) {
+        return res.status(404).json({ status: "failed", message: "User not found" });
+    }
+
+    // Hash the password
+    const salt = await bcrypt.genSalt(10);
+    const hashPassword = await bcrypt.hash(password, salt);
+
+    user.password = hashPassword;
+    await user.save();
+
+    return res.status(200).json({ status: 'success', message: 'Password reset successfully' });
 });
 
 // Logout
