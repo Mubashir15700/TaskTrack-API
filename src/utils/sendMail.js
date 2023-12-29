@@ -10,9 +10,9 @@ const sendMail = async (options) => {
     });
     transporter.sendMail(options, (error, info) => {
         if (error) {
-            console.error('Error:', error);
+            console.error('Error: ', error);
         } else {
-            console.log('Email sent:', info.response);
+            console.log('Email sent: ', info.response);
             res.status(200).send({ message: "success" });
         }
     });

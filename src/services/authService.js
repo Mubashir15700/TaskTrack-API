@@ -26,8 +26,10 @@ exports.checkAuth = async (token, role) => {
         return {
             status: 201,
             message: `Authorized ${decoded.role}`,
-            currentUser,
-            role: decoded.role
+            data: {
+                currentUser,
+                role: decoded.role,
+            },
         };
     } catch (error) {
         console.log(error);
@@ -70,8 +72,10 @@ exports.adminLogin = async (username, password) => {
             return {
                 status: 201,
                 message: 'Logged in successfully',
-                token,
-                currentUser: adminDataToSend,
+                data: {
+                    token,
+                    currentUser: adminDataToSend,
+                }
             };
         } else {
             return { status: 400, message: 'Invalid username or password' };
@@ -137,7 +141,10 @@ exports.signUp = async (username, email, phone, password, confirmPassword) => {
         return {
             status: 201,
             message: 'Registered user successfully',
-            data: { token, currentUser: user }
+            data: {
+                token,
+                currentUser: user
+            }
         };
     } catch (error) {
         console.error(error);
@@ -181,8 +188,10 @@ exports.userLogin = async (username, password) => {
             return {
                 status: 201,
                 message: 'Logged in successfully',
-                token,
-                currentUser: userDataToSend,
+                data: {
+                    token,
+                    currentUser: userDataToSend,
+                }
             };
         } else {
             return { status: 400, message: 'Invalid username or password' };
@@ -212,7 +221,9 @@ exports.verifyOtp = async (otp, email) => {
                 return {
                     status: 201,
                     message: 'You are verified',
-                    token,
+                    data: {
+                        token,
+                    }
                 };
             } else {
                 return { status: 400, message: 'Invalid' };

@@ -1,22 +1,30 @@
 const app = require('./app');
+const mongoose = require('mongoose');
+const logger = require('./src/utils/logger');
 
 const port = process.env.PORT || 3000;
 
 const server = app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
+    logger.info(`Server running on port ${port}`);
 });
 
 process.on('SIGINT', async () => {
-    console.log('Server shutting down...');
-    await mongoose.connection.close();
+    logger.info('Server shutting down...');
+
+    try {
+        await mongoose.connection.close();
+        logger.info('Database connection closed successfully.');
+    } catch (err) {
+        logger.error('Error closing the database connection:', err);
+    }
 
     server.close((err) => {
         if (err) {
-            console.error('Error closing the server:', err);
+            logger.error('Error closing the server:', err);
             process.exit(1); // Exit with error code
         }
 
-        console.log('Server shut down gracefully.');
+        logger.info('Server shut down gracefully.');
         process.exit(0); // Exit with success code
     });
 });
