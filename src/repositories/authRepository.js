@@ -77,12 +77,3 @@ exports.updateUserPassword = async (userId, newPassword) => {
     user.password = newPassword;
     await user.save();
 };
-
-// logout
-exports.clearUserCookie = (res) => {
-    res.clearCookie("userJwt");
-};
-
-exports.clearAdminCookie = (res) => {
-    res.clearCookie("adminJwt");
-};
