@@ -8,6 +8,9 @@ const router = express.Router();
 router.post("/auth/checkauth", authController.checkAuth);
 router.post("/login", authController.adminLogin);
 
+// search
+router.post("/search", adminController.search);
+
 // user-related actions
 router.get("/users", adminController.getUsers);
 router.get("/user/:id", adminController.getUser);

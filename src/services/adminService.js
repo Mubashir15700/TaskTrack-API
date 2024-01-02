@@ -26,7 +26,7 @@ class AdminService {
             console.log(error);
             return { status: 500, message: 'Internal Server Error' };
         }
-    }
+    };
 
     async getUser(id) {
         try {
@@ -47,7 +47,7 @@ class AdminService {
             console.log(error);
             return { status: 500, message: 'Internal Server Error' };
         }
-    }
+    };
 
     async blockUnblockUser(id) {
         try {
@@ -65,7 +65,7 @@ class AdminService {
             console.log(error);
             return { status: 500, message: 'Internal Server Error' };
         }
-    }
+    };
 };
 
 module.exports = new AdminService();

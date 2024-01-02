@@ -1,4 +1,5 @@
 require('dotenv').config();
+const path = require('path');
 const logger = require('./src/utils/logger');
 
 // Check for required environment variables
@@ -28,7 +29,7 @@ const adminRoutes = require('./src/routes/adminRoutes');
 
 const app = express();
 
-app.use(helmet());
+app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -36,6 +37,7 @@ app.use(cors({
     origin: process.env.CORS_ORIGIN || "http://localhost:5173",
     credentials: true
 }));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.use((err, req, res, next) => {
     logger.error(err.stack);
