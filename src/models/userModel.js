@@ -18,6 +18,23 @@ const userSchema = new mongoose.Schema({
     profile: {
         type: String,
     },
+    location: {
+        road: {
+            type: String,
+        },
+        village: {
+            type: String,
+        },
+        district: {
+            type: String,
+        },
+        state: {
+            type: String,
+        },
+        postcode: {
+            type: String,
+        },
+    },
     password: {
         type: String,
         required: true,

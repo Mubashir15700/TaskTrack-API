@@ -192,6 +192,7 @@ class AuthService {
                     isJobSeeker: user.isJobSeeker,
                     isBlocked: user.isBlocked,
                     isVerified: user.isVerified,
+                    location: JSON.parse(user.location),
                 };
 
                 return {
