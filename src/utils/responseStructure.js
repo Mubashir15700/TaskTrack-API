@@ -1,6 +1,9 @@
 const sendResponse = (res, result) => {
     const { status, message, data } = result;
-    const jsonResponse = { status: status === 201 ? 'success' : 'failed', message };
+    const jsonResponse = {
+        status: status === 201 ? "success" : "failed",
+        message
+    };
 
     if (data) {
         Object.keys(data).forEach((key) => {

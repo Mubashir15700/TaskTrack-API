@@ -77,7 +77,7 @@ class AdminRepository {
             return searchResults;
         } catch (error) {
             console.error(error);
-            throw new Error("Error while searching employers");
+            throw new Error("Error while searching laborers");
         }
     };
 

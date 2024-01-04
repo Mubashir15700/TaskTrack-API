@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
     username: {
@@ -41,7 +41,7 @@ const userSchema = new mongoose.Schema({
     },
     otp: {
         type: Number,
-        createdAt: { type: Date, expires: '5m', default: Date.now }, // expires in 60 seconds (1 minute)
+        createdAt: { type: Date, expires: "5m", default: Date.now }, // expires in 60 seconds (1 minute)
         select: false,
     },
     isJobSeeker: {
@@ -58,6 +58,6 @@ const userSchema = new mongoose.Schema({
     },
 });
 
-const user = mongoose.model('user', userSchema);
+const user = mongoose.model("user", userSchema);
 
 module.exports = user;

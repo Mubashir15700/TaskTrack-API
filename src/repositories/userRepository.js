@@ -1,9 +1,9 @@
-const User = require('../models/userModel');
+const User = require("../models/userModel");
 
 class UserRepository {
     async updateUser(id, updateObject) {
         try {
-            const updatedUser = await User.findByIdAndUpdate(
+            return await User.findByIdAndUpdate(
                 id,
                 {
                     $set: {
@@ -11,19 +11,7 @@ class UserRepository {
                     }
                 },
                 { new: true }
-            ).select('-password');
-
-            if (updatedUser) {
-                return {
-                    status: 201,
-                    message: `Updated profile successfully`,
-                    data: {
-                        updatedUser,
-                    },
-                };
-            } else {
-                return { status: 401, success: false, message: 'User not found' };
-            }
+            ).select("-password");
         } catch (error) {
             console.error(error);
             throw new Error("Error while updating profile");
@@ -32,7 +20,7 @@ class UserRepository {
 
     async deleteProfileImage(id) {
         try {
-            const updatedUser = await User.findByIdAndUpdate(
+            return await User.findByIdAndUpdate(
                 id,
                 {
                     $unset: {
@@ -40,19 +28,7 @@ class UserRepository {
                     },
                 },
                 { new: true }
-            ).select('-password');
-
-            if (updatedUser) {
-                return {
-                    status: 201,
-                    message: `Deleted profile image successfully`,
-                    data: {
-                        updatedUser,
-                    },
-                };
-            } else {
-                return { status: 401, success: false, message: 'User not found' };
-            }
+            ).select("-password");
         } catch (error) {
             console.error(error);
             throw new Error("Error while deleting profile");

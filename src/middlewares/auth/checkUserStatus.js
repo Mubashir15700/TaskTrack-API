@@ -18,10 +18,10 @@ const checkUserStatus = async (req, res, next) => {
         // Continue to the next middleware or route handler
         next();
     } catch (error) {
-        console.error('Error checking user status:', error);
-
-        // Provide a more meaningful error response
-        return res.status(500).json({ message: 'Error checking user status', error: error.message });
+        console.error("Error checking user status:", error);
+        return {
+            status: 500, message: `Internal Server Error: ${error.message}`
+        };
     }
 };
 

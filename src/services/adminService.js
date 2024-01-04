@@ -1,6 +1,34 @@
-const adminRepository = require('../repositories/adminRepository');
+const adminRepository = require("../repositories/adminRepository");
 
 class AdminService {
+    async search(searchWith, searchOn) {
+        try {
+            let searchResults;
+            if (searchOn === "employers") {
+                searchResults = await adminRepository.searchEmployers(searchWith);
+            } else if (searchOn === "laborers") {
+                searchResults = await adminRepository.searchLaborers(searchWith);
+            } else if (searchOn === "plans") {
+                searchResults = await adminRepository.searchPlans(searchWith);
+            } else {
+                searchResults = await adminRepository.searchBanners(searchWith);
+            }
+
+            return {
+                status: 201,
+                message: "Search success",
+                data: {
+                    result: searchResults
+                }
+            };
+        } catch (error) {
+            console.log(error);
+            return { 
+                status: 500, message: `Internal Server Error: ${error.message}` 
+            };
+        }
+    };
+
     async getUsers(itemsPerPage, currentPage) {
         try {
             const startIndex = (currentPage) * itemsPerPage;
@@ -8,7 +36,7 @@ class AdminService {
             const users = await adminRepository.findUsersPaginated(startIndex, itemsPerPage);
 
             if (!users.length) {
-                return { status: 400, message: 'No users found' };
+                return { status: 400, message: "No users found" };
             }
 
             const totalUsers = await adminRepository.findUsersCount();
@@ -16,7 +44,7 @@ class AdminService {
 
             return {
                 status: 201,
-                message: `Found users`,
+                message: "Found users",
                 data: {
                     users,
                     totalPages
@@ -24,7 +52,9 @@ class AdminService {
             };
         } catch (error) {
             console.log(error);
-            return { status: 500, message: 'Internal Server Error' };
+            return { 
+                status: 500, message: `Internal Server Error: ${error.message}` 
+            };
         }
     };
 
@@ -33,7 +63,7 @@ class AdminService {
             const user = await adminRepository.findUserById(id);
 
             if (!user) {
-                return { status: 400, message: 'No user found' };
+                return { status: 400, message: "No user found" };
             }
 
             return {
@@ -45,7 +75,9 @@ class AdminService {
             };
         } catch (error) {
             console.log(error);
-            return { status: 500, message: 'Internal Server Error' };
+            return { 
+                status: 500, message: `Internal Server Error: ${error.message}` 
+            };
         }
     };
 
@@ -54,16 +86,18 @@ class AdminService {
             const updatedUser = await adminRepository.blockUnblockUser(id);
 
             if (!updatedUser) {
-                return { status: 400, message: 'No user found' };
+                return { status: 400, message: "No user found" };
             }
 
             return {
                 status: 201,
-                message: `Updated user`
+                message: "Updated user"
             };
         } catch (error) {
             console.log(error);
-            return { status: 500, message: 'Internal Server Error' };
+            return { 
+                status: 500, message: `Internal Server Error: ${error.message}` 
+            };
         }
     };
 };

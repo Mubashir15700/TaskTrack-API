@@ -14,6 +14,6 @@ router.post("/search", adminController.search);
 // user-related actions
 router.get("/users", adminController.getUsers);
 router.get("/user/:id", adminController.getUser);
-router.post('/user-action/:id', adminController.blockUnblockUser);
+router.post("/user-action/:id", adminController.blockUnblockUser);
 
 module.exports = router;

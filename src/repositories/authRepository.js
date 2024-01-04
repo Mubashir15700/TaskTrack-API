@@ -1,11 +1,11 @@
-const User = require('../models/userModel');
-const Admin = require('../models/adminModel');
+const User = require("../models/userModel");
+const Admin = require("../models/adminModel");
 
 class AuthRepository {
     // check auth
     async findAdminById(id) {
         try {
-            return await Admin.findById(id).select('-password');
+            return await Admin.findById(id).select("-password");
         } catch (error) {
             console.error(error);
             throw new Error("Error while fetching admin");
@@ -14,7 +14,7 @@ class AuthRepository {
 
     async findCurrentUserById(id) {
         try {
-            return await User.findById(id).select('-password');
+            return await User.findById(id).select("-password");
         } catch (error) {
             console.error(error);
             throw new Error("Error while fetching user");
@@ -127,9 +127,6 @@ class AuthRepository {
     async updateUserPassword(userId, newPassword) {
         try {
             const user = await User.findById(userId);
-            if (!user) {
-                throw new Error("User not found");
-            }
             user.password = newPassword;
             await user.save();
         } catch (error) {
