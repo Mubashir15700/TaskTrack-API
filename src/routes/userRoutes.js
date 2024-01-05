@@ -21,5 +21,6 @@ router.post("/reset-password", checkUserStatus, authController.resetPassword);
 router.post("/update-profile", checkUserStatus, hasToken, imageUpload.single('profile'), userController.updateProfile);
 router.post("/delete-profile-image", checkUserStatus, hasToken, userController.deleteProfileImage);
 router.post("/get-current-location", checkUserStatus, hasToken, userController.getCurrentLocation);
+router.post("/delete-current-location", checkUserStatus, hasToken, userController.deleteCurrentLocation);
 
 module.exports = router;

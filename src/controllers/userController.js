@@ -24,3 +24,9 @@ exports.getCurrentLocation = catchAsync(async (req, res) => {
     const result = await userService.getCurrentLocation(latitude, longitude);
     sendResponse(res, result);
 });
+
+exports.deleteCurrentLocation = catchAsync(async (req, res) => {
+    const { userId } = req.body;
+    const result = await userService.deleteCurrentLocation(userId);
+    sendResponse(res, result);
+});

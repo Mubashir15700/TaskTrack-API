@@ -34,6 +34,23 @@ class UserRepository {
             throw new Error("Error while deleting profile");
         }
     }
+
+    async deleteCurrentLocation(id) {
+        try {
+            return await User.findByIdAndUpdate(
+                id,
+                {
+                    $unset: {
+                        location: 1,
+                    },
+                },
+                { new: true }
+            );
+        } catch (error) {
+            console.error(error);
+            throw new Error("Error while deleting profile");
+        }
+    }
 };
 
 module.exports = new UserRepository();

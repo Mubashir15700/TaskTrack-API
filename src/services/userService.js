@@ -88,6 +88,27 @@ class UserService {
             };
         }
     };
+
+    async deleteCurrentLocation(userId) {
+        try {
+            const deleteResult = await userRepository.deleteCurrentLocation(userId);
+
+            if (deleteResult) {
+                return {
+                    status: 201,
+                    message: "Deleted user location successfully",
+                    data: {
+                        deleteResult
+                    }
+                };
+            }
+        } catch (error) {
+            console.log(error);
+            return {
+                status: 500, message: `Internal Server Error: ${error.message}`
+            };
+        }
+    };
 };
 
 module.exports = new UserService();
