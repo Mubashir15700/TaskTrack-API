@@ -20,5 +20,6 @@ router.post("/reset-password", checkUserStatus, authController.resetPassword);
 // profile actions
 router.post("/update-profile", checkUserStatus, hasToken, imageUpload.single('profile'), userController.updateProfile);
 router.post("/delete-profile-image", checkUserStatus, hasToken, userController.deleteProfileImage);
+router.post("/get-current-location", checkUserStatus, hasToken, userController.getCurrentLocation);
 
 module.exports = router;

@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const querystring = require('querystring');
 const userRepository = require('../repositories/userRepository');
 
 class UserService {
@@ -41,6 +42,43 @@ class UserService {
                 message: "Deletd profile image successfully",
                 data: {
                     updatedUser: updateResult
+                }
+            };
+        } catch (error) {
+            console.log(error);
+            return {
+                status: 500, message: `Internal Server Error: ${error.message}`
+            };
+        }
+    };
+
+    async getCurrentLocation(lat, lon) {
+        try {
+            const url = `https://api.opencagedata.com/geocode/v1/json?${querystring.stringify({
+                key: process.env.OPENCAGE_API_KEY,
+                q: `${lat},${lon}`,
+                language: "en",
+            })}`;
+
+            const response = await fetch(url);
+            const data = await response.json();
+
+            const firstResult = data.results[0];
+            const fullAddress = {
+                lat,
+                lon,
+                road: firstResult.components.road || "",
+                village: firstResult.components.village || "",
+                district: firstResult.components.state_district || "",
+                state: firstResult.components.state || "",
+                postcode: firstResult.components.postcode || "",
+            };
+
+            return {
+                status: 201,
+                message: "Fetched user location successfully",
+                data: {
+                    fullAddress
                 }
             };
         } catch (error) {
