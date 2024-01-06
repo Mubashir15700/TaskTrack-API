@@ -55,9 +55,7 @@ class AuthService {
             const admin = await authRepository.findAdminByUserName(username);
 
             if (!admin) {
-                return res.status(401).json({
-                    status: "failed", message: `Invalid credentials`
-                });
+                return { status: 401, success: false, message: "Invalid credentials" };
             }
 
             const isMatch = await bcrypt.compare(password, admin.password);
@@ -327,9 +325,7 @@ class AuthService {
     async resetPassword(userId, password, confirmPassword) {
         try {
             if (password !== confirmPassword) {
-                return res.status(400).json({
-                    status: "failed", message: "Passwords do not match"
-                });
+                return { status: 400, success: false, message: "Passwords do not match" };
             }
 
             const user = await authRepository.findUserById(userId);
