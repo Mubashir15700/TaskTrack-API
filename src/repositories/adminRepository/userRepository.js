@@ -1,8 +1,6 @@
-const User = require("../models/userModel");
-const Plan = require("../models/subscriptionModel");
-const Banner = require("../models/bannerModel");
+const User = require("../../models/userModel");
 
-class AdminRepository {
+class UserRepository {
     async findUsersPaginated(startIndex, itemsPerPage) {
         try {
             return await User.find()
@@ -81,23 +79,6 @@ class AdminRepository {
         }
     };
 
-    async searchPlans(searchWith) {
-        try {
-            // return await Plan.find();
-        } catch (error) {
-            console.error(error);
-            throw new Error("Error while searching plans");
-        }
-    };
-
-    async searchBanners(searchWith) {
-        try {
-            // return await Banner.find();
-        } catch (error) {
-            console.error(error);
-            throw new Error("Error while searching banners");
-        }
-    };
 };
 
-module.exports = new AdminRepository();
+module.exports = new UserRepository();

@@ -2,12 +2,18 @@ const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
 
-const uploadDirectory = path.join(__dirname, "../../uploads/");
+// Function to get the destination folder based on the type
+const getDestination = (type) => {
+    return path.join(__dirname, `../../uploads/${type}/`);
+};
 
 // Ensure the destination directory exists
-if (!fs.existsSync(uploadDirectory)) {
-    fs.mkdirSync(uploadDirectory, { recursive: true });
-}
+const createDestinationIfNotExists = (type) => {
+    const uploadDirectory = getDestination(type);
+    if (!fs.existsSync(uploadDirectory)) {
+        fs.mkdirSync(uploadDirectory, { recursive: true });
+    }
+};
 
 // Define allowed file types
 const imageFilter = (req, file, cb) => {
@@ -22,9 +28,10 @@ const imageFilter = (req, file, cb) => {
 };
 
 // Define storage settings
-const storage = multer.diskStorage({
+const storage = (type) => multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, uploadDirectory);
+        createDestinationIfNotExists(type);
+        cb(null, getDestination(type));
     },
     filename: function (req, file, cb) {
         cb(null, Date.now() + "-" + file.originalname);
@@ -32,8 +39,8 @@ const storage = multer.diskStorage({
 });
 
 // Configure multer with the defined settings
-const upload = multer({
-    storage: storage,
+const upload = (type) => multer({
+    storage: storage(type),
     limits: {
         fileSize: 5 * 1024 * 1024, // 5 MB in bytes
     },
