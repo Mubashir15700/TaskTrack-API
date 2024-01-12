@@ -1,4 +1,5 @@
 const userRepository = require("../../repositories/adminRepository/userRepository");
+const jobRepository = require("../../repositories/userRepository/jobRepository");
 const bannerRepository = require("../../repositories/adminRepository/bannerRepository");
 const planRepository = require("../../repositories/adminRepository/planRepository");
 
@@ -12,6 +13,8 @@ class AdminService {
                 searchResults = await userRepository.searchLaborers(searchWith);
             } else if (searchOn === "plans") {
                 searchResults = await planRepository.searchPlans(searchWith);
+            } else if (searchOn === "jobs") {
+                searchResults = await jobRepository.searchJobs(searchWith);
             } else {
                 searchResults = await bannerRepository.searchBanners(searchWith);
             }

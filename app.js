@@ -1,15 +1,15 @@
-require('dotenv').config();
-const path = require('path');
-const logger = require('./src/utils/logger');
+require("dotenv").config();
+const path = require("path");
+const logger = require("./src/utils/logger");
 
 // Check for required environment variables
 const requiredEnvVariables = [
-    'PORT',
-    'CORS_ORIGIN',
-    'DB_LOCAL_URL',
-    'JWT_SECRET_KEY',
-    'USER',
-    'APP_PASSWORD'
+    "PORT",
+    "CORS_ORIGIN",
+    "DB_LOCAL_URL",
+    "JWT_SECRET_KEY",
+    "USER",
+    "APP_PASSWORD"
 ];
 
 for (const variable of requiredEnvVariables) {
@@ -19,13 +19,13 @@ for (const variable of requiredEnvVariables) {
     }
 }
 
-const express = require('express');
-const helmet = require('helmet');
-const cors = require('cors');
-const cookieParser = require('cookie-parser');
-const DBConnection = require('./db');
-const userRoutes = require('./src/routes/userRoutes');
-const adminRoutes = require('./src/routes/adminRoutes');
+const express = require("express");
+const helmet = require("helmet");
+const cors = require("cors");
+const cookieParser = require("cookie-parser");
+const DBConnection = require("./db");
+const userRoutes = require("./src/routes/userRoutes");
+const adminRoutes = require("./src/routes/adminRoutes");
 
 const app = express();
 
@@ -37,13 +37,13 @@ app.use(cors({
     origin: process.env.CORS_ORIGIN || "http://localhost:5173",
     credentials: true
 }));
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.use((err, req, res, next) => {
     logger.error(err.stack);
     res.status(500).json({
-        status: 'failed',
-        message: 'Something went wrong!'
+        status: "failed",
+        message: "Something went wrong!"
     });
 });
 
