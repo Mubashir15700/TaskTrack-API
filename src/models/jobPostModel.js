@@ -1,9 +1,9 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const jobSchema = new mongoose.Schema({
     userId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'user',
+        ref: "user",
         required: true
     },
     title: {
@@ -44,9 +44,14 @@ const jobSchema = new mongoose.Schema({
         workers: Number,
         materialsRequired: String,
         wagePerHour: Number
-    }]
+    }],
+    status: {
+        type: String,
+        enum: ["open", "in progress", "completed", "closed"],
+        default: "open",
+    },
 });
 
-const job = mongoose.model('job', jobSchema);
+const job = mongoose.model("job", jobSchema);
 
 module.exports = job;

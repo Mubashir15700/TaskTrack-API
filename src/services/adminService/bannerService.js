@@ -44,6 +44,7 @@ class BannerService {
 
     async addBanner(title, description, bannerImage) {
         try {
+            console.log(title, description, bannerImage);
             if (!title || !description || !bannerImage) {
                 return { status: 400, message: "All fields (title, description, Image) are required" };
             }

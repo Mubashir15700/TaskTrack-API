@@ -22,6 +22,7 @@ class BannerRepository {
     async getBanners(startIndex, itemsPerPage) {
         try {
             return await Banner.find()
+                .sort("order")
                 .skip(startIndex)
                 .limit(itemsPerPage);
         } catch (error) {

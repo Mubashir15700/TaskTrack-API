@@ -16,7 +16,10 @@ const bannerSchema = new mongoose.Schema({
     isActive: {
         type: Boolean,
         default: true
-    }
+    },
+    order: {
+        type: Number,
+    },
 });
 
 const banner = mongoose.model("banner", bannerSchema);

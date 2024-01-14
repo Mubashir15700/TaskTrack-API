@@ -2,9 +2,14 @@ const mongoose = require("mongoose");
 const Job = require("../../models/jobPostModel");
 
 class JobRepository {
-    async getJobs() {
+    async getJobs(currentUserId) {
         try {
             return await Job.aggregate([
+                {
+                    $match: {
+                        userId: { $ne: new mongoose.Types.ObjectId(currentUserId) },
+                    },
+                },
                 {
                     $lookup: {
                         from: "users",
@@ -28,6 +33,7 @@ class JobRepository {
                         location: 1,
                         fields: 1,
                         postedAt: 1,
+                        status: 1,
                         userDetails: {
                             username: "$userDetails.username",
                             profile: "$userDetails.profile",
@@ -81,27 +87,11 @@ class JobRepository {
                         location: 1,
                         fields: 1,
                         postedAt: 1,
+                        status: 1,
                         userDetails: {
                             username: '$userDetails.username',
                             profile: '$userDetails.profile',
                         },
-                    },
-                },
-                {
-                    $project: {
-                        // Exclude the 'userDetails' array and convert the result to a single document
-                        _id: 1,
-                        userId: 1,
-                        title: 1,
-                        description: 1,
-                        date: 1,
-                        time: 1,
-                        duration: 1,
-                        location: 1,
-                        fields: 1,
-                        postedAt: 1,
-                        'userDetails.username': 1,
-                        'userDetails.profile': 1,
                     },
                 },
             ]);
@@ -115,10 +105,29 @@ class JobRepository {
 
     async editJob(jobDetails) {
         try {
-            console.log(jobDetails);
+            const { jobId, title, description, date, time, duration, location, status, fields } = jobDetails;
+
+            return await Job.findByIdAndUpdate(jobId, {
+                $set: {
+                    title, description, date, time, duration, location, status, fields
+                }
+            }, { new: true });
         } catch (error) {
             console.log(error);
             throw new Error("Error while editing the job");
+        }
+    };
+
+    async deleteJob(id) {
+        try {
+            const deletedJob = await Job.findByIdAndDelete(id);
+            if (!deletedJob) {
+                throw new Error("Job not found for deletion");
+            }
+            return deletedJob;
+        } catch (error) {
+            console.log(error);
+            throw new Error(`Error while deleting the job: ${error.message}`);
         }
     };
 

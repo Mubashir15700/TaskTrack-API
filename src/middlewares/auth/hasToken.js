@@ -1,10 +1,10 @@
-const authService = require('../../services/authService');
+const authService = require("../../services/authService");
 
-const hasToken = async (req, res, next) => {
+exports.userHasToken = async (req, res, next) => {
     const token = req.cookies.userJwt;
 
     if (!token) {
-        return res.status(401).json({ status: "failed", message: 'Unauthorized - Missing JWT' });
+        return res.status(401).json({ status: "failed", message: "Unauthorized - Missing JWT" });
     }
 
     try {
@@ -12,8 +12,22 @@ const hasToken = async (req, res, next) => {
         req.user = decodedToken;
         next();
     } catch (error) {
-        return res.status(401).json({ status: "failed", message: 'Unauthorized - Invalid JWT' });
+        return res.status(401).json({ status: "failed", message: "Unauthorized - Invalid JWT" });
     }
 };
 
-module.exports = hasToken;
+exports.adminHasToken = async (req, res, next) => {
+    const token = req.cookies.adminJwt;
+
+    if (!token) {
+        return res.status(401).json({ status: "failed", message: "Unauthorized - Missing JWT" });
+    }
+
+    try {
+        const decodedToken = await authService.decodeToken(token);
+        req.user = decodedToken;
+        next();
+    } catch (error) {
+        return res.status(401).json({ status: "failed", message: "Unauthorized - Invalid JWT" });
+    }
+};

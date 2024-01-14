@@ -10,12 +10,10 @@ const checkUserStatus = async (req, res, next) => {
             const currentUser = await authRepository.findCurrentUserById(decodedToken.userId);
 
             if (currentUser && currentUser.isBlocked) {
-                // If the user is blocked, clear the cookie
                 res.clearCookie("userJwt");
             }
         }
 
-        // Continue to the next middleware or route handler
         next();
     } catch (error) {
         console.error("Error checking user status:", error);

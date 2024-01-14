@@ -20,7 +20,7 @@ exports.deleteProfileImage = catchAsync(async (req, res) => {
 });
 
 exports.getCurrentLocation = catchAsync(async (req, res) => {
-    const { latitude, longitude } = req.body;
+    const { latitude, longitude } = req.query;
     const result = await profileService.getCurrentLocation(latitude, longitude);
     sendResponse(res, result);
 });

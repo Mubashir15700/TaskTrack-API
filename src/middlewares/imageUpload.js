@@ -22,7 +22,7 @@ const imageFilter = (req, file, cb) => {
         return cb(null, true);
     }
     if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/)) {
-        return cb(new Error('Only image files are allowed!'), false);
+        return cb(new Error("Only image files are allowed!"), false);
     }
     cb(null, true);
 };

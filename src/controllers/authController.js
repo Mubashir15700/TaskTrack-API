@@ -4,7 +4,7 @@ const { setCookie } = require("../utils/setCookie");
 const sendResponse = require("../utils/responseStructure");
 
 exports.checkAuth = catchAsync(async (req, res) => {
-    const { role } = req.body;
+    const { role } = req.query;
     const token = role === "admin" ?
         req.cookies.adminJwt :
         req.cookies.userJwt;

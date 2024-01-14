@@ -1,9 +1,9 @@
 const jobRepository = require("../../repositories/userRepository/jobRepository");
 
 class JobService {
-    async getJobs() {
+    async getJobs(currentUserId) {
         try {
-            const jobs = await jobRepository.getJobs();
+            const jobs = await jobRepository.getJobs(currentUserId);
 
             return {
                 status: 201,
@@ -58,21 +58,39 @@ class JobService {
         }
     };
 
-    async editJob(jobId, jobDetails) {
+    async editListedJob(jobId, jobDetails) {
         try {
-            const { jobId, title, description, date, time, duration, location, fields } = jobDetails;
-            if (!title || !description || !date || !time || !duration || !location || !fields) {
+            const { title, description, date, time, duration, location, status, fields } = jobDetails;
+            if (!title || !description || !date || !time || !duration || !location || !status || !fields) {
                 return { status: 400, message: "All fields are required" };
             }
 
             const editResult = await jobRepository.editJob({
-                jobId, title, description, date, time, duration, location, fields
+                jobId, title, description, date, time, duration, location, status, fields
             });
 
             if (editResult) {
                 return {
                     status: 201,
                     message: "Edited job successfully",
+                };
+            }
+        } catch (error) {
+            console.log(error);
+            return {
+                status: 500, message: `Internal Server Error: ${error.message}`
+            };
+        }
+    };
+
+    async deleteListedJob(jobId) {
+        try {
+            const deleteResult = await jobRepository.deleteJob(jobId);
+
+            if (deleteResult) {
+                return {
+                    status: 201,
+                    message: "Deleted job successfully",
                 };
             }
         } catch (error) {
