@@ -35,4 +35,8 @@ router.post("/add-plan", hasToken.adminHasToken, planController.addPlan);
 router.put("/edit-plan/:id", hasToken.adminHasToken, planController.editPlan);
 router.patch("/plan-action/:id", hasToken.adminHasToken, planController.listUnlistPlan);
 
+// laborer request 
+router.get("/requests", hasToken.adminHasToken, userController.getRequests);
+router.patch("/request-action/:id", hasToken.adminHasToken, userController.approveRejectAction);
+
 module.exports = router;

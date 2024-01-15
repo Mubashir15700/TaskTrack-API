@@ -4,7 +4,7 @@ const querystring = require("querystring");
 const profileRepository = require("../../repositories/userRepository/profileRepository");
 
 class ProfileService {
-    async updateProfile(id, updateObject, profileImage) {
+    async updateProfile(id, updateObject, profileImage = null) {
         try {
             if (profileImage) {
                 updateObject.profile = profileImage;

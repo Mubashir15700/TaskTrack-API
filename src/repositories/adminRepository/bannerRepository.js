@@ -86,7 +86,7 @@ class BannerRepository {
             );
         } catch (error) {
             console.log(error);
-            throw new Error("Error while adding banner");
+            throw new Error("Error while editing banner");
         }
     };
 };

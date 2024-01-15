@@ -20,3 +20,17 @@ exports.blockUnblockUser = catchAsync(async (req, res) => {
     const result = await userService.blockUnblockUser(id);
     sendResponse(res, result);
 });
+
+exports.getRequests = catchAsync(async (req, res) => {
+    const itemsPerPage = parseInt(req.query.itemsPerPage) || 10;
+    const currentPage = parseInt(req.query.currentPage);
+    const result = await userService.getRequests(itemsPerPage, currentPage);
+    sendResponse(res, result);
+});
+
+exports.approveRejectAction = catchAsync(async (req, res) => {
+    const { id } = req.params;
+    console.log(req.body);
+    const result = await userService.approveRejectAction(id);
+    sendResponse(res, result);
+});

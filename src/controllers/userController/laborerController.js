@@ -12,3 +12,9 @@ exports.getLaborer = catchAsync(async (req, res) => {
     const result = await laborerService.getLaborer(id);
     sendResponse(res, result);
 });
+
+exports.sendRequest = catchAsync(async (req, res) => {
+    const { formData } = req.body;
+    const result = await laborerService.sendRequest(formData);
+    sendResponse(res, result);
+});

@@ -32,6 +32,7 @@ router.delete("/delete-current-location", checkUserStatus, hasToken.userHasToken
 // laborer actions
 router.get("/get-laborers", checkUserStatus, hasToken.userHasToken, laborerController.getLaborers);
 router.get("/get-laborer/:id", checkUserStatus, hasToken.userHasToken, laborerController.getLaborer);
+router.post("/send-request", checkUserStatus, hasToken.userHasToken, laborerController.sendRequest);
 
 // job actions
 router.get("/get-jobs", checkUserStatus, hasToken.userHasToken, jobController.getJobs);
@@ -41,5 +42,6 @@ router.get("/get-job/:id", checkUserStatus, hasToken.userHasToken, jobController
 router.get("/get-listed-job/:id", checkUserStatus, hasToken.userHasToken, jobController.getListedJob);
 router.put("/edit-listed-job", checkUserStatus, hasToken.userHasToken, jobController.editListedJob);
 router.delete("/delete-listed-job/:id", checkUserStatus, hasToken.userHasToken, jobController.deleteListedJob);
+router.get("/get-works-history/:id", checkUserStatus, hasToken.userHasToken, jobController.getWorksHistory);
 
 module.exports = router;

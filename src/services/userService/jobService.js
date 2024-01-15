@@ -101,6 +101,25 @@ class JobService {
         }
     };
 
+    async getWorksHistory(id) {
+        try {
+            const works = [];
+
+            return {
+                status: 201,
+                message: "get works history success",
+                data: {
+                    works
+                }
+            };
+        } catch (error) {
+            console.log(error);
+            return {
+                status: 500, message: `Internal Server Error: ${error.message}`
+            };
+        }
+    };
+
     async postJob(jobDetails) {
         try {
             const { userId, title, description, date, time, duration, location, fields } = jobDetails;

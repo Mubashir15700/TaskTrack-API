@@ -1,4 +1,5 @@
 const User = require("../../models/userModel");
+const Request = require("../../models/laborerRequestModel");
 
 class LaborerRepository {
     async getLaborers() {
@@ -19,6 +20,15 @@ class LaborerRepository {
         }
     };
 
+    async saveRequest(data) {
+        try {
+            const newRequest = new Request(data);
+            return await newRequest.save();
+        } catch (error) {
+            console.log(error);
+            throw new Error("Error while saving laborer request");
+        }
+    };
 };
 
 module.exports = new LaborerRepository();

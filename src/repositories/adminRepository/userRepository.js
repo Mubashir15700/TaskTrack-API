@@ -1,4 +1,5 @@
 const User = require("../../models/userModel");
+const Request = require("../../models/laborerRequestModel");
 
 class UserRepository {
     async findUsersPaginated(startIndex, itemsPerPage) {
@@ -79,6 +80,40 @@ class UserRepository {
         }
     };
 
+    async getRequests(startIndex, itemsPerPage) {
+        try {
+            return await Request.find()
+                .skip(startIndex)
+                .limit(itemsPerPage);
+        } catch (error) {
+            console.error(error);
+            throw new Error("Error while fetching paginated requests");
+        }
+    };
+
+    async findRequestsCount() {
+        try {
+            return await Request.countDocuments();
+        } catch (error) {
+            console.error(error);
+            throw new Error("Error while fetching request's count");
+        }
+    };
+
+    async approveRejectAction(id) {
+        try {
+            console.log(id);
+            // const user = await User.findById(id);
+            // const blockState = user.isBlocked;
+
+            // return await User.findByIdAndUpdate(id, {
+            //     $set: { isBlocked: !blockState },
+            // });
+        } catch (error) {
+            console.error(error);
+            throw new Error("Error while updating user");
+        }
+    };
 };
 
 module.exports = new UserRepository();

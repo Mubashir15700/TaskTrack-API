@@ -17,7 +17,7 @@ class ProfileRepository {
             throw new Error("Error while updating profile");
         }
     };
-    
+
     async deleteProfileImage(id) {
         try {
             return await User.findByIdAndUpdate(
@@ -34,7 +34,7 @@ class ProfileRepository {
             throw new Error("Error while deleting profile");
         }
     };
-    
+
     async deleteCurrentLocation(id) {
         try {
             return await User.findByIdAndUpdate(

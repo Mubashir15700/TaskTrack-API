@@ -38,6 +38,12 @@ exports.deleteListedJob = catchAsync(async (req, res) => {
     sendResponse(res, result);
 });
 
+exports.getWorksHistory = catchAsync(async (req, res) => {
+    const { id } = req.params;
+    const result = await jobService.getWorksHistory(id);
+    sendResponse(res, result);
+});
+
 exports.postJob = catchAsync(async (req, res) => {
     const result = await jobService.postJob(req.body);
     sendResponse(res, result);

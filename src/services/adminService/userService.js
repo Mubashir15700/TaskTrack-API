@@ -72,6 +72,55 @@ class UserService {
             };
         }
     };
+
+    async getRequests(itemsPerPage, currentPage) {
+        try {
+            const startIndex = (currentPage) * itemsPerPage;
+
+            const requests = await userRepository.getRequests(startIndex, itemsPerPage);
+
+            if (!requests.length) {
+                return { status: 400, message: "No requests found" };
+            }
+
+            const totalRequests = await userRepository.findRequestsCount();
+            const totalPages = Math.ceil(totalRequests / itemsPerPage);
+
+            return {
+                status: 201,
+                message: "Found requests",
+                data: {
+                    requests,
+                    totalPages
+                }
+            };
+        } catch (error) {
+            console.log(error);
+            return {
+                status: 500, message: `Internal Server Error: ${error.message}`
+            };
+        }
+    };
+
+    async approveRejectAction(id) {
+        try {
+            const updatedUser = await userRepository.approveRejectAction(id);
+
+            if (!updatedUser) {
+                return { status: 400, message: "No request found" };
+            }
+
+            return {
+                status: 201,
+                message: "Updated request"
+            };
+        } catch (error) {
+            console.log(error);
+            return {
+                status: 500, message: `Internal Server Error: ${error.message}`
+            };
+        }
+    };
 };
 
 module.exports = new UserService();
