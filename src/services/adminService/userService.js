@@ -102,12 +102,50 @@ class UserService {
         }
     };
 
-    async approveRejectAction(id) {
+    async getRequest(id) {
         try {
-            const updatedUser = await userRepository.approveRejectAction(id);
+            const request = await userRepository.getRequest(id);
 
-            if (!updatedUser) {
+            if (!request) {
                 return { status: 400, message: "No request found" };
+            }
+
+            return {
+                status: 201,
+                message: "Found request",
+                data: {
+                    request
+                }
+            };
+        } catch (error) {
+            console.log(error);
+            return {
+                status: 500, message: `Internal Server Error: ${error.message}`
+            };
+        }
+    };
+
+    async approveRejectAction(id, type) {
+        try {
+            let newStatus;
+            if (type === "approve") {
+                newStatus = "approved";
+            } else if (type === "reject") {
+                newStatus = "rejected";
+            }
+
+            const updatedRequest = await userRepository.approveRejectAction(id, newStatus);
+
+            if (!updatedRequest) {
+                return { status: 400, message: "No request found" };
+            }
+
+            if (newStatus === "approved") {
+                const updatedUser = await userRepository.changeToJobSeeker(updatedRequest.userId);
+
+                if (!updatedUser) {
+                    return { status: 500, message: "Failed to update user" };
+                }
             }
 
             return {

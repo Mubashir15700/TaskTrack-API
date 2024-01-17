@@ -1,3 +1,4 @@
+const mongoose = require("mongoose");
 const User = require("../../models/userModel");
 const Request = require("../../models/laborerRequestModel");
 
@@ -82,7 +83,7 @@ class UserRepository {
 
     async getRequests(startIndex, itemsPerPage) {
         try {
-            return await Request.find()
+            return await Request.find({ status: { $ne: "cancelled" } })
                 .skip(startIndex)
                 .limit(itemsPerPage);
         } catch (error) {
@@ -93,22 +94,76 @@ class UserRepository {
 
     async findRequestsCount() {
         try {
-            return await Request.countDocuments();
+            return await Request.countDocuments({ status: "pending" });
         } catch (error) {
             console.error(error);
             throw new Error("Error while fetching request's count");
         }
     };
 
-    async approveRejectAction(id) {
+    async getRequest(id) {
         try {
-            console.log(id);
-            // const user = await User.findById(id);
-            // const blockState = user.isBlocked;
+            const request = await Request.aggregate([
+                {
+                    $match: {
+                        _id: new mongoose.Types.ObjectId(id),
+                    },
+                },
+                {
+                    $lookup: {
+                        from: "users",
+                        localField: "userId",
+                        foreignField: "_id",
+                        as: "user",
+                    },
+                },
+                {
+                    $unwind: "$user",
+                },
+                {
+                    $project: {
+                        _id: 1,
+                        languages: 1,
+                        education: 1,
+                        avlDays: 1,
+                        avlTimes: 1,
+                        fields: 1,
+                        status: 1,
+                        createdAt: 1,
+                        user: {
+                            _id: 1,
+                            username: 1,
+                            email: 1,
+                            phone: 1,
+                            location: 1
+                        },
+                    },
+                },
+            ]);
 
-            // return await User.findByIdAndUpdate(id, {
-            //     $set: { isBlocked: !blockState },
-            // });
+            return request[0];
+        } catch (error) {
+            console.error(error);
+            throw new Error("Error while fetching request");
+        }
+    };
+
+    async approveRejectAction(id, type) {
+        try {
+            return await Request.findByIdAndUpdate(id, {
+                $set: { status: type }
+            }, { new: true });
+        } catch (error) {
+            console.error(error);
+            throw new Error("Error while updating request");
+        }
+    };
+
+    async changeToJobSeeker(id) {
+        try {
+            return await User.findByIdAndUpdate(id, {
+                $set: { isJobSeeker: true }
+            }, { new: true });
         } catch (error) {
             console.error(error);
             throw new Error("Error while updating user");

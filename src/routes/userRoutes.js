@@ -33,6 +33,9 @@ router.delete("/delete-current-location", checkUserStatus, hasToken.userHasToken
 router.get("/get-laborers", checkUserStatus, hasToken.userHasToken, laborerController.getLaborers);
 router.get("/get-laborer/:id", checkUserStatus, hasToken.userHasToken, laborerController.getLaborer);
 router.post("/send-request", checkUserStatus, hasToken.userHasToken, laborerController.sendRequest);
+router.get("/get-prev-request/:id", checkUserStatus, hasToken.userHasToken, laborerController.getPrevRequest);
+router.put("/update-request", checkUserStatus, hasToken.userHasToken, laborerController.updateRequest);
+router.patch("/cancel-request", checkUserStatus, hasToken.userHasToken, laborerController.cancelRequest);
 
 // job actions
 router.get("/get-jobs", checkUserStatus, hasToken.userHasToken, jobController.getJobs);

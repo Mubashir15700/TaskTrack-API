@@ -66,14 +66,14 @@ class JobRepository {
                 },
                 {
                     $lookup: {
-                        from: 'users',
-                        localField: 'userId',
-                        foreignField: '_id',
-                        as: 'userDetails',
+                        from: "users",
+                        localField: "userId",
+                        foreignField: "_id",
+                        as: "userDetails",
                     },
                 },
                 {
-                    $unwind: '$userDetails',
+                    $unwind: "$userDetails",
                 },
                 {
                     $project: {
@@ -89,8 +89,8 @@ class JobRepository {
                         postedAt: 1,
                         status: 1,
                         userDetails: {
-                            username: '$userDetails.username',
-                            profile: '$userDetails.profile',
+                            username: "$userDetails.username",
+                            profile: "$userDetails.profile",
                         },
                     },
                 },

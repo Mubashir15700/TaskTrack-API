@@ -37,6 +37,7 @@ router.patch("/plan-action/:id", hasToken.adminHasToken, planController.listUnli
 
 // laborer request 
 router.get("/requests", hasToken.adminHasToken, userController.getRequests);
+router.get("/request/:id", hasToken.adminHasToken, userController.getRequest);
 router.patch("/request-action/:id", hasToken.adminHasToken, userController.approveRejectAction);
 
 module.exports = router;

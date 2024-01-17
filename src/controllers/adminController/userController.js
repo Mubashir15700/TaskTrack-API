@@ -28,9 +28,15 @@ exports.getRequests = catchAsync(async (req, res) => {
     sendResponse(res, result);
 });
 
+exports.getRequest = catchAsync(async (req, res) => {
+    const { id } = req.params;
+    const result = await userService.getRequest(id);
+    sendResponse(res, result);
+});
+
 exports.approveRejectAction = catchAsync(async (req, res) => {
     const { id } = req.params;
-    console.log(req.body);
-    const result = await userService.approveRejectAction(id);
+    const { action } = req.body;
+    const result = await userService.approveRejectAction(id, action);
     sendResponse(res, result);
 });
