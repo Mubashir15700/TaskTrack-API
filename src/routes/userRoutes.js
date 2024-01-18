@@ -1,5 +1,6 @@
 const express = require("express");
 const authController = require("../controllers/authController");
+const notificationController = require("../controllers/notificationController");
 const userUtilityController = require("../controllers/userController/userUtilityController");
 const profileController = require("../controllers/userController/profileController");
 const laborerController = require("../controllers/userController/laborerController");
@@ -46,5 +47,8 @@ router.get("/get-listed-job/:id", checkUserStatus, hasToken.userHasToken, jobCon
 router.put("/edit-listed-job", checkUserStatus, hasToken.userHasToken, jobController.editListedJob);
 router.delete("/delete-listed-job/:id", checkUserStatus, hasToken.userHasToken, jobController.deleteListedJob);
 router.get("/get-works-history/:id", checkUserStatus, hasToken.userHasToken, jobController.getWorksHistory);
+
+// notifications
+router.get("/notifications-count/:id", checkUserStatus, hasToken.adminHasToken, notificationController.getUserNotificationsCount);
 
 module.exports = router;

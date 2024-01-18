@@ -1,5 +1,6 @@
 const express = require("express");
 const authController = require("../controllers/authController");
+const notificationController = require("../controllers/notificationController");
 const adminUtilityController = require("../controllers/adminController/adminUtilityController");
 const userController = require("../controllers/adminController/userController");
 const bannerController = require("../controllers/adminController/bannerController");
@@ -39,5 +40,8 @@ router.patch("/plan-action/:id", hasToken.adminHasToken, planController.listUnli
 router.get("/requests", hasToken.adminHasToken, userController.getRequests);
 router.get("/request/:id", hasToken.adminHasToken, userController.getRequest);
 router.patch("/request-action/:id", hasToken.adminHasToken, userController.approveRejectAction);
+
+// notifications
+router.get("/notifications-count", hasToken.adminHasToken, notificationController.getAdminNotificationsCount);
 
 module.exports = router;

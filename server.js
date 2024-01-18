@@ -1,6 +1,7 @@
 const app = require("./app");
 const mongoose = require("mongoose");
 const logger = require("./src/utils/logger");
+const initializeSocket = require("./src/socket/socket");
 
 const port = process.env.PORT || 3000;
 
@@ -28,3 +29,5 @@ process.on("SIGINT", async () => {
         process.exit(0); // Exit with success code
     });
 });
+
+initializeSocket(server);
