@@ -1,4 +1,4 @@
-const authService = require("../../services/authService");
+const authService = require("../../services/auth");
 
 exports.userHasToken = async (req, res, next) => {
     const token = req.cookies.userJwt;

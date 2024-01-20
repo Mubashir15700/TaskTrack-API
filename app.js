@@ -24,8 +24,8 @@ const helmet = require("helmet");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const DBConnection = require("./db");
-const userRoutes = require("./src/routes/userRoutes");
-const adminRoutes = require("./src/routes/adminRoutes");
+const userRoutes = require("./src/routes/user");
+const adminRoutes = require("./src/routes/admin");
 
 const app = express();
 

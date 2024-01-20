@@ -1,5 +1,5 @@
 const socketIO = require("socket.io");
-const Notification = require("../models/notificationModel");
+const Notification = require("../models/notification");
 
 function initializeSocket(server) {
     const io = socketIO(server, {
@@ -11,10 +11,18 @@ function initializeSocket(server) {
 
     const connectedUsers = new Map();
 
-    // Function to find a user by role in the connectedUsers Map
-    function findUserByRole(role) {
+    function findUserByRole(roleToFind) {
         for (const [socketId, userDetails] of connectedUsers) {
-            if (userDetails.role === role) {
+            if (userDetails.role === roleToFind) {
+                return { socketId, userDetails };
+            }
+        }
+        return null;
+    };
+
+    function findUserById(IdToFind) {
+        for (const [socketId, userDetails] of connectedUsers) {
+            if (userDetails.userId === IdToFind) {
                 return { socketId, userDetails };
             }
         }
@@ -22,55 +30,61 @@ function initializeSocket(server) {
     };
 
     io.on("connection", (socket) => {
-        console.log(`User connected: ${socket.id}`);
+        console.log(`New User connected: ${socket.id}`);
 
-        socket.on("admin_connect", (adminData) => {
+        socket.on("set_role", (data) => {
 
-            // Store admin details along with their socket
+            // Store the role and ids in the connectedUsers Map
             connectedUsers.set(socket.id, {
-                userDetails: adminData,
-                role: "admin",
+                userId: data.userId,
+                role: data.role,
             });
         });
 
-        socket.on("user_connect", (userData) => {
+        socket.on("request_submit", async (data) => {
 
-            // Store user details along with their socket
-            connectedUsers.set(socket.id, {
-                userDetails: userData,
-                role: "user",
-            });
-        });
-
-        // Handle the "request_form_submit" event
-        socket.on("form_submit", async (data) => {
             try {
-                // Find the admin user in the connectedUsers Map
                 const adminUser = findUserByRole("admin");
 
-                if (adminUser) {
-                    // Save the notification to the database
-                    const newNotification = new Notification({
-                        from: data.userId,
-                        to: "admin",
-                        message: "A new request has been received!",
-                        formData: data,
-                    });
+                // Save the notification to the database
+                const newNotification = new Notification({
+                    from: data,
+                    to: "admin",
+                    message: "A new request has been received!",
+                });
 
-                    await newNotification.save();
+                await newNotification.save();
+
+                if (adminUser) {
 
                     // Emit a response event only to the admin
-                    io.to(adminUser.socketId).emit("notify_form_submit", {
+                    io.to(adminUser.socketId).emit("notify_request_submit", {
                         message: "A new request has been submitted!",
-                        formData: data,
                     });
-                } else {
-                    console.log("No admin user found");
-                    // Handle the case when no admin user is found
                 }
             } catch (error) {
                 console.error("Error processing form submission:", error);
                 // Handle the error, e.g., emit an error event or log it
+            }
+        });
+
+        socket.on("request_action", async (data) => {
+
+            const targetUser = findUserById(data.userId);
+
+            // Save the notification to the database
+            const newNotification = new Notification({
+                to: data.userId,
+                message: "Recieved response!",
+            });
+
+            await newNotification.save();
+
+            if (targetUser) {
+
+                io.to(targetUser.socketId).emit("notify_request_action", {
+                    message: "Admin responded",
+                });
             }
         });
 
