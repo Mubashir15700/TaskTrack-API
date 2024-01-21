@@ -1,7 +1,7 @@
 const app = require("./app");
 const mongoose = require("mongoose");
 const logger = require("./src/utils/logger");
-const initializeSocket = require("./src/socket/socket");
+const { initializeSocket } = require("./src/socket");
 
 const port = process.env.PORT || 3000;
 

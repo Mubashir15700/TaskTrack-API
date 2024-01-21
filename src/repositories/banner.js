@@ -1,4 +1,4 @@
-const Banner = require("../../models/banner");
+const Banner = require("../models/banner");
 
 class BannerRepository {
     async checkBannerExistsByTitle(query) {
@@ -87,6 +87,15 @@ class BannerRepository {
         } catch (error) {
             console.log(error);
             throw new Error("Error while editing banner");
+        }
+    };
+
+    async getBanners() {
+        try {
+            return await Banner.find({ isActive: true }).sort("order");
+        } catch (error) {
+            console.error(error);
+            throw new Error("Error while finding banners");
         }
     };
 };

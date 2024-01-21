@@ -1,5 +1,5 @@
-const laborerRepository = require("../../repositories/user/laborer");
-const profileRepository = require("../../repositories/user/profile");
+const laborerRepository = require("../../repositories/laborer");
+const profileRepository = require("../../repositories/profile");
 
 class LaborerService {
     async getLaborers() {

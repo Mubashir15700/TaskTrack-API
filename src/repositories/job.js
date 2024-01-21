@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Job = require("../../models/jobPost");
+const Job = require("../models/jobPost");
 
 class JobRepository {
     async getJobs(currentUserId, searchWith = null) {

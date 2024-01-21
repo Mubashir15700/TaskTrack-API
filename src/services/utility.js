@@ -1,7 +1,7 @@
-const userRepository = require("../../repositories/admin/user");
-const jobRepository = require("../../repositories/user/job");
-const bannerRepository = require("../../repositories/admin/banner");
-const planRepository = require("../../repositories/admin/plan");
+const userRepository = require("../repositories/user");
+const jobRepository = require("../repositories/job");
+const bannerRepository = require("../repositories/banner");
+const planRepository = require("../repositories/plan");
 
 class AdminService {
     async search(currentUserId, searchWith, searchOn) {

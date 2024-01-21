@@ -1,4 +1,4 @@
-const Plan = require("../../models/plan");
+const Plan = require("../models/plan");
 
 class PlanRepository {
     async checkPlanExistsByName(query) {

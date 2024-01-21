@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const querystring = require("querystring");
-const profileRepository = require("../../repositories/user/profile");
+const profileRepository = require("../../repositories/profile");
 
 class ProfileService {
     async updateProfile(id, updateObject, profileImage = null) {

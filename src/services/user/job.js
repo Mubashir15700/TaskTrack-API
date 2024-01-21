@@ -1,4 +1,4 @@
-const jobRepository = require("../../repositories/user/job");
+const jobRepository = require("../../repositories/job");
 
 class JobService {
     async getJobs(currentUserId) {

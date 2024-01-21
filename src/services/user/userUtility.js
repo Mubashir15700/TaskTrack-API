@@ -1,9 +1,9 @@
-const userUtilityRepository = require("../../repositories/user/userUtility");
+const bannerRepository = require("../../repositories/banner");
 
 class UserUtilityService {
     async getBanners() {
         try {
-            const banners = await userUtilityRepository.getBanners();
+            const banners = await bannerRepository.getBanners();
 
             return {
                 status: 201,

@@ -26,6 +26,7 @@ const cookieParser = require("cookie-parser");
 const DBConnection = require("./db");
 const userRoutes = require("./src/routes/user");
 const adminRoutes = require("./src/routes/admin");
+const utilityRoutes = require("./src/routes/utility");
 
 const app = express();
 
@@ -49,6 +50,7 @@ app.use((err, req, res, next) => {
 
 app.use("/", userRoutes);
 app.use("/admin", adminRoutes);
+app.use("/utility", utilityRoutes);
 
 DBConnection();
 

@@ -1,4 +1,4 @@
-const userRepository = require("../../repositories/admin/user");
+const userRepository = require("../../repositories/user");
 
 class UserService {
     async getUsers(itemsPerPage, currentPage) {

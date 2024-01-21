@@ -1,4 +1,4 @@
-const bannerRepository = require("../../repositories/admin/banner");
+const bannerRepository = require("../../repositories/banner");
 
 class BannerService {
     async checkBannerExistsByTitle(title, id = null) {

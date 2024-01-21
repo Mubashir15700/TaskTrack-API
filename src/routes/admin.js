@@ -1,7 +1,6 @@
 const express = require("express");
 const authController = require("../controllers/auth");
 const notificationController = require("../controllers/notification");
-const adminUtilityController = require("../controllers/admin/adminUtility");
 const userController = require("../controllers/admin/user");
 const bannerController = require("../controllers/admin/banner");
 const planController = require("../controllers/admin/plan");
@@ -13,9 +12,6 @@ const router = express.Router();
 // authentication and login
 router.get("/auth/checkauth", authController.checkAuth);
 router.post("/login", authController.adminLogin);
-
-// search
-router.get("/search", hasToken.adminHasToken, adminUtilityController.search);
 
 // user-related actions
 router.get("/users", hasToken.adminHasToken, userController.getUsers);

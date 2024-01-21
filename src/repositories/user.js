@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-const User = require("../../models/user");
-const Request = require("../../models/laborerRequest");
+const User = require("../models/user");
+const Request = require("../models/laborerRequest");
 
 class UserRepository {
     async findUsersPaginated(startIndex, itemsPerPage) {
@@ -140,7 +140,7 @@ class UserRepository {
                     },
                 },
             ]);
-            
+
             return request[0];
         } catch (error) {
             console.error(error);

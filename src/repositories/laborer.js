@@ -1,5 +1,5 @@
-const User = require("../../models/user");
-const Request = require("../../models/laborerRequest");
+const User = require("../models/user");
+const Request = require("../models/laborerRequest");
 
 class LaborerRepository {
     async getLaborers() {
