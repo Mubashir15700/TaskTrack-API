@@ -1,4 +1,5 @@
 const userRepository = require("../../repositories/user");
+const laborerRepository = require("../../repositories/laborer");
 
 class UserService {
     async getUsers(itemsPerPage, currentPage) {
@@ -77,13 +78,13 @@ class UserService {
         try {
             const startIndex = (currentPage) * itemsPerPage;
 
-            const requests = await userRepository.getRequests(startIndex, itemsPerPage);
+            const requests = await laborerRepository.getRequests(startIndex, itemsPerPage);
 
             if (!requests.length) {
                 return { status: 400, message: "No requests found" };
             }
 
-            const totalRequests = await userRepository.findRequestsCount();
+            const totalRequests = await laborerRepository.findRequestsCount();
             const totalPages = Math.ceil(totalRequests / itemsPerPage);
 
             return {
@@ -104,7 +105,7 @@ class UserService {
 
     async getRequest(id) {
         try {
-            const request = await userRepository.getRequest(id);
+            const request = await laborerRepository.getRequest(id);
 
             if (!request) {
                 return { status: 400, message: "No request found" };
@@ -134,7 +135,7 @@ class UserService {
                 newStatus = "rejected";
             }
 
-            const updatedRequest = await userRepository.approveRejectAction(id, newStatus);
+            const updatedRequest = await laborerRepository.approveRejectAction(id, newStatus);
 
             if (!updatedRequest) {
                 return { status: 400, message: "No request found" };

@@ -28,7 +28,7 @@ router.post("/reset-password", checkUserStatus, authController.resetPassword);
 router.put("/update-profile", checkUserStatus, hasToken.userHasToken, imageUpload("profile").single("profile"), profileController.updateProfile);
 router.delete("/delete-profile-image", checkUserStatus, hasToken.userHasToken, profileController.deleteProfileImage);
 router.get("/get-current-location", checkUserStatus, hasToken.userHasToken, profileController.getCurrentLocation);
-router.delete("/delete-current-location", checkUserStatus, hasToken.userHasToken, profileController.deleteCurrentLocation);
+router.delete("/delete-current-location/:id", checkUserStatus, hasToken.userHasToken, profileController.deleteCurrentLocation);
 
 // laborer actions
 router.get("/get-laborers", checkUserStatus, laborerController.getLaborers);

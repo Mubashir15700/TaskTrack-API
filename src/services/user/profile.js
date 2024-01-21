@@ -31,9 +31,11 @@ class ProfileService {
         try {
             const updateResult = await profileRepository.deleteProfileImage(id);
             if (updateResult) {
-                const imagePath = path.join(__dirname, "../../uploads/", image);
+                const imagePath = path.join(__dirname, "../../../uploads/profile/", image);
                 if (fs.existsSync(imagePath)) {
                     fs.unlinkSync(imagePath);
+                } else {
+                    console.log("File does not exist.");
                 }
             }
 

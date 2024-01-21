@@ -20,7 +20,7 @@ function handleRequestSubmit(io, socket, connectedUsers, findUserByRole) {
 
                 // Emit a response event only to the admin
                 io.to(adminUser.socketId).emit("notify_request_submit", {
-                    message: "A new request has been submitted!",
+                    message: "A new request has been received!",
                 });
             }
         } catch (error) {
@@ -32,14 +32,13 @@ function handleRequestSubmit(io, socket, connectedUsers, findUserByRole) {
 
 function handleRequestAction(io, socket, connectedUsers, findUserById) {
     socket.on("request_action", async (data) => {
-
         const targetUser = findUserById(data.userId, connectedUsers);
         console.log("targetUser", targetUser);
 
         // Save the notification to the database
         const newNotification = new Notification({
             to: data.userId,
-            message: "Recieved response!",
+            message: data.message,
         });
 
         await newNotification.save();
@@ -47,7 +46,7 @@ function handleRequestAction(io, socket, connectedUsers, findUserById) {
         if (targetUser) {
 
             io.to(targetUser.socketId).emit("notify_request_action", {
-                message: "Admin responded",
+                message: data.message,
             });
         }
     });
