@@ -98,6 +98,32 @@ class BannerRepository {
             throw new Error("Error while finding banners");
         }
     };
+
+    async changeBannerOrder(newOrder, prevOrder) {
+        try {
+            return await Banner.findOneAndUpdate(
+                { order: newOrder },
+                { $set: { order: prevOrder } },
+                { new: true }
+            );
+        } catch (error) {
+            console.error(error);
+            throw new Error("Error while changing banner order");
+        }
+    };
+
+    async dragBanner(id, newOrder) {
+        try {
+            return await Banner.findByIdAndUpdate(
+                id,
+                { $set: { order: newOrder } },
+                { new: true }
+            );
+        } catch (error) {
+            console.error(error);
+            throw new Error("Error while dragging banner");
+        }
+    };
 };
 
 module.exports = new BannerRepository();

@@ -120,9 +120,35 @@ class LaborerRepository {
         }
     };
 
-    async getLaborers() {
+    async getLaborers(userId) {
         try {
-            return await Laborer.find({ isJobSeeker: true }).select("-password");
+            return await Laborer.aggregate([
+                {
+                    $match: { userId: { $ne: new mongoose.Types.ObjectId(userId) } }
+                },
+                {
+                    $lookup: {
+                        from: "users",
+                        localField: "userId",
+                        foreignField: "_id",
+                        as: "user"
+                    }
+                },
+                {
+                    $unwind: "$user"
+                },
+                {
+                    $project: {
+                        "_id": 1,
+                        "user.location": 1,
+                        "user._id": 1,
+                        "user.username": 1,
+                        "user.profile": 1,
+                        "fields": 1,
+                        "__v": 1
+                    }
+                }
+            ]);
         } catch (error) {
             console.log(error);
             throw new Error("Error while finding laborers");
@@ -131,7 +157,40 @@ class LaborerRepository {
 
     async getLaborer(id) {
         try {
-            return await Laborer.findOne({ userId: id }).select("-password");
+            const laborer = await Laborer.aggregate([
+                {
+                    $match: { userId: new mongoose.Types.ObjectId(id) }
+                },
+                {
+                    $lookup: {
+                        from: "users",
+                        localField: "userId",
+                        foreignField: "_id",
+                        as: "user"
+                    }
+                },
+                {
+                    $unwind: "$user"
+                },
+                {
+                    $project: {
+                        _id: 1,
+                        languages: 1,
+                        education: 1,
+                        avlDays: 1,
+                        avlTimes: 1,
+                        fields: 1,
+                        user: {
+                            location: "$user.location",
+                            _id: "$user._id",
+                            username: "$user.username",
+                            profile: "$user.profile"
+                        }
+                    }
+                }
+            ]);
+
+            return laborer[0];
         } catch (error) {
             console.log(error);
             throw new Error("Error while finding the laborer");

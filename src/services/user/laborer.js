@@ -2,9 +2,9 @@ const laborerRepository = require("../../repositories/laborer");
 const profileRepository = require("../../repositories/profile");
 
 class LaborerService {
-    async getLaborers() {
+    async getLaborers(userId) {
         try {
-            const laborers = await laborerRepository.getLaborers();
+            const laborers = await laborerRepository.getLaborers(userId);
 
             return {
                 status: 201,

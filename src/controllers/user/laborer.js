@@ -3,7 +3,8 @@ const catchAsync = require("../../utils/catchAsync");
 const sendResponse = require("../../utils/responseStructure");
 
 exports.getLaborers = catchAsync(async (req, res) => {
-    const result = await laborerService.getLaborers();
+    const { userId } = req.query;
+    const result = await laborerService.getLaborers(userId);
     sendResponse(res, result);
 });
 

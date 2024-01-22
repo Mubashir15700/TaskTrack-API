@@ -137,6 +137,26 @@ class BannerService {
             };
         }
     };
+
+    async updateBannerOrder(data) {
+        try {
+            const id = data.draggedBannerId
+            const prevOrder = data.prevOrder + 1;
+            const newOrder = data.newOrder + 1;
+            const bannerToUpdate = await bannerRepository.changeBannerOrder(newOrder + 1, prevOrder + 1);
+            const draggedBanner = await bannerRepository.dragBanner(id, newOrder + 1);
+
+            return {
+                status: 201,
+                message: "Updated banner order"
+            };
+        } catch (error) {
+            console.log(error);
+            return {
+                status: 500, message: `Internal Server Error: ${error.message}`
+            };
+        }
+    };
 };
 
 module.exports = new BannerService();

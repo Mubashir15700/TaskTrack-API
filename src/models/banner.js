@@ -22,6 +22,15 @@ const bannerSchema = new mongoose.Schema({
     },
 });
 
+// Set the order value automatically before saving a new banner
+bannerSchema.pre('save', async function (next) {
+    if (!this.order) {
+        const count = await mongoose.model('banner').countDocuments({});
+        this.order = count + 1;
+    }
+    next();
+});
+
 const banner = mongoose.model("banner", bannerSchema);
 
 module.exports = banner;

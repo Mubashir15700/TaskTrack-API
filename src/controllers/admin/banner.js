@@ -36,3 +36,9 @@ exports.listUnlistBanner = catchAsync(async (req, res) => {
     const result = await bannerService.listUnlistBanner(id);
     sendResponse(res, result);
 });
+
+exports.updateBannerOrder = catchAsync(async (req, res) => {
+    const { data } = req.body;
+    const result = await bannerService.updateBannerOrder(data);
+    sendResponse(res, result);
+});
