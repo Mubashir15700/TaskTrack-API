@@ -1,4 +1,5 @@
 const User = require("../models/user");
+const Laborer = require("../models/laborer");
 
 class ProfileRepository {
     async updateUser(id, updateObject) {
@@ -49,6 +50,24 @@ class ProfileRepository {
         } catch (error) {
             console.error(error);
             throw new Error("Error while deleting profile");
+        }
+    };
+
+    async updateLaborerProfile(data) {
+        try {
+            await Laborer.findOneAndUpdate({
+                userId: data.userId
+            },
+                {
+                    $set: {
+                        ...data
+                    }
+                },
+                { new: true }
+            );
+        } catch (error) {
+            console.error(error);
+            throw new Error("Error while updating profile");
         }
     };
 };

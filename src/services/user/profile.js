@@ -111,6 +111,23 @@ class ProfileService {
             };
         }
     };
+
+    async updateLaborerProfile(data) {
+        try {
+            await profileRepository.updateLaborerProfile(data);
+
+            return {
+                status: 201,
+                message: "Update success",
+            };
+        } catch (error) {
+            console.log(error);
+            return {
+                status: 500, message: `Internal Server Error: ${error.message}`
+            };
+        }
+    };
+
 };
 
 module.exports = new ProfileService();

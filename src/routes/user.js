@@ -29,6 +29,7 @@ router.put("/update-profile", checkUserStatus, hasToken.userHasToken, imageUploa
 router.delete("/delete-profile-image", checkUserStatus, hasToken.userHasToken, profileController.deleteProfileImage);
 router.get("/get-current-location", checkUserStatus, hasToken.userHasToken, profileController.getCurrentLocation);
 router.delete("/delete-current-location/:id", checkUserStatus, hasToken.userHasToken, profileController.deleteCurrentLocation);
+router.put("/update-laborer-profile", checkUserStatus, hasToken.userHasToken, profileController.updateLaborerProfile);
 
 // laborer actions
 router.get("/get-laborers", checkUserStatus, laborerController.getLaborers);

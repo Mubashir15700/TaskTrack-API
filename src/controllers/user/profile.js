@@ -30,3 +30,9 @@ exports.deleteCurrentLocation = catchAsync(async (req, res) => {
     const result = await profileService.deleteCurrentLocation(id);
     sendResponse(res, result);
 });
+
+exports.updateLaborerProfile = catchAsync(async (req, res) => {
+    const { data } = req.body;
+    const result = await profileService.updateLaborerProfile(data);
+    sendResponse(res, result);
+});

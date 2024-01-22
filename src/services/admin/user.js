@@ -142,7 +142,19 @@ class UserService {
             }
 
             if (newStatus === "approved") {
-                const updatedUser = await userRepository.changeToJobSeeker(updatedRequest.userId);
+                // Extract specific properties from updatedRequest
+                const { userId, languages, education, avlDays, avlTimes, fields } = updatedRequest;
+
+                // Save the updatedRequest into the laborer collection
+                const savedLaborer = await laborerRepository.saveLaborerDetails({
+                    userId, languages, education, avlDays, avlTimes, fields
+                });
+
+                if (!savedLaborer) {
+                    return { status: 500, message: "Failed to save laborer details" };
+                }
+
+                const updatedUser = await laborerRepository.changeToJobSeeker(updatedRequest.userId);
 
                 if (!updatedUser) {
                     return { status: 500, message: "Failed to update user" };

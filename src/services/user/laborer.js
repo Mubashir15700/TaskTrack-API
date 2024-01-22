@@ -42,6 +42,9 @@ class LaborerService {
 
     async sendRequest(data) {
         try {
+            // Cancel previous request if it exists
+            await laborerRepository.cancelRequest(data.userId);
+
             if (Object.keys(data.userData).length) {
                 const { id, ...updateObject } = data.userData;
                 // Now, updateObject contains all properties except id
@@ -96,7 +99,8 @@ class LaborerService {
             // Extract userData from data
             const { userData, ...restOfData } = data;
             // Now, restOfData contains everything except userData
-            const updatedRequest = await laborerRepository.updateRequest(restOfData);
+
+            const updatedRequest = await laborerRepository.updateRequest({ ...restOfData, status: "pending" });
 
             const response = {
                 status: 201,

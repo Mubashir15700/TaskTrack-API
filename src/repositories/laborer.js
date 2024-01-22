@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const User = require("../models/user");
 const Request = require("../models/laborerRequest");
+const Laborer = require("../models/laborer");
 
 class LaborerRepository {
     async searchLaborers(searchWith) {
@@ -98,6 +99,16 @@ class LaborerRepository {
         }
     };
 
+    async saveLaborerDetails(data) {
+        try {
+            const newLaborer = new Laborer(data);
+            return await newLaborer.save();
+        } catch (error) {
+            console.error(error);
+            throw new Error("Error while saving laborer");
+        }
+    };
+
     async changeToJobSeeker(id) {
         try {
             return await User.findByIdAndUpdate(id, {
@@ -111,7 +122,7 @@ class LaborerRepository {
 
     async getLaborers() {
         try {
-            return await User.find({ isJobSeeker: true }).select("-password");
+            return await Laborer.find({ isJobSeeker: true }).select("-password");
         } catch (error) {
             console.log(error);
             throw new Error("Error while finding laborers");
@@ -120,7 +131,7 @@ class LaborerRepository {
 
     async getLaborer(id) {
         try {
-            return await User.findById(id).select("-password");
+            return await Laborer.findOne({ userId: id }).select("-password");
         } catch (error) {
             console.log(error);
             throw new Error("Error while finding the laborer");
@@ -139,7 +150,7 @@ class LaborerRepository {
 
     async getPrevRequest(userId) {
         try {
-            return await Request.findOne({ userId, status: { $nin: ["approved", "cancelled", "rejected"] } });
+            return await Request.findOne({ userId });
         } catch (error) {
             console.log(error);
             throw new Error("Error while finding prev become laborer request");
@@ -149,7 +160,7 @@ class LaborerRepository {
     async updateRequest(data) {
         try {
             return await Request.findOneAndUpdate(
-                { userId: data.userId, status: "pending" },
+                { userId: data.userId },
                 { $set: data },
                 { new: true, select: "-_id -status -createdAt" });
         } catch (error) {
@@ -160,16 +171,15 @@ class LaborerRepository {
 
     async cancelRequest(id) {
         try {
-            return await Request.findOneAndUpdate(
-                { userId: id, status: { $ne: "cancelled" } },
-                { $set: { status: "cancelled" } },
-                { new: true }
+            return await Request.findOneAndDelete(
+                { userId: id }
             );
         } catch (error) {
             console.log(error);
             throw new Error("Error while cancelling laborer request");
         }
     };
+
 };
 
 module.exports = new LaborerRepository();
