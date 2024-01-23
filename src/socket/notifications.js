@@ -3,6 +3,8 @@ const Notification = require("../models/notification");
 function handleRequestSubmit(io, socket, connectedUsers, findUserByRole) {
     socket.on("request_submit", async (data) => {
 
+        console.log("request_submit");
+
         try {
             const adminUser = findUserByRole("admin", connectedUsers);
             console.log("adminUser", adminUser);
@@ -18,6 +20,8 @@ function handleRequestSubmit(io, socket, connectedUsers, findUserByRole) {
             await newNotification.save();
 
             if (adminUser) {
+
+                console.log("if adminUser");
 
                 // Emit a response event only to the admin
                 io.to(adminUser.socketId).emit("notify_request_submit", {
