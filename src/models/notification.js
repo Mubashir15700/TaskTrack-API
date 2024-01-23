@@ -25,7 +25,10 @@ const notificationSchema = new mongoose.Schema({
     isOpened: {
         type: Boolean,
         default: false
-    }
+    },
+    redirectTo: {
+        type: String,  
+    },
 });
 
 const notification = mongoose.model("notification", notificationSchema);

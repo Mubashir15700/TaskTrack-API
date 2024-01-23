@@ -1,6 +1,6 @@
 const socketIO = require("socket.io");
 const { handleRequestSubmit, handleRequestAction } = require("./notifications");
-// const chattingModule = require("./chatting");
+const { handleGetChatHistory, handleSendMessage } = require("./chatting");
 
 const connectedUsers = new Map();
 
@@ -34,7 +34,7 @@ function initializeSocket(server) {
         console.log(`New User connected: ${socket.id}`);
 
         socket.on("set_role", (data) => {
-
+            console.log("setting role: ", data);
             // Store the role and ids in the connectedUsers Map
             connectedUsers.set(socket.id, {
                 userId: data.userId,
@@ -43,9 +43,12 @@ function initializeSocket(server) {
         });
 
         // Initialize modules
+        // notifications
         handleRequestSubmit(io, socket, connectedUsers, findUserByRole);
         handleRequestAction(io, socket, connectedUsers, findUserById);
-        // chattingModule(io, socket, connectedUsers);
+        // chatting
+        handleGetChatHistory(io, socket, connectedUsers, findUserById);
+        handleSendMessage(io, socket, connectedUsers, findUserById);
 
         // Handle the "disconnect" event
         socket.on("disconnect", () => {

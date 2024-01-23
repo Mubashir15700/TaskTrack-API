@@ -12,6 +12,7 @@ function handleRequestSubmit(io, socket, connectedUsers, findUserByRole) {
                 from: data,
                 to: "admin",
                 message: "A new request has been received!",
+                redirectTo: "/admin/laborer-requests",
             });
 
             await newNotification.save();
@@ -39,6 +40,7 @@ function handleRequestAction(io, socket, connectedUsers, findUserById) {
         const newNotification = new Notification({
             to: data.userId,
             message: data.message,
+            redirectTo: "/jobs/works-history",
         });
 
         await newNotification.save();
