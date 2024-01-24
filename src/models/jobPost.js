@@ -43,7 +43,18 @@ const jobSchema = new mongoose.Schema({
         name: String,
         workers: Number,
         materialsRequired: String,
-        wagePerHour: Number
+        wagePerHour: Number,
+        applicants: [{
+            userId: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "user"
+            },
+            status: {
+                type: String,
+                enum: ["accepted", "rejected", "pending"],
+                default: "pending",
+            }
+        }]
     }],
     status: {
         type: String,

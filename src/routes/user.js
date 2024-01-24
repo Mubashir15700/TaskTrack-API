@@ -45,9 +45,14 @@ router.get("/get-listed-jobs/:id", checkUserStatus, hasToken.userHasToken, jobCo
 router.post("/post-job", checkUserStatus, hasToken.userHasToken, jobController.postJob);
 router.get("/get-job/:id", checkUserStatus, jobController.getJob);
 router.get("/get-listed-job/:id", checkUserStatus, hasToken.userHasToken, jobController.getListedJob);
+router.get("/get-applicants/:jobId/:field", checkUserStatus, hasToken.userHasToken, jobController.getApplicants);
+router.patch("/applicant-action", checkUserStatus, hasToken.userHasToken, jobController.takeApplicantAction);
+
 router.put("/edit-listed-job", checkUserStatus, hasToken.userHasToken, jobController.editListedJob);
 router.delete("/delete-listed-job/:id", checkUserStatus, hasToken.userHasToken, jobController.deleteListedJob);
 router.get("/get-works-history/:id", checkUserStatus, hasToken.userHasToken, jobController.getWorksHistory);
+router.post("/apply-job", checkUserStatus, hasToken.userHasToken, jobController.applyJob);
+router.post("/cancel-job-application", checkUserStatus, hasToken.userHasToken, jobController.cancelJobApplication);
 
 // notifications
 router.get("/notifications-count/:id", checkUserStatus, hasToken.userHasToken, notificationController.getUserNotificationsCount);

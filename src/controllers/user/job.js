@@ -26,6 +26,18 @@ exports.getListedJob = catchAsync(async (req, res) => {
     sendResponse(res, result);
 });
 
+exports.getApplicants = catchAsync(async (req, res) => {
+    const { jobId, field } = req.params;
+    const result = await jobService.getApplicants(jobId, field);
+    sendResponse(res, result);
+});
+
+exports.takeApplicantAction = catchAsync(async (req, res) => {
+    const { jobId, fieldName, laborerId, actionTook } = req.body;
+    const result = await jobService.takeApplicantAction(jobId, fieldName, laborerId, actionTook);
+    sendResponse(res, result);
+});
+
 exports.editListedJob = catchAsync(async (req, res) => {
     const { _id: id } = req.body;
     const result = await jobService.editListedJob(id, req.body);
@@ -46,5 +58,17 @@ exports.getWorksHistory = catchAsync(async (req, res) => {
 
 exports.postJob = catchAsync(async (req, res) => {
     const result = await jobService.postJob(req.body);
+    sendResponse(res, result);
+});
+
+exports.applyJob = catchAsync(async (req, res) => {
+    const { jobId, laborerId, field } = req.body;
+    const result = await jobService.applyJob(jobId, laborerId, field);
+    sendResponse(res, result);
+});
+
+exports.cancelJobApplication = catchAsync(async (req, res) => {
+    const { jobId, laborerId, field } = req.body;
+    const result = await jobService.cancelJobApplication(jobId, laborerId, field);
     sendResponse(res, result);
 });

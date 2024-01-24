@@ -58,4 +58,49 @@ function handleRequestAction(io, socket, connectedUsers, findUserById) {
     });
 };
 
-module.exports = { handleRequestSubmit, handleRequestAction };
+function handleJobApplication(io, socket, connectedUsers, findUserById) {
+    socket.on("new_applicant", async (data) => {
+        const targetUser = findUserById(data, connectedUsers);
+
+        // // Save the notification to the database
+        const newNotification = new Notification({
+            to: data.empId,
+            message: "New job application recieved",
+            redirectTo: `/jobs/listed-jobs/${data.jobId}`,
+        });
+
+        await newNotification.save();
+
+        if (targetUser) {
+            io.to(targetUser.socketId).emit("notify_new_applicant", {
+                message: "New job application recieved",
+            });
+        }
+    });
+};
+
+function handleCancelApplication(io, socket, connectedUsers, findUserById) {
+    socket.on("application_cancel", async (data) => {
+        console.log(data);
+        const targetUser = findUserById(data.userId, connectedUsers);
+        console.log("targetUser", targetUser);
+
+        // // Save the notification to the database
+        const newNotification = new Notification({
+            to: data.empId,
+            message: "Laborer cancelled application",
+            redirectTo: `/jobs/listed-jobs/${data.jobId}`,
+        });
+
+        await newNotification.save();
+
+        if (targetUser) {
+
+            io.to(targetUser.socketId).emit("notify_application_cancel", {
+                message: "Laborer cancelled application",
+            });
+        }
+    });
+};
+
+module.exports = { handleRequestSubmit, handleRequestAction, handleJobApplication, handleCancelApplication };

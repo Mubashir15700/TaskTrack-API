@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { ObjectId } = require('mongoose').Types;
 const Job = require("../models/jobPost");
 
 class JobRepository {
@@ -62,6 +63,64 @@ class JobRepository {
         } catch (error) {
             console.log(error);
             throw new Error("Error while finding listed jobs");
+        }
+    };
+
+    async getApplicants(jobId, fieldName) {
+        try {
+            const jobDocument = await Job.findById(jobId).populate({
+                path: "fields.applicants.userId",
+                model: "user",
+                select: "username profile",
+            });;
+
+            if (!jobDocument) {
+                throw new Error("Job not found");
+            }
+
+            const specificField = jobDocument.fields.find(field => field.name === fieldName);
+
+            if (!specificField) {
+                throw new Error(`Field "${fieldName}" not found in the job`);
+            }
+
+            const { applicants } = specificField;
+
+            return applicants;
+        } catch (error) {
+            console.log(error.message);
+            throw new Error("Error while finding job applicants");
+        }
+    };
+
+    async takeApplicantAction(job, fieldNameParam, laborerId, action) {
+        try {
+            const jobIdObject = new ObjectId(job);
+            const fieldName = fieldNameParam;
+            const laborerIdObject = new ObjectId(laborerId);
+            const newStatus = action;
+
+            return await Job.updateOne(
+                {
+                    _id: jobIdObject,
+                    'fields.name': fieldName,
+                    'fields.applicants.userId': laborerIdObject
+                },
+                {
+                    $set: {
+                        'fields.$[outer].applicants.$[inner].status': newStatus
+                    }
+                },
+                {
+                    arrayFilters: [
+                        { 'outer.name': fieldName },
+                        { 'inner.userId': laborerIdObject }
+                    ]
+                }
+            );
+        } catch (error) {
+            console.log(error.message);
+            throw new Error("Error while taking applican action");
         }
     };
 
@@ -140,6 +199,21 @@ class JobRepository {
         }
     };
 
+    async getWorksHistory(id) {
+        try {
+            return await Job.find({
+                "fields.applicants": {
+                    $elemMatch: {
+                        userId: id
+                    }
+                }
+            });
+        } catch (error) {
+            console.log(error);
+            throw new Error(`Error while deleting the job: ${error.message}`);
+        }
+    };
+
     async postJob(jobDetails) {
         try {
             const newJob = new Job(jobDetails);
@@ -150,20 +224,14 @@ class JobRepository {
         }
     };
 
-    // async searchJobs(searchWith) {
-    //     try {
-    //         const searchResults = await Job.find({
-    //             $or: [
-    //                 { title: { $regex: searchWith, $options: "i" } },
-    //                 { description: { $regex: searchWith, $options: "i" } },
-    //             ],
-    //         });
-    //         return searchResults;
-    //     } catch (error) {
-    //         console.error(error);
-    //         throw new Error("Error while searching jobss");
-    //     }
-    // };
+    async jobPostToApply(id) {
+        try {
+            return await Job.findById(id);
+        } catch (error) {
+            console.log(error);
+            throw new Error("Error while finding job");
+        }
+    };
 
 };
 

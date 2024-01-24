@@ -1,5 +1,5 @@
 const socketIO = require("socket.io");
-const { handleRequestSubmit, handleRequestAction } = require("./notifications");
+const { handleRequestSubmit, handleRequestAction, handleJobApplication, handleCancelApplication } = require("./notifications");
 const { handleGetChatHistory, handleSendMessage } = require("./chatting");
 
 const connectedUsers = new Map();
@@ -46,6 +46,8 @@ function initializeSocket(server) {
         // notifications
         handleRequestSubmit(io, socket, connectedUsers, findUserByRole);
         handleRequestAction(io, socket, connectedUsers, findUserById);
+        handleJobApplication(io, socket, connectedUsers, findUserById);
+        handleCancelApplication(io, socket, connectedUsers, findUserById);
         // chatting
         handleGetChatHistory(io, socket, connectedUsers, findUserById);
         handleSendMessage(io, socket, connectedUsers, findUserById);
