@@ -60,7 +60,7 @@ function handleRequestAction(io, socket, connectedUsers, findUserById) {
 
 function handleJobApplication(io, socket, connectedUsers, findUserById) {
     socket.on("new_applicant", async (data) => {
-        const targetUser = findUserById(data, connectedUsers);
+        const targetUser = findUserById(data.empId, connectedUsers);
 
         // // Save the notification to the database
         const newNotification = new Notification({
@@ -81,9 +81,7 @@ function handleJobApplication(io, socket, connectedUsers, findUserById) {
 
 function handleCancelApplication(io, socket, connectedUsers, findUserById) {
     socket.on("application_cancel", async (data) => {
-        console.log(data);
-        const targetUser = findUserById(data.userId, connectedUsers);
-        console.log("targetUser", targetUser);
+        const targetUser = findUserById(data.empId, connectedUsers);
 
         // // Save the notification to the database
         const newNotification = new Notification({
@@ -103,4 +101,31 @@ function handleCancelApplication(io, socket, connectedUsers, findUserById) {
     });
 };
 
-module.exports = { handleRequestSubmit, handleRequestAction, handleJobApplication, handleCancelApplication };
+function handleApplicationAction(io, socket, connectedUsers, findUserById) {
+    socket.on("application_action", async (data) => {
+        const targetUser = findUserById(data.laborerId, connectedUsers);
+
+        // // Save the notification to the database
+        const newNotification = new Notification({
+            to: data.laborerId,
+            message: `Your job request has been ${data.actionTook}`,
+            redirectTo: `/jobs${data.jobId}`,
+        });
+
+        await newNotification.save();
+
+        if (targetUser) {
+            io.to(targetUser.socketId).emit("notify_application_action", {
+                message: `Your job request has been ${data.actionTook}`,
+            });
+        }
+    });
+};
+
+module.exports = {
+    handleRequestSubmit,
+    handleRequestAction,
+    handleJobApplication,
+    handleCancelApplication,
+    handleApplicationAction
+};
