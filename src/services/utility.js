@@ -3,6 +3,7 @@ const laborerRepository = require("../repositories/laborer");
 const jobRepository = require("../repositories/job");
 const bannerRepository = require("../repositories/banner");
 const planRepository = require("../repositories/plan");
+const serverErrorHandler = require("../utils/serverErrorHandler");
 
 class AdminService {
     async search(currentUserId, searchWith, searchOn) {
@@ -28,10 +29,7 @@ class AdminService {
                 }
             };
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler(`An error occurred during searching: ${searchOn}`, error);
         }
     };
 };

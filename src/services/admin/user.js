@@ -1,5 +1,6 @@
 const userRepository = require("../../repositories/user");
 const laborerRepository = require("../../repositories/laborer");
+const serverErrorHandler = require("../../utils/serverErrorHandler");
 
 class UserService {
     async getUsers(itemsPerPage, currentPage) {
@@ -24,10 +25,7 @@ class UserService {
                 }
             };
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during fetching users: ", error);
         }
     };
 
@@ -47,10 +45,7 @@ class UserService {
                 }
             };
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during fetching user: ", error);
         }
     };
 
@@ -67,10 +62,7 @@ class UserService {
                 message: "Updated user"
             };
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during taking user action: ", error);
         }
     };
 
@@ -96,10 +88,7 @@ class UserService {
                 }
             };
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during fetching requests: ", error);
         }
     };
 
@@ -119,10 +108,7 @@ class UserService {
                 }
             };
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during fetching request: ", error);
         }
     };
 
@@ -166,10 +152,7 @@ class UserService {
                 message: "Updated request"
             };
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during taking request action: ", error);
         }
     };
 };

@@ -2,6 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const querystring = require("querystring");
 const profileRepository = require("../../repositories/profile");
+const serverErrorHandler = require("../../utils/serverErrorHandler");
 
 class ProfileService {
     async updateProfile(id, updateObject, profileImage = null) {
@@ -20,10 +21,7 @@ class ProfileService {
                 }
             };
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during updating profile: ", error);
         }
     };
 
@@ -47,10 +45,7 @@ class ProfileService {
                 }
             };
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during deleting profile image: ", error);
         }
     };
 
@@ -84,10 +79,7 @@ class ProfileService {
                 }
             };
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during fetching current location: ", error);
         }
     };
 
@@ -105,10 +97,7 @@ class ProfileService {
                 };
             }
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during deleting current location: ", error);
         }
     };
 
@@ -121,10 +110,7 @@ class ProfileService {
                 message: "Update success",
             };
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during updating laborer profile: ", error);
         }
     };
 

@@ -109,7 +109,7 @@ function handleApplicationAction(io, socket, connectedUsers, findUserById) {
         const newNotification = new Notification({
             to: data.laborerId,
             message: `Your job request has been ${data.actionTook}`,
-            redirectTo: `/jobs${data.jobId}`,
+            redirectTo: `/jobs/${data.jobId}`,
         });
 
         await newNotification.save();

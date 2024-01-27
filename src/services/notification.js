@@ -1,23 +1,20 @@
 const notificationRepository = require("../repositories/notification");
+const serverErrorHandler = require("../utils/serverErrorHandler");
 
 class NotificationService {
     // admin
     async getAdminNotificationsCount() {
         try {
             const count = await notificationRepository.getAdminNotificationsCount();
-
             return {
                 status: 201,
-                message: "get new admin notifiations count success",
+                message: "Get new admin notifications count success",
                 data: {
                     count
                 }
             };
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during fetching admin notifications count: ", error);
         }
     };
 
@@ -26,16 +23,13 @@ class NotificationService {
             const notifications = await notificationRepository.getAdminNotifications();
             return {
                 status: 201,
-                message: "get admin notifiations success",
+                message: "Get admin notifications success",
                 data: {
                     notifications
                 }
             };
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during fetching admin notifications: ", error);
         }
     };
 
@@ -44,16 +38,13 @@ class NotificationService {
             const notification = await notificationRepository.getAdminNotification(id);
             return {
                 status: 201,
-                message: "get admin notifiation success",
+                message: "Get admin notification success",
                 data: {
                     notification
                 }
             };
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during fetching admin notification: ", error);
         }
     };
 
@@ -64,14 +55,11 @@ class NotificationService {
             if (result) {
                 return {
                     status: 201,
-                    message: "mark notifiation read success",
+                    message: "Mark notification read success",
                 };
             }
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during marking admin notification read: ", error);
         }
     };
 
@@ -82,16 +70,13 @@ class NotificationService {
 
             return {
                 status: 201,
-                message: "get new user notifiations count success",
+                message: "Get new user notifications count success",
                 data: {
                     count
                 }
             };
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during fetching user notifications count: ", error);
         }
     };
 
@@ -100,35 +85,29 @@ class NotificationService {
             const notifications = await notificationRepository.getUserNotifications(userId);
             return {
                 status: 201,
-                message: "get user notifiations success",
+                message: "Get user notifications success",
                 data: {
                     notifications
                 }
             };
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during fetching user notifications: ", error);
         }
     };
 
     async getUserNotification(id) {
         try {
-            const notifiation = await notificationRepository.getUserNotification(id);
+            const notification = await notificationRepository.getUserNotification(id);
 
             return {
                 status: 201,
-                message: "get user notifiation success",
+                message: "Get user notification success",
                 data: {
-                    notifiation
+                    notification
                 }
             };
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during fetching user notification: ", error);
         }
     };
 
@@ -139,16 +118,14 @@ class NotificationService {
             if (result) {
                 return {
                     status: 201,
-                    message: "mark notifiation read success",
+                    message: "Mark notification read success",
                 };
             }
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during marking user notification read: ", error);
         }
     };
+
 };
 
 module.exports = new NotificationService();

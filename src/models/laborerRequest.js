@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
-const requestSchema = new mongoose.Schema({
+const RequestSchema = new mongoose.Schema({
     userId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "user",
+        ref: "User",
         required: true
     },
     languages: {
@@ -38,6 +38,6 @@ const requestSchema = new mongoose.Schema({
     },
 });
 
-const request = mongoose.model("request", requestSchema);
+const Request = mongoose.model("Request", RequestSchema);
 
-module.exports = request;
+module.exports = Request;

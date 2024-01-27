@@ -1,4 +1,5 @@
 const planRepository = require("../../repositories/plan");
+const serverErrorHandler = require("../../utils/serverErrorHandler");
 
 class PlanService {
     async checkPlanExistsByName(name, id = null) {
@@ -35,10 +36,7 @@ class PlanService {
                 }
             };
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during fetching plans: ", error);
         }
     };
 
@@ -61,10 +59,7 @@ class PlanService {
                 message: "Plan added success",
             };
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during adding new plan: ", error);
         }
     };
 
@@ -81,10 +76,7 @@ class PlanService {
                 message: "Updated plan"
             };
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during taking plan action: ", error);
         }
     };
 
@@ -104,10 +96,7 @@ class PlanService {
                 }
             };
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during fetching plan: ", error);
         }
     };
 
@@ -130,10 +119,7 @@ class PlanService {
                 message: "Plan edited success",
             };
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during editing plan: ", error);
         }
     };
 };

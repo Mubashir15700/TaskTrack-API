@@ -19,7 +19,7 @@ class BannerRepository {
         }
     };
 
-    async getBanners(startIndex, itemsPerPage) {
+    async getAdminBanners(startIndex, itemsPerPage) {
         try {
             return await Banner.find()
                 .sort("order")

@@ -21,8 +21,18 @@ router.patch("/user-action/:id", hasToken.adminHasToken, userController.blockUnb
 // banner-related actions
 router.get("/banners", hasToken.adminHasToken, bannerController.getBanners);
 router.get("/banner/:id", hasToken.adminHasToken, bannerController.getBanner);
-router.post("/add-banner", hasToken.adminHasToken, imageUpload("banner").single("image"), bannerController.addBanner);
-router.put("/edit-banner/:id", hasToken.adminHasToken, imageUpload("banner").single("image"), bannerController.editBanner);
+router.post(
+    "/add-banner",
+    hasToken.adminHasToken,
+    imageUpload("banner").single("image"),
+    bannerController.addBanner
+);
+router.put(
+    "/edit-banner/:id",
+    hasToken.adminHasToken,
+    imageUpload("banner").single("image"),
+    bannerController.editBanner
+);
 router.patch("/banner-action/:id", hasToken.adminHasToken, bannerController.listUnlistBanner);
 router.patch("/update-banner-order", hasToken.adminHasToken, bannerController.updateBannerOrder);
 
@@ -41,6 +51,10 @@ router.patch("/request-action/:id", hasToken.adminHasToken, userController.appro
 // notifications
 router.get("/notifications-count", hasToken.adminHasToken, notificationController.getAdminNotificationsCount);
 router.get("/notifications", hasToken.adminHasToken, notificationController.getAdminNotifications);
-router.patch("/notification/mark-read/:id", hasToken.adminHasToken, notificationController.markAdminNotificationRead);
+router.patch(
+    "/notification/mark-read/:id",
+    hasToken.adminHasToken,
+    notificationController.markAdminNotificationRead
+);
 
 module.exports = router;

@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
-const jobApplicantsSchema = new mongoose.Schema({
+const JobApplicantsSchema = new mongoose.Schema({
 
 });
 
-const applicants = mongoose.model("applicants", jobApplicantsSchema);
+const Applicants = mongoose.model("Applicants", JobApplicantsSchema);
 
-module.exports = applicants;
+module.exports = Applicants;

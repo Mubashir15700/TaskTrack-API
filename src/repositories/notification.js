@@ -14,7 +14,9 @@ class NotificationRepository {
     async getAdminNotifications() {
         try {
             await Notification.updateMany({ to: "admin" }, { $set: { isViewed: true } });
-            const updatedNotifications = await Notification.find({ to: "admin" }).populate("from").sort({ isOpened: 1 });
+            const updatedNotifications = await Notification.find(
+                { to: "admin" }
+            ).populate("from").sort({ timestamp: -1 });
             return updatedNotifications;
         } catch (error) {
             console.error(error);
@@ -50,7 +52,7 @@ class NotificationRepository {
             await Notification.updateMany({ to: userId }, { $set: { isViewed: true } });
             const updatedNotifications = await Notification.find(
                 { to: userId }
-            ).populate("from").sort({ isOpened: 1 });
+            ).populate("from").sort({ timestamp: -1 });
             return updatedNotifications;
         } catch (error) {
             console.error(error);

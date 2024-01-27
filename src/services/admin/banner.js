@@ -1,4 +1,5 @@
 const bannerRepository = require("../../repositories/banner");
+const serverErrorHandler = require("../../utils/serverErrorHandler");
 
 class BannerService {
     async checkBannerExistsByTitle(title, id = null) {
@@ -17,7 +18,7 @@ class BannerService {
     async getBanners(itemsPerPage, currentPage) {
         try {
             const startIndex = (currentPage) * itemsPerPage;
-            const banners = await bannerRepository.getBanners(startIndex, itemsPerPage);
+            const banners = await bannerRepository.getAdminBanners(startIndex, itemsPerPage);
 
             if (!banners.length) {
                 return { status: 400, message: "No banners found" };
@@ -35,10 +36,7 @@ class BannerService {
                 }
             };
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during fetching banners: ", error);
         }
     };
 
@@ -62,10 +60,7 @@ class BannerService {
                 message: "Banner added success",
             };
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during adding new banner: ", error);
         }
     };
 
@@ -82,10 +77,7 @@ class BannerService {
                 message: "Updated banner"
             };
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during taking banner action: ", error);
         }
     };
 
@@ -105,10 +97,7 @@ class BannerService {
                 }
             };
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during fetching banner: ", error);
         }
     };
 
@@ -131,10 +120,7 @@ class BannerService {
                 message: "Banner edited success",
             };
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during editing banner: ", error);
         }
     };
 
@@ -151,10 +137,7 @@ class BannerService {
                 message: "Updated banner order"
             };
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during updating banner order: ", error);
         }
     };
 };

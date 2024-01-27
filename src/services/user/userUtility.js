@@ -1,4 +1,5 @@
 const bannerRepository = require("../../repositories/banner");
+const serverErrorHandler = require("../../utils/serverErrorHandler");
 
 class UserUtilityService {
     async getBanners() {
@@ -13,10 +14,7 @@ class UserUtilityService {
                 }
             };
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during fetching banners: ", error);
         }
     };
 };

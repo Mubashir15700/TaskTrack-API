@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
-const laborerSchema = new mongoose.Schema({
+const LaborerSchema = new mongoose.Schema({
     userId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "user",
+        ref: "User",
         required: true
     },
     languages: {
@@ -29,6 +29,6 @@ const laborerSchema = new mongoose.Schema({
     }],
 });
 
-const laborer = mongoose.model("laborer", laborerSchema);
+const Laborer = mongoose.model("Laborer", LaborerSchema);
 
-module.exports = laborer;
+module.exports = Laborer;

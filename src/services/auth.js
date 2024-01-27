@@ -1,18 +1,34 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
-const crypto = require("crypto");
 const authRepository = require("../repositories/auth");
-const sendMail = require("../utils/sendMail");
+const generateAndSendOtp = require("../utils/generateAndSendOtp");
+const serverErrorHandler = require("../utils/serverErrorHandler");
+
+const TOKEN_EXPIRATION_DURATION = "7d";
+
+async function sendVerificationEmailAndOtp(email, successMessage, errorMessage) {
+    try {
+        // Send verification email
+        await generateAndSendOtp(email);
+
+        return {
+            status: 201,
+            message: successMessage
+        };
+    } catch (error) {
+        return serverErrorHandler(errorMessage, error);
+    }
+};
 
 class AuthService {
     async decodeToken(token) {
         return jwt.verify(token, process.env.JWT_SECRET_KEY);
-    }
+    };
 
     async checkAuth(token, role) {
         try {
             if (!token) {
-                return { status: 401, message: `Unauthorized ${role}` };
+                return { status: 401, success: false, message: `Unauthorized ${role}` };
             }
 
             const decoded = await this.decodeToken(token);
@@ -37,19 +53,14 @@ class AuthService {
                 },
             };
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during user authentication: ", error);
         }
     };
 
     async adminLogin(username, password) {
         try {
             if (!username || !password) {
-                return res.status(400).json({
-                    status: "failed", message: "All fields are required"
-                });
+                return { status: 401, success: false, message: "All fields are required" };
             }
 
             const admin = await authRepository.findAdminByUserName(username);
@@ -65,7 +76,7 @@ class AuthService {
                 const token = jwt.sign(
                     { adminId: admin._id, role: "admin" },
                     process.env.JWT_SECRET_KEY,
-                    { expiresIn: "7d" }
+                    { expiresIn: TOKEN_EXPIRATION_DURATION }
                 );
 
                 // Create a admin object without the password field
@@ -83,13 +94,10 @@ class AuthService {
                     }
                 };
             } else {
-                return { status: 400, message: "Invalid username or password" };
+                return { status: 400, success: false, message: "Invalid username or password" };
             }
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during admin login: ", error);
         }
     };
 
@@ -100,20 +108,21 @@ class AuthService {
                 username
             );
             if (existingUsername) {
-                return { status: 400, message: "This username is already taken" };
+                return { status: 400, success: false, message: "This username is already taken" };
             }
 
             // Check if the email is already registered
             const existingEmail = await authRepository.checkExistingEmail(email);
             if (existingEmail) {
-                return { status: 400, message: "This email is already registered" };
+                return { status: 400, success: false, message: "This email is already registered" };
             }
 
             // Check if password and confirm password match
             if (password !== confirmPassword) {
                 return {
                     status: 400,
-                    message: "Password and confirm password don\"t match"
+                    success: false,
+                    message: "Password and confirm password don't match"
                 };
             }
 
@@ -121,29 +130,20 @@ class AuthService {
             const salt = await bcrypt.genSalt(10);
             const hashPassword = await bcrypt.hash(password, salt);
 
-            // Generate OTP
-            const generatedOTP = crypto.randomInt(100000, 999999);
-
             // Create user in the repository
             const user = await authRepository.createUser(
-                username, email, phone, hashPassword, generatedOTP
+                username, email, phone, hashPassword
             );
 
             // Generate JWT Token
             const token = jwt.sign(
                 { userId: user._id, role: "user" },
                 process.env.JWT_SECRET_KEY,
-                { expiresIn: "7d" }
+                { expiresIn: TOKEN_EXPIRATION_DURATION }
             );
 
             // Send verification email
-            const emailOptions = {
-                from: process.env.USER,
-                to: email,
-                subject: "TaskTrack Verification OTP",
-                html: `<center> <h2>Verify Your Email </h2> <br> <h5>OTP: ${generatedOTP} </h5><br><p>This OTP is only valid for 5 minutes</p></center>`
-            };
-            await sendMail(emailOptions);
+            await generateAndSendOtp(email);
 
             return {
                 status: 201,
@@ -154,27 +154,24 @@ class AuthService {
                 }
             };
         } catch (error) {
-            console.error(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during user registration: ", error);
         }
     };
 
     async userLogin(username, password) {
         try {
             if (!username || !password) {
-                return { status: 400, message: "All fields are required" };
+                return { status: 400, success: false, message: "All fields are required" };
             }
 
             const user = await authRepository.findUserByUsername(username);
 
             if (!user) {
-                return { status: 401, message: "Invalid credentials" };
+                return { status: 401, success: false, message: "Invalid credentials" };
             }
 
             if (user.isBlocked) {
-                return { status: 401, message: "Your account has been blocked" };
+                return { status: 401, success: false, message: "Your account has been blocked" };
             }
 
             const isMatch = await bcrypt.compare(password, user.password);
@@ -184,7 +181,7 @@ class AuthService {
                 const token = jwt.sign(
                     { userId: user._id, role: "user" },
                     process.env.JWT_SECRET_KEY,
-                    { expiresIn: "7d" }
+                    { expiresIn: TOKEN_EXPIRATION_DURATION }
                 );
 
                 // Create a user object without the password field
@@ -211,10 +208,7 @@ class AuthService {
                 return { status: 401, message: "Invalid username or password" };
             }
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during user login: ", error);
         }
     };
 
@@ -223,7 +217,7 @@ class AuthService {
             const user = await authRepository.findUserByOtp(otp);
 
             if (!user) {
-                return { status: 400, message: "Invalid" };
+                return { status: 400, success: false, message: "Invalid" };
             } else {
                 const verifiedUser = await authRepository.findUserAndVerify(email);
                 if (verifiedUser && verifiedUser.isVerified) {
@@ -231,7 +225,7 @@ class AuthService {
                     const token = jwt.sign(
                         { userId: user._id, role: "user" },
                         process.env.JWT_SECRET_KEY,
-                        { expiresIn: "7d" }
+                        { expiresIn: TOKEN_EXPIRATION_DURATION }
                     );
 
                     return {
@@ -242,84 +236,20 @@ class AuthService {
                         }
                     };
                 } else {
-                    return { status: 400, message: "Invalid" };
+                    return { status: 400, success: false, message: "Invalid" };
                 }
             };
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during otp verification: ", error);
         }
     };
 
     async resendOtp(email) {
-        try {
-            // Generate OTP
-            const generatedOTP = crypto.randomInt(100000, 999999);
-
-            // Update the user"s OTP in the database
-            const user = await authRepository.findUserAndUpdateOtp(email, generatedOTP);
-
-            if (!user) {
-                return { status: 400, message: "User not found" };
-            }
-
-            const options = {
-                from: process.env.USER,
-                to: email,
-                subject: "TaskTrack verification OTP",
-                html: `<center> <h2>Verify Your Email </h2> <br> <h5>OTP :${generatedOTP} </h5><br><p>This OTP is only valid for 5 minutes</p></center>`
-            };
-
-            await sendMail(options);
-
-            return {
-                status: 201,
-                message: "OTP resent successfully"
-            };
-        } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
-        }
+        return sendVerificationEmailAndOtp(email, "OTP resent successfully", "An error occurred during otp resending:");
     };
 
     async confirmEmail(email) {
-        try {
-            // Generate OTP
-            const generatedOTP = crypto.randomInt(100000, 999999);
-
-            // Update the user"s OTP in the database
-            const user = await authRepository.checkExistingEmail(email);
-
-            if (!user) {
-                return { status: 400, message: "User not found" };
-            }
-
-            user.otp = generatedOTP;
-            await user.save();
-
-            const options = {
-                from: process.env.USER,
-                to: email,
-                subject: "TaskTrack verification OTP",
-                html: `<center> <h2>Verify Your Email </h2> <br> <h5>OTP :${generatedOTP} </h5><br><p>This OTP is only valid for 5 minutes</p></center>`
-            };
-
-            await sendMail(options);
-
-            return {
-                status: 201,
-                message: "OTP sent successfully"
-            };
-        } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
-        }
+        return sendVerificationEmailAndOtp(email, "OTP sent successfully", "An error occurred during confirming email:");
     };
 
     async resetPassword(userId, password, confirmPassword) {
@@ -331,7 +261,7 @@ class AuthService {
             const user = await authRepository.findUserById(userId);
 
             if (!user) {
-                return { status: 400, message: "User not found" };
+                return { status: 400, success: false, message: "User not found" };
             }
 
             // Hash the password
@@ -345,10 +275,7 @@ class AuthService {
                 message: "Password reset successfully"
             };
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during password resetting: ", error);
         }
     };
 };

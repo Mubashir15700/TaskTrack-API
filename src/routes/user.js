@@ -25,11 +25,37 @@ router.post("/confirm-email", checkUserStatus, authController.confirmEmail);
 router.post("/reset-password", checkUserStatus, authController.resetPassword);
 
 // profile actions
-router.put("/update-profile", checkUserStatus, hasToken.userHasToken, imageUpload("profile").single("profile"), profileController.updateProfile);
-router.delete("/delete-profile-image", checkUserStatus, hasToken.userHasToken, profileController.deleteProfileImage);
-router.get("/get-current-location", checkUserStatus, hasToken.userHasToken, profileController.getCurrentLocation);
-router.delete("/delete-current-location/:id", checkUserStatus, hasToken.userHasToken, profileController.deleteCurrentLocation);
-router.put("/update-laborer-profile", checkUserStatus, hasToken.userHasToken, profileController.updateLaborerProfile);
+router.put(
+    "/update-profile",
+    checkUserStatus,
+    hasToken.userHasToken,
+    imageUpload("profile").single("profile"),
+    profileController.updateProfile
+);
+router.delete(
+    "/delete-profile-image",
+    checkUserStatus,
+    hasToken.userHasToken,
+    profileController.deleteProfileImage
+);
+router.get(
+    "/get-current-location",
+    checkUserStatus,
+    hasToken.userHasToken,
+    profileController.getCurrentLocation
+);
+router.delete(
+    "/delete-current-location/:id",
+    checkUserStatus,
+    hasToken.userHasToken,
+    profileController.deleteCurrentLocation
+);
+router.put(
+    "/update-laborer-profile",
+    checkUserStatus,
+    hasToken.userHasToken,
+    profileController.updateLaborerProfile
+);
 
 // laborer actions
 router.get("/get-laborers", checkUserStatus, laborerController.getLaborers);
@@ -55,8 +81,23 @@ router.post("/apply-job", checkUserStatus, hasToken.userHasToken, jobController.
 router.post("/cancel-job-application", checkUserStatus, hasToken.userHasToken, jobController.cancelJobApplication);
 
 // notifications
-router.get("/notifications-count/:id", checkUserStatus, hasToken.userHasToken, notificationController.getUserNotificationsCount);
-router.get("/notifications/:id", checkUserStatus, hasToken.userHasToken, notificationController.getUserNotifications);
-router.patch("/notification/mark-read/:id", checkUserStatus, hasToken.userHasToken, notificationController.markUserNotificationRead);
+router.get(
+    "/notifications-count/:id",
+    checkUserStatus,
+    hasToken.userHasToken,
+    notificationController.getUserNotificationsCount
+);
+router.get(
+    "/notifications/:id",
+    checkUserStatus,
+    hasToken.userHasToken,
+    notificationController.getUserNotifications
+);
+router.patch(
+    "/notification/mark-read/:id",
+    checkUserStatus,
+    hasToken.userHasToken,
+    notificationController.markUserNotificationRead
+);
 
 module.exports = router;

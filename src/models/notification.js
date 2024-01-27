@@ -1,13 +1,13 @@
 const mongoose = require("mongoose");
 
-const notificationSchema = new mongoose.Schema({
+const NotificationSchema = new mongoose.Schema({
     from: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "user",
+        ref: "User",
     },
     to: {
         type: mongoose.Schema.Types.Mixed,
-        ref: "user",
+        ref: "User",
         required: false
     },
     message: {
@@ -31,6 +31,6 @@ const notificationSchema = new mongoose.Schema({
     },
 });
 
-const notification = mongoose.model("notification", notificationSchema);
+const Notification = mongoose.model("Notification", NotificationSchema);
 
-module.exports = notification;
+module.exports = Notification;

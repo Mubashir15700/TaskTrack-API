@@ -1,5 +1,6 @@
 const laborerRepository = require("../../repositories/laborer");
 const profileRepository = require("../../repositories/profile");
+const serverErrorHandler = require("../../utils/serverErrorHandler");
 
 class LaborerService {
     async getLaborers(userId) {
@@ -14,10 +15,7 @@ class LaborerService {
                 }
             };
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during fetching laborers: ", error);
         }
     };
 
@@ -33,10 +31,7 @@ class LaborerService {
                 }
             };
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during fetching laborer: ", error);
         }
     };
 
@@ -61,10 +56,7 @@ class LaborerService {
                 message: "send become laborer request success"
             };
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during sebding request: ", error);
         }
     };
 
@@ -80,10 +72,7 @@ class LaborerService {
                 }
             };
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during fetching previous requests: ", error);
         }
     };
 
@@ -117,10 +106,7 @@ class LaborerService {
 
             return response;
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during updating request: ", error);
         }
     };
 
@@ -136,10 +122,7 @@ class LaborerService {
                 }
             };
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during cancelling request: ", error);
         }
     };
 };

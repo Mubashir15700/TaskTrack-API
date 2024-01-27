@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const jobRepository = require("../../repositories/job");
+const serverErrorHandler = require("../../utils/serverErrorHandler");
 
 class JobService {
     async getJobs(currentUserId) {
@@ -14,10 +15,7 @@ class JobService {
                 }
             };
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during fetching jobs: ", error);
         }
     };
 
@@ -33,10 +31,7 @@ class JobService {
                 }
             };
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during fetching listed jobs: ", error);
         }
     };
 
@@ -52,10 +47,7 @@ class JobService {
                 }
             };
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during fetching applicants: ", error);
         }
     };
 
@@ -68,10 +60,7 @@ class JobService {
                 message: `${action} applicant successfully`,
             };
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during taking action: ", error);
         }
     };
 
@@ -87,10 +76,7 @@ class JobService {
                 }
             };
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during fetching job: ", error);
         }
     };
 
@@ -112,10 +98,7 @@ class JobService {
                 };
             }
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during editing listed job: ", error);
         }
     };
 
@@ -130,17 +113,13 @@ class JobService {
                 };
             }
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during deleting listed job: ", error);
         }
     };
 
     async getWorksHistory(id) {
         try {
             const works = await jobRepository.getWorksHistory(id);
-            console.log("wh", works);
 
             return {
                 status: 201,
@@ -150,10 +129,7 @@ class JobService {
                 }
             };
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during fetching work history: ", error);
         }
     };
 
@@ -175,16 +151,12 @@ class JobService {
                 };
             }
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during posting job: ", error);
         }
     };
 
     async applyJob(jobId, laborerId, fieldName) {
         try {
-            console.log("dsfdsf");
             if (!jobId || !laborerId) {
                 return { status: 400, message: "Bad Request: Missing required parameters" };
             }
@@ -208,10 +180,7 @@ class JobService {
                 message: "Applied for the job successfully",
             };
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during applying for job: ", error);
         }
     };
 
@@ -242,10 +211,7 @@ class JobService {
                 message: "Cancelled job application successfully",
             };
         } catch (error) {
-            console.log(error);
-            return {
-                status: 500, message: `Internal Server Error: ${error.message}`
-            };
+            return serverErrorHandler("An error occurred during cancelling job application: ", error);
         }
     };
 };

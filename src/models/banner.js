@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const bannerSchema = new mongoose.Schema({
+const BannerSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true,
@@ -23,14 +23,14 @@ const bannerSchema = new mongoose.Schema({
 });
 
 // Set the order value automatically before saving a new banner
-bannerSchema.pre('save', async function (next) {
+BannerSchema.pre("save", async function (next) {
     if (!this.order) {
-        const count = await mongoose.model('banner').countDocuments({});
+        const count = await mongoose.model("Banner").countDocuments({});
         this.order = count + 1;
     }
     next();
 });
 
-const banner = mongoose.model("banner", bannerSchema);
+const Banner = mongoose.model("Banner", BannerSchema);
 
-module.exports = banner;
+module.exports = Banner;
