@@ -1,6 +1,6 @@
 function generateEmailOptions(email, generatedOTP) {
     return {
-        from: process.env.USER,
+        from: process.env.EMAIL,
         to: email,
         subject: "TaskTrack Verification OTP",
         html: `<center>

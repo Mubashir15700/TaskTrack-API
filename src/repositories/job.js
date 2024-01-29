@@ -6,7 +6,7 @@ class JobRepository {
     async getJobs(currentUserId, searchWith = null) {
         try {
             const pipeline = [
-                {
+                currentUserId !== "undefined" && {
                     $match: {
                         userId: { $ne: new mongoose.Types.ObjectId(currentUserId) },
                     },

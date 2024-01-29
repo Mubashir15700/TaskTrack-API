@@ -56,6 +56,11 @@ const UserSchema = new mongoose.Schema({
         type: Boolean,
         default: false,
     },
+    currentSubscription: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Subscription",
+        default: null
+    },
 });
 
 const User = mongoose.model("User", UserSchema);

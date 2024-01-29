@@ -4,7 +4,6 @@ const Laborer = require("../models/laborer");
 class ProfileRepository {
     async updateUser(id, updateObject) {
         try {
-            console.log(updateObject);
             return await User.findByIdAndUpdate(
                 id,
                 {

@@ -32,8 +32,6 @@ function handleSendMessage(io, socket, connectedUsers, findUserById) {
         const receiverUser = findUserById(data.receiverId, connectedUsers);
 
         if (senderUser && receiverUser) {
-            // Emit the message to the sender
-            io.to(senderUser.socketId).emit("receive_message", data);
             // Emit the message to the receiver
             io.to(receiverUser.socketId).emit("receive_message", data);
 

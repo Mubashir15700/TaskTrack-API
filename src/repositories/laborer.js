@@ -122,8 +122,8 @@ class LaborerRepository {
 
     async getLaborers(userId) {
         try {
-            return await Laborer.aggregate([
-                {
+            const pipeline = [
+                userId !== "undefined" && {
                     $match: { userId: { $ne: new mongoose.Types.ObjectId(userId) } }
                 },
                 {
@@ -148,7 +148,10 @@ class LaborerRepository {
                         "__v": 1
                     }
                 }
-            ]);
+
+            ].filter(Boolean);
+
+            return await Laborer.aggregate(pipeline);
         } catch (error) {
             console.log(error);
             throw new Error("Error while finding laborers");
