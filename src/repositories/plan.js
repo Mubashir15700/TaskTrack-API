@@ -21,12 +21,20 @@ class PlanRepository {
 
     async getPlans(startIndex, itemsPerPage) {
         try {
-            return await Plan.find()
-                .skip(startIndex)
-                .limit(itemsPerPage);
+            let query = Plan.find();
+
+            if (startIndex !== undefined) {
+                query = query.skip(startIndex);
+            }
+
+            if (itemsPerPage !== undefined) {
+                query = query.limit(itemsPerPage);
+            }
+
+            return await query.exec();
         } catch (error) {
             console.log(error);
-            throw new Error("Error while finding plans");
+            throw new Error("Error while fetching plans");
         }
     };
 

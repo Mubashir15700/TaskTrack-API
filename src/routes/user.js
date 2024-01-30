@@ -1,10 +1,14 @@
 const express = require("express");
+// stripe
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+
 const authController = require("../controllers/auth");
 const notificationController = require("../controllers/notification");
 const userUtilityController = require("../controllers/user/userUtility");
 const profileController = require("../controllers/user/profile");
 const laborerController = require("../controllers/user/laborer");
 const jobController = require("../controllers/user/job");
+const planController = require("../controllers/user/plan");
 const checkUserStatus = require("../middlewares/auth/checkUserStatus");
 const hasToken = require("../middlewares/auth/hasToken");
 const imageUpload = require("../middlewares/imageUpload");
@@ -99,5 +103,39 @@ router.patch(
     hasToken.userHasToken,
     notificationController.markUserNotificationRead
 );
+
+// plans
+router.get("/plans", checkUserStatus, hasToken.userHasToken, planController.getPlans);
+
+// Example: Create a subscription
+router.post("/create-subscription", async (req, res) => {
+    const { items } = req.body;
+
+    const lineItems = items.map((item) => ({
+        price_data: {
+            currency: "inr",
+            product_data: {
+                name: item.name
+            },
+            unit_amount: item.amount * 100,
+        },
+        quantity: 1
+    }));
+
+    const session = await stripe.checkout.sessions.create({
+        payment_method_types: ["card"],
+        line_items: lineItems,
+        mode: "payment",
+        success_url: "http://localhost:5173/profile",
+        cancel_url: "http://localhost:5173/about"
+    });
+
+    res.json({ id: session.id });
+});
+
+// Example: Handle subscription cancellation webhook
+router.post("/webhook", (req, res) => {
+
+});
 
 module.exports = router;

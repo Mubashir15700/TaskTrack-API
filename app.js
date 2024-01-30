@@ -8,6 +8,8 @@ const requiredEnvVariables = [
     "CORS_ORIGIN",
     "DB_LOCAL_URL",
     "JWT_SECRET_KEY",
+    "OPENCAGE_API_KEY",
+    "STRIPE_SECRET_KEY",
     "USER",
     "APP_PASSWORD"
 ];
