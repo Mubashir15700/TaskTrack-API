@@ -1,4 +1,5 @@
 const Plan = require("../models/plan");
+const Subscription = require("../models/subscription");
 
 class PlanRepository {
     async checkPlanExistsByName(query) {
@@ -38,9 +39,9 @@ class PlanRepository {
         }
     };
 
-    async addPlan(name, description, type, number, amount) {
+    async addPlan(name, description, type, numberOfJobPosts, amount) {
         try {
-            await Plan.create({ name, description, type, number, amount });
+            await Plan.create({ name, description, type, numberOfJobPosts, amount });
         } catch (error) {
             console.log(error);
             throw new Error("Error while adding plan");
@@ -85,15 +86,28 @@ class PlanRepository {
         }
     };
 
-    async editPlan(id, name, description, type, number, amount) {
+    async editPlan(id, name, description, type, numberOfJobPosts, amount) {
         try {
             await Plan.findByIdAndUpdate(id,
-                { name, description, type, number, amount },
+                { name, description, type, numberOfJobPosts, amount },
                 { new: true }
             );
         } catch (error) {
             console.log(error);
             throw new Error("Error while editing plan");
+        }
+    };
+
+    async saveSubscription(userId, subscriptionId, planId) {
+        try {
+            const filter = { subscriptionId };
+            const update = { userId, planId };
+            const options = { upsert: true, new: true };
+
+            await Subscription.findOneAndUpdate(filter, update, options);
+        } catch (error) {
+            console.log(error);
+            throw new Error("Error while saving subscription");
         }
     };
 };

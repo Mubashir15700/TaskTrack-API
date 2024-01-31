@@ -1,18 +1,27 @@
 const mongoose = require("mongoose");
 
 const SubscriptionSchema = new mongoose.Schema({
-    planId: { 
-        type: mongoose.Schema.Types.ObjectId, 
-        ref: "Plan", 
-        required: true 
+    userId: {
+        type: String,
+        ref: "User",
+        required: true
     },
-    createdDate: { 
-        type: Date, 
-        default: Date.now 
+    subscriptionId: {
+        type: String,
+        required: true
     },
-    isActive: { 
-        type: Boolean, 
-        default: true 
+    planId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Plan",
+        required: true
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
+    },
+    isActive: {
+        type: Boolean,
+        default: true
     },
 });
 

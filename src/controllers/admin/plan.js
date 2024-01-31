@@ -16,16 +16,16 @@ exports.getPlan = catchAsync(async (req, res) => {
 });
 
 exports.addPlan = catchAsync(async (req, res) => {
-    const { name, description, type, number, amount } = req.body;
+    const { name, description, type, numberOfJobPosts, amount } = req.body;
     const result = await planService.addPlan(
-        name, description, type, number, amount
+        name, description, type, numberOfJobPosts, amount
     );
     sendResponse(res, result);
 });
 
 exports.editPlan = catchAsync(async (req, res) => {
-    const { _id, name, description, type, number, amount } = req.body;
-    const result = await planService.editPlan(_id, name, description, type, number, amount);
+    const { _id, name, description, type, numberOfJobPosts, amount } = req.body;
+    const result = await planService.editPlan(_id, name, description, type, numberOfJobPosts, amount);
     sendResponse(res, result);
 });
 

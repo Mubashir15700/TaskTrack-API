@@ -40,10 +40,14 @@ class PlanService {
         }
     };
 
-    async addPlan(name, description, type, number, amount) {
+    async addPlan(name, description, type, numberOfJobPosts, amount) {
         try {
-            if (!name || !description || !type || !number || !amount) {
-                return { status: 400, message: "All fields (name, description, type, number, amount) are required" };
+            if (!name || !description || !type || !numberOfJobPosts || !amount) {
+                return {
+                    status: 400,
+                    message:
+                        "All fields (name, description, type, number of job posts, amount) are required"
+                };
             }
 
             // Check if a plan with the same name already exists
@@ -52,7 +56,7 @@ class PlanService {
                 return { status: 400, message: "A plan with the same name already exists" };
             }
 
-            await planRepository.addPlan(name, description, type, number, amount);
+            await planRepository.addPlan(name, description, type, numberOfJobPosts, amount);
 
             return {
                 status: 201,
@@ -100,10 +104,14 @@ class PlanService {
         }
     };
 
-    async editPlan(id, name, description, type, number, amount) {
+    async editPlan(id, name, description, type, numberOfJobPosts, amount) {
         try {
-            if (!name || !description || !type || !number || !amount) {
-                return { status: 400, message: "All fields (name, description, type, number, amount) are required" };
+            if (!name || !description || !type || !numberOfJobPosts || !amount) {
+                return {
+                    status: 400,
+                    message:
+                        "All fields (name, description, type, number of job posts, amount) are required"
+                };
             }
 
             // Check if a plan with the same name already exists
@@ -112,7 +120,7 @@ class PlanService {
                 return { status: 400, message: "A plan with the same name already exists" };
             }
 
-            await planRepository.editPlan(id, name, description, type, number, amount);
+            await planRepository.editPlan(id, name, description, type, numberOfJobPosts, amount);
 
             return {
                 status: 201,

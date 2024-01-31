@@ -2,7 +2,6 @@ const authService = require("../../services/auth");
 
 exports.userHasToken = async (req, res, next) => {
     const token = req.cookies.userJwt;
-
     if (!token) {
         return res.status(401).json({ status: "failed", message: "Unauthorized - Missing JWT" });
     }

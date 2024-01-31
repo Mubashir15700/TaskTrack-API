@@ -13,13 +13,13 @@ const PlanSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    number: {
-        type: Number,
-        required: true,
-    },
     amount: {
         type: Number,
         required: true,
+    },
+    numberOfJobPosts: {
+        type: Number,
+        required: true
     },
     isActive: {
         type: Boolean,
