@@ -194,6 +194,37 @@ class PlanRepository {
             throw new Error("Error while saving or updating subscription");
         }
     };
+
+    async updateJobPostsCount(userId) {
+        try {
+            return await Subscription.findOneAndUpdate({ userId },
+                { $inc: { jobPostsCount: 1 } },
+            );
+        } catch (error) {
+            console.log(error);
+            throw new Error("Error while fetching posted job's count");
+        }
+    };
+
+    async postedJobsCount(userId) {
+        try {
+            const subscription = await Subscription.findOne({ userId });
+            return subscription.jobPostsCount;
+        } catch (error) {
+            console.log(error);
+            throw new Error("Error while fetching posted job's count");
+        }
+    };
+
+    async totalJobPostsCount(userId) {
+        try {
+            const totalPosts = await Subscription.findOne({ userId }).populate("planId");
+            return totalPosts.planId.numberOfJobPosts;
+        } catch (error) {
+            console.log(error);
+            throw new Error("Error while fetching posted job's count");
+        }
+    };
 };
 
 module.exports = new PlanRepository();

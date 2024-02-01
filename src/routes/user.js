@@ -69,6 +69,7 @@ router.patch("/cancel-request", checkUserStatus, hasToken.userHasToken, laborerC
 // job actions
 router.get("/get-jobs", checkUserStatus, jobController.getJobs);
 router.get("/get-listed-jobs/:id", checkUserStatus, hasToken.userHasToken, jobController.getListedJobs);
+router.get("/get-remainig-posts", checkUserStatus, hasToken.userHasToken, jobController.getRemainingPosts);
 router.post("/post-job", checkUserStatus, hasToken.userHasToken, jobController.postJob);
 router.get("/get-job/:id", checkUserStatus, jobController.getJob);
 router.get("/get-listed-job/:id", checkUserStatus, hasToken.userHasToken, jobController.getListedJob);

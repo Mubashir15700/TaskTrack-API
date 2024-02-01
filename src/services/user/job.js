@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const jobRepository = require("../../repositories/job");
+const planRepository = require("../../repositories/plan");
 const serverErrorHandler = require("../../utils/serverErrorHandler");
 
 class JobService {
@@ -133,6 +134,25 @@ class JobService {
         }
     };
 
+    async getRemainingPosts(userId) {
+        try {
+            const postedJobsCount = await planRepository.postedJobsCount(userId);
+            const totalPosts = await planRepository.totalJobPostsCount(userId);
+
+            return {
+                status: 201,
+                message: "get remaining post's count success",
+                data: {
+                    remainingPosts: totalPosts - postedJobsCount
+                }
+            };
+        } catch (error) {
+            return serverErrorHandler(
+                "An error occurred during fetching remainig job post's count: ", error
+            );
+        }
+    };
+
     async postJob(jobDetails) {
         try {
             const { userId, title, description, date, time, duration, location, fields } = jobDetails;
@@ -145,6 +165,8 @@ class JobService {
             });
 
             if (postResult) {
+                await planRepository.updateJobPostsCount(userId);
+
                 return {
                     status: 201,
                     message: "Posted new job successfully",

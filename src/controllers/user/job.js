@@ -56,6 +56,12 @@ exports.getWorksHistory = catchAsync(async (req, res) => {
     sendResponse(res, result);
 });
 
+exports.getRemainingPosts = catchAsync(async (req, res) => {
+    const { userId } = req.query;
+    const result = await jobService.getRemainingPosts(userId);
+    sendResponse(res, result);
+});
+
 exports.postJob = catchAsync(async (req, res) => {
     const result = await jobService.postJob(req.body);
     sendResponse(res, result);

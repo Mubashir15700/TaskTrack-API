@@ -15,6 +15,10 @@ const SubscriptionSchema = new mongoose.Schema({
         ref: "Plan",
         required: true
     },
+    jobPostsCount: {
+        type: Number,
+        default: 0,
+    },
     createdAt: {
         type: Date,
         default: Date.now

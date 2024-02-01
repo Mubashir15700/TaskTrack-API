@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { ObjectId } = require('mongoose').Types;
+const { ObjectId } = require("mongoose").Types;
 const Job = require("../models/jobPost");
 
 class JobRepository {
