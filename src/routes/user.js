@@ -105,5 +105,7 @@ router.patch(
 router.get("/plans", checkUserStatus, hasToken.userHasToken, planController.getPlans);
 router.post("/create-subscription", planController.createSubscription);
 router.post("/save-subscription-result", planController.saveSubscriptionResult);
+router.get("/get-active-plan", planController.getActivePlan);
+router.post("/cancel-active-plan", planController.cancelActivePlan);
 
 module.exports = router;

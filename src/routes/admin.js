@@ -42,6 +42,7 @@ router.get("/plan/:id", hasToken.adminHasToken, planController.getPlan);
 router.post("/add-plan", hasToken.adminHasToken, planController.addPlan);
 router.put("/edit-plan/:id", hasToken.adminHasToken, planController.editPlan);
 router.patch("/plan-action/:id", hasToken.adminHasToken, planController.listUnlistPlan);
+router.get("/subscriptions", hasToken.adminHasToken, planController.getSubscriptions);
 
 // laborer request 
 router.get("/requests", hasToken.adminHasToken, userController.getRequests);

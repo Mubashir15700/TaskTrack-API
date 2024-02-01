@@ -104,10 +104,94 @@ class PlanRepository {
             const update = { userId, planId };
             const options = { upsert: true, new: true };
 
-            await Subscription.findOneAndUpdate(filter, update, options);
+            const result = await Subscription.findOneAndUpdate(filter, update, options);
+
+            if (result) {
+                return result._id;
+            } else {
+                throw new Error("Failed to save or update subscription");
+            }
         } catch (error) {
             console.log(error);
-            throw new Error("Error while saving subscription");
+            throw new Error("Error while saving or updating subscription");
+        }
+    };
+
+    async findSubscriptionsCount() {
+        try {
+            return await Subscription.countDocuments();
+        } catch (error) {
+            console.log(error);
+            throw new Error("Error while fetching subscriptions count");
+        }
+    };
+
+    async getSubscriptions(startIndex, itemsPerPage) {
+        try {
+            const aggregationPipeline = [
+                { $skip: startIndex || 0 },
+                { $limit: itemsPerPage || 0 },
+                {
+                    $lookup: {
+                        from: "plans",  // Assuming the name of the "plans" collection
+                        localField: "planId",
+                        foreignField: "_id",
+                        as: "Plan"
+                    }
+                },
+                {
+                    $lookup: {
+                        from: "users",  // Assuming the name of the "users" collection
+                        localField: "userId",
+                        foreignField: "_id",
+                        as: "User"
+                    }
+                },
+                {
+                    $unwind: "$Plan" // Unwind the "Plan" array
+                },
+                {
+                    $unwind: "$User" // Unwind the "User" array
+                },
+                {
+                    $project: {
+                        subscriptionId: 1,
+                        createdAt: 1,
+                        isActive: 1,
+                        planName: "$Plan.name",
+                        amount: "$Plan.amount",
+                        type: "$Plan.type",
+                        username: "$User.username",
+                    }
+                }
+            ];
+
+            const res = await Subscription.aggregate(aggregationPipeline);
+
+            return res;
+        } catch (error) {
+            console.log(error);
+            throw new Error("Error while fetching subscriptions");
+        }
+    };
+
+    async getActivePlan(subscriptionId) {
+        try {
+            return await Subscription.findById(subscriptionId).populate("planId")
+        } catch (error) {
+            console.log(error);
+            throw new Error("Error while fetching active plan");
+        }
+    };
+
+    async cancelSubscription(subscriptionId) {
+        try {
+            const filter = { subscriptionId };
+
+            return await Subscription.findOneAndDelete(filter);
+        } catch (error) {
+            console.log(error);
+            throw new Error("Error while saving or updating subscription");
         }
     };
 };

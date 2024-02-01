@@ -25,3 +25,15 @@ exports.saveSubscriptionResult = catchAsync(async (req, res) => {
     const result = await planService.saveSubscriptionResult(sessionId);
     sendResponse(res, result);
 });
+
+exports.getActivePlan = catchAsync(async (req, res) => {
+    const { subscriptionId } = req.query;
+    const result = await planService.getActivePlan(subscriptionId);
+    sendResponse(res, result);
+});
+
+exports.cancelActivePlan = catchAsync(async (req, res) => {
+    const { subscriptionId, userId } = req.body;
+    const result = await planService.cancelActivePlan(subscriptionId, userId);
+    sendResponse(res, result);
+});

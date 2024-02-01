@@ -130,6 +130,31 @@ class PlanService {
             return serverErrorHandler("An error occurred during editing plan: ", error);
         }
     };
+
+    async getSubscriptions(itemsPerPage, currentPage) {
+        try {
+            const startIndex = (currentPage) * itemsPerPage;
+            const subscriptions = await planRepository.getSubscriptions(startIndex, itemsPerPage);
+
+            if (!subscriptions.length) {
+                return { status: 400, message: "No subscriptions found" };
+            }
+
+            const totalSubscriptions = await planRepository.findSubscriptionsCount();
+            const totalPages = Math.ceil(totalSubscriptions / itemsPerPage);
+
+            return {
+                status: 201,
+                message: "Found subscriptions",
+                data: {
+                    subscriptions,
+                    totalPages
+                }
+            };
+        } catch (error) {
+            return serverErrorHandler("An error occurred during fetching subscriptions: ", error);
+        }
+    };
 };
 
 module.exports = new PlanService();

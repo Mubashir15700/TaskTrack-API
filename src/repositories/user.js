@@ -61,6 +61,18 @@ class UserRepository {
             throw new Error("Error while searching employers");
         }
     };
+
+    async updateUserSubscription(userId, sessionId = null) {
+        try {
+            await User.findByIdAndUpdate(userId, {
+                $set: { currentSubscription: sessionId }
+            });
+            // return searchResults;
+        } catch (error) {
+            console.error(error);
+            throw new Error("Error while updating subscription");
+        }
+    };
 };
 
 module.exports = new UserRepository();

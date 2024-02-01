@@ -41,7 +41,7 @@ const UserSchema = new mongoose.Schema({
     },
     otp: {
         type: Number,
-        createdAt: { type: Date, expires: "5m", default: Date.now }, // expires in 60 seconds (1 minute)
+        createdAt: { type: Date, expires: "5m", default: Date.now },
         select: false,
     },
     isJobSeeker: {

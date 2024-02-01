@@ -1,6 +1,6 @@
-// stripe
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const planRepository = require("../../repositories/plan");
+const userRepository = require("../../repositories/user");
 const serverErrorHandler = require("../../utils/serverErrorHandler");
 
 class PlanService {
@@ -126,16 +126,75 @@ class PlanService {
             const session = await stripe.checkout.sessions.retrieve(sessionId);
 
             if (session.payment_status === "paid") {
-                await planRepository.saveSubscription(
+                const saveResult = await planRepository.saveSubscription(
                     session.metadata.userId, sessionId, session.metadata.planId
                 );
 
-                return session;
+                await userRepository.updateUserSubscription(
+                    session.metadata.userId, saveResult
+                );
+
+                return {
+                    status: 201,
+                };
             } else {
                 return { status: 400, message: "No plan found" };
             }
         } catch (error) {
             return serverErrorHandler("Error fetching payment details: ", error);
+        }
+    };
+
+    async getActivePlan(subscriptionId) {
+        try {
+            const currentPlan = await planRepository.getActivePlan(subscriptionId);
+
+            if (!currentPlan) {
+                return { status: 400, message: "No active plan found" };
+            }
+
+            return {
+                status: 201,
+                message: "Found active plan",
+                data: {
+                    currentPlan
+                }
+            };
+        } catch (error) {
+            return serverErrorHandler("Error fetching active plan: ", error);
+        }
+    };
+
+    async cancelActivePlan(sessionId, userId) {
+        try {
+            // Retrieve the Checkout Session from Stripe
+            const checkoutSession = await stripe.checkout.sessions.retrieve(sessionId);
+
+            // Extract the subscription ID from the Checkout Session
+            const subscriptionId = checkoutSession.subscription;
+
+            if (!subscriptionId) {
+                console.error("No subscription associated with the provided sessionId.");
+                return { status: 400, error: "No subscription associated with the provided sessionId." };
+            }
+
+            const canceledSubscription = await stripe.subscriptions.cancel(subscriptionId);
+
+            // Check if the subscription has been canceled
+            if (canceledSubscription.status === "canceled") {
+
+                const cancelResult = await planRepository.cancelSubscription(sessionId);
+
+                await userRepository.updateUserSubscription(userId);
+
+                console.log(`Subscription ${subscriptionId} has been canceled immediately.`);
+                return { status: 201, message: `Subscription ${subscriptionId} canceled immediately.` };
+            } else {
+                console.error(`Failed to cancel subscription ${subscriptionId} immediately.`);
+                return { status: 500, error: `Failed to cancel subscription ${subscriptionId} immediately.` };
+            }
+        } catch (error) {
+            return serverErrorHandler("Error while cancelling active plan: ", error);
         }
     };
 };
