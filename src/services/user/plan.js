@@ -1,7 +1,7 @@
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const planRepository = require("../../repositories/plan");
 const userRepository = require("../../repositories/user");
-const serverErrorHandler = require("../../utils/serverErrorHandler");
+const serverErrorHandler = require("../../utils/errorHandling/serverErrorHandler");
 
 class PlanService {
     async getPlans() {

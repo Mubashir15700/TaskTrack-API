@@ -1,5 +1,5 @@
 const notificationService = require("../services/notification");
-const catchAsync = require("../utils/catchAsync");
+const catchAsync = require("../utils/errorHandling/catchAsync");
 const sendResponse = require("../utils/responseStructure");
 
 // admin

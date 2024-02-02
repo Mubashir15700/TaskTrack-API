@@ -1,6 +1,6 @@
 require("dotenv").config();
 const path = require("path");
-const logger = require("./src/utils/logger");
+const logger = require("./src/utils/errorHandling/logger");
 
 // Check for required environment variables
 const requiredEnvVariables = [
@@ -26,9 +26,10 @@ const helmet = require("helmet");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const DBConnection = require("./db");
+const authRoutes = require("./src/routes/auth");
 const userRoutes = require("./src/routes/user");
 const adminRoutes = require("./src/routes/admin");
-const utilityRoutes = require("./src/routes/utility");
+const sharedRoutes = require("./src/routes/shared");
 
 const app = express();
 
@@ -50,9 +51,10 @@ app.use((err, req, res, next) => {
     });
 });
 
+app.use("/auth", authRoutes);
 app.use("/", userRoutes);
 app.use("/admin", adminRoutes);
-app.use("/utility", utilityRoutes);
+app.use("/shared", sharedRoutes);
 
 DBConnection();
 

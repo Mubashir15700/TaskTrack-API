@@ -1,6 +1,6 @@
 const laborerRepository = require("../../repositories/laborer");
 const profileRepository = require("../../repositories/profile");
-const serverErrorHandler = require("../../utils/serverErrorHandler");
+const serverErrorHandler = require("../../utils/errorHandling/serverErrorHandler");
 
 class LaborerService {
     async getLaborers(userId) {

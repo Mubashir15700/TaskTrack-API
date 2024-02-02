@@ -1,5 +1,5 @@
 const notificationRepository = require("../repositories/notification");
-const serverErrorHandler = require("../utils/serverErrorHandler");
+const serverErrorHandler = require("../utils/errorHandling/serverErrorHandler");
 
 class NotificationService {
     // admin

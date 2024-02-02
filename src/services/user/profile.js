@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const querystring = require("querystring");
 const profileRepository = require("../../repositories/profile");
-const serverErrorHandler = require("../../utils/serverErrorHandler");
+const serverErrorHandler = require("../../utils/errorHandling/serverErrorHandler");
 
 class ProfileService {
     async updateProfile(id, updateObject, profileImage = null) {

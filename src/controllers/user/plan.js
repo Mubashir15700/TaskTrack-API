@@ -1,5 +1,5 @@
 const planService = require("../../services/user/plan");
-const catchAsync = require("../../utils/catchAsync");
+const catchAsync = require("../../utils/errorHandling/catchAsync");
 const sendResponse = require("../../utils/responseStructure");
 
 exports.getPlans = catchAsync(async (req, res) => {

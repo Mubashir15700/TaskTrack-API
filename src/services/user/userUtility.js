@@ -1,5 +1,5 @@
 const bannerRepository = require("../../repositories/banner");
-const serverErrorHandler = require("../../utils/serverErrorHandler");
+const serverErrorHandler = require("../../utils/errorHandling/serverErrorHandler");
 
 class UserUtilityService {
     async getBanners() {

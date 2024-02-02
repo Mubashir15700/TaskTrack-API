@@ -1,5 +1,5 @@
 const crypto = require("crypto");
-const authRepository = require("../repositories/auth");
+const authRepository = require("../../repositories/auth");
 const generateEmailOptions = require("./generateEmailOptions");
 const sendMail = require("./sendMail");
 

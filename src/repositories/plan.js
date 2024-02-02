@@ -209,7 +209,7 @@ class PlanRepository {
     async postedJobsCount(userId) {
         try {
             const subscription = await Subscription.findOne({ userId });
-            return subscription.jobPostsCount;
+            return subscription?.jobPostsCount;
         } catch (error) {
             console.log(error);
             throw new Error("Error while fetching posted job's count");
@@ -219,7 +219,7 @@ class PlanRepository {
     async totalJobPostsCount(userId) {
         try {
             const totalPosts = await Subscription.findOne({ userId }).populate("planId");
-            return totalPosts.planId.numberOfJobPosts;
+            return totalPosts?.planId?.numberOfJobPosts;
         } catch (error) {
             console.log(error);
             throw new Error("Error while fetching posted job's count");

@@ -1,5 +1,5 @@
 const planRepository = require("../../repositories/plan");
-const serverErrorHandler = require("../../utils/serverErrorHandler");
+const serverErrorHandler = require("../../utils/errorHandling/serverErrorHandler");
 
 class PlanService {
     async checkPlanExistsByName(name, id = null) {

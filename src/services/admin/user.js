@@ -1,6 +1,6 @@
 const userRepository = require("../../repositories/user");
 const laborerRepository = require("../../repositories/laborer");
-const serverErrorHandler = require("../../utils/serverErrorHandler");
+const serverErrorHandler = require("../../utils/errorHandling/serverErrorHandler");
 
 class UserService {
     async getUsers(itemsPerPage, currentPage) {

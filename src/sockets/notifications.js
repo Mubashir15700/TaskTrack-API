@@ -1,31 +1,40 @@
-const Notification = require("../models/notification");
+const notificationRepository = require("../repositories/notification");
+
+async function saveNotification(message, redirectTo, to, from) {
+    if (!from || !message || !redirectTo) {
+        throw new Error("Missing required parameters for saving notification");
+    }
+
+    const newNotification = {
+        message,
+        redirectTo,
+        to,
+    };
+
+    if (from) {
+        newNotification.from = from;
+    }
+
+    await notificationRepository.saveNewNotification(newNotification);
+};
 
 function handleRequestSubmit(io, socket, connectedUsers, findUserByRole) {
     socket.on("request_submit", async (data) => {
-
-        console.log("request_submit");
-
         try {
             const adminUser = findUserByRole("admin", connectedUsers);
-            console.log("adminUser", adminUser);
 
-            // Save the notification to the database
-            const newNotification = new Notification({
-                from: data,
-                to: "admin",
-                message: "A new request has been received!",
-                redirectTo: "/admin/laborer-requests",
-            });
-
-            await newNotification.save();
+            const message = "A new request has been received!";
+            await saveNotification(
+                message,
+                "/admin/laborer-requests",
+                data,
+                "admin",
+            );
 
             if (adminUser) {
-
-                console.log("if adminUser");
-
                 // Emit a response event only to the admin
                 io.to(adminUser.socketId).emit("notify_request_submit", {
-                    message: "A new request has been received!",
+                    message,
                 });
             }
         } catch (error) {
@@ -38,21 +47,15 @@ function handleRequestSubmit(io, socket, connectedUsers, findUserByRole) {
 function handleRequestAction(io, socket, connectedUsers, findUserById) {
     socket.on("request_action", async (data) => {
         const targetUser = findUserById(data.userId, connectedUsers);
-        console.log("targetUser", targetUser);
+
+        const message = data.message;
 
         // Save the notification to the database
-        const newNotification = new Notification({
-            to: data.userId,
-            message: data.message,
-            redirectTo: "/jobs/works-history",
-        });
-
-        await newNotification.save();
+        await saveNotification(message, "/jobs/works-history", data.userId);
 
         if (targetUser) {
-
             io.to(targetUser.socketId).emit("notify_request_action", {
-                message: data.message,
+                message,
             });
         }
     });
@@ -62,18 +65,14 @@ function handleJobApplication(io, socket, connectedUsers, findUserById) {
     socket.on("new_applicant", async (data) => {
         const targetUser = findUserById(data.empId, connectedUsers);
 
-        // // Save the notification to the database
-        const newNotification = new Notification({
-            to: data.empId,
-            message: "New job application recieved",
-            redirectTo: `/jobs/listed-jobs/${data.jobId}`,
-        });
+        const message = "New job application recieved";
 
-        await newNotification.save();
+        // Save the notification to the database
+        await saveNotification(message, `/jobs/listed-jobs/${data.jobId}`, data.empId);
 
         if (targetUser) {
             io.to(targetUser.socketId).emit("notify_new_applicant", {
-                message: "New job application recieved",
+                message,
             });
         }
     });
@@ -83,19 +82,14 @@ function handleCancelApplication(io, socket, connectedUsers, findUserById) {
     socket.on("application_cancel", async (data) => {
         const targetUser = findUserById(data.empId, connectedUsers);
 
-        // // Save the notification to the database
-        const newNotification = new Notification({
-            to: data.empId,
-            message: "Laborer cancelled application",
-            redirectTo: `/jobs/listed-jobs/${data.jobId}`,
-        });
+        const message = "Laborer cancelled application";
 
-        await newNotification.save();
+        // Save the notification to the database
+        await saveNotification(message, `/jobs/listed-jobs/${data.jobId}`, data.empId);
 
         if (targetUser) {
-
             io.to(targetUser.socketId).emit("notify_application_cancel", {
-                message: "Laborer cancelled application",
+                message,
             });
         }
     });
@@ -105,18 +99,14 @@ function handleApplicationAction(io, socket, connectedUsers, findUserById) {
     socket.on("application_action", async (data) => {
         const targetUser = findUserById(data.laborerId, connectedUsers);
 
-        // // Save the notification to the database
-        const newNotification = new Notification({
-            to: data.laborerId,
-            message: `Your job request has been ${data.actionTook}`,
-            redirectTo: `/jobs/${data.jobId}`,
-        });
+        const message = `Your job request has been ${data.actionTook}`;
 
-        await newNotification.save();
+        // Save the notification to the database
+        await saveNotification(message, `/jobs/${data.jobId}`, data.laborerId);
 
         if (targetUser) {
             io.to(targetUser.socketId).emit("notify_application_action", {
-                message: `Your job request has been ${data.actionTook}`,
+                message,
             });
         }
     });

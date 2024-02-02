@@ -1,5 +1,5 @@
 const bannerService = require("../../services/admin/banner");
-const catchAsync = require("../../utils/catchAsync");
+const catchAsync = require("../../utils/errorHandling/catchAsync");
 const sendResponse = require("../../utils/responseStructure");
 
 exports.getBanners = catchAsync(async (req, res) => {

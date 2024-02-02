@@ -1,5 +1,5 @@
 const jobService = require("../../services/user/job");
-const catchAsync = require("../../utils/catchAsync");
+const catchAsync = require("../../utils/errorHandling/catchAsync");
 const sendResponse = require("../../utils/responseStructure");
 
 exports.getJobs = catchAsync(async (req, res) => {

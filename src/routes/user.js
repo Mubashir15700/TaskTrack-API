@@ -1,5 +1,4 @@
 const express = require("express");
-const authController = require("../controllers/auth");
 const notificationController = require("../controllers/notification");
 const userUtilityController = require("../controllers/user/userUtility");
 const profileController = require("../controllers/user/profile");
@@ -13,17 +12,7 @@ const imageUpload = require("../middlewares/imageUpload");
 const router = express.Router();
 
 // home page
-router.get("/get-active-banners", checkUserStatus, userUtilityController.getBanners);
-
-// authentication and account-related actions
-router.get("/auth/checkauth", checkUserStatus, authController.checkAuth);
-router.post("/sign-up", authController.userSignUp);
-router.post("/login", authController.userLogin);
-router.post("/logout", authController.logout);
-router.post("/verify-otp", checkUserStatus, authController.verifyOtp);
-router.post("/resend-otp", checkUserStatus, authController.resendOtp);
-router.post("/confirm-email", checkUserStatus, authController.confirmEmail);
-router.post("/reset-password", checkUserStatus, authController.resetPassword);
+router.get("/banners", checkUserStatus, userUtilityController.getBanners);
 
 // profile actions
 router.put(
@@ -40,7 +29,7 @@ router.delete(
     profileController.deleteProfileImage
 );
 router.get(
-    "/get-current-location",
+    "/current-location",
     checkUserStatus,
     hasToken.userHasToken,
     profileController.getCurrentLocation
@@ -59,28 +48,27 @@ router.put(
 );
 
 // laborer actions
-router.get("/get-laborers", checkUserStatus, laborerController.getLaborers);
-router.get("/get-laborer/:id", checkUserStatus, laborerController.getLaborer);
+router.get("/laborers", checkUserStatus, laborerController.getLaborers);
+router.get("/laborer/:id", checkUserStatus, laborerController.getLaborer);
 router.post("/send-request", checkUserStatus, hasToken.userHasToken, laborerController.sendRequest);
-router.get("/get-prev-request/:id", checkUserStatus, hasToken.userHasToken, laborerController.getPrevRequest);
+router.get("/prev-request/:id", checkUserStatus, hasToken.userHasToken, laborerController.getPrevRequest);
 router.put("/update-request", checkUserStatus, hasToken.userHasToken, laborerController.updateRequest);
 router.patch("/cancel-request", checkUserStatus, hasToken.userHasToken, laborerController.cancelRequest);
 
 // job actions
-router.get("/get-jobs", checkUserStatus, jobController.getJobs);
-router.get("/get-listed-jobs/:id", checkUserStatus, hasToken.userHasToken, jobController.getListedJobs);
-router.get("/get-remainig-posts", checkUserStatus, hasToken.userHasToken, jobController.getRemainingPosts);
-router.post("/post-job", checkUserStatus, hasToken.userHasToken, jobController.postJob);
-router.get("/get-job/:id", checkUserStatus, jobController.getJob);
-router.get("/get-listed-job/:id", checkUserStatus, hasToken.userHasToken, jobController.getListedJob);
-router.get("/get-applicants/:jobId/:field", checkUserStatus, hasToken.userHasToken, jobController.getApplicants);
-router.patch("/applicant-action", checkUserStatus, hasToken.userHasToken, jobController.takeApplicantAction);
-
-router.put("/edit-listed-job", checkUserStatus, hasToken.userHasToken, jobController.editListedJob);
-router.delete("/delete-listed-job/:id", checkUserStatus, hasToken.userHasToken, jobController.deleteListedJob);
-router.get("/get-works-history/:id", checkUserStatus, hasToken.userHasToken, jobController.getWorksHistory);
+router.get("/jobs", checkUserStatus, jobController.getJobs);
+router.get("/job/:id", checkUserStatus, jobController.getJob);
 router.post("/apply-job", checkUserStatus, hasToken.userHasToken, jobController.applyJob);
 router.post("/cancel-job-application", checkUserStatus, hasToken.userHasToken, jobController.cancelJobApplication);
+router.get("/remainig-posts", checkUserStatus, hasToken.userHasToken, jobController.getRemainingPosts);
+router.post("/post-job", checkUserStatus, hasToken.userHasToken, jobController.postJob);
+router.get("/listed-jobs/:id", checkUserStatus, hasToken.userHasToken, jobController.getListedJobs);
+router.get("/listed-job/:id", checkUserStatus, hasToken.userHasToken, jobController.getListedJob);
+router.put("/edit-listed-job", checkUserStatus, hasToken.userHasToken, jobController.editListedJob);
+router.delete("/delete-listed-job/:id", checkUserStatus, hasToken.userHasToken, jobController.deleteListedJob);
+router.get("/applicants/:jobId/:field", checkUserStatus, hasToken.userHasToken, jobController.getApplicants);
+router.patch("/applicant-action", checkUserStatus, hasToken.userHasToken, jobController.takeApplicantAction);
+router.get("/works-history/:id", checkUserStatus, hasToken.userHasToken, jobController.getWorksHistory);
 
 // notifications
 router.get(
@@ -106,7 +94,7 @@ router.patch(
 router.get("/plans", checkUserStatus, hasToken.userHasToken, planController.getPlans);
 router.post("/create-subscription", planController.createSubscription);
 router.post("/save-subscription-result", planController.saveSubscriptionResult);
-router.get("/get-active-plan", planController.getActivePlan);
+router.get("/active-plan", planController.getActivePlan);
 router.post("/cancel-active-plan", planController.cancelActivePlan);
 
 module.exports = router;

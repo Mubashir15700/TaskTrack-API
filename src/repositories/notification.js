@@ -1,6 +1,16 @@
 const Notification = require("../models/notification");
 
 class NotificationRepository {
+    async saveNewNotification(notification) {
+        try {
+            const newNotification = new Notification({ ...notification });
+            await newNotification.save();
+        } catch (error) {
+            console.error(error);
+            throw new Error("Error while saving new notification");
+        }
+    };
+
     // admin
     async getAdminNotificationsCount() {
         try {

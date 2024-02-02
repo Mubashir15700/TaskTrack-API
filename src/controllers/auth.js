@@ -1,5 +1,5 @@
 const authService = require("../services/auth");
-const catchAsync = require("../utils/catchAsync");
+const catchAsync = require("../utils/errorHandling/catchAsync");
 const { setCookie } = require("../utils/setCookie");
 const sendResponse = require("../utils/responseStructure");
 

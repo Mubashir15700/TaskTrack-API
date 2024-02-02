@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const jobRepository = require("../../repositories/job");
 const planRepository = require("../../repositories/plan");
-const serverErrorHandler = require("../../utils/serverErrorHandler");
+const serverErrorHandler = require("../../utils/errorHandling/serverErrorHandler");
 
 class JobService {
     async getJobs(currentUserId) {

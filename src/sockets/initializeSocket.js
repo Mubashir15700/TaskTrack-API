@@ -29,10 +29,11 @@ function findUserById(IdToFind, usersMap) {
 };
 
 function initializeSocket(server) {
+
     const io = socketIO(server, {
-        pingTimeout: 60000,
+        pingTimeout: parseInt(process.env.SOCKET_PING_TIMEOUT) || 60000,
         cors: {
-            origin: "http://localhost:5173",
+            origin: process.env.CORS_ORIGIN || "http://localhost:5173",
         },
     });
 
@@ -56,7 +57,7 @@ function initializeSocket(server) {
         handleCancelApplication(io, socket, connectedUsers, findUserById);
         handleApplicationAction(io, socket, connectedUsers, findUserById);
         // chatting
-        handleGetChatHistory(io, socket, connectedUsers, findUserById);
+        handleGetChatHistory(io, socket);
         handleSendMessage(io, socket, connectedUsers, findUserById);
 
         // Handle the "disconnect" event
@@ -67,4 +68,4 @@ function initializeSocket(server) {
     });
 };
 
-module.exports = { initializeSocket, connectedUsers };
+module.exports = initializeSocket;

@@ -3,7 +3,7 @@ const laborerRepository = require("../repositories/laborer");
 const jobRepository = require("../repositories/job");
 const bannerRepository = require("../repositories/banner");
 const planRepository = require("../repositories/plan");
-const serverErrorHandler = require("../utils/serverErrorHandler");
+const serverErrorHandler = require("../utils/errorHandling/serverErrorHandler");
 
 class AdminService {
     async search(currentUserId, searchWith, searchOn) {

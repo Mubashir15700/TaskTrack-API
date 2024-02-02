@@ -1,8 +1,8 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const authRepository = require("../repositories/auth");
-const generateAndSendOtp = require("../utils/generateAndSendOtp");
-const serverErrorHandler = require("../utils/serverErrorHandler");
+const generateAndSendOtp = require("../utils/email/generateAndSendOtp");
+const serverErrorHandler = require("../utils/errorHandling/serverErrorHandler");
 
 const TOKEN_EXPIRATION_DURATION = "7d";
 
