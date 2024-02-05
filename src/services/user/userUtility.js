@@ -1,4 +1,5 @@
 const bannerRepository = require("../../repositories/banner");
+const chatRepository = require("../../repositories/chat");
 const serverErrorHandler = require("../../utils/errorHandling/serverErrorHandler");
 
 class UserUtilityService {
@@ -15,6 +16,19 @@ class UserUtilityService {
             };
         } catch (error) {
             return serverErrorHandler("An error occurred during fetching banners: ", error);
+        }
+    };
+
+    async updateMessagesReadStatus(ids) {
+        try {
+            await chatRepository.updateMessagesReadStatus(ids);
+
+            return {
+                status: 201,
+                message: "mark messages read success",
+            };
+        } catch (error) {
+            return serverErrorHandler("An error occurred during marking messages read: ", error);
         }
     };
 };

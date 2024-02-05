@@ -47,6 +47,18 @@ class ChatRepository {
             throw new Error("Error while fetching chat history");
         }
     };
+
+    async updateMessagesReadStatus(messageIds) {
+        try {
+            await Chat.updateMany(
+                { _id: { $in: messageIds } },
+                { $set: { isRead: true } }
+            );
+        } catch (error) {
+            console.error(error);
+            throw new Error("Error while marking messages read");
+        }
+    };
 };
 
 module.exports = new ChatRepository();

@@ -93,6 +93,14 @@ router.patch(
     notificationController.markUserNotificationRead
 );
 
+// chat
+router.patch(
+    "/messages/mark-read/",
+    checkUserStatus,
+    hasToken.userHasToken,
+    userUtilityController.updateMessagesReadStatus
+);
+
 // plans
 router.get("/plans", checkUserStatus, hasToken.userHasToken, planController.getPlans);
 
