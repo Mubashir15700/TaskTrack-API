@@ -1,6 +1,6 @@
 const authService = require("../services/auth");
 const catchAsync = require("../utils/errorHandling/catchAsync");
-const { setCookie } = require("../utils/setCookie");
+const setCookie = require("../utils/setCookie");
 const sendResponse = require("../utils/responseStructure");
 
 exports.checkAuth = catchAsync(async (req, res) => {
@@ -12,13 +12,22 @@ exports.checkAuth = catchAsync(async (req, res) => {
     sendResponse(res, result);
 });
 
-exports.adminLogin = catchAsync(async (req, res) => {
-    const { username, password } = req.body;
-    const result = await authService.adminLogin(username, password);
+exports.login = catchAsync(async (req, res) => {
+    const { username, password, role } = req.body;
+    const result = await authService.login(username, password, role);
     if (result.status === 201) {
-        setCookie(res, "adminJwt", result.data.token);
+        const cookieName = role === "admin" ? "adminJwt" : "userJwt";
+        setCookie(res, cookieName, result.data.token);
     }
-    sendResponse(res, result);
+    const { status, message } = result;
+    const dataToSend = {
+        status,
+        message,
+        data: {
+            currentUser: result.data?.currentUser
+        }
+    };
+    sendResponse(res, dataToSend);
 });
 
 exports.userSignUp = catchAsync(async (req, res) => {
@@ -39,15 +48,6 @@ exports.userSignUp = catchAsync(async (req, res) => {
     sendResponse(res, result);
 });
 
-exports.userLogin = catchAsync(async (req, res) => {
-    const { username, password } = req.body;
-    const result = await authService.userLogin(username, password);
-    if (result.status === 201) {
-        setCookie(res, "userJwt", result.data.token);
-    }
-    sendResponse(res, result);
-});
-
 exports.verifyOtp = catchAsync(async (req, res) => {
     const otp = Number(req.body.otp);
     const email = req.body.email;
@@ -55,7 +55,12 @@ exports.verifyOtp = catchAsync(async (req, res) => {
     if (result.status === 201) {
         setCookie(res, "userJwt", result.data.token);
     }
-    sendResponse(res, result);
+    const { status, message } = result;
+    const dataToSend = {
+        status,
+        message,
+    };
+    sendResponse(res, dataToSend);
 });
 
 exports.resendOtp = catchAsync(async (req, res) => {

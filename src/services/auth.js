@@ -35,7 +35,7 @@ class AuthService {
 
             let currentUser;
             if (decoded.role === "admin") {
-                currentUser = await authRepository.findAdminById(decoded.adminId);
+                currentUser = await authRepository.findAdminById(decoded.userId);
             } else {
                 currentUser = await authRepository.findCurrentUserById(decoded.userId);
             }
@@ -43,7 +43,7 @@ class AuthService {
             if (!currentUser) {
                 return { status: 401, success: false, message: "User not found" };
             }
-
+            
             return {
                 status: 201,
                 message: `Authorized ${decoded.role}`,
@@ -57,40 +57,42 @@ class AuthService {
         }
     };
 
-    async adminLogin(username, password) {
+    async login(username, password, role) {
         try {
             if (!username || !password) {
                 return { status: 401, success: false, message: "All fields are required" };
             }
 
-            const admin = await authRepository.findAdminByUserName(username);
+            let currentUser;
+            if (role === "admin") {
+                currentUser = await authRepository.findAdminByUserName(username);
+            } else {
+                currentUser = await authRepository.findUserByUsername(username);
+            }
 
-            if (!admin) {
+            if (!currentUser) {
                 return { status: 401, success: false, message: "Invalid credentials" };
             }
 
-            const isMatch = await bcrypt.compare(password, admin.password);
+            const isMatch = await bcrypt.compare(password, currentUser.password);
 
             if (isMatch) {
                 // Generate JWT Token
                 const token = jwt.sign(
-                    { adminId: admin._id, role: "admin" },
+                    { userId: currentUser._id, role },
                     process.env.JWT_SECRET_KEY,
                     { expiresIn: TOKEN_EXPIRATION_DURATION }
                 );
 
-                // Create a admin object without the password field
-                const adminDataToSend = {
-                    _id: admin._id,
-                    username: admin.username,
-                };
+                // Omitting passowrd from the "currentUser" object
+                const userDataWithoutPassword = { ...currentUser._doc, password: undefined };
 
                 return {
                     status: 201,
                     message: "Logged in successfully",
                     data: {
                         token,
-                        currentUser: adminDataToSend,
+                        currentUser: userDataWithoutPassword,
                     }
                 };
             } else {
@@ -135,13 +137,6 @@ class AuthService {
                 username, email, phone, hashPassword
             );
 
-            // Generate JWT Token
-            const token = jwt.sign(
-                { userId: user._id, role: "user" },
-                process.env.JWT_SECRET_KEY,
-                { expiresIn: TOKEN_EXPIRATION_DURATION }
-            );
-
             // Send verification email
             await generateAndSendOtp(email);
 
@@ -149,66 +144,11 @@ class AuthService {
                 status: 201,
                 message: "Registered user successfully",
                 data: {
-                    token,
                     currentUser: user
                 }
             };
         } catch (error) {
             return serverErrorHandler("An error occurred during user registration: ", error);
-        }
-    };
-
-    async userLogin(username, password) {
-        try {
-            if (!username || !password) {
-                return { status: 400, success: false, message: "All fields are required" };
-            }
-
-            const user = await authRepository.findUserByUsername(username);
-
-            if (!user) {
-                return { status: 401, success: false, message: "Invalid credentials" };
-            }
-
-            if (user.isBlocked) {
-                return { status: 401, success: false, message: "Your account has been blocked" };
-            }
-
-            const isMatch = await bcrypt.compare(password, user.password);
-
-            if (isMatch) {
-                // Generate JWT Token
-                const token = jwt.sign(
-                    { userId: user._id, role: "user" },
-                    process.env.JWT_SECRET_KEY,
-                    { expiresIn: TOKEN_EXPIRATION_DURATION }
-                );
-
-                // Create a user object without the password field
-                const userDataToSend = {
-                    _id: user._id,
-                    username: user.username,
-                    email: user.email,
-                    phone: user.phone,
-                    isJobSeeker: user.isJobSeeker,
-                    isBlocked: user.isBlocked,
-                    isVerified: user.isVerified,
-                    location: user.location,
-                };
-
-                return {
-                    status: 201,
-                    message: "Logged in successfully",
-                    data: {
-                        token,
-                        currentUser: userDataToSend,
-                    }
-                };
-            } else {
-                return { status: 401, message: "Invalid username or password" };
-            }
-        } catch (error) {
-            return serverErrorHandler("An error occurred during user login: ", error);
         }
     };
 

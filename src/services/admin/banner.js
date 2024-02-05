@@ -42,7 +42,6 @@ class BannerService {
 
     async addBanner(title, description, bannerImage) {
         try {
-            console.log(title, description, bannerImage);
             if (!title || !description || !bannerImage) {
                 return { status: 400, message: "All fields (title, description, Image) are required" };
             }
@@ -129,8 +128,8 @@ class BannerService {
             const id = data.draggedBannerId
             const prevOrder = data.prevOrder + 1;
             const newOrder = data.newOrder + 1;
-            const bannerToUpdate = await bannerRepository.changeBannerOrder(newOrder + 1, prevOrder + 1);
-            const draggedBanner = await bannerRepository.dragBanner(id, newOrder + 1);
+            await bannerRepository.changeBannerOrder(newOrder + 1, prevOrder + 1);
+            await bannerRepository.dragBanner(id, newOrder + 1);
 
             return {
                 status: 201,

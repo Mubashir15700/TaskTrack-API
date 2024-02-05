@@ -15,8 +15,8 @@ exports.getJob = catchAsync(async (req, res) => {
 });
 
 exports.getListedJobs = catchAsync(async (req, res) => {
-    const { id } = req.params;
-    const result = await jobService.getListedJobs(id);
+    const { id, page } = req.params;
+    const result = await jobService.getListedJobs(id, page);
     sendResponse(res, result);
 });
 

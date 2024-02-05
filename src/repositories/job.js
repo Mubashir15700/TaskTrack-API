@@ -57,9 +57,20 @@ class JobRepository {
         }
     };
 
-    async getListedJobs(id) {
+    async getListedJobsCount(id) {
         try {
-            return await Job.find({ userId: id });
+            return await Job.countDocuments({ userId: id });
+        } catch (error) {
+            console.log(error);
+            throw new Error("Error while finding listed jobs count");
+        }
+    };
+    
+    async getListedJobs(id, page, pageSize) {
+        try {
+            return await Job.find({ userId: id })
+                .skip((page - 1) * pageSize)
+                .limit(pageSize);
         } catch (error) {
             console.log(error);
             throw new Error("Error while finding listed jobs");

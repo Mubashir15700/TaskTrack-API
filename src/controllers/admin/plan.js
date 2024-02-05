@@ -34,10 +34,3 @@ exports.listUnlistPlan = catchAsync(async (req, res) => {
     const result = await planService.listUnlistPlan(id);
     sendResponse(res, result);
 });
-
-exports.getSubscriptions = catchAsync(async (req, res) => {
-    const itemsPerPage = parseInt(req.query.itemsPerPage) || 10;
-    const currentPage = parseInt(req.query.currentPage);
-    const result = await planService.getSubscriptions(itemsPerPage, currentPage);
-    sendResponse(res, result);
-});

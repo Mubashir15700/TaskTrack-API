@@ -9,4 +9,4 @@ const setCookie = (res, cookieName, token, options = {}) => {
     res.cookie(cookieName, token, mergedOptions);
 };
 
-module.exports = { setCookie };
+module.exports = setCookie;

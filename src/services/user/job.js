@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const jobRepository = require("../../repositories/job");
-const planRepository = require("../../repositories/plan");
+const subscriptionRepository = require("../../repositories/subscription");
 const serverErrorHandler = require("../../utils/errorHandling/serverErrorHandler");
 
 class JobService {
@@ -20,15 +20,21 @@ class JobService {
         }
     };
 
-    async getListedJobs(id) {
+    async getListedJobs(id, page) {
         try {
-            const jobs = await jobRepository.getListedJobs(id);
+            const pageSize = 10;
+
+            const jobs = await jobRepository.getListedJobs(id, page, pageSize);
+
+            const totalListedJobs = await jobRepository.getListedJobsCount(id);
+            const totalPages = Math.ceil(totalListedJobs / pageSize);
 
             return {
                 status: 201,
                 message: "get listed jobs success",
                 data: {
-                    jobs
+                    jobs,
+                    totalPages
                 }
             };
         } catch (error) {
@@ -136,9 +142,8 @@ class JobService {
 
     async getRemainingPosts(userId) {
         try {
-            const postedJobsCount = await planRepository.postedJobsCount(userId);
-            const totalPosts = await planRepository.totalJobPostsCount(userId);
-
+            const postedJobsCount = await subscriptionRepository.postedJobsCount(userId);
+            const totalPosts = await subscriptionRepository.totalJobPostsCount(userId);
             return {
                 status: 201,
                 message: "get remaining post's count success",
@@ -165,7 +170,7 @@ class JobService {
             });
 
             if (postResult) {
-                await planRepository.updateJobPostsCount(userId);
+                await subscriptionRepository.updateJobPostsCount(userId);
 
                 return {
                     status: 201,

@@ -3,6 +3,7 @@ const notificationController = require("../controllers/notification");
 const userController = require("../controllers/admin/user");
 const bannerController = require("../controllers/admin/banner");
 const planController = require("../controllers/admin/plan");
+const subscriptionController = require("../controllers/admin/subscription");
 const hasToken = require("../middlewares/auth/hasToken");
 const imageUpload = require("../middlewares/imageUpload");
 
@@ -19,7 +20,9 @@ router.get("/plan/:id", hasToken.adminHasToken, planController.getPlan);
 router.post("/add-plan", hasToken.adminHasToken, planController.addPlan);
 router.put("/edit-plan/:id", hasToken.adminHasToken, planController.editPlan);
 router.patch("/plan-action/:id", hasToken.adminHasToken, planController.listUnlistPlan);
-router.get("/subscriptions", hasToken.adminHasToken, planController.getSubscriptions);
+
+// subscription
+router.get("/subscriptions", hasToken.adminHasToken, subscriptionController.getSubscriptions);
 
 // laborer request 
 router.get("/requests", hasToken.adminHasToken, userController.getRequests);

@@ -5,6 +5,7 @@ const profileController = require("../controllers/user/profile");
 const laborerController = require("../controllers/user/laborer");
 const jobController = require("../controllers/user/job");
 const planController = require("../controllers/user/plan");
+const subscriptionController = require("../controllers/user/subscription");
 const checkUserStatus = require("../middlewares/auth/checkUserStatus");
 const hasToken = require("../middlewares/auth/hasToken");
 const imageUpload = require("../middlewares/imageUpload");
@@ -50,6 +51,8 @@ router.put(
 // laborer actions
 router.get("/laborers", checkUserStatus, laborerController.getLaborers);
 router.get("/laborer/:id", checkUserStatus, laborerController.getLaborer);
+
+// laborer request
 router.post("/send-request", checkUserStatus, hasToken.userHasToken, laborerController.sendRequest);
 router.get("/prev-request/:id", checkUserStatus, hasToken.userHasToken, laborerController.getPrevRequest);
 router.put("/update-request", checkUserStatus, hasToken.userHasToken, laborerController.updateRequest);
@@ -62,7 +65,7 @@ router.post("/apply-job", checkUserStatus, hasToken.userHasToken, jobController.
 router.post("/cancel-job-application", checkUserStatus, hasToken.userHasToken, jobController.cancelJobApplication);
 router.get("/remainig-posts", checkUserStatus, hasToken.userHasToken, jobController.getRemainingPosts);
 router.post("/post-job", checkUserStatus, hasToken.userHasToken, jobController.postJob);
-router.get("/listed-jobs/:id", checkUserStatus, hasToken.userHasToken, jobController.getListedJobs);
+router.get("/listed-jobs/:id/:page", checkUserStatus, hasToken.userHasToken, jobController.getListedJobs);
 router.get("/listed-job/:id", checkUserStatus, hasToken.userHasToken, jobController.getListedJob);
 router.put("/edit-listed-job", checkUserStatus, hasToken.userHasToken, jobController.editListedJob);
 router.delete("/delete-listed-job/:id", checkUserStatus, hasToken.userHasToken, jobController.deleteListedJob);
@@ -92,9 +95,11 @@ router.patch(
 
 // plans
 router.get("/plans", checkUserStatus, hasToken.userHasToken, planController.getPlans);
-router.post("/create-subscription", planController.createSubscription);
-router.post("/save-subscription-result", planController.saveSubscriptionResult);
-router.get("/active-plan", planController.getActivePlan);
-router.post("/cancel-active-plan", planController.cancelActivePlan);
+
+// subscriptions
+router.post("/create-subscription", subscriptionController.createSubscription);
+router.post("/save-subscription-result", subscriptionController.saveSubscriptionResult);
+router.get("/active-plan", subscriptionController.getActivePlan);
+router.post("/cancel-active-plan", subscriptionController.cancelActivePlan);
 
 module.exports = router;
