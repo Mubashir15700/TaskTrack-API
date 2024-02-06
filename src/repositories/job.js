@@ -1,16 +1,32 @@
-const mongoose = require("mongoose");
 const { ObjectId } = require("mongoose").Types;
 const Job = require("../models/jobPost");
 
 class JobRepository {
-    async getJobs(currentUserId, searchWith = null) {
+    async getJobsCount(id) {
         try {
-            const pipeline = [
-                currentUserId !== "undefined" && {
+            const query = id !== "undefined" ?
+                { userId: { $ne: new ObjectId(id) } } :
+                {};
+            return await Job.countDocuments(query);
+        } catch (error) {
+            console.log(error);
+            throw new Error("Error while finding listed jobs count");
+        }
+    };
+
+    async getJobs(currentUserId, searchWith = null, page = null, pageSize = null) {
+        try {
+            const pipeline = [];
+
+            if (currentUserId !== "undefined") {
+                pipeline.push({
                     $match: {
-                        userId: { $ne: new mongoose.Types.ObjectId(currentUserId) },
-                    },
-                },
+                        userId: { $ne: new ObjectId(currentUserId) }
+                    }
+                });
+            }
+
+            pipeline.push(
                 {
                     $lookup: {
                         from: "users",
@@ -41,13 +57,29 @@ class JobRepository {
                         },
                     },
                 },
-            ];
+            );
+
+            if (page && pageSize) {
+                pipeline.push(
+                    {
+                        $skip: (page - 1) * pageSize
+                    },
+                    {
+                        $limit: pageSize
+                    }
+                );
+            }
 
             if (searchWith) {
-                pipeline[0].$match.$or = [
-                    { title: { $regex: searchWith, $options: "i" } },
-                    { description: { $regex: searchWith, $options: "i" } },
-                ];
+                // Create a new $match stage for search condition
+                pipeline.push({
+                    $match: {
+                        $or: [
+                            { title: { $regex: searchWith, $options: "i" } },
+                            { description: { $regex: searchWith, $options: "i" } },
+                        ],
+                    },
+                });
             }
 
             return await Job.aggregate(pipeline);
@@ -57,6 +89,7 @@ class JobRepository {
         }
     };
 
+
     async getListedJobsCount(id) {
         try {
             return await Job.countDocuments({ userId: id });
@@ -65,7 +98,7 @@ class JobRepository {
             throw new Error("Error while finding listed jobs count");
         }
     };
-    
+
     async getListedJobs(id, page, pageSize) {
         try {
             return await Job.find({ userId: id })
@@ -83,7 +116,7 @@ class JobRepository {
                 path: "fields.applicants.userId",
                 model: "user",
                 select: "username profile",
-            });;
+            });
 
             if (!jobDocument) {
                 throw new Error("Job not found");
@@ -140,7 +173,7 @@ class JobRepository {
             const job = await Job.aggregate([
                 {
                     $match: {
-                        _id: new mongoose.Types.ObjectId(id),
+                        _id: new ObjectId(id),
                     },
                 },
                 {
@@ -210,7 +243,22 @@ class JobRepository {
         }
     };
 
-    async getWorksHistory(id) {
+    async getWorksDoneCount(id) {
+        try {
+            return await Job.countDocuments({
+                "fields.applicants": {
+                    $elemMatch: {
+                        userId: id
+                    }
+                }
+            });
+        } catch (error) {
+            console.log(error);
+            throw new Error("Error while finding listed jobs count");
+        }
+    };
+
+    async getWorksHistory(id, page, pageSize) {
         try {
             return await Job.find({
                 "fields.applicants": {
@@ -218,7 +266,9 @@ class JobRepository {
                         userId: id
                     }
                 }
-            });
+            })
+                .skip((page - 1) * pageSize)
+                .limit(pageSize);;
         } catch (error) {
             console.log(error);
             throw new Error(`Error while deleting the job: ${error.message}`);

@@ -49,7 +49,7 @@ router.put(
 );
 
 // laborer actions
-router.get("/laborers", checkUserStatus, laborerController.getLaborers);
+router.get("/laborers/:id/:page", checkUserStatus, laborerController.getLaborers);
 router.get("/laborer/:id", checkUserStatus, laborerController.getLaborer);
 
 // laborer request
@@ -59,7 +59,7 @@ router.put("/update-request", checkUserStatus, hasToken.userHasToken, laborerCon
 router.patch("/cancel-request", checkUserStatus, hasToken.userHasToken, laborerController.cancelRequest);
 
 // job actions
-router.get("/jobs", checkUserStatus, jobController.getJobs);
+router.get("/jobs/:id/:page", checkUserStatus, jobController.getJobs);
 router.get("/job/:id", checkUserStatus, jobController.getJob);
 router.post("/apply-job", checkUserStatus, hasToken.userHasToken, jobController.applyJob);
 router.post("/cancel-job-application", checkUserStatus, hasToken.userHasToken, jobController.cancelJobApplication);
@@ -71,7 +71,7 @@ router.put("/edit-listed-job", checkUserStatus, hasToken.userHasToken, jobContro
 router.delete("/delete-listed-job/:id", checkUserStatus, hasToken.userHasToken, jobController.deleteListedJob);
 router.get("/applicants/:jobId/:field", checkUserStatus, hasToken.userHasToken, jobController.getApplicants);
 router.patch("/applicant-action", checkUserStatus, hasToken.userHasToken, jobController.takeApplicantAction);
-router.get("/works-history/:id", checkUserStatus, hasToken.userHasToken, jobController.getWorksHistory);
+router.get("/works-history/:id/:page", checkUserStatus, hasToken.userHasToken, jobController.getWorksHistory);
 
 // notifications
 router.get(

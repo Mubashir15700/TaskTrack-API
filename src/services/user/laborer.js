@@ -3,15 +3,20 @@ const profileRepository = require("../../repositories/profile");
 const serverErrorHandler = require("../../utils/errorHandling/serverErrorHandler");
 
 class LaborerService {
-    async getLaborers(userId) {
+    async getLaborers(userId, page) {
         try {
-            const laborers = await laborerRepository.getLaborers(userId);
+            const pageSize = 10;
+
+            const laborers = await laborerRepository.getLaborers(userId, null, page, pageSize);
+            const totalLaborers = await laborerRepository.getLaborersCount(userId);
+            const totalPages = Math.ceil(totalLaborers / pageSize);
 
             return {
                 status: 201,
                 message: "get laborers success",
                 data: {
-                    laborers
+                    laborers,
+                    totalPages
                 }
             };
         } catch (error) {

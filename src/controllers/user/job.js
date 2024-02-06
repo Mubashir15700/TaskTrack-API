@@ -3,8 +3,8 @@ const catchAsync = require("../../utils/errorHandling/catchAsync");
 const sendResponse = require("../../utils/responseStructure");
 
 exports.getJobs = catchAsync(async (req, res) => {
-    const { currentUserId } = req.query;
-    const result = await jobService.getJobs(currentUserId);
+    const { id, page } = req.params;
+    const result = await jobService.getJobs(id, page);
     sendResponse(res, result);
 });
 
@@ -51,8 +51,8 @@ exports.deleteListedJob = catchAsync(async (req, res) => {
 });
 
 exports.getWorksHistory = catchAsync(async (req, res) => {
-    const { id } = req.params;
-    const result = await jobService.getWorksHistory(id);
+    const { id, page } = req.params;
+    const result = await jobService.getWorksHistory(id, page);
     sendResponse(res, result);
 });
 

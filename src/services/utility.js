@@ -5,14 +5,14 @@ const bannerRepository = require("../repositories/banner");
 const planRepository = require("../repositories/plan");
 const serverErrorHandler = require("../utils/errorHandling/serverErrorHandler");
 
-class AdminService {
+class UtilityService {
     async search(currentUserId, searchWith, searchOn) {
         try {
             let searchResults;
-            if (searchOn === "employers") {
-                searchResults = await userRepository.searchEmployers(searchWith);
+            if (searchOn === "users") {
+                searchResults = await userRepository.searchUsers(searchWith);
             } else if (searchOn === "laborers") {
-                searchResults = await laborerRepository.searchLaborers(searchWith);
+                searchResults = await laborerRepository.getLaborers(currentUserId, searchWith);
             } else if (searchOn === "plans") {
                 searchResults = await planRepository.searchPlans(searchWith);
             } else if (searchOn === "jobs") {
@@ -20,7 +20,7 @@ class AdminService {
             } else {
                 searchResults = await bannerRepository.searchBanners(searchWith);
             }
-            console.log(searchResults);
+            
             return {
                 status: 201,
                 message: "Search success",
@@ -34,4 +34,4 @@ class AdminService {
     };
 };
 
-module.exports = new AdminService();
+module.exports = new UtilityService();

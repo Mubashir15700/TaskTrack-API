@@ -4,15 +4,21 @@ const subscriptionRepository = require("../../repositories/subscription");
 const serverErrorHandler = require("../../utils/errorHandling/serverErrorHandler");
 
 class JobService {
-    async getJobs(currentUserId) {
+    async getJobs(currentUserId, page) {
         try {
-            const jobs = await jobRepository.getJobs(currentUserId);
+            const pageSize = 10;
+
+            const jobs = await jobRepository.getJobs(currentUserId, null, page, pageSize);
+
+            const totalJobs = await jobRepository.getJobsCount(currentUserId);
+            const totalPages = Math.ceil(totalJobs / pageSize);
 
             return {
                 status: 201,
                 message: "get jobs success",
                 data: {
-                    jobs
+                    jobs,
+                    totalPages
                 }
             };
         } catch (error) {
@@ -124,15 +130,21 @@ class JobService {
         }
     };
 
-    async getWorksHistory(id) {
+    async getWorksHistory(id, page) {
         try {
-            const works = await jobRepository.getWorksHistory(id);
+            const pageSize = 10;
+
+            const works = await jobRepository.getWorksHistory(id, page, pageSize);
+
+            const totalWorksDone = await jobRepository.getWorksDoneCount(id);
+            const totalPages = Math.ceil(totalWorksDone / pageSize);
 
             return {
                 status: 201,
                 message: "get works history success",
                 data: {
-                    works
+                    works,
+                    totalPages
                 }
             };
         } catch (error) {

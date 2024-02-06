@@ -1,7 +1,7 @@
 const notificationRepository = require("../repositories/notification");
 
 async function saveNotification(message, redirectTo, to, from) {
-    if (!from || !message || !redirectTo) {
+    if (!message || !redirectTo || !to) {
         throw new Error("Missing required parameters for saving notification");
     }
 

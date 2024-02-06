@@ -46,19 +46,18 @@ class UserRepository {
     };
 
     // searching
-    async searchEmployers(searchWith) {
+    async searchUsers(searchWith) {
         try {
             const searchResults = await User.find({
                 $or: [
                     { username: { $regex: searchWith, $options: "i" } },
                     { email: { $regex: searchWith, $options: "i" } },
                 ],
-                isJobSeeker: false,
             });
             return searchResults;
         } catch (error) {
             console.error(error);
-            throw new Error("Error while searching employers");
+            throw new Error("Error while searching users");
         }
     };
 
