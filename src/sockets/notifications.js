@@ -27,8 +27,9 @@ function handleRequestSubmit(io, socket, connectedUsers, findUserByRole) {
             await saveNotification(
                 message,
                 "/admin/laborer-requests",
-                data,
                 "admin",
+                data,
+                
             );
 
             if (adminUser) {

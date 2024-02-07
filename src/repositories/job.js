@@ -114,7 +114,7 @@ class JobRepository {
         try {
             const jobDocument = await Job.findById(jobId).populate({
                 path: "fields.applicants.userId",
-                model: "user",
+                model: "User",
                 select: "username profile",
             });
 

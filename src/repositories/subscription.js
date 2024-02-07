@@ -80,7 +80,7 @@ class SubscriptionRepository {
 
     async getActivePlan(subscriptionId) {
         try {
-            return await Subscription.findById(subscriptionId).populate("planId")
+            return await Subscription.findById(subscriptionId).populate("planId");
         } catch (error) {
             console.log(error);
             throw new Error("Error while fetching active plan");

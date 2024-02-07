@@ -96,6 +96,15 @@ class PlanRepository {
             throw new Error("Error while editing plan");
         }
     };
+
+    async getActivePlans() {
+        try {
+            return await Plan.find({ isActive: true });
+        } catch (error) {
+            console.log(error);
+            throw new Error("Error while fetching plans");
+        }
+    };
 };
 
 module.exports = new PlanRepository();

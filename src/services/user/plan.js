@@ -4,10 +4,10 @@ const serverErrorHandler = require("../../utils/errorHandling/serverErrorHandler
 class PlanService {
     async getPlans() {
         try {
-            const plans = await planRepository.getPlans();
+            const plans = await planRepository.getActivePlans();
 
             if (!plans.length) {
-                return { status: 400, message: "No plans found" };
+                return { status: 400, message: "No available plans found" };
             }
 
             return {
