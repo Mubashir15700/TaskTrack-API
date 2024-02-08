@@ -12,7 +12,7 @@ const router = express.Router();
 // user-related actions
 router.get("/users", hasToken.adminHasToken, userController.getUsers);
 router.get("/user/:id", hasToken.adminHasToken, userController.getUser);
-router.patch("/user-action/:id", hasToken.adminHasToken, userController.blockUnblockUser);
+router.post("/user-action", hasToken.adminHasToken, userController.blockUnblockUser);
 
 // plan-related actions
 router.get("/plans", hasToken.adminHasToken, planController.getPlans);
@@ -27,7 +27,7 @@ router.get("/subscriptions", hasToken.adminHasToken, subscriptionController.getS
 // laborer request 
 router.get("/requests", hasToken.adminHasToken, userController.getRequests);
 router.get("/request/:id", hasToken.adminHasToken, userController.getRequest);
-router.patch("/request-action/:id", hasToken.adminHasToken, userController.approveRejectAction);
+router.post("/request-action", hasToken.adminHasToken, userController.approveRejectAction);
 
 // banner-related actions
 router.get("/banners", hasToken.adminHasToken, bannerController.getBanners);

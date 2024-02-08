@@ -27,9 +27,12 @@ const NotificationSchema = new mongoose.Schema({
         default: false
     },
     redirectTo: {
-        type: String,  
+        type: String,
     },
 });
+
+// Define TTL index on the timestamp field with expiry time of 1 week (604,800 seconds)
+NotificationSchema.index({ timestamp: 1 }, { expireAfterSeconds: 604800 });
 
 const Notification = mongoose.model("Notification", NotificationSchema);
 

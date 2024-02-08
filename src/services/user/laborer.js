@@ -1,5 +1,6 @@
 const laborerRepository = require("../../repositories/laborer");
 const profileRepository = require("../../repositories/profile");
+const reasonRepository = require("../../repositories/reason");
 const serverErrorHandler = require("../../utils/errorHandling/serverErrorHandler");
 
 class LaborerService {
@@ -67,14 +68,25 @@ class LaborerService {
 
     async getPrevRequest(userId) {
         try {
+            console.log(userId);
             const request = await laborerRepository.getPrevRequest(userId);
+            
+            const data = {
+                request
+            };
+
+            if (request.status === "rejected") {
+                const rejectReason = await reasonRepository.findBlockReason(
+                    userId, "admin_reject_laborer_request"
+                );
+                console.log(rejectReason);
+                data.reason = rejectReason.reason;
+            }
 
             return {
                 status: 201,
                 message: "found prev become laborer request",
-                data: {
-                    request
-                }
+                data
             };
         } catch (error) {
             return serverErrorHandler("An error occurred during fetching previous requests: ", error);

@@ -16,8 +16,8 @@ exports.getUser = catchAsync(async (req, res) => {
 });
 
 exports.blockUnblockUser = catchAsync(async (req, res) => {
-    const { id } = req.params;
-    const result = await userService.blockUnblockUser(id);
+    const { userId, reason } = req.body;
+    const result = await userService.blockUnblockUser(userId, reason);
     sendResponse(res, result);
 });
 
@@ -35,8 +35,7 @@ exports.getRequest = catchAsync(async (req, res) => {
 });
 
 exports.approveRejectAction = catchAsync(async (req, res) => {
-    const { id } = req.params;
-    const { action } = req.body;
-    const result = await userService.approveRejectAction(id, action);
+    const { requestId, userId, type, reason } = req.body;
+    const result = await userService.approveRejectAction(requestId, userId, type, reason);
     sendResponse(res, result);
 });

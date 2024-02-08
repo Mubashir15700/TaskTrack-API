@@ -36,9 +36,11 @@ class UserRepository {
             const user = await User.findById(id);
             const blockState = user.isBlocked;
 
-            return await User.findByIdAndUpdate(id, {
+            const updatedUser = await User.findByIdAndUpdate(id, {
                 $set: { isBlocked: !blockState },
-            });
+            }, { new: true }); // To return the updated document
+
+            return { userId: updatedUser._id, blockStatus: updatedUser.isBlocked };
         } catch (error) {
             console.error(error);
             throw new Error("Error while updating user");

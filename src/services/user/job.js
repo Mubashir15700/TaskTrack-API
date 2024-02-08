@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const jobRepository = require("../../repositories/job");
+const reasonRepository = require("../../repositories/reason");
 const subscriptionRepository = require("../../repositories/subscription");
 const serverErrorHandler = require("../../utils/errorHandling/serverErrorHandler");
 
@@ -64,9 +65,21 @@ class JobService {
         }
     };
 
-    async takeApplicantAction(job, fieldName, laborerId, action) {
+    async takeApplicantAction(job, fieldName, laborerId, action, reason) {
         try {
-            await jobRepository.takeApplicantAction(job, fieldName, laborerId, action);
+            const result = await jobRepository.takeApplicantAction(job, fieldName, laborerId, action);
+
+            if (!result) {
+                return { status: 400, message: "No application found" };
+            }
+
+            if (action === "rejected") {
+                await reasonRepository.saveBlockReason(
+                    laborerId, "employer_reject_laborer", reason
+                );
+            } else {
+                await reasonRepository.removeBlockReason(laborerId, "employer_reject_laborer");
+            }
 
             return {
                 status: 201,

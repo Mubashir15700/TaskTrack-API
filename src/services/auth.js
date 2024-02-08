@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const authRepository = require("../repositories/auth");
+const reasonRepository = require("../repositories/reason");
 const generateAndSendOtp = require("../utils/email/generateAndSendOtp");
 const serverErrorHandler = require("../utils/errorHandling/serverErrorHandler");
 
@@ -43,7 +44,7 @@ class AuthService {
             if (!currentUser) {
                 return { status: 401, success: false, message: "User not found" };
             }
-            
+
             return {
                 status: 201,
                 message: `Authorized ${decoded.role}`,
@@ -68,6 +69,18 @@ class AuthService {
                 currentUser = await authRepository.findAdminByUserName(username);
             } else {
                 currentUser = await authRepository.findUserByUsername(username);
+
+                if (currentUser.isBlocked) {
+                    const blockReason = await reasonRepository.findBlockReason(
+                        currentUser._id, "admin_block_user"
+                    );
+
+                    return {
+                        status: 403,
+                        success: false,
+                        message: `Your account has been blocked. ${blockReason.reason}`
+                    };
+                }
             }
 
             if (!currentUser) {

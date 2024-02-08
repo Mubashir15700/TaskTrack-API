@@ -34,7 +34,6 @@ exports.updateRequest = catchAsync(async (req, res) => {
 
 exports.cancelRequest = catchAsync(async (req, res) => {
     const { currentUserId } = req.body;
-    const { formData } = req.body;
     const result = await laborerService.cancelRequest(currentUserId);
     sendResponse(res, result);
 });

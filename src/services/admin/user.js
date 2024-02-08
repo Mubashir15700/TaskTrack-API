@@ -1,5 +1,6 @@
 const userRepository = require("../../repositories/user");
 const laborerRepository = require("../../repositories/laborer");
+const reasonRepository = require("../../repositories/reason");
 const serverErrorHandler = require("../../utils/errorHandling/serverErrorHandler");
 
 class UserService {
@@ -49,12 +50,18 @@ class UserService {
         }
     };
 
-    async blockUnblockUser(id) {
+    async blockUnblockUser(id, reason) {
         try {
-            const updatedUser = await userRepository.blockUnblockUser(id);
+            const updatedBlockStatus = await userRepository.blockUnblockUser(id);
 
-            if (!updatedUser) {
+            if (!updatedBlockStatus) {
                 return { status: 400, message: "No user found" };
+            }
+
+            if (updatedBlockStatus.blockStatus) {
+                await reasonRepository.saveBlockReason(id, "admin_block_user", reason);
+            } else {
+                await reasonRepository.removeBlockReason(id, "admin_block_user");
             }
 
             return {
@@ -112,7 +119,7 @@ class UserService {
         }
     };
 
-    async approveRejectAction(id, type) {
+    async approveRejectAction(requestId, userId, type, reason) {
         try {
             let newStatus;
             if (type === "approve") {
@@ -121,7 +128,7 @@ class UserService {
                 newStatus = "rejected";
             }
 
-            const updatedRequest = await laborerRepository.approveRejectAction(id, newStatus);
+            const updatedRequest = await laborerRepository.approveRejectAction(requestId, newStatus);
 
             if (!updatedRequest) {
                 return { status: 400, message: "No request found" };
@@ -145,6 +152,18 @@ class UserService {
                 if (!updatedUser) {
                     return { status: 500, message: "Failed to update user" };
                 }
+
+                await reasonRepository.removeBlockReason(
+                    userId,
+                    "admin_reject_laborer_request",
+                );
+
+            } else {
+                await reasonRepository.saveBlockReason(
+                    userId,
+                    "admin_reject_laborer_request",
+                    reason
+                );
             }
 
             return {

@@ -33,8 +33,10 @@ exports.getApplicants = catchAsync(async (req, res) => {
 });
 
 exports.takeApplicantAction = catchAsync(async (req, res) => {
-    const { jobId, fieldName, laborerId, actionTook } = req.body;
-    const result = await jobService.takeApplicantAction(jobId, fieldName, laborerId, actionTook);
+    const { jobId, fieldName, laborerId, actionTook, reason } = req.body;
+    const result = await jobService.takeApplicantAction(
+        jobId, fieldName, laborerId, actionTook, reason
+    );
     sendResponse(res, result);
 });
 
