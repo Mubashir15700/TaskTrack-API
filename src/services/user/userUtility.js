@@ -8,7 +8,7 @@ class UserUtilityService {
             const banners = await bannerRepository.getBanners();
 
             return {
-                status: 201,
+                status: 200,
                 message: "get banners success",
                 data: {
                     banners
@@ -24,7 +24,7 @@ class UserUtilityService {
             await chatRepository.updateMessagesReadStatus(ids);
 
             return {
-                status: 201,
+                status: 200,
                 message: "mark messages read success",
             };
         } catch (error) {

@@ -4,7 +4,8 @@ const sendResponse = require("../../utils/responseStructure");
 
 exports.getLaborers = catchAsync(async (req, res) => {
     const { id, page } = req.params;
-    const result = await laborerService.getLaborers(id, page);
+    const { lat, lon } = req.query;
+    const result = await laborerService.getLaborers(id, page, lat, lon);
     sendResponse(res, result);
 });
 

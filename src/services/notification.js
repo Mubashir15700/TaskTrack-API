@@ -7,7 +7,7 @@ class NotificationService {
         try {
             const count = await notificationRepository.getAdminNotificationsCount();
             return {
-                status: 201,
+                status: 200,
                 message: "Get new admin notifications count success",
                 data: {
                     count
@@ -18,14 +18,23 @@ class NotificationService {
         }
     };
 
-    async getAdminNotifications() {
+    async getAdminNotifications(page) {
         try {
-            const notifications = await notificationRepository.getAdminNotifications();
+            const pageSize = 10;
+
+            const notifications = await notificationRepository.getAdminNotifications(
+                page, pageSize
+            );
+
+            const totalNotifications = await notificationRepository.getAdminNotificationsCount();
+            const totalPages = Math.ceil(totalNotifications / pageSize);
+
             return {
-                status: 201,
+                status: 200,
                 message: "Get admin notifications success",
                 data: {
-                    notifications
+                    notifications,
+                    totalPages
                 }
             };
         } catch (error) {
@@ -33,20 +42,20 @@ class NotificationService {
         }
     };
 
-    async getAdminNotification(id) {
-        try {
-            const notification = await notificationRepository.getAdminNotification(id);
-            return {
-                status: 201,
-                message: "Get admin notification success",
-                data: {
-                    notification
-                }
-            };
-        } catch (error) {
-            return serverErrorHandler("An error occurred during fetching admin notification: ", error);
-        }
-    };
+    // async getAdminNotification(id) {
+    //     try {
+    //         const notification = await notificationRepository.getAdminNotification(id);
+    //         return {
+    //             status: 200,
+    //             message: "Get admin notification success",
+    //             data: {
+    //                 notification
+    //             }
+    //         };
+    //     } catch (error) {
+    //         return serverErrorHandler("An error occurred during fetching admin notification: ", error);
+    //     }
+    // };
 
     async markAdminNotificationRead(id) {
         try {
@@ -54,7 +63,7 @@ class NotificationService {
 
             if (result) {
                 return {
-                    status: 201,
+                    status: 200,
                     message: "Mark notification read success",
                 };
             }
@@ -69,7 +78,7 @@ class NotificationService {
             const count = await notificationRepository.getUserNotificationsCount(userId);
 
             return {
-                status: 201,
+                status: 200,
                 message: "Get new user notifications count success",
                 data: {
                     count
@@ -80,14 +89,23 @@ class NotificationService {
         }
     };
 
-    async getUserNotifications(userId) {
+    async getUserNotifications(userId, page) {
         try {
-            const notifications = await notificationRepository.getUserNotifications(userId);
+            const pageSize = 10;
+
+            const notifications = await notificationRepository.getUserNotifications(
+                userId, page, pageSize
+            );
+
+            const totalNotifications = await notificationRepository.getAllUserNotificationsCount(userId);
+            const totalPages = Math.ceil(totalNotifications / pageSize);
+
             return {
-                status: 201,
+                status: 200,
                 message: "Get user notifications success",
                 data: {
-                    notifications
+                    notifications,
+                    totalPages
                 }
             };
         } catch (error) {
@@ -95,21 +113,21 @@ class NotificationService {
         }
     };
 
-    async getUserNotification(id) {
-        try {
-            const notification = await notificationRepository.getUserNotification(id);
+    // async getUserNotification(id) {
+    //     try {
+    //         const notification = await notificationRepository.getUserNotification(id);
 
-            return {
-                status: 201,
-                message: "Get user notification success",
-                data: {
-                    notification
-                }
-            };
-        } catch (error) {
-            return serverErrorHandler("An error occurred during fetching user notification: ", error);
-        }
-    };
+    //         return {
+    //             status: 200,
+    //             message: "Get user notification success",
+    //             data: {
+    //                 notification
+    //             }
+    //         };
+    //     } catch (error) {
+    //         return serverErrorHandler("An error occurred during fetching user notification: ", error);
+    //     }
+    // };
 
     async markUserNotificationRead(id) {
         try {
@@ -117,7 +135,7 @@ class NotificationService {
 
             if (result) {
                 return {
-                    status: 201,
+                    status: 200,
                     message: "Mark notification read success",
                 };
             }

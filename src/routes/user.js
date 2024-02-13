@@ -81,7 +81,7 @@ router.get(
     notificationController.getUserNotificationsCount
 );
 router.get(
-    "/notifications/:id",
+    "/notifications/:id/:page",
     checkUserStatus,
     hasToken.userHasToken,
     notificationController.getUserNotifications

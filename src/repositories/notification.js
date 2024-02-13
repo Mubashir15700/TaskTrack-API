@@ -21,12 +21,23 @@ class NotificationRepository {
         }
     };
 
-    async getAdminNotifications() {
+    async getAllAdminNotificationsCount() {
+        try {
+            return await Notification.countDocuments({ to: "admin" });
+        } catch (error) {
+            console.error(error);
+            throw new Error("Error while fetching all admin notifications count");
+        }
+    };
+
+    async getAdminNotifications(page, pageSize) {
         try {
             await Notification.updateMany({ to: "admin" }, { $set: { isViewed: true } });
-            const updatedNotifications = await Notification.find(
-                { to: "admin" }
-            ).populate("from").sort({ timestamp: -1 });
+            const updatedNotifications = await Notification.find({ to: "admin" })
+                .populate("from")
+                .sort({ timestamp: -1 })
+                .skip((page - 1) * pageSize)
+                .limit(pageSize);
             return updatedNotifications;
         } catch (error) {
             console.error(error);
@@ -57,12 +68,23 @@ class NotificationRepository {
         }
     };
 
-    async getUserNotifications(userId) {
+    async getAllUserNotificationsCount(userId) {
+        try {
+            return await Notification.countDocuments({ to: userId });
+        } catch (error) {
+            console.error(error);
+            throw new Error("Error while fetching all user notifications count");
+        }
+    };
+
+    async getUserNotifications(userId, page, pageSize) {
         try {
             await Notification.updateMany({ to: userId }, { $set: { isViewed: true } });
-            const updatedNotifications = await Notification.find(
-                { to: userId }
-            ).populate("from").sort({ timestamp: -1 });
+            const updatedNotifications = await Notification.find({ to: userId })
+                .populate("from")
+                .sort({ timestamp: -1 })
+                .skip((page - 1) * pageSize)
+                .limit(pageSize);
             return updatedNotifications;
         } catch (error) {
             console.error(error);

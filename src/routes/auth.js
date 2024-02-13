@@ -10,6 +10,7 @@ router.get("/admin/checkauth", authController.checkAuth);
 router.post("/login", authController.login);
 
 // user
+router.post("/login-with-google", authController.loginWithGoogle);
 router.get("/checkauth", checkUserStatus, authController.checkAuth);
 router.post("/sign-up", authController.userSignUp);
 router.post("/verify-otp", checkUserStatus, authController.verifyOtp);

@@ -1,9 +1,13 @@
+const { OAuth2Client } = require("google-auth-library");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const authRepository = require("../repositories/auth");
 const reasonRepository = require("../repositories/reason");
 const generateAndSendOtp = require("../utils/email/generateAndSendOtp");
 const serverErrorHandler = require("../utils/errorHandling/serverErrorHandler");
+
+// Initialize a new OAuth2Client instance with your Google OAuth client ID
+const googleClient = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 const TOKEN_EXPIRATION_DURATION = "7d";
 
@@ -13,7 +17,7 @@ async function sendVerificationEmailAndOtp(email, successMessage, errorMessage) 
         await generateAndSendOtp(email);
 
         return {
-            status: 201,
+            status: 200,
             message: successMessage
         };
     } catch (error) {
@@ -46,7 +50,7 @@ class AuthService {
             }
 
             return {
-                status: 201,
+                status: 200,
                 message: `Authorized ${decoded.role}`,
                 data: {
                     currentUser,
@@ -58,7 +62,7 @@ class AuthService {
         }
     };
 
-    async login(username, password, role) {
+    async login(username, password = null, role) {
         try {
             if (!username || !password) {
                 return { status: 401, success: false, message: "All fields are required" };
@@ -101,7 +105,7 @@ class AuthService {
                 const userDataWithoutPassword = { ...currentUser._doc, password: undefined };
 
                 return {
-                    status: 201,
+                    status: 200,
                     message: "Logged in successfully",
                     data: {
                         token,
@@ -112,7 +116,52 @@ class AuthService {
                 return { status: 400, success: false, message: "Invalid username or password" };
             }
         } catch (error) {
-            return serverErrorHandler("An error occurred during admin login: ", error);
+            return serverErrorHandler("An error occurred during login: ", error);
+        }
+    };
+
+    async loginWithGoogle(accessToken) {
+        try {
+            if (!accessToken) {
+                return { status: 401, success: false, message: "No access token found" };
+            }
+
+            // Verify the Google access token
+            const ticket = await googleClient.verifyIdToken({
+                idToken: accessToken,
+                audience: process.env.GOOGLE_CLIENT_ID,
+            });
+
+            const payload = ticket.getPayload();
+            const userEmail = payload.email;
+
+            // Check if the user exists in the database based on their email
+            const existingUser = await authRepository.findUserByEmail(userEmail);
+
+            if (existingUser) {
+                // Generate JWT Token
+                const token = jwt.sign(
+                    { userId: existingUser._id, role: "user" },
+                    process.env.JWT_SECRET_KEY,
+                    { expiresIn: TOKEN_EXPIRATION_DURATION }
+                );
+
+                // Omitting passowrd from the "currentUser" object
+                const userDataWithoutPassword = { ...existingUser._doc, password: undefined };
+
+                return {
+                    status: 200,
+                    message: "Logged in successfully",
+                    data: {
+                        token,
+                        currentUser: userDataWithoutPassword,
+                    }
+                };
+            } else {
+                return { status: 401, success: false, message: "User not found" };
+            }
+        } catch (error) {
+            return serverErrorHandler("An error occurred during login with google: ", error);
         }
     };
 
@@ -154,7 +203,7 @@ class AuthService {
             await generateAndSendOtp(email);
 
             return {
-                status: 201,
+                status: 200,
                 message: "Registered user successfully",
                 data: {
                     currentUser: user
@@ -182,7 +231,7 @@ class AuthService {
                     );
 
                     return {
-                        status: 201,
+                        status: 200,
                         message: "You are verified",
                         data: {
                             token,
@@ -224,7 +273,7 @@ class AuthService {
             await authRepository.updateUserPassword(userId, hashPassword);
 
             return {
-                status: 201,
+                status: 200,
                 message: "Password reset successfully"
             };
         } catch (error) {

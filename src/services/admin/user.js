@@ -18,7 +18,7 @@ class UserService {
             const totalPages = Math.ceil(totalUsers / itemsPerPage);
 
             return {
-                status: 201,
+                status: 200,
                 message: "Found users",
                 data: {
                     users,
@@ -39,7 +39,7 @@ class UserService {
             }
 
             return {
-                status: 201,
+                status: 200,
                 message: `Found user`,
                 data: {
                     user,
@@ -65,7 +65,7 @@ class UserService {
             }
 
             return {
-                status: 201,
+                status: 200,
                 message: "Updated user"
             };
         } catch (error) {
@@ -87,7 +87,7 @@ class UserService {
             const totalPages = Math.ceil(totalRequests / itemsPerPage);
 
             return {
-                status: 201,
+                status: 200,
                 message: "Found requests",
                 data: {
                     requests,
@@ -108,7 +108,7 @@ class UserService {
             }
 
             return {
-                status: 201,
+                status: 200,
                 message: "Found request",
                 data: {
                     request
@@ -167,7 +167,7 @@ class UserService {
             }
 
             return {
-                status: 201,
+                status: 200,
                 message: "Updated request"
             };
         } catch (error) {

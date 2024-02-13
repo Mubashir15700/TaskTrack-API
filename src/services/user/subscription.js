@@ -82,7 +82,7 @@ class SubscriptionService {
             });
 
             return {
-                status: 201,
+                status: 200,
                 data: {
                     id: session.id
                 }
@@ -106,7 +106,7 @@ class SubscriptionService {
                 );
 
                 return {
-                    status: 201,
+                    status: 200,
                 };
             } else {
                 return { status: 400, message: "No plan found" };
@@ -125,7 +125,7 @@ class SubscriptionService {
             }
 
             return {
-                status: 201,
+                status: 200,
                 message: "Found active plan",
                 data: {
                     currentPlan
@@ -159,7 +159,7 @@ class SubscriptionService {
                 await userRepository.updateUserSubscription(userId);
 
                 console.log(`Subscription ${subscriptionId} has been canceled immediately.`);
-                return { status: 201, message: `Subscription ${subscriptionId} canceled immediately.` };
+                return { status: 200, message: `Subscription ${subscriptionId} canceled immediately.` };
             } else {
                 console.error(`Failed to cancel subscription ${subscriptionId} immediately.`);
                 return { status: 500, error: `Failed to cancel subscription ${subscriptionId} immediately.` };

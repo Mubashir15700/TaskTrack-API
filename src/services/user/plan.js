@@ -11,7 +11,7 @@ class PlanService {
             }
 
             return {
-                status: 201,
+                status: 200,
                 message: "Found plans",
                 data: {
                     plans
@@ -31,7 +31,7 @@ class PlanService {
             }
 
             return {
-                status: 201,
+                status: 200,
                 message: "Found plan",
                 data: {
                     plan

@@ -1,22 +1,44 @@
 const laborerRepository = require("../../repositories/laborer");
 const profileRepository = require("../../repositories/profile");
 const reasonRepository = require("../../repositories/reason");
+const calculateDistance = require("../../utils/calculateDistance");
 const serverErrorHandler = require("../../utils/errorHandling/serverErrorHandler");
 
 class LaborerService {
-    async getLaborers(userId, page) {
+    async getLaborers(userId, page, lat, lon) {
         try {
             const pageSize = 10;
 
             const laborers = await laborerRepository.getLaborers(userId, null, page, pageSize);
+
+            let laborersWithDistances;
+            if (lat && lon) {
+                // Calculate distances for each laborer
+                laborersWithDistances = laborers.map(laborer => {
+                    const laborerLat = laborer.location?.latitude;
+                    const laborerLon = laborer.location?.longitude;
+                    // Check if laborer location exists
+                    if (laborerLat !== undefined && laborerLon !== undefined) {
+                        const distance = calculateDistance(lat, lon, laborerLat, laborerLon);
+                        return { ...laborer, distance };
+                    } else {
+                        // Handle cases where laborer location is undefined
+                        return { ...laborer, distance: Infinity }; // Set distance to Infinity or any other value as desired
+                    }
+                });
+
+                // Sort laborers based on distance
+                laborersWithDistances.sort((a, b) => a.distance - b.distance);
+            }
+
             const totalLaborers = await laborerRepository.getLaborersCount(userId);
             const totalPages = Math.ceil(totalLaborers / pageSize);
 
             return {
-                status: 201,
+                status: 200,
                 message: "get laborers success",
                 data: {
-                    laborers,
+                    laborers: (lat && lon) ? laborersWithDistances : laborers,
                     totalPages
                 }
             };
@@ -30,7 +52,7 @@ class LaborerService {
             const laborer = await laborerRepository.getLaborer(id);
 
             return {
-                status: 201,
+                status: 200,
                 message: "get laborer success",
                 data: {
                     laborer
@@ -58,7 +80,7 @@ class LaborerService {
             await laborerRepository.saveRequest(restOfData);
 
             return {
-                status: 201,
+                status: 200,
                 message: "send become laborer request success"
             };
         } catch (error) {
@@ -68,9 +90,8 @@ class LaborerService {
 
     async getPrevRequest(userId) {
         try {
-            console.log(userId);
             const request = await laborerRepository.getPrevRequest(userId);
-            
+
             const data = {
                 request
             };
@@ -79,12 +100,11 @@ class LaborerService {
                 const rejectReason = await reasonRepository.findBlockReason(
                     userId, "admin_reject_laborer_request"
                 );
-                console.log(rejectReason);
                 data.reason = rejectReason.reason;
             }
 
             return {
-                status: 201,
+                status: 200,
                 message: "found prev become laborer request",
                 data
             };
@@ -109,7 +129,7 @@ class LaborerService {
             const updatedRequest = await laborerRepository.updateRequest({ ...restOfData, status: "pending" });
 
             const response = {
-                status: 201,
+                status: 200,
                 message: "send become laborer request success",
                 data: {
                     updatedRequest,
@@ -132,7 +152,7 @@ class LaborerService {
             const cancelResult = await laborerRepository.cancelRequest(userId);
 
             return {
-                status: 201,
+                status: 200,
                 message: "cancel become laborer request success",
                 data: {
                     cancelResult,

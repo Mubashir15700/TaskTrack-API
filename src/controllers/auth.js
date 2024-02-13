@@ -15,9 +15,26 @@ exports.checkAuth = catchAsync(async (req, res) => {
 exports.login = catchAsync(async (req, res) => {
     const { username, password, role } = req.body;
     const result = await authService.login(username, password, role);
-    if (result.status === 201) {
+    if (result.status === 200) {
         const cookieName = role === "admin" ? "adminJwt" : "userJwt";
         setCookie(res, cookieName, result.data.token);
+    }
+    const { status, message } = result;
+    const dataToSend = {
+        status,
+        message,
+        data: {
+            currentUser: result.data?.currentUser
+        }
+    };
+    sendResponse(res, dataToSend);
+});
+
+exports.loginWithGoogle = catchAsync(async (req, res) => {
+    const { token } = req.body;
+    const result = await authService.loginWithGoogle(token);
+    if (result.status === 200) {
+        setCookie(res, "userJwt", result.data.token);
     }
     const { status, message } = result;
     const dataToSend = {
@@ -52,7 +69,7 @@ exports.verifyOtp = catchAsync(async (req, res) => {
     const otp = Number(req.body.otp);
     const email = req.body.email;
     const result = await authService.verifyOtp(otp, email);
-    if (result.status === 201) {
+    if (result.status === 200) {
         setCookie(res, "userJwt", result.data.token);
     }
     const { status, message } = result;
@@ -91,7 +108,7 @@ exports.logout = catchAsync(async (req, res) => {
         setCookie(res, "userJwt", "", { maxAge: 0 });
     }
     res.status(200).json({
-        status: "success",
+        status: 200,
         message: "Logged out successfully"
     });
 });

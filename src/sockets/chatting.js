@@ -4,7 +4,6 @@ const notificationRepository = require("../repositories/notification");
 function handleGetChatHistory(io, socket) {
     socket.on("get_chat_history", async (data) => {
 
-        console.log(data);
         const conversation = await chatRepository.findConversation(data.senderId, data.receiverId);
 
         if (conversation) {

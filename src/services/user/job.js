@@ -2,23 +2,46 @@ const mongoose = require("mongoose");
 const jobRepository = require("../../repositories/job");
 const reasonRepository = require("../../repositories/reason");
 const subscriptionRepository = require("../../repositories/subscription");
+const calculateDistance = require("../../utils/calculateDistance");
 const serverErrorHandler = require("../../utils/errorHandling/serverErrorHandler");
 
 class JobService {
-    async getJobs(currentUserId, page) {
+    async getJobs(currentUserId, page, lat, lon) {
         try {
             const pageSize = 10;
 
+            // Get jobs with pagination
             const jobs = await jobRepository.getJobs(currentUserId, null, page, pageSize);
 
+            let jobsWithDistances;
+            if (lat && lon) {
+                // Calculate distances for each job
+                jobsWithDistances = jobs.map(job => {
+                    const jobLat = job.location?.latitude;
+                    const jobLon = job.location?.longitude;
+                    // Check if job location exists
+                    if (jobLat !== undefined && jobLon !== undefined) {
+                        const distance = calculateDistance(lat, lon, jobLat, jobLon);
+                        return { ...job, distance };
+                    } else {
+                        // Handle cases where job location is undefined
+                        return { ...job, distance: Infinity }; // Set distance to Infinity or any other value as desired
+                    }
+                });
+
+                // Sort jobs based on distance
+                jobsWithDistances.sort((a, b) => a.distance - b.distance);
+            }
+
+            // Get total number of jobs
             const totalJobs = await jobRepository.getJobsCount(currentUserId);
             const totalPages = Math.ceil(totalJobs / pageSize);
 
             return {
-                status: 201,
+                status: 200,
                 message: "get jobs success",
                 data: {
-                    jobs,
+                    jobs: (lat && lon) ? jobsWithDistances : jobs,
                     totalPages
                 }
             };
@@ -37,7 +60,7 @@ class JobService {
             const totalPages = Math.ceil(totalListedJobs / pageSize);
 
             return {
-                status: 201,
+                status: 200,
                 message: "get listed jobs success",
                 data: {
                     jobs,
@@ -54,7 +77,7 @@ class JobService {
             const applicants = await jobRepository.getApplicants(jobId, field);
 
             return {
-                status: 201,
+                status: 200,
                 message: "get listed job applicants success",
                 data: {
                     applicants
@@ -82,7 +105,7 @@ class JobService {
             }
 
             return {
-                status: 201,
+                status: 200,
                 message: `${action} applicant successfully`,
             };
         } catch (error) {
@@ -95,7 +118,7 @@ class JobService {
             const job = await jobRepository.getJob(id);
 
             return {
-                status: 201,
+                status: 200,
                 message: "get job success",
                 data: {
                     job
@@ -119,7 +142,7 @@ class JobService {
 
             if (editResult) {
                 return {
-                    status: 201,
+                    status: 200,
                     message: "Edited job successfully",
                 };
             }
@@ -134,7 +157,7 @@ class JobService {
 
             if (deleteResult) {
                 return {
-                    status: 201,
+                    status: 200,
                     message: "Deleted job successfully",
                 };
             }
@@ -153,7 +176,7 @@ class JobService {
             const totalPages = Math.ceil(totalWorksDone / pageSize);
 
             return {
-                status: 201,
+                status: 200,
                 message: "get works history success",
                 data: {
                     works,
@@ -170,7 +193,7 @@ class JobService {
             const postedJobsCount = await subscriptionRepository.postedJobsCount(userId);
             const totalPosts = await subscriptionRepository.totalJobPostsCount(userId);
             return {
-                status: 201,
+                status: 200,
                 message: "get remaining post's count success",
                 data: {
                     remainingPosts: totalPosts - postedJobsCount
@@ -198,7 +221,7 @@ class JobService {
                 await subscriptionRepository.updateJobPostsCount(userId);
 
                 return {
-                    status: 201,
+                    status: 200,
                     message: "Posted new job successfully",
                 };
             }
@@ -228,7 +251,7 @@ class JobService {
             await jobPostToApply.save();
 
             return {
-                status: 201,
+                status: 200,
                 message: "Applied for the job successfully",
             };
         } catch (error) {
@@ -259,7 +282,7 @@ class JobService {
             await jobPost.save();
 
             return {
-                status: 201,
+                status: 200,
                 message: "Cancelled job application successfully",
             };
         } catch (error) {

@@ -77,6 +77,15 @@ class AuthRepository {
         }
     };
 
+    async findUserByEmail(email) {
+        try {
+            return await User.findOne({ email });
+        } catch (error) {
+            console.error(error);
+            throw new Error("Error while fetching user");
+        }
+    };
+
     // verify otp
     async findUserByOtp(otp) {
         try {

@@ -4,7 +4,8 @@ const sendResponse = require("../../utils/responseStructure");
 
 exports.getJobs = catchAsync(async (req, res) => {
     const { id, page } = req.params;
-    const result = await jobService.getJobs(id, page);
+    const { lat, lon } = req.query;
+    const result = await jobService.getJobs(id, page, lat, lon);
     sendResponse(res, result);
 });
 

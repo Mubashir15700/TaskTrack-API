@@ -28,7 +28,7 @@ class PlanService {
             const totalPages = Math.ceil(totalPlans / itemsPerPage);
 
             return {
-                status: 201,
+                status: 200,
                 message: "Found plans",
                 data: {
                     plans,
@@ -59,7 +59,7 @@ class PlanService {
             await planRepository.addPlan(name, description, type, numberOfJobPosts, amount);
 
             return {
-                status: 201,
+                status: 200,
                 message: "Plan added success",
             };
         } catch (error) {
@@ -76,7 +76,7 @@ class PlanService {
             }
 
             return {
-                status: 201,
+                status: 200,
                 message: "Updated plan"
             };
         } catch (error) {
@@ -93,7 +93,7 @@ class PlanService {
             }
 
             return {
-                status: 201,
+                status: 200,
                 message: "Found plan",
                 data: {
                     plan
@@ -123,7 +123,7 @@ class PlanService {
             await planRepository.editPlan(id, name, description, type, numberOfJobPosts, amount);
 
             return {
-                status: 201,
+                status: 200,
                 message: "Plan edited success",
             };
         } catch (error) {

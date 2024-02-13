@@ -9,7 +9,8 @@ exports.getAdminNotificationsCount = catchAsync(async (req, res) => {
 });
 
 exports.getAdminNotifications = catchAsync(async (req, res) => {
-    const result = await notificationService.getAdminNotifications();
+    const { page } = req.params;
+    const result = await notificationService.getAdminNotifications(page);
     sendResponse(res, result);
 });
 
@@ -33,8 +34,8 @@ exports.getUserNotificationsCount = catchAsync(async (req, res) => {
 });
 
 exports.getUserNotifications = catchAsync(async (req, res) => {
-    const { id } = req.params;
-    const result = await notificationService.getUserNotifications(id);
+    const { id, page } = req.params;
+    const result = await notificationService.getUserNotifications(id, page);
     sendResponse(res, result);
 });
 

@@ -15,7 +15,7 @@ class PlanService {
             const totalPages = Math.ceil(totalSubscriptions / itemsPerPage);
 
             return {
-                status: 201,
+                status: 200,
                 message: "Found subscriptions",
                 data: {
                     subscriptions,

@@ -22,7 +22,7 @@ class UtilityService {
             }
             
             return {
-                status: 201,
+                status: 200,
                 message: "Search success",
                 data: {
                     result: searchResults

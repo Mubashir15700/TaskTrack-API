@@ -49,7 +49,7 @@ router.patch("/update-banner-order", hasToken.adminHasToken, bannerController.up
 
 // notifications
 router.get("/notifications-count", hasToken.adminHasToken, notificationController.getAdminNotificationsCount);
-router.get("/notifications", hasToken.adminHasToken, notificationController.getAdminNotifications);
+router.get("/notifications/:page", hasToken.adminHasToken, notificationController.getAdminNotifications);
 router.patch(
     "/notification/mark-read/:id",
     hasToken.adminHasToken,

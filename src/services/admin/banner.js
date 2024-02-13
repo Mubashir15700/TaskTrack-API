@@ -28,7 +28,7 @@ class BannerService {
             const totalPages = Math.ceil(totalBanners / itemsPerPage);
 
             return {
-                status: 201,
+                status: 200,
                 message: "Found banners",
                 data: {
                     banners,
@@ -55,7 +55,7 @@ class BannerService {
             await bannerRepository.addBanner(title, description, bannerImage);
 
             return {
-                status: 201,
+                status: 200,
                 message: "Banner added success",
             };
         } catch (error) {
@@ -72,7 +72,7 @@ class BannerService {
             }
 
             return {
-                status: 201,
+                status: 200,
                 message: "Updated banner"
             };
         } catch (error) {
@@ -89,7 +89,7 @@ class BannerService {
             }
 
             return {
-                status: 201,
+                status: 200,
                 message: "Found banner",
                 data: {
                     banner
@@ -115,7 +115,7 @@ class BannerService {
             await bannerRepository.editBanner(id, title, description, bannerImage);
 
             return {
-                status: 201,
+                status: 200,
                 message: "Banner edited success",
             };
         } catch (error) {
@@ -132,7 +132,7 @@ class BannerService {
             await bannerRepository.dragBanner(id, newOrder + 1);
 
             return {
-                status: 201,
+                status: 200,
                 message: "Updated banner order"
             };
         } catch (error) {

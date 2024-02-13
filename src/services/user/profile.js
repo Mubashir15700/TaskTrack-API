@@ -14,7 +14,7 @@ class ProfileService {
             const updateResult = await profileRepository.updateUser(id, updateObject);
 
             return {
-                status: 201,
+                status: 200,
                 message: "Update success",
                 data: {
                     updatedUser: updateResult
@@ -38,7 +38,7 @@ class ProfileService {
             }
 
             return {
-                status: 201,
+                status: 200,
                 message: "Deletd profile image successfully",
                 data: {
                     updatedUser: updateResult
@@ -72,7 +72,7 @@ class ProfileService {
             };
 
             return {
-                status: 201,
+                status: 200,
                 message: "Fetched user location successfully",
                 data: {
                     fullAddress
@@ -89,7 +89,7 @@ class ProfileService {
 
             if (deleteResult) {
                 return {
-                    status: 201,
+                    status: 200,
                     message: "Deleted user location successfully",
                     data: {
                         deleteResult
@@ -106,7 +106,7 @@ class ProfileService {
             await profileRepository.updateLaborerProfile(data);
 
             return {
-                status: 201,
+                status: 200,
                 message: "Update success",
             };
         } catch (error) {
