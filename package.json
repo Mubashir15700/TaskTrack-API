@@ -28,5 +28,8 @@
     "stripe": "^14.14.0",
     "uuid": "^9.0.1",
     "winston": "^3.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
   }
 }
