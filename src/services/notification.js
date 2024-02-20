@@ -14,7 +14,7 @@ class NotificationService {
                 }
             };
         } catch (error) {
-            return serverErrorHandler("An error occurred during fetching admin notifications count: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 
@@ -38,24 +38,9 @@ class NotificationService {
                 }
             };
         } catch (error) {
-            return serverErrorHandler("An error occurred during fetching admin notifications: ", error);
+            return serverErrorHandler(error.message);
         }
     };
-
-    // async getAdminNotification(id) {
-    //     try {
-    //         const notification = await notificationRepository.getAdminNotification(id);
-    //         return {
-    //             status: 200,
-    //             message: "Get admin notification success",
-    //             data: {
-    //                 notification
-    //             }
-    //         };
-    //     } catch (error) {
-    //         return serverErrorHandler("An error occurred during fetching admin notification: ", error);
-    //     }
-    // };
 
     async markAdminNotificationRead(id) {
         try {
@@ -68,7 +53,7 @@ class NotificationService {
                 };
             }
         } catch (error) {
-            return serverErrorHandler("An error occurred during marking admin notification read: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 
@@ -85,7 +70,7 @@ class NotificationService {
                 }
             };
         } catch (error) {
-            return serverErrorHandler("An error occurred during fetching user notifications count: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 
@@ -109,25 +94,9 @@ class NotificationService {
                 }
             };
         } catch (error) {
-            return serverErrorHandler("An error occurred during fetching user notifications: ", error);
+            return serverErrorHandler(error.message);
         }
     };
-
-    // async getUserNotification(id) {
-    //     try {
-    //         const notification = await notificationRepository.getUserNotification(id);
-
-    //         return {
-    //             status: 200,
-    //             message: "Get user notification success",
-    //             data: {
-    //                 notification
-    //             }
-    //         };
-    //     } catch (error) {
-    //         return serverErrorHandler("An error occurred during fetching user notification: ", error);
-    //     }
-    // };
 
     async markUserNotificationRead(id) {
         try {
@@ -140,7 +109,7 @@ class NotificationService {
                 };
             }
         } catch (error) {
-            return serverErrorHandler("An error occurred during marking user notification read: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 

@@ -1,8 +1,7 @@
-function serverErrorHandler(message, error) {
-    console.error(message, error);
+function serverErrorHandler(message) {
     return {
-        status: 500,
-        message: `Internal Server Error: ${error ? error.message : ""}`
+        status: message ? 400 : 500,
+        message: message ?? "Internal Server Error"
     };
 };
 

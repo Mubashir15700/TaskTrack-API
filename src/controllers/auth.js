@@ -49,19 +49,9 @@ exports.loginWithGoogle = catchAsync(async (req, res) => {
 
 exports.userSignUp = catchAsync(async (req, res) => {
     const { username, email, phone, password, confirmPassword } = req.body;
-    // Validate required fields
-    const requiredFields = [
-        "username", "email", "phone", "password", "confirmPassword"
-    ];
-    if (!requiredFields.every(field => req.body[field])) {
-        return res.status(400).json({
-            status: "success",
-            message: "All fields are required"
-        });
-    }
-    const result = await authService.signUp(
+    const result = await authService.signUp({
         username, email, phone, password, confirmPassword
-    );
+    });
     sendResponse(res, result);
 });
 

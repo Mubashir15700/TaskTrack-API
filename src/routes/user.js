@@ -9,6 +9,7 @@ const subscriptionController = require("../controllers/user/subscription");
 const checkUserStatus = require("../middlewares/auth/checkUserStatus");
 const hasToken = require("../middlewares/auth/hasToken");
 const imageUpload = require("../middlewares/imageUpload");
+const s3Upload = require("../middlewares/s3Upload");
 
 const router = express.Router();
 
@@ -21,6 +22,7 @@ router.put(
     checkUserStatus,
     hasToken.userHasToken,
     imageUpload("profile").single("profile"),
+    // s3Upload,
     profileController.updateProfile
 );
 router.delete(
@@ -63,7 +65,7 @@ router.get("/jobs/:id/:page", checkUserStatus, jobController.getJobs);
 router.get("/job/:id", checkUserStatus, jobController.getJob);
 router.post("/apply-job", checkUserStatus, hasToken.userHasToken, jobController.applyJob);
 router.post("/cancel-job-application", checkUserStatus, hasToken.userHasToken, jobController.cancelJobApplication);
-router.get("/remainig-posts", checkUserStatus, hasToken.userHasToken, jobController.getRemainingPosts);
+router.get("/remaining-posts", checkUserStatus, hasToken.userHasToken, jobController.getRemainingPosts);
 router.post("/post-job", checkUserStatus, hasToken.userHasToken, jobController.postJob);
 router.get("/listed-jobs/:id/:page", checkUserStatus, hasToken.userHasToken, jobController.getListedJobs);
 router.get("/listed-job/:id", checkUserStatus, hasToken.userHasToken, jobController.getListedJob);

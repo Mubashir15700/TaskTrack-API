@@ -21,7 +21,7 @@ class ProfileService {
                 }
             };
         } catch (error) {
-            return serverErrorHandler("An error occurred during updating profile: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 
@@ -45,7 +45,7 @@ class ProfileService {
                 }
             };
         } catch (error) {
-            return serverErrorHandler("An error occurred during deleting profile image: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 
@@ -79,7 +79,7 @@ class ProfileService {
                 }
             };
         } catch (error) {
-            return serverErrorHandler("An error occurred during fetching current location: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 
@@ -97,7 +97,7 @@ class ProfileService {
                 };
             }
         } catch (error) {
-            return serverErrorHandler("An error occurred during deleting current location: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 
@@ -110,7 +110,7 @@ class ProfileService {
                 message: "Update success",
             };
         } catch (error) {
-            return serverErrorHandler("An error occurred during updating laborer profile: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 

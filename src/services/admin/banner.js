@@ -19,11 +19,6 @@ class BannerService {
         try {
             const startIndex = (currentPage) * itemsPerPage;
             const banners = await bannerRepository.getAdminBanners(startIndex, itemsPerPage);
-
-            if (!banners.length) {
-                return { status: 400, message: "No banners found" };
-            }
-
             const totalBanners = await bannerRepository.findbannersCount();
             const totalPages = Math.ceil(totalBanners / itemsPerPage);
 
@@ -36,20 +31,20 @@ class BannerService {
                 }
             };
         } catch (error) {
-            return serverErrorHandler("An error occurred during fetching banners: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 
     async addBanner(title, description, bannerImage) {
         try {
             if (!title || !description || !bannerImage) {
-                return { status: 400, message: "All fields (title, description, Image) are required" };
+               throw new Error("All fields (title, description, Image) are required");
             }
 
             // Check if a banner with the same title already exists
             const bannerExists = await this.checkBannerExistsByTitle(title);
             if (bannerExists) {
-                return { status: 400, message: "A banner with the same title already exists" };
+               throw new Error("A banner with the same title already exists");
             }
 
             await bannerRepository.addBanner(title, description, bannerImage);
@@ -59,7 +54,7 @@ class BannerService {
                 message: "Banner added success",
             };
         } catch (error) {
-            return serverErrorHandler("An error occurred during adding new banner: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 
@@ -68,7 +63,7 @@ class BannerService {
             const updatedBanner = await bannerRepository.listUnlistBanner(id);
 
             if (!updatedBanner) {
-                return { status: 400, message: "No banner found" };
+               throw new Error("No banner found");
             }
 
             return {
@@ -76,7 +71,7 @@ class BannerService {
                 message: "Updated banner"
             };
         } catch (error) {
-            return serverErrorHandler("An error occurred during taking banner action: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 
@@ -85,7 +80,7 @@ class BannerService {
             const banner = await bannerRepository.getBanner(id);
 
             if (!banner) {
-                return { status: 400, message: "No banner found" };
+               throw new Error("No banner found");
             }
 
             return {
@@ -96,20 +91,20 @@ class BannerService {
                 }
             };
         } catch (error) {
-            return serverErrorHandler("An error occurred during fetching banner: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 
     async editBanner(id, title, description, bannerImage) {
         try {
             if (!title || !description || !bannerImage) {
-                return { status: 400, message: "All fields (title, description, Image) are required" };
+               throw new Error("All fields (title, description, Image) are required");
             }
 
             // Check if a banner with the same title already exists
             const bannerExists = await this.checkBannerExistsByTitle(title, id);
             if (bannerExists) {
-                return { status: 400, message: "A banner with the same title already exists" };
+               throw new Error("A banner with the same title already exists");
             }
 
             await bannerRepository.editBanner(id, title, description, bannerImage);
@@ -119,7 +114,7 @@ class BannerService {
                 message: "Banner edited success",
             };
         } catch (error) {
-            return serverErrorHandler("An error occurred during editing banner: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 
@@ -136,7 +131,7 @@ class BannerService {
                 message: "Updated banner order"
             };
         } catch (error) {
-            return serverErrorHandler("An error occurred during updating banner order: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 };

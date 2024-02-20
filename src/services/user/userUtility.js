@@ -28,7 +28,7 @@ class UserUtilityService {
                 message: "mark messages read success",
             };
         } catch (error) {
-            return serverErrorHandler("An error occurred during marking messages read: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 };

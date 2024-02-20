@@ -88,7 +88,7 @@ class SubscriptionService {
                 }
             };
         } catch (error) {
-            return serverErrorHandler("An error occurred during creating subscription: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 
@@ -109,10 +109,10 @@ class SubscriptionService {
                     status: 200,
                 };
             } else {
-                return { status: 400, message: "No plan found" };
+                throw new Error("No plan found");
             }
         } catch (error) {
-            return serverErrorHandler("Error fetching payment details: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 
@@ -121,7 +121,7 @@ class SubscriptionService {
             const currentPlan = await subscriptionRepository.getActivePlan(subscriptionId);
 
             if (!currentPlan) {
-                return { status: 400, message: "No active plan found" };
+                throw new Error("No active plan found");
             }
 
             return {
@@ -132,7 +132,7 @@ class SubscriptionService {
                 }
             };
         } catch (error) {
-            return serverErrorHandler("Error fetching active plan: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 
@@ -162,10 +162,10 @@ class SubscriptionService {
                 return { status: 200, message: `Subscription ${subscriptionId} canceled immediately.` };
             } else {
                 console.error(`Failed to cancel subscription ${subscriptionId} immediately.`);
-                return { status: 500, error: `Failed to cancel subscription ${subscriptionId} immediately.` };
+                throw new Error(`Failed to cancel subscription ${subscriptionId} immediately.`);
             }
         } catch (error) {
-            return serverErrorHandler("Error while cancelling active plan: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 };

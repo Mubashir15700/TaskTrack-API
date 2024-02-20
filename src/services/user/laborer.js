@@ -43,7 +43,7 @@ class LaborerService {
                 }
             };
         } catch (error) {
-            return serverErrorHandler("An error occurred during fetching laborers: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 
@@ -59,7 +59,7 @@ class LaborerService {
                 }
             };
         } catch (error) {
-            return serverErrorHandler("An error occurred during fetching laborer: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 
@@ -84,7 +84,7 @@ class LaborerService {
                 message: "send become laborer request success"
             };
         } catch (error) {
-            return serverErrorHandler("An error occurred during sebding request: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 
@@ -109,7 +109,7 @@ class LaborerService {
                 data
             };
         } catch (error) {
-            return serverErrorHandler("An error occurred during fetching previous requests: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 
@@ -143,7 +143,7 @@ class LaborerService {
 
             return response;
         } catch (error) {
-            return serverErrorHandler("An error occurred during updating request: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 
@@ -159,7 +159,7 @@ class LaborerService {
                 }
             };
         } catch (error) {
-            return serverErrorHandler("An error occurred during cancelling request: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 };

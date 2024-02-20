@@ -19,11 +19,6 @@ class PlanService {
         try {
             const startIndex = (currentPage) * itemsPerPage;
             const plans = await planRepository.getPlans(startIndex, itemsPerPage);
-
-            if (!plans.length) {
-                return { status: 400, message: "No plans found" };
-            }
-
             const totalPlans = await planRepository.findPlansCount();
             const totalPages = Math.ceil(totalPlans / itemsPerPage);
 
@@ -36,24 +31,22 @@ class PlanService {
                 }
             };
         } catch (error) {
-            return serverErrorHandler("An error occurred during fetching plans: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 
     async addPlan(name, description, type, numberOfJobPosts, amount) {
         try {
             if (!name || !description || !type || !numberOfJobPosts || !amount) {
-                return {
-                    status: 400,
-                    message:
-                        "All fields (name, description, type, number of job posts, amount) are required"
-                };
+                throw new Error(
+                    "All fields (name, description, type, number of job posts, amount) are required"
+                );
             }
 
             // Check if a plan with the same name already exists
             const planExists = await this.checkPlanExistsByName(name);
             if (planExists) {
-                return { status: 400, message: "A plan with the same name already exists" };
+                throw new Error("A plan with the same name already exists");
             }
 
             await planRepository.addPlan(name, description, type, numberOfJobPosts, amount);
@@ -63,7 +56,7 @@ class PlanService {
                 message: "Plan added success",
             };
         } catch (error) {
-            return serverErrorHandler("An error occurred during adding new plan: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 
@@ -72,7 +65,7 @@ class PlanService {
             const updatedPlan = await planRepository.listUnlistPlan(id);
 
             if (!updatedPlan) {
-                return { status: 400, message: "No plan found" };
+                throw new Error("No plan found");
             }
 
             return {
@@ -80,7 +73,7 @@ class PlanService {
                 message: "Updated plan"
             };
         } catch (error) {
-            return serverErrorHandler("An error occurred during taking plan action: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 
@@ -89,7 +82,7 @@ class PlanService {
             const plan = await planRepository.getPlan(id);
 
             if (!plan) {
-                return { status: 400, message: "No plan found" };
+                throw new Error("No plan found");
             }
 
             return {
@@ -100,24 +93,22 @@ class PlanService {
                 }
             };
         } catch (error) {
-            return serverErrorHandler("An error occurred during fetching plan: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 
     async editPlan(id, name, description, type, numberOfJobPosts, amount) {
         try {
             if (!name || !description || !type || !numberOfJobPosts || !amount) {
-                return {
-                    status: 400,
-                    message:
-                        "All fields (name, description, type, number of job posts, amount) are required"
-                };
+                throw new Error(
+                    "All fields (name, description, type, number of job posts, amount) are required"
+                );
             }
 
             // Check if a plan with the same name already exists
             const planExists = await this.checkPlanExistsByName(name, id);
             if (planExists) {
-                return { status: 400, message: "A plan with the same name already exists" };
+                throw new Error("A plan with the same name already exists");
             }
 
             await planRepository.editPlan(id, name, description, type, numberOfJobPosts, amount);
@@ -127,7 +118,7 @@ class PlanService {
                 message: "Plan edited success",
             };
         } catch (error) {
-            return serverErrorHandler("An error occurred during editing plan: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 };

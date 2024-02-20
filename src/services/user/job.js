@@ -46,7 +46,7 @@ class JobService {
                 }
             };
         } catch (error) {
-            return serverErrorHandler("An error occurred during fetching jobs: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 
@@ -68,7 +68,7 @@ class JobService {
                 }
             };
         } catch (error) {
-            return serverErrorHandler("An error occurred during fetching listed jobs: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 
@@ -84,7 +84,7 @@ class JobService {
                 }
             };
         } catch (error) {
-            return serverErrorHandler("An error occurred during fetching applicants: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 
@@ -93,7 +93,7 @@ class JobService {
             const result = await jobRepository.takeApplicantAction(job, fieldName, laborerId, action);
 
             if (!result) {
-                return { status: 400, message: "No application found" };
+                throw new Error("No application found");
             }
 
             if (action === "rejected") {
@@ -109,7 +109,7 @@ class JobService {
                 message: `${action} applicant successfully`,
             };
         } catch (error) {
-            return serverErrorHandler("An error occurred during taking action: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 
@@ -125,7 +125,7 @@ class JobService {
                 }
             };
         } catch (error) {
-            return serverErrorHandler("An error occurred during fetching job: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 
@@ -133,7 +133,7 @@ class JobService {
         try {
             const { title, description, date, time, duration, location, status, fields } = jobDetails;
             if (!title || !description || !date || !time || !duration || !location || !status || !fields) {
-                return { status: 400, message: "All fields are required" };
+                throw new Error("All fields are required");
             }
 
             const editResult = await jobRepository.editJob({
@@ -147,7 +147,7 @@ class JobService {
                 };
             }
         } catch (error) {
-            return serverErrorHandler("An error occurred during editing listed job: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 
@@ -162,7 +162,7 @@ class JobService {
                 };
             }
         } catch (error) {
-            return serverErrorHandler("An error occurred during deleting listed job: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 
@@ -184,7 +184,7 @@ class JobService {
                 }
             };
         } catch (error) {
-            return serverErrorHandler("An error occurred during fetching work history: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 
@@ -200,9 +200,7 @@ class JobService {
                 }
             };
         } catch (error) {
-            return serverErrorHandler(
-                "An error occurred during fetching remainig job post's count: ", error
-            );
+            return serverErrorHandler(error.message);
         }
     };
 
@@ -210,7 +208,7 @@ class JobService {
         try {
             const { userId, title, description, date, time, duration, location, fields } = jobDetails;
             if (!title || !description || !date || !time || !duration || !location || !fields) {
-                return { status: 400, message: "All fields are required" };
+                throw new Error("All fields are required");
             }
 
             const postResult = await jobRepository.postJob({
@@ -226,20 +224,20 @@ class JobService {
                 };
             }
         } catch (error) {
-            return serverErrorHandler("An error occurred during posting job: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 
     async applyJob(jobId, laborerId, fieldName) {
         try {
             if (!jobId || !laborerId) {
-                return { status: 400, message: "Bad Request: Missing required parameters" };
+                throw new Error("Bad Request: Missing required parameters");
             }
 
             const jobPostToApply = await jobRepository.jobPostToApply(jobId);
 
             if (!jobPostToApply) {
-                return { status: 400, message: "Job not found" };
+                throw new Error("Job not found");
             }
 
             jobPostToApply.fields.forEach(field => {
@@ -255,20 +253,20 @@ class JobService {
                 message: "Applied for the job successfully",
             };
         } catch (error) {
-            return serverErrorHandler("An error occurred during applying for job: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 
     async cancelJobApplication(jobId, laborerId, fieldName) {
         try {
             if (!jobId || !laborerId) {
-                return { status: 400, message: "Bad Request: Missing required parameters" };
+                throw new Error("Bad Request: Missing required parameters");
             }
 
             const jobPost = await jobRepository.jobPostToApply(jobId);
 
             if (!jobPost) {
-                return { status: 400, message: "Job not found" };
+                throw new Error("Job not found");
             }
 
             const laborerObjectId = new mongoose.Types.ObjectId(laborerId);
@@ -286,7 +284,7 @@ class JobService {
                 message: "Cancelled job application successfully",
             };
         } catch (error) {
-            return serverErrorHandler("An error occurred during cancelling job application: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 };

@@ -21,7 +21,7 @@ async function sendVerificationEmailAndOtp(email, successMessage, errorMessage) 
             message: successMessage
         };
     } catch (error) {
-        return serverErrorHandler(errorMessage, error);
+        return serverErrorHandler(error.message);
     }
 };
 
@@ -33,7 +33,7 @@ class AuthService {
     async checkAuth(token, role) {
         try {
             if (!token) {
-                return { status: 401, success: false, message: `Unauthorized ${role}` };
+                throw new Error(`Unauthorized ${role}`);
             }
 
             const decoded = await this.decodeToken(token);
@@ -46,7 +46,7 @@ class AuthService {
             }
 
             if (!currentUser) {
-                return { status: 401, success: false, message: "User not found" };
+                throw new Error("User not found");
             }
 
             return {
@@ -58,14 +58,14 @@ class AuthService {
                 },
             };
         } catch (error) {
-            return serverErrorHandler("An error occurred during user authentication: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 
     async login(username, password = null, role) {
         try {
             if (!username || !password) {
-                return { status: 401, success: false, message: "All fields are required" };
+                throw new Error("All fields are required");
             }
 
             let currentUser;
@@ -88,7 +88,7 @@ class AuthService {
             }
 
             if (!currentUser) {
-                return { status: 401, success: false, message: "Invalid credentials" };
+                throw new Error("Invalid credentials");
             }
 
             const isMatch = await bcrypt.compare(password, currentUser.password);
@@ -113,17 +113,17 @@ class AuthService {
                     }
                 };
             } else {
-                return { status: 400, success: false, message: "Invalid username or password" };
+                throw new Error("Invalid username or password");
             }
         } catch (error) {
-            return serverErrorHandler("An error occurred during login: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 
     async loginWithGoogle(accessToken) {
         try {
             if (!accessToken) {
-                return { status: 401, success: false, message: "No access token found" };
+                throw new Error("No access token found");
             }
 
             // Verify the Google access token
@@ -158,37 +158,43 @@ class AuthService {
                     }
                 };
             } else {
-                return { status: 401, success: false, message: "User not found" };
+                throw new Error("User not found");
             }
         } catch (error) {
-            return serverErrorHandler("An error occurred during login with google: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 
-    async signUp(username, email, phone, password, confirmPassword) {
+    async signUp(data) {
         try {
+            // Validate required fields
+            const requiredFields = [
+                "username", "email", "phone", "password", "confirmPassword"
+            ];
+            if (!requiredFields.every(field => data[field])) {
+                throw new Error("All field are required");
+            }
+
+            const { username, email, phone, password, confirmPassword } = data;
+
             // Check if the username is already taken
             const existingUsername = await authRepository.checkExistingUsername(
                 username
             );
             if (existingUsername) {
-                return { status: 400, success: false, message: "This username is already taken" };
+                throw new Error("This username is already taken");
             }
 
             // Check if the email is already registered
             const existingEmail = await authRepository.checkExistingEmail(email);
             if (existingEmail) {
-                return { status: 400, success: false, message: "This email is already registered" };
+                throw new Error("This email is already registered");
             }
 
             // Check if password and confirm password match
             if (password !== confirmPassword) {
-                return {
-                    status: 400,
-                    success: false,
-                    message: "Password and confirm password don't match"
-                };
-            }
+                throw new Error("Password and confirm password don't match");
+            };
 
             // Hash the password
             const salt = await bcrypt.genSalt(10);
@@ -210,7 +216,7 @@ class AuthService {
                 }
             };
         } catch (error) {
-            return serverErrorHandler("An error occurred during user registration: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 
@@ -219,7 +225,7 @@ class AuthService {
             const user = await authRepository.findUserByOtp(otp);
 
             if (!user) {
-                return { status: 400, success: false, message: "Invalid" };
+                throw new Error("Invalid");
             } else {
                 const verifiedUser = await authRepository.findUserAndVerify(email);
                 if (verifiedUser && verifiedUser.isVerified) {
@@ -238,11 +244,11 @@ class AuthService {
                         }
                     };
                 } else {
-                    return { status: 400, success: false, message: "Invalid" };
+                    throw new Error("Invalid");
                 }
             };
         } catch (error) {
-            return serverErrorHandler("An error occurred during otp verification: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 
@@ -257,13 +263,13 @@ class AuthService {
     async resetPassword(userId, password, confirmPassword) {
         try {
             if (password !== confirmPassword) {
-                return { status: 400, success: false, message: "Passwords do not match" };
+                throw new Error("Passwords do not match");
             }
 
             const user = await authRepository.findUserById(userId);
 
             if (!user) {
-                return { status: 400, success: false, message: "User not found" };
+                throw new Error("User not found");
             }
 
             // Hash the password
@@ -277,7 +283,7 @@ class AuthService {
                 message: "Password reset successfully"
             };
         } catch (error) {
-            return serverErrorHandler("An error occurred during password resetting: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 };

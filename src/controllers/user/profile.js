@@ -3,13 +3,14 @@ const catchAsync = require("../../utils/errorHandling/catchAsync");
 const sendResponse = require("../../utils/responseStructure");
 
 exports.updateProfile = catchAsync(async (req, res) => {
-    const { id } = req.query;
-    const profileImage = req.file ? req.file.filename : null;
-    const updateObject = req.body;
-    const result = await profileService.updateProfile(
-        id, updateObject, profileImage
-    );
-    sendResponse(res, result);
+    console.log(req.file);
+    // const { id } = req.query;
+    // const profileImage = req.file ? req.file.filename : null;
+    // const updateObject = req.body;
+    // const result = await profileService.updateProfile(
+    //     id, updateObject, profileImage
+    // );
+    // sendResponse(res, result);
 });
 
 exports.deleteProfileImage = catchAsync(async (req, res) => {

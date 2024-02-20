@@ -29,7 +29,7 @@ class UtilityService {
                 }
             };
         } catch (error) {
-            return serverErrorHandler(`An error occurred during searching: ${searchOn}`, error);
+            return serverErrorHandler(error.message);
         }
     };
 };

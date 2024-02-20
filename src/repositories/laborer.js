@@ -228,6 +228,7 @@ class LaborerRepository {
 
     async getLaborer(id) {
         try {
+            console.log(id);
             const laborer = await Laborer.aggregate([
                 {
                     $match: { userId: new mongoose.Types.ObjectId(id) }
@@ -260,6 +261,8 @@ class LaborerRepository {
                     }
                 }
             ]);
+
+            console.log(laborer);
 
             return laborer[0];
         } catch (error) {

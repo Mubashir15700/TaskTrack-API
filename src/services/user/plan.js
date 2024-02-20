@@ -7,7 +7,7 @@ class PlanService {
             const plans = await planRepository.getActivePlans();
 
             if (!plans.length) {
-                return { status: 400, message: "No available plans found" };
+                throw new Error("No available plans found");
             }
 
             return {
@@ -18,7 +18,7 @@ class PlanService {
                 }
             };
         } catch (error) {
-            return serverErrorHandler("An error occurred during fetching plans: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 
@@ -27,7 +27,7 @@ class PlanService {
             const plan = await planRepository.getPlan(id);
 
             if (!plan) {
-                return { status: 400, message: "No plan found" };
+                throw new Error("No plan found");
             }
 
             return {
@@ -38,7 +38,7 @@ class PlanService {
                 }
             };
         } catch (error) {
-            return serverErrorHandler("An error occurred during fetching plan: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 };

@@ -7,13 +7,7 @@ class UserService {
     async getUsers(itemsPerPage, currentPage) {
         try {
             const startIndex = (currentPage) * itemsPerPage;
-
             const users = await userRepository.findUsersPaginated(startIndex, itemsPerPage);
-
-            if (!users.length) {
-                return { status: 400, message: "No users found" };
-            }
-
             const totalUsers = await userRepository.findUsersCount();
             const totalPages = Math.ceil(totalUsers / itemsPerPage);
 
@@ -26,7 +20,7 @@ class UserService {
                 }
             };
         } catch (error) {
-            return serverErrorHandler("An error occurred during fetching users: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 
@@ -35,7 +29,7 @@ class UserService {
             const user = await userRepository.findUserById(id);
 
             if (!user) {
-                return { status: 400, message: "No user found" };
+                throw new Error("No user found");
             }
 
             return {
@@ -46,7 +40,7 @@ class UserService {
                 }
             };
         } catch (error) {
-            return serverErrorHandler("An error occurred during fetching user: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 
@@ -55,7 +49,7 @@ class UserService {
             const updatedBlockStatus = await userRepository.blockUnblockUser(id);
 
             if (!updatedBlockStatus) {
-                return { status: 400, message: "No user found" };
+                throw new Error("No user found");
             }
 
             if (updatedBlockStatus.blockStatus) {
@@ -69,20 +63,14 @@ class UserService {
                 message: "Updated user"
             };
         } catch (error) {
-            return serverErrorHandler("An error occurred during taking user action: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 
     async getRequests(itemsPerPage, currentPage) {
         try {
             const startIndex = (currentPage) * itemsPerPage;
-
             const requests = await laborerRepository.getRequests(startIndex, itemsPerPage);
-
-            if (!requests.length) {
-                return { status: 400, message: "No requests found" };
-            }
-
             const totalRequests = await laborerRepository.findRequestsCount();
             const totalPages = Math.ceil(totalRequests / itemsPerPage);
 
@@ -95,7 +83,7 @@ class UserService {
                 }
             };
         } catch (error) {
-            return serverErrorHandler("An error occurred during fetching requests: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 
@@ -104,7 +92,7 @@ class UserService {
             const request = await laborerRepository.getRequest(id);
 
             if (!request) {
-                return { status: 400, message: "No request found" };
+                throw new Error("No request found");
             }
 
             return {
@@ -115,12 +103,13 @@ class UserService {
                 }
             };
         } catch (error) {
-            return serverErrorHandler("An error occurred during fetching request: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 
     async approveRejectAction(requestId, userId, type, reason) {
         try {
+            log
             let newStatus;
             if (type === "approve") {
                 newStatus = "approved";
@@ -131,7 +120,7 @@ class UserService {
             const updatedRequest = await laborerRepository.approveRejectAction(requestId, newStatus);
 
             if (!updatedRequest) {
-                return { status: 400, message: "No request found" };
+                throw new Error("No request found");
             }
 
             if (newStatus === "approved") {
@@ -144,13 +133,13 @@ class UserService {
                 });
 
                 if (!savedLaborer) {
-                    return { status: 500, message: "Failed to save laborer details" };
+                    throw new Error("Failed to save laborer details");
                 }
 
                 const updatedUser = await laborerRepository.changeToJobSeeker(updatedRequest.userId);
 
                 if (!updatedUser) {
-                    return { status: 500, message: "Failed to update user" };
+                    throw new Error("Failed to update user");
                 }
 
                 await reasonRepository.removeBlockReason(
@@ -171,7 +160,7 @@ class UserService {
                 message: "Updated request"
             };
         } catch (error) {
-            return serverErrorHandler("An error occurred during taking request action: ", error);
+            return serverErrorHandler(error.message);
         }
     };
 };
