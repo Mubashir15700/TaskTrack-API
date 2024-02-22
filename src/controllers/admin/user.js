@@ -16,8 +16,9 @@ exports.getUser = catchAsync(async (req, res) => {
 });
 
 exports.blockUnblockUser = catchAsync(async (req, res) => {
-    const { userId, reason } = req.body;
-    const result = await userService.blockUnblockUser(userId, reason);
+    const { id } = req.params;
+    const { reason } = req.body;
+    const result = await userService.blockUnblockUser(id, reason);
     sendResponse(res, result);
 });
 

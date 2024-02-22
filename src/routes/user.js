@@ -17,32 +17,32 @@ router.get("/banners", checkUserStatus, userUtilityController.getBanners);
 
 // profile actions
 router.put(
-    "/update-profile",
+    "/profile/update",
     checkUserStatus,
     hasToken.userHasToken,
     diskUpload("profile").single("profile"),
     profileController.updateProfile
 );
 router.delete(
-    "/delete-profile-image",
+    "/profile/delete-image",
     checkUserStatus,
     hasToken.userHasToken,
     profileController.deleteProfileImage
 );
 router.get(
-    "/current-location",
+    "/profile/current-location",
     checkUserStatus,
     hasToken.userHasToken,
     profileController.getCurrentLocation
 );
 router.delete(
-    "/delete-current-location/:id",
+    "/profile/:id/delete-current-location",
     checkUserStatus,
     hasToken.userHasToken,
     profileController.deleteCurrentLocation
 );
 router.put(
-    "/update-laborer-profile",
+    "/profile/update-laborer",
     checkUserStatus,
     hasToken.userHasToken,
     profileController.updateLaborerProfile
@@ -50,32 +50,32 @@ router.put(
 
 // laborer actions
 router.get("/laborers/:id/:page", checkUserStatus, laborerController.getLaborers);
-router.get("/laborer/:id", checkUserStatus, laborerController.getLaborer);
+router.get("/laborers/:id", checkUserStatus, laborerController.getLaborer);
 
 // laborer request
-router.post("/send-request", checkUserStatus, hasToken.userHasToken, laborerController.sendRequest);
-router.get("/prev-request/:id", checkUserStatus, hasToken.userHasToken, laborerController.getPrevRequest);
-router.put("/update-request", checkUserStatus, hasToken.userHasToken, laborerController.updateRequest);
-router.patch("/cancel-request", checkUserStatus, hasToken.userHasToken, laborerController.cancelRequest);
+router.post("/request/send", checkUserStatus, hasToken.userHasToken, laborerController.sendRequest);
+router.get("/request/:id", checkUserStatus, hasToken.userHasToken, laborerController.getPrevRequest);
+router.put("/request/update", checkUserStatus, hasToken.userHasToken, laborerController.updateRequest);
+router.patch("/request/cancel", checkUserStatus, hasToken.userHasToken, laborerController.cancelRequest);
 
 // job actions
 router.get("/jobs/:id/:page", checkUserStatus, jobController.getJobs);
-router.get("/job/:id", checkUserStatus, jobController.getJob);
-router.post("/apply-job", checkUserStatus, hasToken.userHasToken, jobController.applyJob);
-router.post("/cancel-job-application", checkUserStatus, hasToken.userHasToken, jobController.cancelJobApplication);
-router.get("/remaining-posts", checkUserStatus, hasToken.userHasToken, jobController.getRemainingPosts);
-router.post("/post-job", checkUserStatus, hasToken.userHasToken, jobController.postJob);
-router.get("/listed-jobs/:id/:page", checkUserStatus, hasToken.userHasToken, jobController.getListedJobs);
-router.get("/listed-job/:id", checkUserStatus, hasToken.userHasToken, jobController.getListedJob);
-router.put("/edit-listed-job", checkUserStatus, hasToken.userHasToken, jobController.editListedJob);
-router.delete("/delete-listed-job/:id", checkUserStatus, hasToken.userHasToken, jobController.deleteListedJob);
-router.get("/applicants/:jobId/:field", checkUserStatus, hasToken.userHasToken, jobController.getApplicants);
-router.patch("/applicant-action", checkUserStatus, hasToken.userHasToken, jobController.takeApplicantAction);
-router.get("/works-history/:id/:page", checkUserStatus, hasToken.userHasToken, jobController.getWorksHistory);
+router.get("/jobs/:id", checkUserStatus, jobController.getJob);
+router.post("/jobs/apply", checkUserStatus, hasToken.userHasToken, jobController.applyJob);
+router.post("/jobs/cancel-application", checkUserStatus, hasToken.userHasToken, jobController.cancelJobApplication);
+router.get("/jobs/remaining-posts", checkUserStatus, hasToken.userHasToken, jobController.getRemainingPosts);
+router.post("/jobs/post", checkUserStatus, hasToken.userHasToken, jobController.postJob);
+router.get("/jobs/listed/:id/:page", checkUserStatus, hasToken.userHasToken, jobController.getListedJobs);
+router.get("/jobs/listed/:id", checkUserStatus, hasToken.userHasToken, jobController.getListedJob);
+router.put("/jobs/edit", checkUserStatus, hasToken.userHasToken, jobController.editListedJob);
+router.delete("/jobs/delete/:id", checkUserStatus, hasToken.userHasToken, jobController.deleteListedJob);
+router.get("/jobs/applicants/:jobId/:field", checkUserStatus, hasToken.userHasToken, jobController.getApplicants);
+router.patch("/jobs/applicant-action", checkUserStatus, hasToken.userHasToken, jobController.takeApplicantAction);
+router.get("/jobs/works-history/:id/:page", checkUserStatus, hasToken.userHasToken, jobController.getWorksHistory);
 
 // notifications
 router.get(
-    "/notifications-count/:id",
+    "/notifications/count/:id",
     checkUserStatus,
     hasToken.userHasToken,
     notificationController.getUserNotificationsCount
@@ -87,7 +87,7 @@ router.get(
     notificationController.getUserNotifications
 );
 router.patch(
-    "/notification/mark-read/:id",
+    "/notifications/:id/mark-read",
     checkUserStatus,
     hasToken.userHasToken,
     notificationController.markUserNotificationRead
@@ -105,10 +105,10 @@ router.patch(
 router.get("/plans", checkUserStatus, hasToken.userHasToken, planController.getPlans);
 
 // subscriptions
-router.get("/stripe-public-key", subscriptionController.getStripePublicKey);
-router.post("/create-subscription", subscriptionController.createSubscription);
-router.post("/save-subscription-result", subscriptionController.saveSubscriptionResult);
-router.get("/active-plan", subscriptionController.getActivePlan);
-router.post("/cancel-active-plan", subscriptionController.cancelActivePlan);
+router.get("/subscription/stripe-public-key", subscriptionController.getStripePublicKey);
+router.post("/subscription/create", subscriptionController.createSubscription);
+router.post("/subscription/save", subscriptionController.saveSubscriptionResult);
+router.get("/plans/active-plan", subscriptionController.getActivePlan);
+router.post("/plans/cancel", subscriptionController.cancelActivePlan);
 
 module.exports = router;
