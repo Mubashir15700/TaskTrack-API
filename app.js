@@ -45,7 +45,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors({
-    origin: process.env.CORS_ORIGIN || "http://localhost:5173",
+    origin: process.env.CORS_ORIGIN,
     credentials: true
 }));
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
@@ -62,6 +62,14 @@ app.use("/auth", authRoutes);
 app.use("/", userRoutes);
 app.use("/admin", adminRoutes);
 app.use("/shared", sharedRoutes);
+
+// Serve static files for the React page
+app.use(express.static(path.join(__dirname, "../client", "dist")));
+
+// If a route doesn't match any of the above, serve the React index.html
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../client", "dist", "index.html"));
+});
 
 DBConnection();
 
