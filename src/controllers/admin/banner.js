@@ -17,17 +17,19 @@ exports.getBanner = catchAsync(async (req, res) => {
 
 exports.addBanner = catchAsync(async (req, res) => {
     const { title, description } = req.body;
-    const bannerImage = req.file ? req.file.filename : null;
+    const { key } = req.file;
     const result = await bannerService.addBanner(
-        title, description, bannerImage
+        title, description, key
     );
     sendResponse(res, result);
 });
 
 exports.editBanner = catchAsync(async (req, res) => {
     const { id, title, description } = req.body;
-    const bannerImage = req.file ? req.file.filename : null;
-    const result = await bannerService.editBanner(id, title, description, bannerImage);
+    const { key } = req.file;
+    const result = await bannerService.editBanner(
+        id, title, description, key
+    );
     sendResponse(res, result);
 });
 

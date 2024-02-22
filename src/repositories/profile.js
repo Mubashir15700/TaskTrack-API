@@ -1,5 +1,6 @@
 const User = require("../models/user");
 const Laborer = require("../models/laborer");
+const repositoryErrorHandler = require("../utils/errorHandling/repositoryErrorHandler");
 
 class ProfileRepository {
     async updateUser(id, updateObject) {
@@ -14,8 +15,7 @@ class ProfileRepository {
                 { new: true }
             ).select("-password");
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while updating profile");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -31,8 +31,7 @@ class ProfileRepository {
                 { new: true }
             ).select("-password");
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while deleting profile");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -48,8 +47,7 @@ class ProfileRepository {
                 { new: true }
             );
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while deleting profile");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -66,8 +64,7 @@ class ProfileRepository {
                 { new: true }
             );
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while updating profile");
+            repositoryErrorHandler(error);
         }
     };
 };

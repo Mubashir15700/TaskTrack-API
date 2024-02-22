@@ -1,12 +1,12 @@
 const Plan = require("../models/plan");
+const repositoryErrorHandler = require("../utils/errorHandling/repositoryErrorHandler");
 
 class PlanRepository {
     async checkPlanExistsByName(query) {
         try {
             return await Plan.findOne(query);
         } catch (error) {
-            console.log(error);
-            throw new Error("Error while finding plan");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -14,8 +14,7 @@ class PlanRepository {
         try {
             return await Plan.countDocuments();
         } catch (error) {
-            console.log(error);
-            throw new Error("Error while finding plans count");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -33,8 +32,7 @@ class PlanRepository {
 
             return await query.exec();
         } catch (error) {
-            console.log(error);
-            throw new Error("Error while fetching plans");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -42,8 +40,7 @@ class PlanRepository {
         try {
             await Plan.create({ name, description, type, numberOfJobPosts, amount });
         } catch (error) {
-            console.log(error);
-            throw new Error("Error while adding plan");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -57,8 +54,7 @@ class PlanRepository {
             });
             return searchResults;
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while searching plans");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -71,8 +67,7 @@ class PlanRepository {
                 $set: { isActive: !activeState },
             });
         } catch (error) {
-            console.log(error);
-            throw new Error("Error while updating plan");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -80,8 +75,7 @@ class PlanRepository {
         try {
             return await Plan.findById(id);
         } catch (error) {
-            console.log(error);
-            throw new Error("Error while finding plan");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -92,8 +86,7 @@ class PlanRepository {
                 { new: true }
             );
         } catch (error) {
-            console.log(error);
-            throw new Error("Error while editing plan");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -101,8 +94,7 @@ class PlanRepository {
         try {
             return await Plan.find({ isActive: true });
         } catch (error) {
-            console.log(error);
-            throw new Error("Error while fetching plans");
+            repositoryErrorHandler(error);
         }
     };
 };

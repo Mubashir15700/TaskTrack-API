@@ -1,5 +1,6 @@
 const { ObjectId } = require("mongoose").Types;
 const Job = require("../models/jobPost");
+const repositoryErrorHandler = require("../utils/errorHandling/repositoryErrorHandler");
 
 class JobRepository {
     async getJobsCount(id) {
@@ -9,8 +10,7 @@ class JobRepository {
                 {};
             return await Job.countDocuments(query);
         } catch (error) {
-            console.log(error);
-            throw new Error("Error while finding listed jobs count");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -84,8 +84,7 @@ class JobRepository {
 
             return await Job.aggregate(pipeline);
         } catch (error) {
-            console.log(error);
-            throw new Error("Error while finding jobs");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -94,8 +93,7 @@ class JobRepository {
         try {
             return await Job.countDocuments({ userId: id });
         } catch (error) {
-            console.log(error);
-            throw new Error("Error while finding listed jobs count");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -105,8 +103,7 @@ class JobRepository {
                 .skip((page - 1) * pageSize)
                 .limit(pageSize);
         } catch (error) {
-            console.log(error);
-            throw new Error("Error while finding listed jobs");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -132,8 +129,7 @@ class JobRepository {
 
             return applicants;
         } catch (error) {
-            console.log(error.message);
-            throw new Error("Error while finding job applicants");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -147,24 +143,23 @@ class JobRepository {
             return await Job.updateOne(
                 {
                     _id: jobIdObject,
-                    'fields.name': fieldName,
-                    'fields.applicants.userId': laborerIdObject
+                    "fields.name": fieldName,
+                    "fields.applicants.userId": laborerIdObject
                 },
                 {
                     $set: {
-                        'fields.$[outer].applicants.$[inner].status': newStatus
+                        "fields.$[outer].applicants.$[inner].status": newStatus
                     }
                 },
                 {
                     arrayFilters: [
-                        { 'outer.name': fieldName },
-                        { 'inner.userId': laborerIdObject }
+                        { "outer.name": fieldName },
+                        { "inner.userId": laborerIdObject }
                     ]
                 }
             );
         } catch (error) {
-            console.log(error.message);
-            throw new Error("Error while taking applican action");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -210,8 +205,7 @@ class JobRepository {
 
             return job[0];
         } catch (error) {
-            console.log(error);
-            throw new Error("Error while finding the job");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -225,8 +219,7 @@ class JobRepository {
                 }
             }, { new: true });
         } catch (error) {
-            console.log(error);
-            throw new Error("Error while editing the job");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -238,8 +231,7 @@ class JobRepository {
             }
             return deletedJob;
         } catch (error) {
-            console.log(error);
-            throw new Error(`Error while deleting the job: ${error.message}`);
+            repositoryErrorHandler(error);
         }
     };
 
@@ -253,8 +245,7 @@ class JobRepository {
                 }
             });
         } catch (error) {
-            console.log(error);
-            throw new Error("Error while finding listed jobs count");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -270,8 +261,7 @@ class JobRepository {
                 .skip((page - 1) * pageSize)
                 .limit(pageSize);;
         } catch (error) {
-            console.log(error);
-            throw new Error(`Error while deleting the job: ${error.message}`);
+            repositoryErrorHandler(error);
         }
     };
 
@@ -280,8 +270,7 @@ class JobRepository {
             const newJob = new Job(jobDetails);
             return await newJob.save();
         } catch (error) {
-            console.log(error);
-            throw new Error("Error while posting new job");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -289,8 +278,7 @@ class JobRepository {
         try {
             return await Job.findById(id);
         } catch (error) {
-            console.log(error);
-            throw new Error("Error while finding job");
+            repositoryErrorHandler(error);
         }
     };
 

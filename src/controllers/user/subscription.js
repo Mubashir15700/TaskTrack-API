@@ -2,6 +2,11 @@ const subscriptionService = require("../../services/user/subscription");
 const catchAsync = require("../../utils/errorHandling/catchAsync");
 const sendResponse = require("../../utils/responseStructure");
 
+exports.getStripePublicKey = catchAsync(async (req, res) => {
+    const result = await subscriptionService.getStripePublicKey();
+    sendResponse(res, result);
+});
+
 exports.createSubscription = catchAsync(async (req, res) => {
     const userData = req.body.user;
     const planData = req.body.item;

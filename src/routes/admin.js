@@ -5,7 +5,7 @@ const bannerController = require("../controllers/admin/banner");
 const planController = require("../controllers/admin/plan");
 const subscriptionController = require("../controllers/admin/subscription");
 const hasToken = require("../middlewares/auth/hasToken");
-const imageUpload = require("../middlewares/imageUpload");
+const { uploadImage } = require("../middlewares/imageUpload/s3Upload");
 
 const router = express.Router();
 
@@ -35,13 +35,13 @@ router.get("/banner/:id", hasToken.adminHasToken, bannerController.getBanner);
 router.post(
     "/add-banner",
     hasToken.adminHasToken,
-    imageUpload("banner").single("image"),
+    uploadImage.single("image"),
     bannerController.addBanner
 );
 router.put(
     "/edit-banner/:id",
     hasToken.adminHasToken,
-    imageUpload("banner").single("image"),
+    uploadImage.single("image"),
     bannerController.editBanner
 );
 router.patch("/banner-action/:id", hasToken.adminHasToken, bannerController.listUnlistBanner);

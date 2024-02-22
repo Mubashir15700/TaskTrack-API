@@ -1,4 +1,5 @@
 const Reason = require("../models/reason");
+const repositoryErrorHandler = require("../utils/errorHandling/repositoryErrorHandler");
 
 class ReasonRepository {
     async saveBlockReason(userId, action, reason) {
@@ -10,8 +11,7 @@ class ReasonRepository {
             });
             await blockReason.save();
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while saving block reason");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -19,8 +19,7 @@ class ReasonRepository {
         try {
             await Reason.findOneAndDelete({ userId, action });
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while removing block reason");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -28,8 +27,7 @@ class ReasonRepository {
         try {
             return await Reason.findOne({ userId, action });
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while removing block reason");
+            repositoryErrorHandler(error);
         }
     };
 };

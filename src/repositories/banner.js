@@ -1,12 +1,12 @@
 const Banner = require("../models/banner");
+const repositoryErrorHandler = require("../utils/errorHandling/repositoryErrorHandler");
 
 class BannerRepository {
     async checkBannerExistsByTitle(query) {
         try {
             return await Banner.findOne(query);
         } catch (error) {
-            console.log(error);
-            throw new Error("Error while finding banner");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -14,8 +14,7 @@ class BannerRepository {
         try {
             return await Banner.countDocuments();
         } catch (error) {
-            console.log(error);
-            throw new Error("Error while finding banners count");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -26,17 +25,15 @@ class BannerRepository {
                 .skip(startIndex)
                 .limit(itemsPerPage);
         } catch (error) {
-            console.log(error);
-            throw new Error("Error while finding banners");
+            repositoryErrorHandler(error);
         }
     };
 
-    async addBanner(title, description, image) {
+    async addBanner(title, description, key) {
         try {
-            await Banner.create({ title, description, image });
+            await Banner.create({ title, description, key });
         } catch (error) {
-            console.log(error);
-            throw new Error("Error while adding banner");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -50,8 +47,7 @@ class BannerRepository {
             });
             return searchResults;
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while searching banners");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -64,8 +60,7 @@ class BannerRepository {
                 $set: { isActive: !activeState },
             });
         } catch (error) {
-            console.log(error);
-            throw new Error("Error while updating banners");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -73,20 +68,26 @@ class BannerRepository {
         try {
             return await Banner.findById(id);
         } catch (error) {
-            console.log(error);
-            throw new Error("Error while finding banner");
+            repositoryErrorHandler(error);
         }
     };
 
-    async editBanner(id, title, description, image) {
+    async getBannerImageKey(id) {
+        try {
+            return await Banner.findById(id, { key: 1, _id: 0 });
+        } catch (error) {
+            repositoryErrorHandler(error);
+        }
+    };
+
+    async editBanner(id, title, description, key) {
         try {
             await Banner.findByIdAndUpdate(id,
-                { title, description, image },
+                { title, description, key },
                 { new: true }
             );
         } catch (error) {
-            console.log(error);
-            throw new Error("Error while editing banner");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -94,8 +95,7 @@ class BannerRepository {
         try {
             return await Banner.find({ isActive: true }).sort("order");
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while finding banners");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -107,8 +107,7 @@ class BannerRepository {
                 { new: true }
             );
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while changing banner order");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -120,8 +119,7 @@ class BannerRepository {
                 { new: true }
             );
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while dragging banner");
+            repositoryErrorHandler(error);
         }
     };
 };

@@ -1,4 +1,5 @@
 const Subscription = require("../models/subscription");
+const repositoryErrorHandler = require("../utils/errorHandling/repositoryErrorHandler");
 
 class SubscriptionRepository {
     async saveSubscription(userId, subscriptionId, planId) {
@@ -15,8 +16,7 @@ class SubscriptionRepository {
                 throw new Error("Failed to save or update subscription");
             }
         } catch (error) {
-            console.log(error);
-            throw new Error("Error while saving or updating subscription");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -24,8 +24,7 @@ class SubscriptionRepository {
         try {
             return await Subscription.countDocuments();
         } catch (error) {
-            console.log(error);
-            throw new Error("Error while fetching subscriptions count");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -73,8 +72,7 @@ class SubscriptionRepository {
 
             return res;
         } catch (error) {
-            console.log(error);
-            throw new Error("Error while fetching subscriptions");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -82,8 +80,7 @@ class SubscriptionRepository {
         try {
             return await Subscription.findById(subscriptionId).populate("planId");
         } catch (error) {
-            console.log(error);
-            throw new Error("Error while fetching active plan");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -93,8 +90,7 @@ class SubscriptionRepository {
 
             return await Subscription.findOneAndDelete(filter);
         } catch (error) {
-            console.log(error);
-            throw new Error("Error while saving or updating subscription");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -104,8 +100,7 @@ class SubscriptionRepository {
                 { $inc: { jobPostsCount: 1 } },
             );
         } catch (error) {
-            console.log(error);
-            throw new Error("Error while fetching posted job's count");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -114,8 +109,7 @@ class SubscriptionRepository {
             const subscription = await Subscription.findOne({ userId });
             return subscription?.jobPostsCount;
         } catch (error) {
-            console.log(error);
-            throw new Error("Error while fetching posted job's count");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -124,8 +118,7 @@ class SubscriptionRepository {
             const totalPosts = await Subscription.findOne({ userId }).populate("planId");
             return totalPosts?.planId?.numberOfJobPosts;
         } catch (error) {
-            console.log(error);
-            throw new Error("Error while fetching posted job's count");
+            repositoryErrorHandler(error);
         }
     };
 };

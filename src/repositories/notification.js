@@ -1,4 +1,5 @@
 const Notification = require("../models/notification");
+const repositoryErrorHandler = require("../utils/errorHandling/repositoryErrorHandler");
 
 class NotificationRepository {
     async saveNewNotification(notification) {
@@ -6,8 +7,7 @@ class NotificationRepository {
             const newNotification = new Notification({ ...notification });
             await newNotification.save();
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while saving new notification");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -16,8 +16,7 @@ class NotificationRepository {
         try {
             return await Notification.countDocuments({ to: "admin", isViewed: false });
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while fetching admin notifications count");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -25,8 +24,7 @@ class NotificationRepository {
         try {
             return await Notification.countDocuments({ to: "admin" });
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while fetching all admin notifications count");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -40,8 +38,7 @@ class NotificationRepository {
                 .limit(pageSize);
             return updatedNotifications;
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while fetching admin notifications");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -53,8 +50,7 @@ class NotificationRepository {
                 { new: true }
             );
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while updating notification");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -63,8 +59,7 @@ class NotificationRepository {
         try {
             return await Notification.countDocuments({ to: userId, isViewed: false });
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while fetching user notifications count");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -72,8 +67,7 @@ class NotificationRepository {
         try {
             return await Notification.countDocuments({ to: userId });
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while fetching all user notifications count");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -87,8 +81,7 @@ class NotificationRepository {
                 .limit(pageSize);
             return updatedNotifications;
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while fetching user notifications");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -100,8 +93,7 @@ class NotificationRepository {
                 { new: true }
             );
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while updating notification");
+            repositoryErrorHandler(error);
         }
     };
 };

@@ -9,9 +9,8 @@ const BannerSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    image: {
+    key: {
         type: String,
-        required: true
     },
     isActive: {
         type: Boolean,

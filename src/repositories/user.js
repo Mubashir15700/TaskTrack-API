@@ -1,4 +1,5 @@
 const User = require("../models/user");
+const repositoryErrorHandler = require("../utils/errorHandling/repositoryErrorHandler");
 
 class UserRepository {
     async findUsersPaginated(startIndex, itemsPerPage) {
@@ -8,8 +9,7 @@ class UserRepository {
                 .limit(itemsPerPage)
                 .select("-password");
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while fetching paginated users");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -17,8 +17,7 @@ class UserRepository {
         try {
             return await User.countDocuments();
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while fetching user's count");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -26,8 +25,7 @@ class UserRepository {
         try {
             return await User.findById(id).select("-password");
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while fetching user");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -42,8 +40,7 @@ class UserRepository {
 
             return { userId: updatedUser._id, blockStatus: updatedUser.isBlocked };
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while updating user");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -58,8 +55,7 @@ class UserRepository {
             });
             return searchResults;
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while searching users");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -68,10 +64,8 @@ class UserRepository {
             await User.findByIdAndUpdate(userId, {
                 $set: { currentSubscription: sessionId }
             });
-            // return searchResults;
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while updating subscription");
+            repositoryErrorHandler(error);
         }
     };
 };

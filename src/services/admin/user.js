@@ -109,7 +109,6 @@ class UserService {
 
     async approveRejectAction(requestId, userId, type, reason) {
         try {
-            log
             let newStatus;
             if (type === "approve") {
                 newStatus = "approved";

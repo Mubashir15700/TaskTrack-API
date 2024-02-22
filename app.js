@@ -5,11 +5,18 @@ const logger = require("./src/utils/errorHandling/logger");
 // Check for required environment variables
 const requiredEnvVariables = [
     "PORT",
+    "DB_URL",
     "CORS_ORIGIN",
-    "DB_LOCAL_URL",
+    "SOCKET_PING_TIMEOUT",
+    "GOOGLE_CLIENT_ID",
     "JWT_SECRET_KEY",
     "OPENCAGE_API_KEY",
+    "STRIPE_PUBLIC_KEY",
     "STRIPE_SECRET_KEY",
+    "BUCKET_NAME",
+    "REGION",
+    "ACCESS_KEY",
+    "SECRET_ACCESS_KEY",
     "EMAIL",
     "APP_PASSWORD"
 ];

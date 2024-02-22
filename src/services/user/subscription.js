@@ -4,6 +4,20 @@ const userRepository = require("../../repositories/user");
 const serverErrorHandler = require("../../utils/errorHandling/serverErrorHandler");
 
 class SubscriptionService {
+    async getStripePublicKey() {
+        const stripePublicKey = process.env.STRIPE_PUBLIC_KEY;
+
+        if (stripePublicKey) {
+            return {
+                status: 200,
+                data: {
+                    stripePublicKey
+                }
+            };
+        } else {
+            throw new Error("No public key found");
+        }
+    };
 
     async createSubscription(userData, planData) {
         try {
@@ -31,7 +45,7 @@ class SubscriptionService {
                     // Customer already has an active subscription, send them to biiling portal to manage subscription
                     const stripeSession = await stripe.billingPortal.sessions.create({
                         customer: customer.id,
-                        return_url: "http://localhost:5173/manage-subscription",
+                        return_url: `${process.env.CORS_ORIGIN}/manage-subscription`,
                     });
                     return {
                         status: 409,
@@ -52,8 +66,8 @@ class SubscriptionService {
 
             // Now create the Stripe checkout session with the customer ID
             const session = await stripe.checkout.sessions.create({
-                success_url: "http://localhost:5173/success",
-                cancel_url: "http://localhost:5173/cancel",
+                success_url: `${process.env.CORS_ORIGIN}/success`,
+                cancel_url: `${process.env.CORS_ORIGIN}/cancel`,
                 payment_method_types: ["card"],
                 // test visa card - 4000003560000008 
                 mode: "subscription",

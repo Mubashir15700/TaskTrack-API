@@ -1,5 +1,6 @@
 const Conversation = require("../models/conversation");
 const Chat = require("../models/chat");
+const repositoryErrorHandler = require("../utils/errorHandling/repositoryErrorHandler");
 
 class ChatRepository {
     async findConversation(senderId, receiverId) {
@@ -11,8 +12,7 @@ class ChatRepository {
                 ],
             });
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while fetching chat conversation");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -24,8 +24,7 @@ class ChatRepository {
             });
             return await newConversation.save();
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while creating new conversation");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -34,8 +33,7 @@ class ChatRepository {
             const newChatMessage = new Chat({ ...chatMessage });
             await newChatMessage.save();
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while saving new chat message");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -43,8 +41,7 @@ class ChatRepository {
         try {
             return await Chat.find({ conversationId }).populate("conversationId");
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while fetching chat history");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -55,8 +52,7 @@ class ChatRepository {
                 { $set: { isRead: true } }
             );
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while marking messages read");
+            repositoryErrorHandler(error);
         }
     };
 };

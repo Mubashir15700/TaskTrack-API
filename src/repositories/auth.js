@@ -1,5 +1,6 @@
 const Admin = require("../models/admin");
 const User = require("../models/user");
+const repositoryErrorHandler = require("../utils/errorHandling/repositoryErrorHandler");
 
 class AuthRepository {
     // check auth
@@ -7,8 +8,7 @@ class AuthRepository {
         try {
             return await Admin.findById(id).select("-password");
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while fetching admin");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -16,8 +16,7 @@ class AuthRepository {
         try {
             return await User.findById(id).select("-password");
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while fetching user");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -26,8 +25,7 @@ class AuthRepository {
         try {
             return await Admin.findOne({ username });
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while fetching admin");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -36,8 +34,7 @@ class AuthRepository {
         try {
             return await User.findOne({ username });
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while checking user exists");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -45,8 +42,7 @@ class AuthRepository {
         try {
             return await User.findOne({ email });
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while checking user exists");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -62,8 +58,7 @@ class AuthRepository {
 
             return await newUser.save();
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while creating user");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -72,8 +67,7 @@ class AuthRepository {
         try {
             return await User.findOne({ username });
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while fetching user");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -81,8 +75,7 @@ class AuthRepository {
         try {
             return await User.findOne({ email });
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while fetching user");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -91,8 +84,7 @@ class AuthRepository {
         try {
             return await User.findOne({ otp });
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while fetching user");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -104,8 +96,7 @@ class AuthRepository {
                 { new: true }
             );
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while verifying user");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -118,8 +109,7 @@ class AuthRepository {
                 { new: true }
             );
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while resending otp");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -128,8 +118,7 @@ class AuthRepository {
         try {
             return await User.findById(id);
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while reseting password");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -139,8 +128,7 @@ class AuthRepository {
             user.password = newPassword;
             await user.save();
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while updating password");
+            repositoryErrorHandler(error);
         }
     };
 

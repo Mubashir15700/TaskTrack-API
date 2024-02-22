@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const User = require("../models/user");
 const Request = require("../models/laborerRequest");
 const Laborer = require("../models/laborer");
+const repositoryErrorHandler = require("../utils/errorHandling/repositoryErrorHandler");
 
 class LaborerRepository {
     async searchLaborers(currentUserId, searchWith) {
@@ -44,8 +45,7 @@ class LaborerRepository {
 
             return await Laborer.aggregate(pipeline);
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while searching laborers");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -55,8 +55,7 @@ class LaborerRepository {
                 .skip(startIndex)
                 .limit(itemsPerPage);
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while fetching paginated requests");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -64,8 +63,7 @@ class LaborerRepository {
         try {
             return await Request.countDocuments({ status: "pending" });
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while fetching request's count");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -111,8 +109,7 @@ class LaborerRepository {
 
             return request[0];
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while fetching request");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -122,8 +119,7 @@ class LaborerRepository {
                 $set: { status: type }
             }, { new: true });
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while updating request");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -132,8 +128,7 @@ class LaborerRepository {
             const newLaborer = new Laborer(data);
             return await newLaborer.save();
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while saving laborer");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -143,8 +138,7 @@ class LaborerRepository {
                 $set: { isJobSeeker: true }
             }, { new: true });
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while updating user");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -154,8 +148,7 @@ class LaborerRepository {
                 { userId: { $ne: userId } } : {};
             return await Laborer.countDocuments(query);
         } catch (error) {
-            console.error(error);
-            throw new Error("Error while fetching laborers count");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -221,14 +214,12 @@ class LaborerRepository {
 
             return await Laborer.aggregate(pipeline);
         } catch (error) {
-            console.log(error);
-            throw new Error("Error while finding laborers");
+            repositoryErrorHandler(error);
         }
     };
 
     async getLaborer(id) {
         try {
-            console.log(id);
             const laborer = await Laborer.aggregate([
                 {
                     $match: { userId: new mongoose.Types.ObjectId(id) }
@@ -262,12 +253,9 @@ class LaborerRepository {
                 }
             ]);
 
-            console.log(laborer);
-
             return laborer[0];
         } catch (error) {
-            console.log(error);
-            throw new Error("Error while finding the laborer");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -276,8 +264,7 @@ class LaborerRepository {
             const newRequest = new Request(data);
             return await newRequest.save();
         } catch (error) {
-            console.log(error);
-            throw new Error("Error while saving laborer request");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -285,8 +272,7 @@ class LaborerRepository {
         try {
             return await Request.findOne({ userId });
         } catch (error) {
-            console.log(error);
-            throw new Error("Error while finding prev become laborer request");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -297,8 +283,7 @@ class LaborerRepository {
                 { $set: data },
                 { new: true, select: "-_id -status -createdAt" });
         } catch (error) {
-            console.log(error);
-            throw new Error("Error while updating laborer request");
+            repositoryErrorHandler(error);
         }
     };
 
@@ -308,8 +293,7 @@ class LaborerRepository {
                 { userId: id }
             );
         } catch (error) {
-            console.log(error);
-            throw new Error("Error while cancelling laborer request");
+            repositoryErrorHandler(error);
         }
     };
 

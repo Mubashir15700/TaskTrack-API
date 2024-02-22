@@ -1,5 +1,6 @@
 const bannerRepository = require("../../repositories/banner");
 const serverErrorHandler = require("../../utils/errorHandling/serverErrorHandler");
+const { getPresignedUrl, deleteImage } = require("../../middlewares/imageUpload/s3Upload");
 
 class BannerService {
     async checkBannerExistsByTitle(title, id = null) {
@@ -22,11 +23,19 @@ class BannerService {
             const totalBanners = await bannerRepository.findbannersCount();
             const totalPages = Math.ceil(totalBanners / itemsPerPage);
 
+            // Map over the banners array and get presigned URL for each image
+            const bannersWithPresignedUrls = await Promise.all(banners.map(async banner => {
+                // Get the presigned URL for the image
+                const imageUrl = await getPresignedUrl(banner.key);
+                // Return a new object with the image URL and other properties from the banner
+                return { ...banner._doc, image: imageUrl };
+            }));
+
             return {
                 status: 200,
                 message: "Found banners",
                 data: {
-                    banners,
+                    banners: bannersWithPresignedUrls,
                     totalPages
                 }
             };
@@ -35,19 +44,19 @@ class BannerService {
         }
     };
 
-    async addBanner(title, description, bannerImage) {
+    async addBanner(title, description, key) {
         try {
-            if (!title || !description || !bannerImage) {
-               throw new Error("All fields (title, description, Image) are required");
+            if (!title || !description) {
+                throw new Error("All fields (title, description) are required");
             }
 
             // Check if a banner with the same title already exists
             const bannerExists = await this.checkBannerExistsByTitle(title);
             if (bannerExists) {
-               throw new Error("A banner with the same title already exists");
+                throw new Error("A banner with the same title already exists");
             }
 
-            await bannerRepository.addBanner(title, description, bannerImage);
+            await bannerRepository.addBanner(title, description, key);
 
             return {
                 status: 200,
@@ -63,7 +72,7 @@ class BannerService {
             const updatedBanner = await bannerRepository.listUnlistBanner(id);
 
             if (!updatedBanner) {
-               throw new Error("No banner found");
+                throw new Error("No banner found");
             }
 
             return {
@@ -79,15 +88,22 @@ class BannerService {
         try {
             const banner = await bannerRepository.getBanner(id);
 
+            const imageUrl = await getPresignedUrl(banner.key);
+
             if (!banner) {
-               throw new Error("No banner found");
+                throw new Error("No banner found");
             }
+
+            const bannerWithImage = {
+                ...banner._doc,
+                image: imageUrl
+            };
 
             return {
                 status: 200,
                 message: "Found banner",
                 data: {
-                    banner
+                    banner: bannerWithImage
                 }
             };
         } catch (error) {
@@ -95,19 +111,22 @@ class BannerService {
         }
     };
 
-    async editBanner(id, title, description, bannerImage) {
+    async editBanner(id, title, description, key) {
         try {
-            if (!title || !description || !bannerImage) {
-               throw new Error("All fields (title, description, Image) are required");
+            if (!title || !description) {
+                throw new Error("All fields (title, description) are required");
             }
 
             // Check if a banner with the same title already exists
             const bannerExists = await this.checkBannerExistsByTitle(title, id);
             if (bannerExists) {
-               throw new Error("A banner with the same title already exists");
+                throw new Error("A banner with the same title already exists");
             }
 
-            await bannerRepository.editBanner(id, title, description, bannerImage);
+            const prevImageKey = await bannerRepository.getBannerImageKey(id);
+
+            await bannerRepository.editBanner(id, title, description, key);
+            await deleteImage(prevImageKey.key);
 
             return {
                 status: 200,

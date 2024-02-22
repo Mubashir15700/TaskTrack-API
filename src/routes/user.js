@@ -8,8 +8,7 @@ const planController = require("../controllers/user/plan");
 const subscriptionController = require("../controllers/user/subscription");
 const checkUserStatus = require("../middlewares/auth/checkUserStatus");
 const hasToken = require("../middlewares/auth/hasToken");
-const imageUpload = require("../middlewares/imageUpload");
-const s3Upload = require("../middlewares/s3Upload");
+const diskUpload = require("../middlewares/imageUpload/diskUpload");
 
 const router = express.Router();
 
@@ -21,8 +20,7 @@ router.put(
     "/update-profile",
     checkUserStatus,
     hasToken.userHasToken,
-    imageUpload("profile").single("profile"),
-    // s3Upload,
+    diskUpload("profile").single("profile"),
     profileController.updateProfile
 );
 router.delete(
@@ -107,6 +105,7 @@ router.patch(
 router.get("/plans", checkUserStatus, hasToken.userHasToken, planController.getPlans);
 
 // subscriptions
+router.get("/stripe-public-key", subscriptionController.getStripePublicKey);
 router.post("/create-subscription", subscriptionController.createSubscription);
 router.post("/save-subscription-result", subscriptionController.saveSubscriptionResult);
 router.get("/active-plan", subscriptionController.getActivePlan);

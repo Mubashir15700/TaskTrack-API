@@ -3,7 +3,7 @@ const logger = require("./src/utils/errorHandling/logger");
 
 const DBConnection = async () => {
     try {
-        const URL = process.env.DB_LOCAL_URL;
+        const URL = process.env.DB_URL;
         mongoose.set("strictQuery", false);
 
         mongoose.connection.on("connected", () => {
