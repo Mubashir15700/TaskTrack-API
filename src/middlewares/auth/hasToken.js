@@ -1,4 +1,4 @@
-const authService = require("../../services/auth");
+const jwt = require("jsonwebtoken");
 
 exports.userHasToken = async (req, res, next) => {
     const token = req.cookies.userJwt;
@@ -7,7 +7,7 @@ exports.userHasToken = async (req, res, next) => {
     }
 
     try {
-        const decodedToken = await authService.decodeToken(token);
+        const decodedToken = jwt.verify(token, process.env.JWT_SECRET_KEY);
         req.user = decodedToken;
         next();
     } catch (error) {
@@ -23,7 +23,7 @@ exports.adminHasToken = async (req, res, next) => {
     }
 
     try {
-        const decodedToken = await authService.decodeToken(token);
+        const decodedToken = jwt.verify(token, process.env.JWT_SECRET_KEY);
         req.user = decodedToken;
         next();
     } catch (error) {

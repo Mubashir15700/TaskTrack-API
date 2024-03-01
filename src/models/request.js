@@ -7,11 +7,11 @@ const RequestSchema = new mongoose.Schema({
         required: true
     },
     languages: {
-        type: String,
+        type: [String],
         required: true
     },
     education: {
-        type: String,
+        type: [String],
         required: true
     },
     avlDays: {

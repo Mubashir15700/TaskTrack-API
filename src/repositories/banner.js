@@ -1,127 +1,76 @@
 const Banner = require("../models/banner");
-const repositoryErrorHandler = require("../utils/errorHandling/repositoryErrorHandler");
 
 class BannerRepository {
+    async getBanner(id) {
+        return await Banner.findById(id);
+    };
+
     async checkBannerExistsByTitle(query) {
-        try {
-            return await Banner.findOne(query);
-        } catch (error) {
-            repositoryErrorHandler(error);
-        }
+        return await Banner.findOne(query);
     };
 
     async findbannersCount() {
-        try {
-            return await Banner.countDocuments();
-        } catch (error) {
-            repositoryErrorHandler(error);
-        }
+        return await Banner.countDocuments();
     };
 
     async getAdminBanners(startIndex, itemsPerPage) {
-        try {
-            return await Banner.find()
-                .sort("order")
-                .skip(startIndex)
-                .limit(itemsPerPage);
-        } catch (error) {
-            repositoryErrorHandler(error);
-        }
+        return await Banner.find()
+            .sort("order")
+            .skip(startIndex)
+            .limit(itemsPerPage);
     };
 
     async addBanner(title, description, key) {
-        try {
-            await Banner.create({ title, description, key });
-        } catch (error) {
-            repositoryErrorHandler(error);
-        }
+        await Banner.create({ title, description, key });
     };
 
     async searchBanners(searchWith) {
-        try {
-            const searchResults = await Banner.find({
-                $or: [
-                    { title: { $regex: searchWith, $options: "i" } },
-                    { description: { $regex: searchWith, $options: "i" } },
-                ],
-            });
-            return searchResults;
-        } catch (error) {
-            repositoryErrorHandler(error);
-        }
+        return await Banner.find({
+            $or: [
+                { title: { $regex: searchWith, $options: "i" } },
+                { description: { $regex: searchWith, $options: "i" } },
+            ],
+        });
     };
 
     async listUnlistBanner(id) {
-        try {
-            const banner = await Banner.findById(id);
-            const activeState = banner.isActive;
+        const banner = await this.getBanner(id);
+        const activeState = banner.isActive;
 
-            return await Banner.findByIdAndUpdate(id, {
-                $set: { isActive: !activeState },
-            });
-        } catch (error) {
-            repositoryErrorHandler(error);
-        }
-    };
-
-    async getBanner(id) {
-        try {
-            return await Banner.findById(id);
-        } catch (error) {
-            repositoryErrorHandler(error);
-        }
+        return await Banner.findByIdAndUpdate(id, {
+            $set: { isActive: !activeState },
+        });
     };
 
     async getBannerImageKey(id) {
-        try {
-            return await Banner.findById(id, { key: 1, _id: 0 });
-        } catch (error) {
-            repositoryErrorHandler(error);
-        }
+        return await Banner.findById(id, { key: 1, _id: 0 });
     };
 
     async editBanner(id, title, description, key) {
-        try {
-            await Banner.findByIdAndUpdate(id,
-                { title, description, key },
-                { new: true }
-            );
-        } catch (error) {
-            repositoryErrorHandler(error);
-        }
+        return await Banner.findByIdAndUpdate(id,
+            { title, description, key },
+            { new: true }
+        );
     };
 
     async getBanners() {
-        try {
-            return await Banner.find({ isActive: true }).sort("order");
-        } catch (error) {
-            repositoryErrorHandler(error);
-        }
+        return await Banner.find({ isActive: true }).sort("order");
     };
 
     async changeBannerOrder(newOrder, prevOrder) {
-        try {
-            return await Banner.findOneAndUpdate(
-                { order: newOrder },
-                { $set: { order: prevOrder } },
-                { new: true }
-            );
-        } catch (error) {
-            repositoryErrorHandler(error);
-        }
+        return await Banner.findOneAndUpdate(
+            { order: newOrder },
+            { $set: { order: prevOrder } },
+            { new: true }
+        );
     };
 
     async dragBanner(id, newOrder) {
-        try {
-            return await Banner.findByIdAndUpdate(
-                id,
-                { $set: { order: newOrder } },
-                { new: true }
-            );
-        } catch (error) {
-            repositoryErrorHandler(error);
-        }
+        return await Banner.findByIdAndUpdate(id,
+            { $set: { order: newOrder } },
+            { new: true }
+        );
     };
 };
 
-module.exports = new BannerRepository();
+module.exports = BannerRepository;

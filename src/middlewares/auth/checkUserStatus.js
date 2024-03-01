@@ -1,13 +1,16 @@
-const authService = require("../../services/auth");
-const authRepository = require("../../repositories/auth");
+const jwt = require("jsonwebtoken");
+const UserRepository = require("../../repositories/user");
+
+const userRepository = new UserRepository();
 
 const checkUserStatus = async (req, res, next) => {
     try {
         const token = req.cookies.userJwt;
 
         if (token) {
-            const decodedToken = await authService.decodeToken(token);
-            const currentUser = await authRepository.findCurrentUserById(decodedToken.userId);
+            const decodedToken = jwt.verify(token, process.env.JWT_SECRET_KEY);
+
+            const currentUser = await userRepository.findCurrentUserById(decodedToken.userId);
 
             if (currentUser && currentUser.isBlocked) {
                 res.clearCookie("userJwt");

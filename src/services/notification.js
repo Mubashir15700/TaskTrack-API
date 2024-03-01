@@ -1,118 +1,95 @@
-const notificationRepository = require("../repositories/notification");
-const serverErrorHandler = require("../utils/errorHandling/serverErrorHandler");
-
 class NotificationService {
+    constructor (notificationRepository) {
+        this.notificationRepository = notificationRepository;
+    };
+
     // admin
     async getAdminNotificationsCount() {
-        try {
-            const count = await notificationRepository.getAdminNotificationsCount();
-            return {
-                status: 200,
-                message: "Get new admin notifications count success",
-                data: {
-                    count
-                }
-            };
-        } catch (error) {
-            return serverErrorHandler(error.message);
-        }
+        const count = await this.notificationRepository.getAdminNotificationsCount();
+        return {
+            status: 200,
+            message: "Get new admin notifications count success",
+            data: {
+                count
+            }
+        };
     };
 
     async getAdminNotifications(page) {
-        try {
-            const pageSize = 10;
+        const pageSize = 10;
 
-            const notifications = await notificationRepository.getAdminNotifications(
-                page, pageSize
-            );
+        const notifications = await this.notificationRepository.getAdminNotifications(
+            page, pageSize
+        );
 
-            const totalNotifications = await notificationRepository.getAdminNotificationsCount();
-            const totalPages = Math.ceil(totalNotifications / pageSize);
+        const totalNotifications = await this.notificationRepository.getAdminNotificationsCount();
+        const totalPages = Math.ceil(totalNotifications / pageSize);
 
-            return {
-                status: 200,
-                message: "Get admin notifications success",
-                data: {
-                    notifications,
-                    totalPages
-                }
-            };
-        } catch (error) {
-            return serverErrorHandler(error.message);
-        }
+        return {
+            status: 200,
+            message: "Get admin notifications success",
+            data: {
+                notifications,
+                totalPages
+            }
+        };
     };
 
     async markAdminNotificationRead(id) {
-        try {
-            const result = await notificationRepository.markAdminNotificationRead(id);
+        const result = await this.notificationRepository.markAdminNotificationRead(id);
 
-            if (result) {
-                return {
-                    status: 200,
-                    message: "Mark notification read success",
-                };
-            }
-        } catch (error) {
-            return serverErrorHandler(error.message);
+        if (result) {
+            return {
+                status: 200,
+                message: "Mark notification read success",
+            };
         }
     };
 
     // user
     async getUserNotificationsCount(userId) {
-        try {
-            const count = await notificationRepository.getUserNotificationsCount(userId);
+        const count = await this.notificationRepository.getUserNotificationsCount(userId);
 
-            return {
-                status: 200,
-                message: "Get new user notifications count success",
-                data: {
-                    count
-                }
-            };
-        } catch (error) {
-            return serverErrorHandler(error.message);
-        }
+        return {
+            status: 200,
+            message: "Get new user notifications count success",
+            data: {
+                count
+            }
+        };
     };
 
     async getUserNotifications(userId, page) {
-        try {
-            const pageSize = 10;
+        const pageSize = 10;
 
-            const notifications = await notificationRepository.getUserNotifications(
-                userId, page, pageSize
-            );
+        const notifications = await this.notificationRepository.getUserNotifications(
+            userId, page, pageSize
+        );
 
-            const totalNotifications = await notificationRepository.getAllUserNotificationsCount(userId);
-            const totalPages = Math.ceil(totalNotifications / pageSize);
+        const totalNotifications = await this.notificationRepository.getAllUserNotificationsCount(userId);
+        const totalPages = Math.ceil(totalNotifications / pageSize);
 
-            return {
-                status: 200,
-                message: "Get user notifications success",
-                data: {
-                    notifications,
-                    totalPages
-                }
-            };
-        } catch (error) {
-            return serverErrorHandler(error.message);
-        }
+        return {
+            status: 200,
+            message: "Get user notifications success",
+            data: {
+                notifications,
+                totalPages
+            }
+        };
     };
 
     async markUserNotificationRead(id) {
-        try {
-            const result = await notificationRepository.markUserNotificationRead(id);
+        const result = await this.notificationRepository.markUserNotificationRead(id);
 
-            if (result) {
-                return {
-                    status: 200,
-                    message: "Mark notification read success",
-                };
-            }
-        } catch (error) {
-            return serverErrorHandler(error.message);
+        if (result) {
+            return {
+                status: 200,
+                message: "Mark notification read success",
+            };
         }
     };
 
 };
 
-module.exports = new NotificationService();
+module.exports = NotificationService;

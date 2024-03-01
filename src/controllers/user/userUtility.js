@@ -1,14 +1,20 @@
-const userUtilityService = require("../../services/user/userUtility");
-const catchAsync = require("../../utils/errorHandling/catchAsync");
 const sendResponse = require("../../utils/responseStructure");
 
-exports.getBanners = catchAsync(async (req, res) => {
-    const result = await userUtilityService.getBanners();
-    sendResponse(res, result);
-});
+class UserUtilityController {
+    constructor(userUtilityService) {
+        this.userUtilityService = userUtilityService;
+    };
 
-exports.updateMessagesReadStatus = catchAsync(async (req, res) => {
-    const messageIds = req.body;
-    const result = await userUtilityService.updateMessagesReadStatus(messageIds);
-    sendResponse(res, result);
-});
+    async getBanners(req, res) {
+        const result = await this.userUtilityService.getBanners();
+        sendResponse(res, result);
+    };
+
+    async updateMessagesReadStatus(req, res) {
+        const messageIds = req.body;
+        const result = await this.userUtilityService.updateMessagesReadStatus(messageIds);
+        sendResponse(res, result);
+    };
+};
+
+module.exports = UserUtilityController;

@@ -1,35 +1,22 @@
 const Reason = require("../models/reason");
-const repositoryErrorHandler = require("../utils/errorHandling/repositoryErrorHandler");
 
 class ReasonRepository {
     async saveBlockReason(userId, action, reason) {
-        try {
-            const blockReason = new Reason({
-                userId,
-                action,
-                reason
-            });
-            await blockReason.save();
-        } catch (error) {
-            repositoryErrorHandler(error);
-        }
+        const blockReason = new Reason({
+            userId,
+            action,
+            reason
+        });
+        return await blockReason.save();
     };
 
     async removeBlockReason(userId, action) {
-        try {
-            await Reason.findOneAndDelete({ userId, action });
-        } catch (error) {
-            repositoryErrorHandler(error);
-        }
+        return await Reason.findOneAndDelete({ userId, action });
     };
 
     async findBlockReason(userId, action) {
-        try {
-            return await Reason.findOne({ userId, action });
-        } catch (error) {
-            repositoryErrorHandler(error);
-        }
+        return await Reason.findOne({ userId, action });
     };
 };
 
-module.exports = new ReasonRepository();
+module.exports = ReasonRepository;

@@ -1,37 +1,34 @@
-const userRepository = require("../repositories/user");
-const laborerRepository = require("../repositories/laborer");
-const jobRepository = require("../repositories/job");
-const bannerRepository = require("../repositories/banner");
-const planRepository = require("../repositories/plan");
-const serverErrorHandler = require("../utils/errorHandling/serverErrorHandler");
-
 class UtilityService {
+    constructor(userRepository, laborerRepository, jobRepository, bannerRepository, planRepository) {
+        this.userRepository = userRepository;
+        this.laborerRepository = laborerRepository;
+        this.jobRepository = jobRepository;
+        this.bannerRepository = bannerRepository;
+        this.planRepository = planRepository;
+    };
+
     async search(currentUserId, searchWith, searchOn) {
-        try {
-            let searchResults;
-            if (searchOn === "users") {
-                searchResults = await userRepository.searchUsers(searchWith);
-            } else if (searchOn === "laborers") {
-                searchResults = await laborerRepository.getLaborers(currentUserId, searchWith);
-            } else if (searchOn === "plans") {
-                searchResults = await planRepository.searchPlans(searchWith);
-            } else if (searchOn === "jobs") {
-                searchResults = await jobRepository.getJobs(currentUserId, searchWith);
-            } else {
-                searchResults = await bannerRepository.searchBanners(searchWith);
-            }
-            
-            return {
-                status: 200,
-                message: "Search success",
-                data: {
-                    result: searchResults
-                }
-            };
-        } catch (error) {
-            return serverErrorHandler(error.message);
+        let searchResults;
+        if (searchOn === "users") {
+            searchResults = await this.userRepository.searchUsers(searchWith);
+        } else if (searchOn === "laborers") {
+            searchResults = await this.laborerRepository.getLaborers(currentUserId, searchWith);
+        } else if (searchOn === "plans") {
+            searchResults = await this.planRepository.searchPlans(searchWith);
+        } else if (searchOn === "jobs") {
+            searchResults = await this.jobRepository.getJobs(currentUserId, searchWith);
+        } else {
+            searchResults = await this.bannerRepository.searchBanners(searchWith);
         }
+
+        return {
+            status: 200,
+            message: "Search success",
+            data: {
+                result: searchResults
+            }
+        };
     };
 };
 
-module.exports = new UtilityService();
+module.exports = UtilityService;

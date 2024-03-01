@@ -9,6 +9,7 @@ const sendMail = async (options) => {
             pass: process.env.APP_PASSWORD
         }
     });
+    
     transporter.sendMail(options, (error, info) => {
         if (error) {
             console.error("Error: ", error);

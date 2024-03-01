@@ -1,10 +1,15 @@
-const chatRepository = require("../repositories/chat");
-const notificationRepository = require("../repositories/notification");
+const ChatRepository = require("../repositories/chat");
+const ConversationRepository = require("../repositories/conversation");
+const NotificationRepository = require("../repositories/notification");
+
+const chatRepository = new ChatRepository();
+const conversationRepository = new ConversationRepository();
+const notificationRepository = new NotificationRepository();
 
 function handleGetChatHistory(io, socket) {
     socket.on("get_chat_history", async (data) => {
 
-        const conversation = await chatRepository.findConversation(data.senderId, data.receiverId);
+        const conversation = await conversationRepository.findConversation(data.senderId, data.receiverId);
 
         if (conversation) {
             // Find chat messages based on the conversationId
@@ -58,10 +63,10 @@ function handleSendMessage(io, socket, connectedUsers, findUserById) {
         }
 
         // Create a new conversation or find an existing one
-        let conversation = await chatRepository.findConversation(data.senderId, data.receiverId);
+        let conversation = await conversationRepository.findConversation(data.senderId, data.receiverId);
 
         if (!conversation) {
-            conversation = await chatRepository.createConversation(data.senderId, data.receiverId);
+            conversation = await conversationRepository.createConversation(data.senderId, data.receiverId);
         }
 
         // Save the message to the database with the conversationId

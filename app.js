@@ -59,9 +59,9 @@ app.use((err, req, res, next) => {
 });
 
 app.use("/auth", authRoutes);
-app.use("/", userRoutes);
 app.use("/admin", adminRoutes);
 app.use("/shared", sharedRoutes);
+app.use("/", userRoutes);
 
 // Serve static files for the React page
 app.use(express.static(path.join(__dirname, "../client", "dist")));

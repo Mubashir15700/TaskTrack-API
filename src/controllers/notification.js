@@ -1,52 +1,58 @@
-const notificationService = require("../services/notification");
-const catchAsync = require("../utils/errorHandling/catchAsync");
 const sendResponse = require("../utils/responseStructure");
 
-// admin
-exports.getAdminNotificationsCount = catchAsync(async (req, res) => {
-    const result = await notificationService.getAdminNotificationsCount();
-    sendResponse(res, result);
-});
+class NotificationController {
+    constructor(notificationService) {
+        this.notificationService = notificationService;
+    };
 
-exports.getAdminNotifications = catchAsync(async (req, res) => {
-    const { page } = req.params;
-    const result = await notificationService.getAdminNotifications(page);
-    sendResponse(res, result);
-});
+    // Admin notifications
+    async getAdminNotificationsCount(req, res) {
+        const result = await this.notificationService.getAdminNotificationsCount();
+        sendResponse(res, result);
+    };
 
-exports.getAdminNotification = catchAsync(async (req, res) => {
-    const { id } = req.params;
-    const result = await notificationService.getAdminNotification(id);
-    sendResponse(res, result);
-});
+    async getAdminNotifications(req, res) {
+        const { page } = req.params;
+        const result = await this.notificationService.getAdminNotifications(page);
+        sendResponse(res, result);
+    };
 
-exports.markAdminNotificationRead = catchAsync(async (req, res) => {
-    const { id } = req.params;
-    const result = await notificationService.markAdminNotificationRead(id);
-    sendResponse(res, result);
-});
+    async getAdminNotification(req, res) {
+        const { id } = req.params;
+        const result = await this.notificationService.getAdminNotification(id);
+        sendResponse(res, result);
+    };
 
-// user
-exports.getUserNotificationsCount = catchAsync(async (req, res) => {
-    const { id } = req.params
-    const result = await notificationService.getUserNotificationsCount(id);
-    sendResponse(res, result);
-});
+    async markAdminNotificationRead(req, res) {
+        const { id } = req.params;
+        const result = await this.notificationService.markAdminNotificationRead(id);
+        sendResponse(res, result);
+    };
 
-exports.getUserNotifications = catchAsync(async (req, res) => {
-    const { id, page } = req.params;
-    const result = await notificationService.getUserNotifications(id, page);
-    sendResponse(res, result);
-});
+    // User notifications
+    async getUserNotificationsCount(req, res) {
+        const { id } = req.params;
+        const result = await this.notificationService.getUserNotificationsCount(id);
+        sendResponse(res, result);
+    };
 
-exports.getUserNotification = catchAsync(async (req, res) => {
-    const { id } = req.params;
-    const result = await notificationService.getUserNotification(id);
-    sendResponse(res, result);
-});
+    async getUserNotifications(req, res) {
+        const { id, page } = req.params;
+        const result = await this.notificationService.getUserNotifications(id, page);
+        sendResponse(res, result);
+    };
 
-exports.markUserNotificationRead = catchAsync(async (req, res) => {
-    const { id } = req.params;
-    const result = await notificationService.markUserNotificationRead(id);
-    sendResponse(res, result);
-});
+    async getUserNotification(req, res) {
+        const { id } = req.params;
+        const result = await this.notificationService.getUserNotification(id);
+        sendResponse(res, result);
+    };
+
+    async markUserNotificationRead(req, res) {
+        const { id } = req.params;
+        const result = await this.notificationService.markUserNotificationRead(id);
+        sendResponse(res, result);
+    };
+};
+
+module.exports = NotificationController;

@@ -1,126 +1,89 @@
 const Subscription = require("../models/subscription");
-const repositoryErrorHandler = require("../utils/errorHandling/repositoryErrorHandler");
 
 class SubscriptionRepository {
     async saveSubscription(userId, subscriptionId, planId) {
-        try {
-            const filter = { subscriptionId };
-            const update = { userId, planId };
-            const options = { upsert: true, new: true };
+        const filter = { subscriptionId };
+        const update = { userId, planId };
+        const options = { upsert: true, new: true };
 
-            const result = await Subscription.findOneAndUpdate(filter, update, options);
+        const result = await Subscription.findOneAndUpdate(filter, update, options);
 
-            if (result) {
-                return result._id;
-            } else {
-                throw new Error("Failed to save or update subscription");
-            }
-        } catch (error) {
-            repositoryErrorHandler(error);
+        if (result) {
+            return result._id;
+        } else {
+            throw new Error("Failed to save or update subscription");
         }
     };
 
     async findSubscriptionsCount() {
-        try {
-            return await Subscription.countDocuments();
-        } catch (error) {
-            repositoryErrorHandler(error);
-        }
+        return await Subscription.countDocuments();
     };
 
     async getSubscriptions(startIndex, itemsPerPage) {
-        try {
-            const aggregationPipeline = [
-                { $skip: startIndex || 0 },
-                { $limit: itemsPerPage || 0 },
-                {
-                    $lookup: {
-                        from: "plans",  // Assuming the name of the "plans" collection
-                        localField: "planId",
-                        foreignField: "_id",
-                        as: "Plan"
-                    }
-                },
-                {
-                    $lookup: {
-                        from: "users",  // Assuming the name of the "users" collection
-                        localField: "userId",
-                        foreignField: "_id",
-                        as: "User"
-                    }
-                },
-                {
-                    $unwind: "$Plan" // Unwind the "Plan" array
-                },
-                {
-                    $unwind: "$User" // Unwind the "User" array
-                },
-                {
-                    $project: {
-                        subscriptionId: 1,
-                        createdAt: 1,
-                        isActive: 1,
-                        planName: "$Plan.name",
-                        amount: "$Plan.amount",
-                        type: "$Plan.type",
-                        username: "$User.username",
-                    }
+        const aggregationPipeline = [
+            { $skip: startIndex || 0 },
+            { $limit: itemsPerPage || 0 },
+            {
+                $lookup: {
+                    from: "plans",  // Assuming the name of the "plans" collection
+                    localField: "planId",
+                    foreignField: "_id",
+                    as: "Plan"
                 }
-            ];
+            },
+            {
+                $lookup: {
+                    from: "users",  // Assuming the name of the "users" collection
+                    localField: "userId",
+                    foreignField: "_id",
+                    as: "User"
+                }
+            },
+            {
+                $unwind: "$Plan" // Unwind the "Plan" array
+            },
+            {
+                $unwind: "$User" // Unwind the "User" array
+            },
+            {
+                $project: {
+                    subscriptionId: 1,
+                    createdAt: 1,
+                    isActive: 1,
+                    planName: "$Plan.name",
+                    amount: "$Plan.amount",
+                    type: "$Plan.type",
+                    username: "$User.username",
+                }
+            }
+        ];
 
-            const res = await Subscription.aggregate(aggregationPipeline);
-
-            return res;
-        } catch (error) {
-            repositoryErrorHandler(error);
-        }
+        return await Subscription.aggregate(aggregationPipeline);
     };
 
     async getActivePlan(subscriptionId) {
-        try {
-            return await Subscription.findById(subscriptionId).populate("planId");
-        } catch (error) {
-            repositoryErrorHandler(error);
-        }
+        return await Subscription.findById(subscriptionId).populate("planId");
     };
 
     async cancelSubscription(subscriptionId) {
-        try {
-            const filter = { subscriptionId };
-
-            return await Subscription.findOneAndDelete(filter);
-        } catch (error) {
-            repositoryErrorHandler(error);
-        }
+        return await Subscription.findOneAndDelete({ subscriptionId });
     };
 
     async updateJobPostsCount(userId) {
-        try {
-            return await Subscription.findOneAndUpdate({ userId },
-                { $inc: { jobPostsCount: 1 } },
-            );
-        } catch (error) {
-            repositoryErrorHandler(error);
-        }
+        return await Subscription.findOneAndUpdate({ userId },
+            { $inc: { jobPostsCount: 1 } },
+        );
     };
 
     async postedJobsCount(userId) {
-        try {
-            const subscription = await Subscription.findOne({ userId });
-            return subscription?.jobPostsCount;
-        } catch (error) {
-            repositoryErrorHandler(error);
-        }
+        const subscription = await Subscription.findOne({ userId });
+        return subscription?.jobPostsCount;
     };
 
     async totalJobPostsCount(userId) {
-        try {
-            const totalPosts = await Subscription.findOne({ userId }).populate("planId");
-            return totalPosts?.planId?.numberOfJobPosts;
-        } catch (error) {
-            repositoryErrorHandler(error);
-        }
+        const totalPosts = await Subscription.findOne({ userId }).populate("planId");
+        return totalPosts?.planId?.numberOfJobPosts;
     };
 };
 
-module.exports = new SubscriptionRepository();
+module.exports = SubscriptionRepository;

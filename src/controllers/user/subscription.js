@@ -1,33 +1,38 @@
-const subscriptionService = require("../../services/user/subscription");
-const catchAsync = require("../../utils/errorHandling/catchAsync");
 const sendResponse = require("../../utils/responseStructure");
 
-exports.getStripePublicKey = catchAsync(async (req, res) => {
-    const result = await subscriptionService.getStripePublicKey();
-    sendResponse(res, result);
-});
+class SubscriptionController {
+    constructor(subscriptionService) {
+        this.subscriptionService = subscriptionService;
+    };
 
-exports.createSubscription = catchAsync(async (req, res) => {
-    const userData = req.body.user;
-    const planData = req.body.item;
-    const result = await subscriptionService.createSubscription(userData, planData);
-    sendResponse(res, result);
-});
+    async getStripePublicKey(req, res) {
+        const result = await this.subscriptionService.getStripePublicKey();
+        sendResponse(res, result);
+    };
 
-exports.saveSubscriptionResult = catchAsync(async (req, res) => {
-    const sessionId = req.cookies.sessionId;
-    const result = await subscriptionService.saveSubscriptionResult(sessionId);
-    sendResponse(res, result);
-});
+    async createSubscription(req, res) {
+        const { user, item } = req.body;
+        const result = await this.subscriptionService.createSubscription(user, item);
+        sendResponse(res, result);
+    };
 
-exports.getActivePlan = catchAsync(async (req, res) => {
-    const { subscriptionId } = req.query;
-    const result = await subscriptionService.getActivePlan(subscriptionId);
-    sendResponse(res, result);
-});
+    async saveSubscriptionResult(req, res) {
+        const sessionId = req.cookies.sessionId;
+        const result = await this.subscriptionService.saveSubscriptionResult(sessionId);
+        sendResponse(res, result);
+    };
 
-exports.cancelActivePlan = catchAsync(async (req, res) => {
-    const { subscriptionId, userId } = req.body;
-    const result = await subscriptionService.cancelActivePlan(subscriptionId, userId);
-    sendResponse(res, result);
-});
+    async getActivePlan(req, res) {
+        const { subscriptionId } = req.query;
+        const result = await this.subscriptionService.getActivePlan(subscriptionId);
+        sendResponse(res, result);
+    };
+
+    async cancelActivePlan(req, res) {
+        const { subscriptionId, userId } = req.body;
+        const result = await this.subscriptionService.cancelActivePlan(subscriptionId, userId);
+        sendResponse(res, result);
+    };
+};
+
+module.exports = SubscriptionController;

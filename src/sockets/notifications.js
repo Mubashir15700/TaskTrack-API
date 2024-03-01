@@ -1,4 +1,6 @@
-const notificationRepository = require("../repositories/notification");
+const NotificationRepository = require("../repositories/notification");
+
+const notificationRepository = new NotificationRepository();
 
 async function saveNotification(message, redirectTo, to, from) {
     if (!message || !redirectTo || !to) {
