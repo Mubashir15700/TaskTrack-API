@@ -24,7 +24,6 @@ const deleteImage = async (key) => {
   return await s3.send(command);
 };
 
-
 const upload = multer({
   storage: multerS3({
     s3,
@@ -46,35 +45,5 @@ const upload = multer({
 });
 
 const uploadImage = upload;
-
-// const imageConverter = function (req, res, next) {
-//   console.log(req.);
-//   const files = req.files || undefined;
-//   if (!files) {
-//     return next();
-//   }
-//   const resizePromises = [];
-//   files.forEach(file => {
-//     const resizePromise = sharp(file.buffer)
-//       // .resize({ width: 300, height: 300 })
-//       .toBuffer()
-//       .then(data => {
-//         file.buffer = data;
-//       })
-//       .catch(err => {
-//         console.error("Error resizing image:", err);
-//       });
-
-//     resizePromises.push(resizePromise);
-//   });
-
-//   Promise.all(resizePromises)
-//     .then(() => {
-//       next();
-//     })
-//     .catch(err => {
-//       next(err);
-//     });
-// };
 
 module.exports = { uploadImage, getPresignedUrl, deleteImage };

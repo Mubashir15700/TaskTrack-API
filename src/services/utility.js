@@ -1,3 +1,5 @@
+const { getBannersWithPresignedUrls } = require("../utils/getBannersWithImageUrls");
+
 class UtilityService {
     constructor(userRepository, laborerRepository, jobRepository, bannerRepository, planRepository) {
         this.userRepository = userRepository;
@@ -18,7 +20,8 @@ class UtilityService {
         } else if (searchOn === "jobs") {
             searchResults = await this.jobRepository.getJobs(currentUserId, searchWith);
         } else {
-            searchResults = await this.bannerRepository.searchBanners(searchWith);
+            const foundBanners = await this.bannerRepository.searchBanners(searchWith);
+            searchResults = await getBannersWithPresignedUrls(foundBanners);
         }
 
         return {

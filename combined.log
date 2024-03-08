@@ -1,7 +1,770 @@
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"error","message":"Error checking user status: token is not defined","stack":"ReferenceError: token is not defined\n    at checkUserStatus (/home/mubashir/Brocamp Second Project/server/src/middlewares/auth/checkUserStatus.js:11:9)\n    at Layer.handle [as handle_request] (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/layer.js:95:5)\n    at next (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/route.js:144:13)\n    at Route.dispatch (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/route.js:114:3)\n    at Layer.handle [as handle_request] (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/layer.js:95:5)\n    at /home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/index.js:284:15\n    at Function.process_params (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/index.js:346:12)\n    at next (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/index.js:280:10)\n    at Function.handle (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/index.js:175:3)\n    at router (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/index.js:47:12)"}
+{"level":"error","message":"Error checking user status: token is not defined","stack":"ReferenceError: token is not defined\n    at checkUserStatus (/home/mubashir/Brocamp Second Project/server/src/middlewares/auth/checkUserStatus.js:11:9)\n    at Layer.handle [as handle_request] (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/layer.js:95:5)\n    at next (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/route.js:144:13)\n    at Route.dispatch (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/route.js:114:3)\n    at Layer.handle [as handle_request] (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/layer.js:95:5)\n    at /home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/index.js:284:15\n    at Function.process_params (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/index.js:346:12)\n    at next (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/index.js:280:10)\n    at Function.handle (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/index.js:175:3)\n    at router (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/index.js:47:12)"}
+{"level":"error","message":"Error checking user status: token is not defined","stack":"ReferenceError: token is not defined\n    at checkUserStatus (/home/mubashir/Brocamp Second Project/server/src/middlewares/auth/checkUserStatus.js:11:9)\n    at Layer.handle [as handle_request] (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/layer.js:95:5)\n    at next (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/route.js:144:13)\n    at Route.dispatch (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/route.js:114:3)\n    at Layer.handle [as handle_request] (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/layer.js:95:5)\n    at /home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/index.js:284:15\n    at Function.process_params (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/index.js:346:12)\n    at next (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/index.js:280:10)\n    at Function.handle (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/index.js:175:3)\n    at router (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/index.js:47:12)"}
+{"level":"error","message":"Error checking user status: token is not defined","stack":"ReferenceError: token is not defined\n    at checkUserStatus (/home/mubashir/Brocamp Second Project/server/src/middlewares/auth/checkUserStatus.js:11:9)\n    at Layer.handle [as handle_request] (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/layer.js:95:5)\n    at next (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/route.js:144:13)\n    at Route.dispatch (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/route.js:114:3)\n    at Layer.handle [as handle_request] (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/layer.js:95:5)\n    at /home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/index.js:284:15\n    at Function.process_params (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/index.js:346:12)\n    at next (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/index.js:280:10)\n    at Function.handle (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/index.js:175:3)\n    at router (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/index.js:47:12)"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"MongoDB disconnected"}
+{"code":"ETIMEOUT","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"Error connecting to the database: querySrv ETIMEOUT _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ETIMEOUT _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
+{"code":"ETIMEOUT","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"MongoDB connection error: querySrv ETIMEOUT _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ETIMEOUT _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"error","message":"Internal error:  Operation `jobs.aggregate()` buffering timed out after 10000ms","stack":"MongooseError: Operation `jobs.aggregate()` buffering timed out after 10000ms\n    at Timeout.<anonymous> (/home/mubashir/Brocamp Second Project/server/node_modules/mongoose/lib/drivers/node-mongodb-native/collection.js:186:23)\n    at listOnTimeout (node:internal/timers:569:17)\n    at process.processTimers (node:internal/timers:512:7)"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"MongoDB disconnected"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"error","message":"Error checking user status:"}
+{"level":"error","message":"Error checking user status:"}
+{"level":"info","message":"MongoDB disconnected"}
+{"level":"error","message":"Error connecting to the database: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/","reason":{"commonWireVersion":0,"compatible":true,"heartbeatFrequencyMS":10000,"localThresholdMS":15,"logicalSessionTimeoutMinutes":null,"maxElectionId":null,"maxSetVersion":null,"servers":{},"setName":"atlas-jcjbqb-shard-0","stale":false,"type":"ReplicaSetNoPrimary"},"stack":"MongooseServerSelectionError: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/\n    at _handleConnectionErrors (/home/mubashir/Brocamp Second Project/server/node_modules/mongoose/lib/connection.js:809:11)\n    at NativeConnection.openUri (/home/mubashir/Brocamp Second Project/server/node_modules/mongoose/lib/connection.js:784:11)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async DBConnection (/home/mubashir/Brocamp Second Project/server/db.js:21:9)"}
+{"level":"error","message":"MongoDB connection error: Server selection timed out after 30000 ms","reason":{"commonWireVersion":0,"compatible":true,"heartbeatFrequencyMS":10000,"localThresholdMS":15,"logicalSessionTimeoutMinutes":null,"maxElectionId":null,"maxSetVersion":null,"servers":{},"setName":"atlas-jcjbqb-shard-0","stale":false,"type":"ReplicaSetNoPrimary"},"stack":"MongoServerSelectionError: Server selection timed out after 30000 ms\n    at EventTarget.<anonymous> (/home/mubashir/Brocamp Second Project/server/node_modules/mongodb/lib/sdam/topology.js:276:34)\n    at [nodejs.internal.kHybridDispatch] (node:internal/event_target:786:20)\n    at EventTarget.dispatchEvent (node:internal/event_target:721:26)\n    at abortSignal (node:internal/abort_controller:369:10)\n    at TimeoutController.abort (node:internal/abort_controller:403:5)\n    at Timeout.<anonymous> (/home/mubashir/Brocamp Second Project/server/node_modules/mongodb/lib/utils.js:1010:92)\n    at listOnTimeout (node:internal/timers:569:17)\n    at process.processTimers (node:internal/timers:512:7)"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"error","message":"Error checking user status:"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"MongoDB disconnected"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"error","message":"Error checking user has token:"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
 {"level":"info","message":"MongoDB disconnected"}
 {"level":"info","message":"Connected to MongoDB"}
 {"level":"info","message":"MongoDB disconnected"}
 {"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"MongoDB disconnected"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"MongoDB disconnected"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"MongoDB disconnected"}
+{"level":"error","message":"Error connecting to the database: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/","reason":{"commonWireVersion":0,"compatible":true,"heartbeatFrequencyMS":10000,"localThresholdMS":15,"logicalSessionTimeoutMinutes":null,"maxElectionId":null,"maxSetVersion":null,"servers":{},"setName":"atlas-jcjbqb-shard-0","stale":false,"type":"ReplicaSetNoPrimary"},"stack":"MongooseServerSelectionError: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/\n    at _handleConnectionErrors (/home/mubashir/Brocamp Second Project/server/node_modules/mongoose/lib/connection.js:809:11)\n    at NativeConnection.openUri (/home/mubashir/Brocamp Second Project/server/node_modules/mongoose/lib/connection.js:784:11)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async DBConnection (/home/mubashir/Brocamp Second Project/server/db.js:21:9)"}
+{"level":"error","message":"MongoDB connection error: connection timed out","reason":{"commonWireVersion":0,"compatible":true,"heartbeatFrequencyMS":10000,"localThresholdMS":15,"logicalSessionTimeoutMinutes":null,"maxElectionId":null,"maxSetVersion":null,"servers":{},"setName":"atlas-jcjbqb-shard-0","stale":false,"type":"ReplicaSetNoPrimary"},"stack":"MongoServerSelectionError: connection timed out\n    at EventTarget.<anonymous> (/home/mubashir/Brocamp Second Project/server/node_modules/mongodb/lib/sdam/topology.js:276:34)\n    at [nodejs.internal.kHybridDispatch] (node:internal/event_target:786:20)\n    at EventTarget.dispatchEvent (node:internal/event_target:721:26)\n    at abortSignal (node:internal/abort_controller:369:10)\n    at TimeoutController.abort (node:internal/abort_controller:403:5)\n    at Timeout.<anonymous> (/home/mubashir/Brocamp Second Project/server/node_modules/mongodb/lib/utils.js:1010:92)\n    at listOnTimeout (node:internal/timers:569:17)\n    at process.processTimers (node:internal/timers:512:7)"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"MongoDB disconnected"}
+{"level":"error","message":"Error connecting to the database: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/","reason":{"commonWireVersion":0,"compatible":true,"heartbeatFrequencyMS":10000,"localThresholdMS":15,"logicalSessionTimeoutMinutes":null,"maxElectionId":null,"maxSetVersion":null,"servers":{},"setName":"atlas-jcjbqb-shard-0","stale":false,"type":"ReplicaSetNoPrimary"},"stack":"MongooseServerSelectionError: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/\n    at _handleConnectionErrors (/home/mubashir/Brocamp Second Project/server/node_modules/mongoose/lib/connection.js:809:11)\n    at NativeConnection.openUri (/home/mubashir/Brocamp Second Project/server/node_modules/mongoose/lib/connection.js:784:11)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async DBConnection (/home/mubashir/Brocamp Second Project/server/db.js:21:9)"}
+{"level":"error","message":"MongoDB connection error: connection timed out","reason":{"commonWireVersion":0,"compatible":true,"heartbeatFrequencyMS":10000,"localThresholdMS":15,"logicalSessionTimeoutMinutes":null,"maxElectionId":null,"maxSetVersion":null,"servers":{},"setName":"atlas-jcjbqb-shard-0","stale":false,"type":"ReplicaSetNoPrimary"},"stack":"MongoServerSelectionError: connection timed out\n    at EventTarget.<anonymous> (/home/mubashir/Brocamp Second Project/server/node_modules/mongodb/lib/sdam/topology.js:276:34)\n    at [nodejs.internal.kHybridDispatch] (node:internal/event_target:786:20)\n    at EventTarget.dispatchEvent (node:internal/event_target:721:26)\n    at abortSignal (node:internal/abort_controller:369:10)\n    at TimeoutController.abort (node:internal/abort_controller:403:5)\n    at Timeout.<anonymous> (/home/mubashir/Brocamp Second Project/server/node_modules/mongodb/lib/utils.js:1010:92)\n    at listOnTimeout (node:internal/timers:569:17)\n    at process.processTimers (node:internal/timers:512:7)"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"error","message":"Internal error:  response is not defined","stack":"ReferenceError: response is not defined\n    at SubscriptionService.testWebhook (/home/mubashir/Brocamp Second Project/server/src/services/user/subscription.js:151:13)\n    at SubscriptionController.testWebhook (/home/mubashir/Brocamp Second Project/server/src/controllers/user/subscription.js:34:55)\n    at /home/mubashir/Brocamp Second Project/server/src/utils/errorHandling/catchAsync.js:5:9\n    at Layer.handle [as handle_request] (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/layer.js:95:5)\n    at next (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/route.js:144:13)\n    at rawParser (/home/mubashir/Brocamp Second Project/server/node_modules/body-parser/lib/types/raw.js:58:7)\n    at Layer.handle [as handle_request] (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/layer.js:95:5)\n    at next (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/route.js:144:13)\n    at Route.dispatch (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/route.js:114:3)\n    at Layer.handle [as handle_request] (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/layer.js:95:5)"}
+{"level":"error","message":"Internal error:  response is not defined","stack":"ReferenceError: response is not defined\n    at SubscriptionService.testWebhook (/home/mubashir/Brocamp Second Project/server/src/services/user/subscription.js:151:13)\n    at SubscriptionController.testWebhook (/home/mubashir/Brocamp Second Project/server/src/controllers/user/subscription.js:34:55)\n    at /home/mubashir/Brocamp Second Project/server/src/utils/errorHandling/catchAsync.js:5:9\n    at Layer.handle [as handle_request] (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/layer.js:95:5)\n    at next (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/route.js:144:13)\n    at rawParser (/home/mubashir/Brocamp Second Project/server/node_modules/body-parser/lib/types/raw.js:58:7)\n    at Layer.handle [as handle_request] (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/layer.js:95:5)\n    at next (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/route.js:144:13)\n    at Route.dispatch (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/route.js:114:3)\n    at Layer.handle [as handle_request] (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/layer.js:95:5)"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"error","message":"Error checking user status:"}
+{"level":"error","message":"Error checking user status:"}
+{"level":"error","message":"Error checking user status:"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"MongoDB disconnected"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"error","message":"Error checking user status:"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"$clusterTime":{"clusterTime":{"$timestamp":"7343638050246754306"},"signature":{"hash":"k3LMc0W83j3YMk19z8YXq5Sj2Ug=","keyId":{"high":1702996225,"low":5,"unsigned":false}}},"code":5107200,"codeName":"Location5107200","level":"error","message":"Internal error:  invalid argument to $skip stage: Expected an integer, but found NaN in: $skip: nan.0","ok":0,"operationTime":{"$timestamp":"7343638050246754306"},"stack":"MongoServerError: invalid argument to $skip stage: Expected an integer, but found NaN in: $skip: nan.0\n    at Connection.onMessage (/home/mubashir/Brocamp Second Project/server/node_modules/mongodb/lib/cmap/connection.js:202:26)\n    at MessageStream.<anonymous> (/home/mubashir/Brocamp Second Project/server/node_modules/mongodb/lib/cmap/connection.js:61:60)\n    at MessageStream.emit (node:events:517:28)\n    at processIncomingData (/home/mubashir/Brocamp Second Project/server/node_modules/mongodb/lib/cmap/message_stream.js:124:16)\n    at MessageStream._write (/home/mubashir/Brocamp Second Project/server/node_modules/mongodb/lib/cmap/message_stream.js:33:9)\n    at writeOrBuffer (node:internal/streams/writable:392:12)\n    at _write (node:internal/streams/writable:333:10)\n    at Writable.write (node:internal/streams/writable:337:10)\n    at TLSSocket.ondata (node:internal/streams/readable:809:22)\n    at TLSSocket.emit (node:events:517:28)"}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
 {"level":"info","message":"Server running on port 3000"}
 {"level":"info","message":"Connected to MongoDB"}
 {"level":"info","message":"Connected to the database successfully."}
@@ -10,346 +773,11 @@
 {"level":"info","message":"Connected to the database successfully."}
 {"level":"info","message":"MongoDB disconnected"}
 {"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"MongoDB disconnected"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"MongoDB disconnected"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"MongoDB disconnected"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"MongoDB disconnected"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"MongoDB disconnected"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"MongoDB disconnected"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"MongoDB disconnected"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"MongoDB disconnected"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"MongoDB disconnected"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"MongoDB disconnected"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"MongoDB disconnected"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"MongoDB disconnected"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"MongoDB disconnected"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"MongoDB disconnected"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"MongoDB disconnected"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"MongoDB disconnected"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"MongoDB disconnected"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"MongoDB disconnected"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"MongoDB disconnected"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"MongoDB disconnected"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server shutting down..."}
-{"level":"info","message":"MongoDB disconnected"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server shutting down..."}
-{"level":"info","message":"Server shutting down..."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"MongoDB disconnected"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"MongoDB disconnected"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"MongoDB disconnected"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"MongoDB disconnected"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
 {"level":"info","message":"Server running on port 3000"}
 {"level":"info","message":"Connected to MongoDB"}
 {"level":"info","message":"Connected to the database successfully."}
+{"level":"error","message":"Internal error:  Cannot read properties of undefined (reading 'userId')","stack":"TypeError: Cannot read properties of undefined (reading 'userId')\n    at LaborerRepository.updateLaborerProfile (/home/mubashir/Brocamp Second Project/server/src/repositories/laborer.js:160:26)\n    at ProfileService.updateLaborerProfile (/home/mubashir/Brocamp Second Project/server/src/services/user/profile.js:92:38)\n    at ProfileController.updateLaborerProfile (/home/mubashir/Brocamp Second Project/server/src/controllers/user/profile.js:38:50)\n    at /home/mubashir/Brocamp Second Project/server/src/utils/errorHandling/catchAsync.js:5:9\n    at Layer.handle [as handle_request] (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/layer.js:95:5)\n    at next (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/route.js:144:13)\n    at checkToken (/home/mubashir/Brocamp Second Project/server/src/middlewares/auth/hasToken.js:12:9)\n    at exports.userHasToken (/home/mubashir/Brocamp Second Project/server/src/middlewares/auth/hasToken.js:23:12)\n    at Layer.handle [as handle_request] (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/layer.js:95:5)\n    at next (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/route.js:144:13)"}
 {"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
 {"level":"info","message":"Server running on port 3000"}
 {"level":"info","message":"Server running on port 3000"}
 {"level":"info","message":"Connected to MongoDB"}
@@ -364,831 +792,24 @@
 {"level":"info","message":"Database connection closed successfully."}
 {"level":"info","message":"Server shutting down..."}
 {"level":"info","message":"Database connection closed successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server shut down gracefully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"MongoDB disconnected"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"MongoDB disconnected"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"Error connecting to the database: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"MongoDB connection error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"MongoDB disconnected"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"Error connecting to the database: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"MongoDB connection error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"MongoDB disconnected"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"Error connecting to the database: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"MongoDB connection error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"MongoDB disconnected"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"Error connecting to the database: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"MongoDB connection error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"MongoDB disconnected"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"Error connecting to the database: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"MongoDB connection error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"MongoDB disconnected"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"Error connecting to the database: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"MongoDB connection error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"MongoDB disconnected"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"Error connecting to the database: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"MongoDB connection error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"MongoDB disconnected"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"Error connecting to the database: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"MongoDB connection error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"MongoDB disconnected"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"Error connecting to the database: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"MongoDB connection error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"MongoDB disconnected"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"Error connecting to the database: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"MongoDB connection error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"MongoDB disconnected"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"Error connecting to the database: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"MongoDB connection error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"MongoDB disconnected"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"Error connecting to the database: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"MongoDB connection error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"MongoDB disconnected"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"Error connecting to the database: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"MongoDB connection error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"MongoDB disconnected"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"Error connecting to the database: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"MongoDB connection error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"MongoDB disconnected"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"Error connecting to the database: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"MongoDB connection error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"MongoDB disconnected"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"Error connecting to the database: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"MongoDB connection error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"MongoDB disconnected"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"Error connecting to the database: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"MongoDB connection error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"MongoDB disconnected"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"Error connecting to the database: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"MongoDB connection error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"MongoDB disconnected"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"Error connecting to the database: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"MongoDB connection error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"MongoDB disconnected"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"Error connecting to the database: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"MongoDB connection error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"MongoDB disconnected"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"Error connecting to the database: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"MongoDB connection error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"MongoDB disconnected"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"Error connecting to the database: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"MongoDB connection error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"MongoDB disconnected"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"Error connecting to the database: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"MongoDB connection error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"MongoDB disconnected"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"Error connecting to the database: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"MongoDB connection error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"MongoDB disconnected"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"Error connecting to the database: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"MongoDB connection error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"MongoDB disconnected"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"Error connecting to the database: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"MongoDB connection error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"MongoDB disconnected"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"Error connecting to the database: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"MongoDB connection error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"MongoDB disconnected"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"Error connecting to the database: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"MongoDB connection error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"MongoDB disconnected"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"Error connecting to the database: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"MongoDB connection error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"MongoDB disconnected"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"Error connecting to the database: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"MongoDB connection error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"MongoDB disconnected"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"Error connecting to the database: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"MongoDB connection error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"MongoDB disconnected"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"Error connecting to the database: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"MongoDB connection error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"MongoDB disconnected"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"Error connecting to the database: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"MongoDB connection error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"MongoDB disconnected"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"Error connecting to the database: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"MongoDB connection error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"MongoDB disconnected"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"Error connecting to the database: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"MongoDB connection error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"MongoDB disconnected"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"Error connecting to the database: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"MongoDB connection error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"MongoDB disconnected"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"Error connecting to the database: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"MongoDB connection error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"MongoDB disconnected"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"Error connecting to the database: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"MongoDB connection error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"MongoDB disconnected"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"Error connecting to the database: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"MongoDB connection error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"MongoDB disconnected"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"Error connecting to the database: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"code":"ESERVFAIL","hostname":"_mongodb._tcp.cluster0.wthuy8v.mongodb.net","level":"error","message":"MongoDB connection error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net","stack":"Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.wthuy8v.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:275:17)","syscall":"querySrv"}
-{"level":"info","message":"Server shutting down..."}
-{"level":"info","message":"Database connection closed successfully."}
-{"level":"info","message":"Server shutting down..."}
-{"level":"info","message":"Database connection closed successfully."}
 {"level":"info","message":"Server shutting down..."}
 {"level":"info","message":"Database connection closed successfully."}
 {"level":"info","message":"Server running on port 3000"}
 {"level":"info","message":"Connected to MongoDB"}
 {"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
+{"level":"error","message":"Internal error:  Cannot read properties of undefined (reading 'userId')","stack":"TypeError: Cannot read properties of undefined (reading 'userId')\n    at LaborerRepository.updateLaborerProfile (/home/mubashir/Brocamp Second Project/server/src/repositories/laborer.js:160:26)\n    at ProfileService.updateLaborerProfile (/home/mubashir/Brocamp Second Project/server/src/services/user/profile.js:93:38)\n    at ProfileController.updateLaborerProfile (/home/mubashir/Brocamp Second Project/server/src/controllers/user/profile.js:39:50)\n    at /home/mubashir/Brocamp Second Project/server/src/utils/errorHandling/catchAsync.js:5:9\n    at Layer.handle [as handle_request] (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/layer.js:95:5)\n    at next (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/route.js:144:13)\n    at checkToken (/home/mubashir/Brocamp Second Project/server/src/middlewares/auth/hasToken.js:12:9)\n    at exports.userHasToken (/home/mubashir/Brocamp Second Project/server/src/middlewares/auth/hasToken.js:23:12)\n    at Layer.handle [as handle_request] (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/layer.js:95:5)\n    at next (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/route.js:144:13)"}
 {"level":"info","message":"Server running on port 3000"}
 {"level":"info","message":"Server running on port 3000"}
 {"level":"info","message":"Connected to MongoDB"}
 {"level":"info","message":"Connected to the database successfully."}
+{"level":"error","message":"Internal error:  Cannot read properties of undefined (reading 'userId')","stack":"TypeError: Cannot read properties of undefined (reading 'userId')\n    at LaborerRepository.updateLaborerProfile (/home/mubashir/Brocamp Second Project/server/src/repositories/laborer.js:160:26)\n    at ProfileService.updateLaborerProfile (/home/mubashir/Brocamp Second Project/server/src/services/user/profile.js:93:38)\n    at ProfileController.updateLaborerProfile (/home/mubashir/Brocamp Second Project/server/src/controllers/user/profile.js:40:50)\n    at /home/mubashir/Brocamp Second Project/server/src/utils/errorHandling/catchAsync.js:5:9\n    at Layer.handle [as handle_request] (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/layer.js:95:5)\n    at next (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/route.js:144:13)\n    at checkToken (/home/mubashir/Brocamp Second Project/server/src/middlewares/auth/hasToken.js:12:9)\n    at exports.userHasToken (/home/mubashir/Brocamp Second Project/server/src/middlewares/auth/hasToken.js:23:12)\n    at Layer.handle [as handle_request] (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/layer.js:95:5)\n    at next (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/route.js:144:13)"}
 {"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
 {"level":"info","message":"Server running on port 3000"}
 {"level":"info","message":"Server running on port 3000"}
 {"level":"info","message":"Connected to MongoDB"}
 {"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
+{"kind":"string","level":"error","message":"Internal error:  Cast to string failed for value \"[ \"Bachelor's Degree\" ]\" (type Array) at path \"education\"","path":"education","reason":null,"stack":"CastError: Cast to string failed for value \"[ \"Bachelor's Degree\" ]\" (type Array) at path \"education\"\n    at SchemaString.cast (/home/mubashir/Brocamp Second Project/server/node_modules/mongoose/lib/schema/string.js:606:11)\n    at SchemaType.applySetters (/home/mubashir/Brocamp Second Project/server/node_modules/mongoose/lib/schemaType.js:1219:12)\n    at SchemaString.castForQuery (/home/mubashir/Brocamp Second Project/server/node_modules/mongoose/lib/schema/string.js:691:15)\n    at castUpdateVal (/home/mubashir/Brocamp Second Project/server/node_modules/mongoose/lib/helpers/query/castUpdate.js:569:19)\n    at walkUpdatePath (/home/mubashir/Brocamp Second Project/server/node_modules/mongoose/lib/helpers/query/castUpdate.js:374:24)\n    at castUpdate (/home/mubashir/Brocamp Second Project/server/node_modules/mongoose/lib/helpers/query/castUpdate.js:107:7)\n    at model.Query._castUpdate (/home/mubashir/Brocamp Second Project/server/node_modules/mongoose/lib/query.js:4569:10)\n    at model.Query._findOneAndUpdate (/home/mubashir/Brocamp Second Project/server/node_modules/mongoose/lib/query.js:3260:23)\n    at model.Query.exec (/home/mubashir/Brocamp Second Project/server/node_modules/mongoose/lib/query.js:4290:80)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","stringValue":"\"[ \"Bachelor's Degree\" ]\"","value":["Bachelor's Degree"],"valueType":"Array"}
+{"kind":"string","level":"error","message":"Internal error:  Cast to string failed for value \"[ \"Bachelor's Degree\" ]\" (type Array) at path \"education\"","path":"education","reason":null,"stack":"CastError: Cast to string failed for value \"[ \"Bachelor's Degree\" ]\" (type Array) at path \"education\"\n    at SchemaString.cast (/home/mubashir/Brocamp Second Project/server/node_modules/mongoose/lib/schema/string.js:606:11)\n    at SchemaType.applySetters (/home/mubashir/Brocamp Second Project/server/node_modules/mongoose/lib/schemaType.js:1219:12)\n    at SchemaString.castForQuery (/home/mubashir/Brocamp Second Project/server/node_modules/mongoose/lib/schema/string.js:691:15)\n    at castUpdateVal (/home/mubashir/Brocamp Second Project/server/node_modules/mongoose/lib/helpers/query/castUpdate.js:569:19)\n    at walkUpdatePath (/home/mubashir/Brocamp Second Project/server/node_modules/mongoose/lib/helpers/query/castUpdate.js:374:24)\n    at castUpdate (/home/mubashir/Brocamp Second Project/server/node_modules/mongoose/lib/helpers/query/castUpdate.js:107:7)\n    at model.Query._castUpdate (/home/mubashir/Brocamp Second Project/server/node_modules/mongoose/lib/query.js:4569:10)\n    at model.Query._findOneAndUpdate (/home/mubashir/Brocamp Second Project/server/node_modules/mongoose/lib/query.js:3260:23)\n    at model.Query.exec (/home/mubashir/Brocamp Second Project/server/node_modules/mongoose/lib/query.js:4290:80)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","stringValue":"\"[ \"Bachelor's Degree\" ]\"","value":["Bachelor's Degree"],"valueType":"Array"}
 {"level":"info","message":"Server shut down gracefully."}
 {"level":"info","message":"Server running on port 3000"}
 {"level":"info","message":"Connected to MongoDB"}
@@ -1197,6 +818,9 @@
 {"level":"info","message":"Connected to MongoDB"}
 {"level":"info","message":"Connected to the database successfully."}
 {"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Connected to MongoDB"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Email sent: "}
 {"level":"info","message":"Server running on port 3000"}
 {"level":"info","message":"Connected to MongoDB"}
 {"level":"info","message":"Connected to the database successfully."}
@@ -1213,60 +837,31 @@
 {"level":"info","message":"Server running on port 3000"}
 {"level":"info","message":"Connected to MongoDB"}
 {"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
+{"level":"error","message":"Internal error:  input must be a 24 character hex string, 12 byte Uint8Array, or an integer","stack":"BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer\n    at new ObjectId (/home/mubashir/Brocamp Second Project/server/node_modules/bson/lib/bson.cjs:2047:23)\n    at LaborerRepository.getLaborers (/home/mubashir/Brocamp Second Project/server/src/repositories/laborer.js:62:42)\n    at LaborerService.getLaborers (/home/mubashir/Brocamp Second Project/server/src/services/user/laborer.js:14:55)\n    at LaborerController.getLaborers (/home/mubashir/Brocamp Second Project/server/src/controllers/user/laborer.js:11:50)\n    at /home/mubashir/Brocamp Second Project/server/src/utils/errorHandling/catchAsync.js:5:9\n    at Layer.handle [as handle_request] (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/layer.js:95:5)\n    at next (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/route.js:144:13)\n    at checkUserStatus (/home/mubashir/Brocamp Second Project/server/src/middlewares/auth/checkUserStatus.js:21:9)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"}
+{"level":"error","message":"Internal error:  input must be a 24 character hex string, 12 byte Uint8Array, or an integer","stack":"BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer\n    at new ObjectId (/home/mubashir/Brocamp Second Project/server/node_modules/bson/lib/bson.cjs:2047:23)\n    at LaborerRepository.getLaborers (/home/mubashir/Brocamp Second Project/server/src/repositories/laborer.js:62:42)\n    at LaborerService.getLaborers (/home/mubashir/Brocamp Second Project/server/src/services/user/laborer.js:14:55)\n    at LaborerController.getLaborers (/home/mubashir/Brocamp Second Project/server/src/controllers/user/laborer.js:11:50)\n    at /home/mubashir/Brocamp Second Project/server/src/utils/errorHandling/catchAsync.js:5:9\n    at Layer.handle [as handle_request] (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/layer.js:95:5)\n    at next (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/route.js:144:13)\n    at checkUserStatus (/home/mubashir/Brocamp Second Project/server/src/middlewares/auth/checkUserStatus.js:21:9)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"}
+{"level":"error","message":"Internal error:  input must be a 24 character hex string, 12 byte Uint8Array, or an integer","stack":"BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer\n    at new ObjectId (/home/mubashir/Brocamp Second Project/server/node_modules/bson/lib/bson.cjs:2047:23)\n    at LaborerRepository.getLaborers (/home/mubashir/Brocamp Second Project/server/src/repositories/laborer.js:62:42)\n    at LaborerService.getLaborers (/home/mubashir/Brocamp Second Project/server/src/services/user/laborer.js:14:55)\n    at LaborerController.getLaborers (/home/mubashir/Brocamp Second Project/server/src/controllers/user/laborer.js:11:50)\n    at /home/mubashir/Brocamp Second Project/server/src/utils/errorHandling/catchAsync.js:5:9\n    at Layer.handle [as handle_request] (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/layer.js:95:5)\n    at next (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/route.js:144:13)\n    at checkUserStatus (/home/mubashir/Brocamp Second Project/server/src/middlewares/auth/checkUserStatus.js:21:9)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"}
+{"level":"error","message":"Internal error:  input must be a 24 character hex string, 12 byte Uint8Array, or an integer","stack":"BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer\n    at new ObjectId (/home/mubashir/Brocamp Second Project/server/node_modules/bson/lib/bson.cjs:2047:23)\n    at LaborerRepository.getLaborers (/home/mubashir/Brocamp Second Project/server/src/repositories/laborer.js:62:42)\n    at LaborerService.getLaborers (/home/mubashir/Brocamp Second Project/server/src/services/user/laborer.js:14:55)\n    at LaborerController.getLaborers (/home/mubashir/Brocamp Second Project/server/src/controllers/user/laborer.js:11:50)\n    at /home/mubashir/Brocamp Second Project/server/src/utils/errorHandling/catchAsync.js:5:9\n    at Layer.handle [as handle_request] (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/layer.js:95:5)\n    at next (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/route.js:144:13)\n    at checkUserStatus (/home/mubashir/Brocamp Second Project/server/src/middlewares/auth/checkUserStatus.js:21:9)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"}
+{"level":"error","message":"Internal error:  input must be a 24 character hex string, 12 byte Uint8Array, or an integer","stack":"BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer\n    at new ObjectId (/home/mubashir/Brocamp Second Project/server/node_modules/bson/lib/bson.cjs:2047:23)\n    at LaborerRepository.getLaborers (/home/mubashir/Brocamp Second Project/server/src/repositories/laborer.js:62:42)\n    at LaborerService.getLaborers (/home/mubashir/Brocamp Second Project/server/src/services/user/laborer.js:14:55)\n    at LaborerController.getLaborers (/home/mubashir/Brocamp Second Project/server/src/controllers/user/laborer.js:11:50)\n    at /home/mubashir/Brocamp Second Project/server/src/utils/errorHandling/catchAsync.js:5:9\n    at Layer.handle [as handle_request] (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/layer.js:95:5)\n    at next (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/route.js:144:13)\n    at checkUserStatus (/home/mubashir/Brocamp Second Project/server/src/middlewares/auth/checkUserStatus.js:21:9)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"}
+{"level":"error","message":"Internal error:  input must be a 24 character hex string, 12 byte Uint8Array, or an integer","stack":"BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer\n    at new ObjectId (/home/mubashir/Brocamp Second Project/server/node_modules/bson/lib/bson.cjs:2047:23)\n    at LaborerRepository.getLaborers (/home/mubashir/Brocamp Second Project/server/src/repositories/laborer.js:62:42)\n    at LaborerService.getLaborers (/home/mubashir/Brocamp Second Project/server/src/services/user/laborer.js:14:55)\n    at LaborerController.getLaborers (/home/mubashir/Brocamp Second Project/server/src/controllers/user/laborer.js:11:50)\n    at /home/mubashir/Brocamp Second Project/server/src/utils/errorHandling/catchAsync.js:5:9\n    at Layer.handle [as handle_request] (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/layer.js:95:5)\n    at next (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/route.js:144:13)\n    at checkUserStatus (/home/mubashir/Brocamp Second Project/server/src/middlewares/auth/checkUserStatus.js:21:9)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"}
+{"level":"error","message":"Internal error:  input must be a 24 character hex string, 12 byte Uint8Array, or an integer","stack":"BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer\n    at new ObjectId (/home/mubashir/Brocamp Second Project/server/node_modules/bson/lib/bson.cjs:2047:23)\n    at LaborerRepository.getLaborers (/home/mubashir/Brocamp Second Project/server/src/repositories/laborer.js:62:42)\n    at LaborerService.getLaborers (/home/mubashir/Brocamp Second Project/server/src/services/user/laborer.js:14:55)\n    at LaborerController.getLaborers (/home/mubashir/Brocamp Second Project/server/src/controllers/user/laborer.js:11:50)\n    at /home/mubashir/Brocamp Second Project/server/src/utils/errorHandling/catchAsync.js:5:9\n    at Layer.handle [as handle_request] (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/layer.js:95:5)\n    at next (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/route.js:144:13)\n    at checkUserStatus (/home/mubashir/Brocamp Second Project/server/src/middlewares/auth/checkUserStatus.js:21:9)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"}
+{"level":"error","message":"Internal error:  input must be a 24 character hex string, 12 byte Uint8Array, or an integer","stack":"BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer\n    at new ObjectId (/home/mubashir/Brocamp Second Project/server/node_modules/bson/lib/bson.cjs:2047:23)\n    at LaborerRepository.getLaborers (/home/mubashir/Brocamp Second Project/server/src/repositories/laborer.js:62:42)\n    at LaborerService.getLaborers (/home/mubashir/Brocamp Second Project/server/src/services/user/laborer.js:14:55)\n    at LaborerController.getLaborers (/home/mubashir/Brocamp Second Project/server/src/controllers/user/laborer.js:11:50)\n    at /home/mubashir/Brocamp Second Project/server/src/utils/errorHandling/catchAsync.js:5:9\n    at Layer.handle [as handle_request] (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/layer.js:95:5)\n    at next (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/route.js:144:13)\n    at checkUserStatus (/home/mubashir/Brocamp Second Project/server/src/middlewares/auth/checkUserStatus.js:21:9)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"}
+{"level":"error","message":"Internal error:  input must be a 24 character hex string, 12 byte Uint8Array, or an integer","stack":"BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer\n    at new ObjectId (/home/mubashir/Brocamp Second Project/server/node_modules/bson/lib/bson.cjs:2047:23)\n    at LaborerRepository.getLaborers (/home/mubashir/Brocamp Second Project/server/src/repositories/laborer.js:62:42)\n    at LaborerService.getLaborers (/home/mubashir/Brocamp Second Project/server/src/services/user/laborer.js:14:55)\n    at LaborerController.getLaborers (/home/mubashir/Brocamp Second Project/server/src/controllers/user/laborer.js:11:50)\n    at /home/mubashir/Brocamp Second Project/server/src/utils/errorHandling/catchAsync.js:5:9\n    at Layer.handle [as handle_request] (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/layer.js:95:5)\n    at next (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/route.js:144:13)\n    at checkUserStatus (/home/mubashir/Brocamp Second Project/server/src/middlewares/auth/checkUserStatus.js:21:9)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"}
+{"level":"error","message":"Internal error:  input must be a 24 character hex string, 12 byte Uint8Array, or an integer","stack":"BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer\n    at new ObjectId (/home/mubashir/Brocamp Second Project/server/node_modules/bson/lib/bson.cjs:2047:23)\n    at LaborerRepository.getLaborers (/home/mubashir/Brocamp Second Project/server/src/repositories/laborer.js:62:42)\n    at LaborerService.getLaborers (/home/mubashir/Brocamp Second Project/server/src/services/user/laborer.js:14:55)\n    at LaborerController.getLaborers (/home/mubashir/Brocamp Second Project/server/src/controllers/user/laborer.js:11:50)\n    at /home/mubashir/Brocamp Second Project/server/src/utils/errorHandling/catchAsync.js:5:9\n    at Layer.handle [as handle_request] (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/layer.js:95:5)\n    at next (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/route.js:144:13)\n    at checkUserStatus (/home/mubashir/Brocamp Second Project/server/src/middlewares/auth/checkUserStatus.js:21:9)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"}
+{"level":"error","message":"Internal error:  input must be a 24 character hex string, 12 byte Uint8Array, or an integer","stack":"BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer\n    at new ObjectId (/home/mubashir/Brocamp Second Project/server/node_modules/bson/lib/bson.cjs:2047:23)\n    at LaborerRepository.getLaborers (/home/mubashir/Brocamp Second Project/server/src/repositories/laborer.js:62:42)\n    at LaborerService.getLaborers (/home/mubashir/Brocamp Second Project/server/src/services/user/laborer.js:14:55)\n    at LaborerController.getLaborers (/home/mubashir/Brocamp Second Project/server/src/controllers/user/laborer.js:11:50)\n    at /home/mubashir/Brocamp Second Project/server/src/utils/errorHandling/catchAsync.js:5:9\n    at Layer.handle [as handle_request] (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/layer.js:95:5)\n    at next (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/route.js:144:13)\n    at checkUserStatus (/home/mubashir/Brocamp Second Project/server/src/middlewares/auth/checkUserStatus.js:21:9)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"}
+{"level":"error","message":"Internal error:  input must be a 24 character hex string, 12 byte Uint8Array, or an integer","stack":"BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer\n    at new ObjectId (/home/mubashir/Brocamp Second Project/server/node_modules/bson/lib/bson.cjs:2047:23)\n    at LaborerRepository.getLaborers (/home/mubashir/Brocamp Second Project/server/src/repositories/laborer.js:62:42)\n    at LaborerService.getLaborers (/home/mubashir/Brocamp Second Project/server/src/services/user/laborer.js:14:55)\n    at LaborerController.getLaborers (/home/mubashir/Brocamp Second Project/server/src/controllers/user/laborer.js:11:50)\n    at /home/mubashir/Brocamp Second Project/server/src/utils/errorHandling/catchAsync.js:5:9\n    at Layer.handle [as handle_request] (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/layer.js:95:5)\n    at next (/home/mubashir/Brocamp Second Project/server/node_modules/express/lib/router/route.js:144:13)\n    at checkUserStatus (/home/mubashir/Brocamp Second Project/server/src/middlewares/auth/checkUserStatus.js:21:9)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"}
 {"level":"info","message":"Server running on port 3000"}
 {"level":"info","message":"Connected to MongoDB"}
 {"level":"info","message":"Connected to the database successfully."}
 {"level":"info","message":"Server running on port 3000"}
 {"level":"info","message":"Connected to MongoDB"}
 {"level":"info","message":"Connected to the database successfully."}
+{"level":"error","message":"Internal error:  Cannot read properties of null (reading 'status')","stack":"TypeError: Cannot read properties of null (reading 'status')\n    at LaborerService.getPrevRequest (/home/mubashir/Brocamp Second Project/server/src/services/user/laborer.js:90:21)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async LaborerController.getPrevRequest (/home/mubashir/Brocamp Second Project/server/src/controllers/user/laborer.js:29:24)"}
+{"level":"error","message":"Internal error:  Cannot read properties of null (reading 'status')","stack":"TypeError: Cannot read properties of null (reading 'status')\n    at LaborerService.getPrevRequest (/home/mubashir/Brocamp Second Project/server/src/services/user/laborer.js:90:21)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async LaborerController.getPrevRequest (/home/mubashir/Brocamp Second Project/server/src/controllers/user/laborer.js:29:24)"}
+{"level":"error","message":"Internal error:  Cannot read properties of null (reading 'status')","stack":"TypeError: Cannot read properties of null (reading 'status')\n    at LaborerService.getPrevRequest (/home/mubashir/Brocamp Second Project/server/src/services/user/laborer.js:90:21)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async LaborerController.getPrevRequest (/home/mubashir/Brocamp Second Project/server/src/controllers/user/laborer.js:29:24)"}
+{"level":"error","message":"Internal error:  Cannot read properties of null (reading 'status')","stack":"TypeError: Cannot read properties of null (reading 'status')\n    at LaborerService.getPrevRequest (/home/mubashir/Brocamp Second Project/server/src/services/user/laborer.js:90:21)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async LaborerController.getPrevRequest (/home/mubashir/Brocamp Second Project/server/src/controllers/user/laborer.js:29:24)"}
 {"level":"info","message":"Server running on port 3000"}
 {"level":"info","message":"Connected to MongoDB"}
 {"level":"info","message":"Connected to the database successfully."}
 {"level":"info","message":"Server running on port 3000"}
 {"level":"info","message":"Connected to MongoDB"}
 {"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server running on port 3000"}
-{"level":"info","message":"Connected to MongoDB"}
-{"level":"info","message":"Connected to the database successfully."}
-{"level":"info","message":"Server shutting down..."}
-{"level":"info","message":"Server shutting down..."}
-{"level":"info","message":"Server shutting down..."}
-{"level":"info","message":"MongoDB disconnected"}
-{"level":"info","message":"Database connection closed successfully."}
-{"level":"info","message":"Database connection closed successfully."}
-{"level":"info","message":"Database connection closed successfully."}

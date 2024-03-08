@@ -44,7 +44,7 @@ class AuthService {
         }
 
         if (!currentUser) {
-            throw new Error("User not found");
+            return { status: 404, message: "User not found" };
         }
 
         return {
@@ -59,7 +59,7 @@ class AuthService {
 
     async login(username, password = null, role) {
         if (!username || !password) {
-            throw new Error("All fields are required");
+            return { status: 400, message: "All fields are required" };
         }
 
         let currentUser;
@@ -68,7 +68,7 @@ class AuthService {
         } else {
             currentUser = await this.userRepository.findUserByUsername(username);
 
-            if (currentUser.isBlocked) {
+            if (currentUser && currentUser.isBlocked) {
                 const blockReason = await this.reasonRepository.findBlockReason(
                     currentUser._id, "admin_block_user"
                 );
@@ -82,7 +82,7 @@ class AuthService {
         }
 
         if (!currentUser) {
-            throw new Error("Invalid credentials");
+            return { status: 401, message: "Invalid credentials" };
         }
 
         const isMatch = await bcrypt.compare(password, currentUser.password);
@@ -107,13 +107,13 @@ class AuthService {
                 }
             };
         } else {
-            throw new Error("Invalid username or password");
+            return { status: 401, message: "Invalid username or password" };
         }
     };
 
     async loginWithGoogle(accessToken) {
         if (!accessToken) {
-            throw new Error("No access token found");
+            return { status: 400, message: "No access token found" };
         }
 
         // Verify the Google access token
@@ -136,7 +136,7 @@ class AuthService {
                 { expiresIn: TOKEN_EXPIRATION_DURATION }
             );
 
-            // Omitting passowrd from the "currentUser" object
+            // Omitting password from the "currentUser" object
             const userDataWithoutPassword = { ...existingUser._doc, password: undefined };
 
             return {
@@ -148,7 +148,7 @@ class AuthService {
                 }
             };
         } else {
-            throw new Error("User not found");
+            return { status: 404, message: "User not found" };
         }
     };
 
@@ -158,28 +158,26 @@ class AuthService {
             "username", "email", "phone", "password", "confirmPassword"
         ];
         if (!requiredFields.every(field => data[field])) {
-            throw new Error("All field are required");
+            return { status: 400, message: "All fields are required" };
         }
 
         const { username, email, phone, password, confirmPassword } = data;
 
         // Check if the username is already taken
-        const existingUsername = await this.userRepository.checkExistingUsername(
-            username
-        );
+        const existingUsername = await this.userRepository.checkExistingUsername(username);
         if (existingUsername) {
-            throw new Error("This username is already taken");
+            return { status: 409, message: "This username is already taken" };
         }
 
         // Check if the email is already registered
         const existingEmail = await this.userRepository.checkExistingEmail(email);
         if (existingEmail) {
-            throw new Error("This email is already registered");
+            return { status: 409, message: "This email is already registered" };
         }
 
         // Check if password and confirm password match
         if (password !== confirmPassword) {
-            throw new Error("Password and confirm password don't match");
+            return { status: 400, message: "Password and confirm password don't match" };
         };
 
         // Hash the password
@@ -207,7 +205,7 @@ class AuthService {
         const user = await this.userRepository.findUserByOtp(otp);
 
         if (!user) {
-            throw new Error("Invalid");
+            return { status: 404, message: "Invalid OTP" };
         } else {
             const verifiedUser = await this.userRepository.findUserAndVerify(email);
             if (verifiedUser && verifiedUser.isVerified) {
@@ -226,9 +224,9 @@ class AuthService {
                     }
                 };
             } else {
-                throw new Error("Invalid");
+                return { status: 401, message: "Invalid user or not verified" };
             }
-        };
+        }
     };
 
     async resendOtp(email) {
@@ -241,13 +239,13 @@ class AuthService {
 
     async resetPassword(userId, password, confirmPassword) {
         if (password !== confirmPassword) {
-            throw new Error("Passwords do not match");
+            return { status: 400, message: "Passwords do not match" };
         }
 
         const user = await this.userRepository.findUserById(userId);
 
         if (!user) {
-            throw new Error("User not found");
+            return { status: 404, message: "User not found" };
         }
 
         // Hash the password

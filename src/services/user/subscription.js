@@ -1,7 +1,7 @@
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 class SubscriptionService {
-    constructor (subscriptionRepository, userRepository) {
+    constructor(subscriptionRepository, userRepository) {
         this.subscriptionRepository = subscriptionRepository;
         this.userRepository = userRepository;
     };
@@ -17,7 +17,7 @@ class SubscriptionService {
                 }
             };
         } else {
-            throw new Error("No public key found");
+            return { status: 404, message: "No public key found" };
         }
     };
 
@@ -120,7 +120,7 @@ class SubscriptionService {
                 status: 200,
             };
         } else {
-            throw new Error("No plan found");
+            return { status: 404, message: "No plan found" };
         }
     };
 
@@ -128,7 +128,7 @@ class SubscriptionService {
         const currentPlan = await this.subscriptionRepository.getActivePlan(subscriptionId);
 
         if (!currentPlan) {
-            throw new Error("No active plan found");
+            return { status: 404, message: "No active plan found" };
         }
 
         return {
@@ -140,33 +140,20 @@ class SubscriptionService {
         };
     };
 
-    async cancelActivePlan(sessionId, userId) {
-        // Retrieve the Checkout Session from Stripe
-        const checkoutSession = await stripe.checkout.sessions.retrieve(sessionId);
+    async testWebhook(payload, sig) {
+        const endpointSecret = process.env.WEBHOOK_SECRET;
 
-        // Extract the subscription ID from the Checkout Session
-        const subscriptionId = checkoutSession.subscription;
+        let event;
 
-        if (!subscriptionId) {
-            console.error("No subscription associated with the provided sessionId.");
-            return { status: 400, error: "No subscription associated with the provided sessionId." };
+        // console.log(payload, sig);
+
+        try {
+            event = await stripe.webhooks.constructEvent(payload, sig, endpointSecret);
+        } catch (err) {
+            return { status: 400, message: `Webhook Error: ${err.message}` };
         }
 
-        const canceledSubscription = await stripe.subscriptions.cancel(subscriptionId);
-
-        // Check if the subscription has been canceled
-        if (canceledSubscription.status === "canceled") {
-
-            await this.subscriptionRepository.cancelSubscription(sessionId);
-
-            await this.userRepository.updateUserSubscription(userId);
-
-            console.log(`Subscription ${subscriptionId} has been canceled immediately.`);
-            return { status: 200, message: `Subscription ${subscriptionId} canceled immediately.` };
-        } else {
-            console.error(`Failed to cancel subscription ${subscriptionId} immediately.`);
-            throw new Error(`Failed to cancel subscription ${subscriptionId} immediately.`);
-        }
+        console.log(event);
     };
 };
 

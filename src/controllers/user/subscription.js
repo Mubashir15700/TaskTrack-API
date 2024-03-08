@@ -28,9 +28,10 @@ class SubscriptionController {
         sendResponse(res, result);
     };
 
-    async cancelActivePlan(req, res) {
-        const { subscriptionId, userId } = req.body;
-        const result = await this.subscriptionService.cancelActivePlan(subscriptionId, userId);
+    async testWebhook(req, res) {
+        const sig = req.headers["stripe-signature"];
+        const payload = req.body;
+        const result = await this.subscriptionService.testWebhook(payload, sig);
         sendResponse(res, result);
     };
 };

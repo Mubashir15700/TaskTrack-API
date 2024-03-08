@@ -19,6 +19,7 @@ class LaborerService {
             laborersWithDistances = laborers.map(laborer => {
                 const laborerLat = laborer.location?.latitude;
                 const laborerLon = laborer.location?.longitude;
+                // console.log(laborerLat, laborerLon);
                 // Check if laborer location exists
                 if (laborerLat !== undefined && laborerLon !== undefined) {
                     const distance = calculateDistance(lat, lon, laborerLat, laborerLon);
@@ -86,7 +87,7 @@ class LaborerService {
             request
         };
 
-        if (request.status === "rejected") {
+        if (request?.status === "rejected") {
             const rejectReason = await this.reasonRepository.findBlockReason(
                 userId, "admin_reject_laborer_request"
             );

@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
+const logger = require("../../utils/errorHandling/logger");
 
-exports.userHasToken = async (req, res, next) => {
-    const token = req.cookies.userJwt;
+const checkToken = (token, req, res, next) => {
     if (!token) {
         return res.status(401).json({ status: "failed", message: "Unauthorized - Missing JWT" });
     }
@@ -11,22 +11,19 @@ exports.userHasToken = async (req, res, next) => {
         req.user = decodedToken;
         next();
     } catch (error) {
-        return res.status(401).json({ status: "failed", message: "Unauthorized - Invalid JWT" });
+        // Log the error
+        logger.error("Error checking user has token:", error.message);
+
+        next(error);
     }
+};
+
+exports.userHasToken = async (req, res, next) => {
+    const token = req.cookies.userJwt;
+    return checkToken(token, req, res, next);
 };
 
 exports.adminHasToken = async (req, res, next) => {
     const token = req.cookies.adminJwt;
-
-    if (!token) {
-        return res.status(401).json({ status: "failed", message: "Unauthorized - Missing JWT" });
-    }
-
-    try {
-        const decodedToken = jwt.verify(token, process.env.JWT_SECRET_KEY);
-        req.user = decodedToken;
-        next();
-    } catch (error) {
-        return res.status(401).json({ status: "failed", message: "Unauthorized - Invalid JWT" });
-    }
+    return checkToken(token, req, res, next);
 };

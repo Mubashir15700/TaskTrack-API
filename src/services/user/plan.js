@@ -1,5 +1,5 @@
 class PlanService {
-    constructor (planRepository) {
+    constructor(planRepository) {
         this.planRepository = planRepository;
     };
 
@@ -7,7 +7,7 @@ class PlanService {
         const plans = await this.planRepository.getActivePlans();
 
         if (!plans.length) {
-            throw new Error("No available plans found");
+            return { status: 404, message: "No available plans found" };
         }
 
         return {
@@ -19,11 +19,12 @@ class PlanService {
         };
     };
 
+
     async getPlan(id) {
         const plan = await this.planRepository.getPlan(id);
 
         if (!plan) {
-            throw new Error("No plan found");
+            return { status: 404, message: "No plan found" };
         }
 
         return {

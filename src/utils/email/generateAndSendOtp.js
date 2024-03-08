@@ -1,7 +1,10 @@
 const crypto = require("crypto");
-const userRepository = require("../../repositories/user");
+const UserRepository = require("../../repositories/user");
 const generateEmailOptions = require("./generateEmailOptions");
 const sendMail = require("./sendMail");
+const logger = require("../errorHandling/logger");
+
+const userRepository = new UserRepository();
 
 async function generateAndSendOtp(email, errorMessage) {
     try {
@@ -10,7 +13,7 @@ async function generateAndSendOtp(email, errorMessage) {
         const emailOptions = generateEmailOptions(email, generatedOTP);
         await sendMail(emailOptions);
     } catch (error) {
-        console.error(errorMessage, error);
+        logger.error(errorMessage, error);
         throw new Error(errorMessage);
     }
 };

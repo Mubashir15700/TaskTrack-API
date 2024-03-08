@@ -5,7 +5,7 @@ const router = express.Router();
 
 const UtilityController = require("../controllers/utility");
 const UtilityService = require("../services/utility");
-const UserRepository = require("../repositories/banner");
+const UserRepository = require("../repositories/user");
 const LaborerRepository = require("../repositories/laborer");
 const JobRepository = require("../repositories/job");
 const BannerRepository = require("../repositories/banner");

@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const calculateDistance = require("../../utils/calculateDistance");
 
 class JobService {
-    constructor (jobRepository, reasonRepository, subscriptionRepository) {
+    constructor(jobRepository, reasonRepository, subscriptionRepository) {
         this.jobRepository = jobRepository;
         this.reasonRepository = reasonRepository;
         this.subscriptionRepository = subscriptionRepository;
@@ -82,7 +82,7 @@ class JobService {
         const result = await this.jobRepository.takeApplicantAction(job, fieldName, laborerId, action);
 
         if (!result) {
-            throw new Error("No application found");
+            return { status: 404, message: "No application found" };
         }
 
         if (action === "rejected") {
@@ -114,18 +114,22 @@ class JobService {
     async editListedJob(jobId, jobDetails) {
         const { title, description, date, time, duration, location, status, fields } = jobDetails;
         if (!title || !description || !date || !time || !duration || !location || !status || !fields) {
-            throw new Error("All fields are required");
+            return { status: 400, message: "All fields are required" };
         }
 
-        const editResult = await this.jobRepository.editJob({
-            jobId, title, description, date, time, duration, location, status, fields
-        });
+        try {
+            const editResult = await this.jobRepository.editJob({
+                jobId, title, description, date, time, duration, location, status, fields
+            });
 
-        if (editResult) {
-            return {
-                status: 200,
-                message: "Edited job successfully",
-            };
+            if (editResult) {
+                return {
+                    status: 200,
+                    message: "Edited job successfully",
+                };
+            }
+        } catch (error) {
+            return { status: 500, message: "Internal Server Error" };
         }
     };
 
@@ -173,7 +177,7 @@ class JobService {
     async postJob(jobDetails) {
         const { userId, title, description, date, time, duration, location, fields } = jobDetails;
         if (!title || !description || !date || !time || !duration || !location || !fields) {
-            throw new Error("All fields are required");
+            return { status: 400, message: "All fields are required" };
         }
 
         const postResult = await this.jobRepository.postJob({
@@ -192,20 +196,26 @@ class JobService {
 
     async applyJob(jobId, laborerId, fieldName) {
         if (!jobId || !laborerId) {
-            throw new Error("Bad Request: Missing required parameters");
+            return { status: 400, message: "Bad Request: Missing required parameters" };
         }
 
         const jobPostToApply = await this.jobRepository.jobPostToApply(jobId);
 
         if (!jobPostToApply) {
-            throw new Error("Job not found");
+            return { status: 404, message: "Job not found" };
         }
 
+        let fieldFound = false;
         jobPostToApply.fields.forEach(field => {
             if (field.name === fieldName) {
                 field.applicants.push({ userId: laborerId });
+                fieldFound = true;
             }
         });
+
+        if (!fieldFound) {
+            return { status: 404, message: "Field not found in the job" };
+        }
 
         await jobPostToApply.save();
 
@@ -217,22 +227,28 @@ class JobService {
 
     async cancelJobApplication(jobId, laborerId, fieldName) {
         if (!jobId || !laborerId) {
-            throw new Error("Bad Request: Missing required parameters");
+            return { status: 400, message: "Bad Request: Missing required parameters" };
         }
 
         const jobPost = await this.jobRepository.jobPostToApply(jobId);
 
         if (!jobPost) {
-            throw new Error("Job not found");
+            return { status: 404, message: "Job not found" };
         }
 
         const laborerObjectId = new mongoose.Types.ObjectId(laborerId);
+        let fieldFound = false;
         jobPost.fields.forEach(field => {
             if (field.name === fieldName) {
                 // Remove the laborer ID from the applicants array
                 field.applicants = field.applicants.filter(applicant => applicant.userId.toString() !== laborerObjectId.toString());
+                fieldFound = true;
             }
         });
+
+        if (!fieldFound) {
+            return { status: 404, message: "Field not found in the job" };
+        }
 
         await jobPost.save();
 

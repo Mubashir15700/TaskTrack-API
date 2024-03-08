@@ -26,7 +26,7 @@ class UserService {
         const user = await this.userRepository.findUserById(id);
 
         if (!user) {
-            throw new Error("No user found");
+            return { status: 404, message: "No user found" };
         }
 
         return {
@@ -42,7 +42,7 @@ class UserService {
         const updatedBlockStatus = await this.userRepository.blockUnblockUser(id);
 
         if (!updatedBlockStatus) {
-            throw new Error("No user found");
+            return { status: 404, message: "No user found" };
         }
 
         if (updatedBlockStatus.blockStatus) {
@@ -59,8 +59,8 @@ class UserService {
 
     async getRequests(itemsPerPage, currentPage) {
         const startIndex = (currentPage) * itemsPerPage;
-        const requests = await requestRepository.getRequests(startIndex, itemsPerPage);
-        const totalRequests = await requestRepository.findRequestsCount();
+        const requests = await this.requestRepository.getRequests(startIndex, itemsPerPage);
+        const totalRequests = await this.requestRepository.findRequestsCount();
         const totalPages = Math.ceil(totalRequests / itemsPerPage);
 
         return {
@@ -77,7 +77,7 @@ class UserService {
         const request = await this.requestRepository.getRequest(id);
 
         if (!request) {
-            throw new Error("No request found");
+            return { status: 404, message: "No request found" };
         }
 
         return {
@@ -100,7 +100,7 @@ class UserService {
         const updatedRequest = await this.requestRepository.approveRejectAction(requestId, newStatus);
 
         if (!updatedRequest) {
-            throw new Error("No request found");
+            return { status: 404, message: "No request found" };
         }
 
         if (newStatus === "approved") {
@@ -113,13 +113,13 @@ class UserService {
             });
 
             if (!savedLaborer) {
-                throw new Error("Failed to save laborer details");
+                return { status: 500, message: "Failed to save laborer details" };
             }
 
             const updatedUser = await this.userRepository.changeToJobSeeker(updatedRequest.userId);
 
             if (!updatedUser) {
-                throw new Error("Failed to update user");
+                return { status: 500, message: "Failed to update user" };
             }
 
             await this.reasonRepository.removeBlockReason(

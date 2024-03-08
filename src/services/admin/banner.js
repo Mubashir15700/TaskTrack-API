@@ -1,4 +1,5 @@
-const { getPresignedUrl, deleteImage } = require("../../middlewares/imageUpload/s3Upload");
+const { getBannerWithPresignedUrl, getBannersWithPresignedUrls } = require("../../utils/getBannersWithImageUrls");
+const { deleteImage } = require("../../middlewares/imageUpload/s3Upload");
 
 class BannerService {
     constructor(bannerRepository) {
@@ -25,18 +26,13 @@ class BannerService {
         const totalPages = Math.ceil(totalBanners / itemsPerPage);
 
         // Map over the banners array and get presigned URL for each image
-        const bannersWithPresignedUrls = await Promise.all(banners.map(async banner => {
-            // Get the presigned URL for the image
-            const imageUrl = await getPresignedUrl(banner.key);
-            // Return a new object with the image URL and other properties from the banner
-            return { ...banner._doc, image: imageUrl };
-        }));
+        const foundBanners = await getBannersWithPresignedUrls(banners);
 
         return {
             status: 200,
             message: "Found banners",
             data: {
-                banners: bannersWithPresignedUrls,
+                banners: foundBanners,
                 totalPages
             }
         };
@@ -44,20 +40,20 @@ class BannerService {
 
     async addBanner(title, description, key) {
         if (!title || !description) {
-            throw new Error("All fields (title, description) are required");
+            return { status: 400, message: "All fields (title, description) are required" };
         }
 
         // Check if a banner with the same title already exists
         const bannerExists = await this.checkBannerExistsByTitle(title);
         if (bannerExists) {
-            throw new Error("A banner with the same title already exists");
+            return { status: 409, message: "A banner with the same title already exists" };
         }
 
         await this.bannerRepository.addBanner(title, description, key);
 
         return {
             status: 200,
-            message: "Banner added success",
+            message: "Banner added successfully",
         };
     };
 
@@ -65,7 +61,7 @@ class BannerService {
         const updatedBanner = await this.bannerRepository.listUnlistBanner(id);
 
         if (!updatedBanner) {
-            throw new Error("No banner found");
+            return { status: 404, message: "No banner found" };
         }
 
         return {
@@ -77,11 +73,11 @@ class BannerService {
     async getBanner(id) {
         const banner = await this.bannerRepository.getBanner(id);
 
-        const imageUrl = await getPresignedUrl(banner.key);
-
         if (!banner) {
-            throw new Error("No banner found");
+            return { status: 404, message: "No banner found" };
         }
+
+        const imageUrl = await getBannerWithPresignedUrl(banner.key);
 
         const bannerWithImage = {
             ...banner._doc,
@@ -99,13 +95,13 @@ class BannerService {
 
     async editBanner(id, title, description, key) {
         if (!title || !description) {
-            throw new Error("All fields (title, description) are required");
+            return { status: 400, message: "All fields (title, description) are required" };
         }
 
         // Check if a banner with the same title already exists
         const bannerExists = await this.checkBannerExistsByTitle(title, id);
         if (bannerExists) {
-            throw new Error("A banner with the same title already exists");
+            return { status: 409, message: "A banner with the same title already exists" };
         }
 
         const prevImageKey = await this.bannerRepository.getBannerImageKey(id);
@@ -115,7 +111,7 @@ class BannerService {
 
         return {
             status: 200,
-            message: "Banner edited success",
+            message: "Banner edited successfully",
         };
     };
 
@@ -123,7 +119,7 @@ class BannerService {
         const id = data.draggedBannerId
         const prevOrder = data.prevOrder + 1;
         const newOrder = data.newOrder + 1;
-        
+
         await this.bannerRepository.changeBannerOrder(newOrder + 1, prevOrder + 1);
         await this.bannerRepository.dragBanner(id, newOrder + 1);
 

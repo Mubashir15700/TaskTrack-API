@@ -65,10 +65,6 @@ class SubscriptionRepository {
         return await Subscription.findById(subscriptionId).populate("planId");
     };
 
-    async cancelSubscription(subscriptionId) {
-        return await Subscription.findOneAndDelete({ subscriptionId });
-    };
-
     async updateJobPostsCount(userId) {
         return await Subscription.findOneAndUpdate({ userId },
             { $inc: { jobPostsCount: 1 } },

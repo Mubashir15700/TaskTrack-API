@@ -96,7 +96,6 @@ class ProfileService {
             message: "Update success",
         };
     };
-
 };
 
 module.exports = ProfileService;

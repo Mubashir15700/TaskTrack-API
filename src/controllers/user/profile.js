@@ -34,7 +34,7 @@ class ProfileController {
     };
 
     async updateLaborerProfile(req, res) {
-        const { data } = req.body;
+        const data = req.body;
         const result = await this.profileService.updateLaborerProfile(data);
         sendResponse(res, result);
     };

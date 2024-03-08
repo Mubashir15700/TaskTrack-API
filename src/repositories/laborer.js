@@ -144,6 +144,7 @@ class LaborerRepository {
                         location: "$user.location",
                         _id: "$user._id",
                         username: "$user.username",
+                        email: "$user.email",
                         profile: "$user.profile"
                     }
                 }

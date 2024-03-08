@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 const UserRepository = require("../../repositories/user");
+const logger = require("../../utils/errorHandling/logger");
 
 const userRepository = new UserRepository();
 
@@ -19,10 +20,11 @@ const checkUserStatus = async (req, res, next) => {
 
         next();
     } catch (error) {
-        console.error("Error checking user status:", error);
-        return {
-            status: 500, message: `Internal Server Error: ${error.message}`
-        };
+        // Log the error
+        logger.error("Error checking user status:", error.message);
+
+        // Pass the error to the next middleware or the global error handler
+        next(error);
     }
 };
 
