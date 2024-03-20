@@ -1,12 +1,7 @@
-const { OAuth2Client } = require("google-auth-library");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const generateAndSendOtp = require("../utils/email/generateAndSendOtp");
-
-// Initialize a new OAuth2Client instance with your Google OAuth client ID
-const googleClient = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
-
-const TOKEN_EXPIRATION_DURATION = "7d";
+const generateToken = require("../utils/generateJwt");
 
 async function sendVerificationEmailAndOtp(email, successMessage, errorMessage) {
     // Send verification email
@@ -89,11 +84,7 @@ class AuthService {
 
         if (isMatch) {
             // Generate JWT Token
-            const token = jwt.sign(
-                { userId: currentUser._id, role },
-                process.env.JWT_SECRET_KEY,
-                { expiresIn: TOKEN_EXPIRATION_DURATION }
-            );
+            const token = await generateToken(currentUser._id, role);
 
             // Omitting passowrd from the "currentUser" object
             const userDataWithoutPassword = { ...currentUser._doc, password: undefined };
@@ -108,47 +99,6 @@ class AuthService {
             };
         } else {
             return { status: 401, message: "Invalid username or password" };
-        }
-    };
-
-    async loginWithGoogle(accessToken) {
-        if (!accessToken) {
-            return { status: 400, message: "No access token found" };
-        }
-
-        // Verify the Google access token
-        const ticket = await googleClient.verifyIdToken({
-            idToken: accessToken,
-            audience: process.env.GOOGLE_CLIENT_ID,
-        });
-
-        const payload = ticket.getPayload();
-        const userEmail = payload.email;
-
-        // Check if the user exists in the database based on their email
-        const existingUser = await this.userRepository.findUserByEmail(userEmail);
-
-        if (existingUser) {
-            // Generate JWT Token
-            const token = jwt.sign(
-                { userId: existingUser._id, role: "user" },
-                process.env.JWT_SECRET_KEY,
-                { expiresIn: TOKEN_EXPIRATION_DURATION }
-            );
-
-            // Omitting password from the "currentUser" object
-            const userDataWithoutPassword = { ...existingUser._doc, password: undefined };
-
-            return {
-                status: 200,
-                message: "Logged in successfully",
-                data: {
-                    token,
-                    currentUser: userDataWithoutPassword,
-                }
-            };
-        } else {
-            return { status: 404, message: "User not found" };
         }
     };
 
@@ -210,11 +160,7 @@ class AuthService {
             const verifiedUser = await this.userRepository.findUserAndVerify(email);
             if (verifiedUser && verifiedUser.isVerified) {
                 // Generate JWT Token
-                const token = jwt.sign(
-                    { userId: user._id, role: "user" },
-                    process.env.JWT_SECRET_KEY,
-                    { expiresIn: TOKEN_EXPIRATION_DURATION }
-                );
+                const token = await generateToken(user._id, "user");
 
                 return {
                     status: 200,

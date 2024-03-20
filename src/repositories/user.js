@@ -13,13 +13,14 @@ class UserRepository {
         return await User.findOne({ email });
     };
 
-    async createUser(username, email, phone, hashPassword, generatedOTP) {
+    async createUser(username, email, phone, hashPassword, generatedOTP, isVerified = false) {
         const newUser = new User({
             username,
             email,
             phone,
             password: hashPassword,
             otp: generatedOTP,
+            isVerified
         });
 
         return await newUser.save();

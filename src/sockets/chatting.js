@@ -1,9 +1,10 @@
 const ChatRepository = require("../repositories/chat");
-const ConversationRepository = require("../repositories/conversation");
-const NotificationRepository = require("../repositories/notification");
-
 const chatRepository = new ChatRepository();
+
+const ConversationRepository = require("../repositories/conversation");
 const conversationRepository = new ConversationRepository();
+
+const NotificationRepository = require("../repositories/notification");
 const notificationRepository = new NotificationRepository();
 
 function handleGetChatHistory(io, socket) {

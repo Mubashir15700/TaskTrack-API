@@ -1,10 +1,10 @@
 const app = require("./app");
 const mongoose = require("mongoose");
-const logger = require("./src/utils/errorHandling/logger");
 const { initializeSocket } = require("./src/sockets");
+const logger = require("./src/utils/errorHandling/logger");
 
 const port = process.env.PORT || 3000;
-
+require
 const server = app.listen(port, () => {
     logger.info(`Server running on port ${port}`);
 });

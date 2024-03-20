@@ -1,3 +1,5 @@
+const passport = require("../config/passport");
+const generateToken = require("../utils/generateJwt");
 const setCookie = require("../utils/setCookie");
 const sendResponse = require("../utils/responseStructure");
 
@@ -15,29 +17,35 @@ class AuthController {
         sendResponse(res, result);
     };
 
+    async handleGoogleLoginCallback(req, res) {
+        passport.authenticate("google", async (err, user, info) => {
+            if (err) {
+                // Handle authentication error
+                return res.redirect(`${process.env.CORS_ORIGIN}/login?error=${encodeURIComponent(err.message)}`);
+            }
+
+            if (!user) {
+                // Handle authentication failure
+                return res.redirect(`${process.env.CORS_ORIGIN}/login?error=Authentication failed`);
+            }
+
+            // Generate JWT token
+            const token = await generateToken(user._id, "user");
+
+            // Set JWT token in response cookie
+            setCookie(res, "userJwt", token);
+
+            // Redirect user to success page
+            return res.redirect(`${process.env.CORS_ORIGIN}`);
+        })(req, res);
+    };
+
     async login(req, res) {
         const { username, password, role } = req.body;
         const result = await this.authService.login(username, password, role);
         if (result.status === 200) {
             const cookieName = role === "admin" ? "adminJwt" : "userJwt";
             setCookie(res, cookieName, result.data.token);
-        }
-        const { status, message } = result;
-        const dataToSend = {
-            status,
-            message,
-            data: {
-                currentUser: result.data?.currentUser
-            }
-        };
-        sendResponse(res, dataToSend);
-    };
-
-    async loginWithGoogle(req, res) {
-        const { token } = req.body;
-        const result = await this.authService.loginWithGoogle(token);
-        if (result.status === 200) {
-            setCookie(res, "userJwt", result.data.token);
         }
         const { status, message } = result;
         const dataToSend = {

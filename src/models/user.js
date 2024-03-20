@@ -13,7 +13,7 @@ const UserSchema = new mongoose.Schema({
     },
     phone: {
         type: Number,
-        required: true,
+        // required: true,
     },
     profile: {
         type: String,
@@ -37,7 +37,7 @@ const UserSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: true,
+        // required: true,
     },
     otp: {
         type: Number,

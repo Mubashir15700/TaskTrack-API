@@ -9,10 +9,12 @@ const requiredEnvVariables = [
     "CORS_ORIGIN",
     "SOCKET_PING_TIMEOUT",
     "GOOGLE_CLIENT_ID",
+    "GOOGLE_CLIENT_SECRET",
     "JWT_SECRET_KEY",
     "OPENCAGE_API_KEY",
     "STRIPE_PUBLIC_KEY",
     "STRIPE_SECRET_KEY",
+    "WEBHOOK_SECRET",
     "BUCKET_NAME",
     "REGION",
     "ACCESS_KEY",
@@ -32,7 +34,13 @@ const express = require("express");
 const helmet = require("helmet");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
-const DBConnection = require("./db");
+const session = require("express-session");
+
+// DB Connection
+const DBConnection = require("./src/config/db");
+// Passport
+const passport = require("./src/config/passport");
+// Routes
 const authRoutes = require("./src/routes/auth");
 const userRoutes = require("./src/routes/user");
 const adminRoutes = require("./src/routes/admin");
@@ -48,6 +56,11 @@ app.use(cors({
     origin: process.env.CORS_ORIGIN,
     credentials: true
 }));
+app.use(session({
+    secret: "session secret",
+    resave: false,
+    saveUninitialized: true
+}));
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.use((err, req, res, next) => {
@@ -57,6 +70,10 @@ app.use((err, req, res, next) => {
         message: "Something went wrong!"
     });
 });
+
+// passport setup
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use("/auth", authRoutes);
 app.use("/admin", adminRoutes);
