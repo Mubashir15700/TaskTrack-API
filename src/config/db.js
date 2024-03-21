@@ -3,7 +3,7 @@ const logger = require("../utils/errorHandling/logger");
 
 let isConnected = false; // Flag to track connection status
 
-const DBConnection = async () => {
+const connectToDatabase = async () => {
     try {
         const URL = process.env.DB_URL;
 
@@ -18,11 +18,6 @@ const DBConnection = async () => {
             mongoose.connection.on("error", (err) => {
                 logger.error("MongoDB connection error:", err);
             });
-
-            mongoose.connection.on("disconnected", () => {
-                logger.info("MongoDB disconnected");
-                isConnected = false; // Reset isConnected on disconnection
-            });
         }
 
         await mongoose.connect(URL);
@@ -35,4 +30,16 @@ const DBConnection = async () => {
     }
 };
 
-module.exports = DBConnection;
+const disconnectFromDatabase = async () => {
+    try {
+        if (isConnected) {
+            await mongoose.connection.close();
+            logger.info("MongoDB disconnected");
+            isConnected = false; // Reset isConnected on disconnection
+        }
+    } catch (error) {
+        logger.error("Error closing the database connection:", error);
+    }
+};
+
+module.exports = { connectToDatabase, disconnectFromDatabase };
