@@ -4,7 +4,7 @@ const { initializeSocket } = require("./src/sockets");
 const logger = require("./src/utils/errorHandling/logger");
 
 const port = process.env.PORT || 3000;
-require
+
 const server = app.listen(port, () => {
     logger.info(`Server running on port ${port}`);
 });
@@ -12,12 +12,7 @@ const server = app.listen(port, () => {
 process.on("SIGINT", async () => {
     logger.info("Server shutting down...");
 
-    try {
-        await mongoose.connection.close();
-        logger.info("Database connection closed successfully.");
-    } catch (err) {
-        logger.error("Error closing the database connection:", err);
-    }
+    await mongoose.connection.close();
 
     server.close((err) => {
         if (err) {
