@@ -1,5 +1,5 @@
 const express = require("express");
-const hasToken = require("../../middlewares/auth/hasToken");
+const { adminHasToken } = require("../../middlewares/auth/hasToken");
 const catchAsync = require("../../utils/errorHandling/catchAsync");
 
 const router = express.Router();
@@ -22,8 +22,8 @@ const userService = new UserService(userRepository, laborerRepository, requestRe
 const userController = new UserController(userService);
 
 // laborer request 
-router.get("/", hasToken.adminHasToken, catchAsync(userController.getRequests.bind(userController)));
-router.get("/:id", hasToken.adminHasToken, catchAsync(userController.getRequest.bind(userController)));
-router.post("/list-unlist", hasToken.adminHasToken, catchAsync(userController.approveRejectAction.bind(userController)));
+router.get("/", adminHasToken, catchAsync(userController.getRequests.bind(userController)));
+router.get("/:id", adminHasToken, catchAsync(userController.getRequest.bind(userController)));
+router.post("/list-unlist", adminHasToken, catchAsync(userController.approveRejectAction.bind(userController)));
 
 module.exports = router;

@@ -80,6 +80,40 @@ class SubscriptionRepository {
         const totalPosts = await Subscription.findOne({ userId }).populate("planId");
         return totalPosts?.planId?.numberOfJobPosts;
     };
+
+    async getMonthlySubscriptions() {
+        // Get the start and end dates of the current year
+        const currentYear = new Date().getFullYear();
+        const currentYearStart = new Date(currentYear, 0, 1); // January 1st of the current year
+        const currentYearEnd = new Date(currentYear, 11, 31, 23, 59, 59); // December 31st of the current year
+
+        return await Subscription.aggregate([
+            {
+                $match: {
+                    // Filter documents where createdAt is within the current year
+                    createdAt: {
+                        $gte: currentYearStart, // Start of current year
+                        $lte: currentYearEnd // End of current year
+                    }
+                }
+            },
+            {
+                $project: {
+                    year: { $year: "$createdAt" }, // Extract year from createdAt
+                    month: { $month: "$createdAt" } // Extract month from createdAt
+                }
+            },
+            {
+                $group: {
+                    _id: { year: "$year", month: "$month" }, // Group by year and month
+                    totalSubscriptions: { $sum: 1 } // Count subscriptions
+                }
+            },
+            {
+                $sort: { "_id.year": 1, "_id.month": 1 } // Optionally sort by year and month
+            }
+        ]);
+    };
 };
 
 module.exports = SubscriptionRepository;

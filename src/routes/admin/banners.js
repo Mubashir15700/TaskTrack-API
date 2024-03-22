@@ -1,5 +1,5 @@
 const express = require("express");
-const hasToken = require("../../middlewares/auth/hasToken");
+const { adminHasToken } = require("../../middlewares/auth/hasToken");
 const { uploadImage } = require("../../middlewares/imageUpload/s3Upload");
 const catchAsync = require("../../utils/errorHandling/catchAsync");
 
@@ -14,21 +14,21 @@ const bannerService = new BannerService(bannerRepository);
 const bannerController = new BannerController(bannerService);
 
 // banner-related actions
-router.get("/", hasToken.adminHasToken, catchAsync(bannerController.getBanners.bind(bannerController)));
-router.get("/:id", hasToken.adminHasToken, catchAsync(bannerController.getBanner.bind(bannerController)));
+router.get("/", adminHasToken, catchAsync(bannerController.getBanners.bind(bannerController)));
+router.get("/:id", adminHasToken, catchAsync(bannerController.getBanner.bind(bannerController)));
 router.post(
     "/add-banner",
-    hasToken.adminHasToken,
+    adminHasToken,
     uploadImage.single("image"),
     catchAsync(bannerController.addBanner.bind(bannerController))
 );
 router.put(
     "/:id/edit-banner",
-    hasToken.adminHasToken,
+    adminHasToken,
     uploadImage.single("image"),
     catchAsync(bannerController.editBanner.bind(bannerController))
 );
-router.patch("/:id/list-unlist", hasToken.adminHasToken, catchAsync(bannerController.listUnlistBanner.bind(bannerController)));
-router.patch("/update-order", hasToken.adminHasToken, catchAsync(bannerController.updateBannerOrder.bind(bannerController)));
+router.patch("/:id/list-unlist", adminHasToken, catchAsync(bannerController.listUnlistBanner.bind(bannerController)));
+router.patch("/update-order", adminHasToken, catchAsync(bannerController.updateBannerOrder.bind(bannerController)));
 
 module.exports = router;

@@ -1,6 +1,6 @@
 const express = require("express");
 const checkUserStatus = require("../../middlewares/auth/checkUserStatus");
-const hasToken = require("../../middlewares/auth/hasToken");
+const { userHasToken } = require("../../middlewares/auth/hasToken");
 const catchAsync = require("../../utils/errorHandling/catchAsync");
 
 const router = express.Router();
@@ -24,10 +24,10 @@ const laborerService = new LaborerService(userRepository, laborerRepository, req
 const laborerController = new LaborerController(laborerService);
 
 // laborer request
-router.post("/send", checkUserStatus, hasToken.userHasToken, catchAsync(laborerController.sendRequest.bind(laborerController)));
-router.get("/pending/:id", checkUserStatus, hasToken.userHasToken, catchAsync(laborerController.getPrevRequest.bind(laborerController)));
-router.put("/update", checkUserStatus, hasToken.userHasToken, catchAsync(laborerController.updateRequest.bind(laborerController)));
-router.patch("/cancel", checkUserStatus, hasToken.userHasToken, catchAsync(laborerController.cancelRequest.bind(laborerController)));
+router.post("/send", checkUserStatus, userHasToken, catchAsync(laborerController.sendRequest.bind(laborerController)));
+router.get("/pending/:id", checkUserStatus, userHasToken, catchAsync(laborerController.getPrevRequest.bind(laborerController)));
+router.put("/update", checkUserStatus, userHasToken, catchAsync(laborerController.updateRequest.bind(laborerController)));
+router.patch("/cancel", checkUserStatus, userHasToken, catchAsync(laborerController.cancelRequest.bind(laborerController)));
 
 // laborer actions
 router.get("/:id/:page", checkUserStatus, catchAsync(laborerController.getLaborers.bind(laborerController)));

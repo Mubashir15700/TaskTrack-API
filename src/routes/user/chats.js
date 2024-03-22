@@ -1,6 +1,6 @@
 const express = require("express");
 const checkUserStatus = require("../../middlewares/auth/checkUserStatus");
-const hasToken = require("../../middlewares/auth/hasToken");
+const { userHasToken } = require("../../middlewares/auth/hasToken");
 const catchAsync = require("../../utils/errorHandling/catchAsync");
 
 const router = express.Router();
@@ -21,7 +21,7 @@ const userUtilityController = new UserUtilityController(userUtilityService);
 router.patch(
     "/mark-read/",
     checkUserStatus,
-    hasToken.userHasToken,
+    userHasToken,
     catchAsync(userUtilityController.updateMessagesReadStatus.bind(userUtilityController))
 );
 

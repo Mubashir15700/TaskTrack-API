@@ -1,5 +1,5 @@
 const express = require("express");
-const hasToken = require("../../middlewares/auth/hasToken");
+const { adminHasToken } = require("../../middlewares/auth/hasToken");
 const catchAsync = require("../../utils/errorHandling/catchAsync");
 
 const router = express.Router();
@@ -10,9 +10,15 @@ const DashboardService = require("../../services/admin/dashboard");
 const UserRepository = require("../../repositories/user");
 const userRepository = new UserRepository();
 
-const dashboardService = new DashboardService(userRepository);
+const JobRepository = require("../../repositories/job");
+const jobRepository = new JobRepository();
+
+const SubscriptionRepository = require("../../repositories/subscription");
+const subscriptionRepository = new SubscriptionRepository();
+
+const dashboardService = new DashboardService(userRepository, jobRepository, subscriptionRepository);
 const dashboardController = new DashboardController(dashboardService);
 
-router.get("/", hasToken.adminHasToken, catchAsync(dashboardController.getData.bind(dashboardController)));
+router.get("/", adminHasToken, catchAsync(dashboardController.getData.bind(dashboardController)));
 
 module.exports = router;

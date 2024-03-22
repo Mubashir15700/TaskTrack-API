@@ -153,6 +153,23 @@ class UserRepository {
             { new: true }
         );
     };
+
+    async getLaborerEmployerCount() {
+        const result = await User.aggregate([
+            {
+                $group: {
+                    _id: "$isJobSeeker", // Group by isJobSeeker field
+                    count: { $sum: 1 } // Count documents in each group
+                }
+            }
+        ]);
+
+        // Prepare the data for job seekers and non-job seekers
+        const laborersCount = result.find(entry => entry._id === true)?.count || 0;
+        const employersCount = result.find(entry => entry._id === false)?.count || 0;
+
+        return { laborersCount, employersCount };
+    };
 };
 
 module.exports = UserRepository;

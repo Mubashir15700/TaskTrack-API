@@ -38,14 +38,6 @@ app.use(session({
 }));
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
-app.use((err, req, res, next) => {
-    logger.error("Something went wrong!: ", err.stack);
-    res.status(500).json({
-        status: "failed",
-        message: "Something went wrong!"
-    });
-});
-
 // passport setup
 app.use(passport.initialize());
 app.use(passport.session());
@@ -54,6 +46,14 @@ app.use("/auth", authRoutes);
 app.use("/admin", adminRoutes);
 app.use("/shared", sharedRoutes);
 app.use("/", userRoutes);
+
+app.use((err, req, res, next) => {
+    logger.error("Something went wrong!: ", err.stack);
+    res.status(500).json({
+        status: "failed",
+        message: err.message || "Something went wrong!"
+    });
+});
 
 // Serve static files for the React page
 app.use(express.static(path.join(__dirname, "../client", "dist")));

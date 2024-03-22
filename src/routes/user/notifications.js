@@ -1,6 +1,6 @@
 const express = require("express");
 const checkUserStatus = require("../../middlewares/auth/checkUserStatus");
-const hasToken = require("../../middlewares/auth/hasToken");
+const { userHasToken } = require("../../middlewares/auth/hasToken");
 const catchAsync = require("../../utils/errorHandling/catchAsync");
 
 const router = express.Router();
@@ -17,19 +17,19 @@ const notificationController = new NotificationController(notificationService);
 router.get(
     "/count/:id",
     checkUserStatus,
-    hasToken.userHasToken,
+    userHasToken,
     catchAsync(notificationController.getUserNotificationsCount.bind(notificationController))
 );
 router.get(
     "/:id/:page",
     checkUserStatus,
-    hasToken.userHasToken,
+    userHasToken,
     catchAsync(notificationController.getUserNotifications.bind(notificationController))
 );
 router.patch(
     "/:id/mark-read",
     checkUserStatus,
-    hasToken.userHasToken,
+    userHasToken,
     catchAsync(notificationController.markUserNotificationRead.bind(notificationController))
 );
 

@@ -1,5 +1,5 @@
 const express = require("express");
-const hasToken = require("../../middlewares/auth/hasToken");
+const { adminHasToken } = require("../../middlewares/auth/hasToken");
 const catchAsync = require("../../utils/errorHandling/catchAsync");
 
 const router = express.Router();
@@ -12,6 +12,6 @@ const subscriptionRepository = new SubscriptionRepository();
 const subscriptionService = new SubscriptionService(subscriptionRepository);
 const subscriptionController = new SubscriptionController(subscriptionService);
 
-router.get("/", hasToken.adminHasToken, catchAsync(subscriptionController.getSubscriptions.bind(subscriptionController)));
+router.get("/", adminHasToken, catchAsync(subscriptionController.getSubscriptions.bind(subscriptionController)));
 
 module.exports = router;
