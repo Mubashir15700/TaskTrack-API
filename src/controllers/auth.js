@@ -69,8 +69,9 @@ class AuthController {
     async verifyOtp(req, res) {
         const otp = Number(req.body.otp);
         const email = req.body.email;
+        const purpose = req.body.purpose;
         const result = await this.authService.verifyOtp(otp, email);
-        if (result.status === 200) {
+        if (purpose === "signup" && result.status === 200) {
             setCookie(res, "userJwt", result.data.token);
         }
         const { status, message } = result;
