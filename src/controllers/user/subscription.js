@@ -17,7 +17,7 @@ class SubscriptionController {
     };
 
     async saveSubscriptionResult(req, res) {
-        const sessionId = req.cookies.sessionId;
+        const { sessionId } = req.body;
         const result = await this.subscriptionService.saveSubscriptionResult(sessionId);
         sendResponse(res, result);
     };
