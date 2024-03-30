@@ -48,7 +48,7 @@ app.use("/shared", sharedRoutes);
 app.use("/", userRoutes);
 
 app.use((err, req, res, next) => {
-    logger.error("Something went wrong!: ", err.stack);
+    logger.error("Something went wrong!: ", err);
     res.status(500).json({
         status: "failed",
         message: err.message || "Something went wrong!"

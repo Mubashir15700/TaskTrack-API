@@ -1,5 +1,4 @@
 const express = require("express");
-const checkUserStatus = require("../../middlewares/auth/checkUserStatus");
 const { userHasToken } = require("../../middlewares/auth/hasToken");
 const catchAsync = require("../../utils/errorHandling/catchAsync");
 

@@ -1,5 +1,4 @@
 const express = require("express");
-const checkUserStatus = require("../../middlewares/auth/checkUserStatus");
 const { userHasToken } = require("../../middlewares/auth/hasToken");
 const catchAsync = require("../../utils/errorHandling/catchAsync");
 
@@ -15,6 +14,6 @@ const planService = new PlanService(planRepository);
 const planController = new PlanController(planService);
 
 // plans
-router.get("/", checkUserStatus, userHasToken, catchAsync(planController.getPlans.bind(planController)));
+router.get("/", userHasToken, catchAsync(planController.getPlans.bind(planController)));
 
 module.exports = router;

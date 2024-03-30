@@ -1,6 +1,5 @@
 const express = require("express");
 const passport = require("../config/passport");
-const checkUserStatus = require("../middlewares/auth/checkUserStatus");
 const catchAsync = require("../utils/errorHandling/catchAsync");
 
 const router = express.Router();
@@ -28,13 +27,13 @@ router.get("/google", passport.authenticate("google", { scope: ["profile", "emai
 // Handle Google authentication callback
 router.get("/google/callback", authController.handleGoogleLoginCallback);
 
-router.get("/checkauth", checkUserStatus, catchAsync(authController.checkAuth.bind(authController)));
-router.get("/checkauth", checkUserStatus, catchAsync(authController.checkAuth.bind(authController)));
+router.get("/checkauth", catchAsync(authController.checkAuth.bind(authController)));
+router.get("/checkauth", catchAsync(authController.checkAuth.bind(authController)));
 router.post("/sign-up", catchAsync(authController.userSignUp.bind(authController)));
-router.post("/verify-otp", checkUserStatus, catchAsync(authController.verifyOtp.bind(authController)));
-router.post("/resend-otp", checkUserStatus, catchAsync(authController.resendOtp.bind(authController)));
-router.post("/confirm-email", checkUserStatus, catchAsync(authController.confirmEmail.bind(authController)));
-router.post("/reset-password", checkUserStatus, catchAsync(authController.resetPassword.bind(authController)));
+router.post("/verify-otp", catchAsync(authController.verifyOtp.bind(authController)));
+router.post("/resend-otp", catchAsync(authController.resendOtp.bind(authController)));
+router.post("/confirm-email", catchAsync(authController.confirmEmail.bind(authController)));
+router.post("/reset-password", catchAsync(authController.resetPassword.bind(authController)));
 
 // logout
 router.post("/logout", catchAsync(authController.logout.bind(authController)));

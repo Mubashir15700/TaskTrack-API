@@ -1,5 +1,4 @@
 const express = require("express");
-const checkUserStatus = require("../../middlewares/auth/checkUserStatus");
 const catchAsync = require("../../utils/errorHandling/catchAsync");
 
 const router = express.Router();
@@ -17,6 +16,6 @@ const userUtilityService = new UserUtilityService(bannerRepository, chatReposito
 const userUtilityController = new UserUtilityController(userUtilityService);
 
 // home page
-router.get("/", checkUserStatus, catchAsync(userUtilityController.getBanners.bind(userUtilityController)));
+router.get("/", catchAsync(userUtilityController.getBanners.bind(userUtilityController)));
 
 module.exports = router;

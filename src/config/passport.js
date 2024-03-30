@@ -1,8 +1,10 @@
 const passport = require("passport");
 const OAuth2Strategy = require("passport-google-oauth2").Strategy;
 const UserRepository = require("../repositories/user");
+const ReasonRepository = require("../repositories/reason");
 
 const userRepository = new UserRepository();
+const reasonRepository = new ReasonRepository();
 
 passport.use(
     new OAuth2Strategy({
@@ -24,6 +26,17 @@ passport.use(
                         null,
                         profile.email_verified
                     );
+                }
+
+                if (user.isBlocked) {
+                    const blockReason = await reasonRepository.findBlockReason(
+                        user._id, "admin_block_user"
+                    );
+
+                    // Return an error to indicate that the user is blocked
+                    const error = new Error(`Your account has been blocked. ${blockReason.reason}`);
+                    error.status = 403; // Set the HTTP status code
+                    return done(error);
                 }
 
                 const signedInUser = await userRepository.findUserByEmail(profile.email);
