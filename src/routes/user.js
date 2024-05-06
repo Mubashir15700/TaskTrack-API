@@ -11,6 +11,7 @@ const subscriptionRoutes = require("./user/subscriptions");
 const router = express.Router();
 
 router.use("/banners", bannerRoutes);
+router.use("/chats", chatRoutes);
 router.use("/messages", chatRoutes);
 router.use("/jobs", jobRoutes);
 router.use("/laborers", laborerRoutes);

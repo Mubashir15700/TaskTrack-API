@@ -1,9 +1,10 @@
 const { getPresignedUrl } = require("../../middlewares/imageUpload/s3Upload");
 
 class UserUtilityService {
-    constructor (bannerRepository, chatRepository) {
+    constructor(bannerRepository, chatRepository, conversationRepository) {
         this.bannerRepository = bannerRepository;
         this.chatRepository = chatRepository;
+        this.conversationRepository = conversationRepository;
     };
 
     async getBanners() {
@@ -22,6 +23,18 @@ class UserUtilityService {
             message: "get banners success",
             data: {
                 banners: bannersWithPresignedUrls
+            }
+        };
+    };
+
+    async getChatLists(userId) {
+        const chats = await this.conversationRepository.findPreviousConversations(userId);
+
+        return {
+            status: 200,
+            message: "get chats success",
+            data: {
+                chats
             }
         };
     };

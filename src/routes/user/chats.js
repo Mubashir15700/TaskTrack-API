@@ -7,16 +7,24 @@ const router = express.Router();
 const BannerRepository = require("../../repositories/banner");
 const bannerRepository = new BannerRepository();
 
+const ConversationRepository = require("../../repositories/conversation");
+const conversationRepository = new ConversationRepository();
+
 const ChatRepository = require("../../repositories/chat");
 const chatRepository = new ChatRepository();
 
 const UserUtilityController = require("../../controllers/user/userUtility");
 const UserUtilityService = require("../../services/user/userUtility");
 
-const userUtilityService = new UserUtilityService(bannerRepository, chatRepository);
+const userUtilityService = new UserUtilityService(bannerRepository, chatRepository, conversationRepository);
 const userUtilityController = new UserUtilityController(userUtilityService);
 
-// chat
+router.get(
+    "/",
+    userHasToken,
+    catchAsync(userUtilityController.getChatLists.bind(userUtilityController))
+);
+
 router.patch(
     "/mark-read/",
     userHasToken,

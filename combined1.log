@@ -506,3 +506,168 @@
 {"level":"info","message":"Connected to the database successfully."}
 {"level":"info","message":"Server running on port 3000"}
 {"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"error","message":"Something went wrong!:  this.bannerRepository.findPreviousConversations is not a function","stack":"TypeError: this.bannerRepository.findPreviousConversations is not a function\n    at UserUtilityService.getChatLists (/home/mubashir/Tutorials/Brocamp-Second-Project/server/src/services/user/userUtility.js:30:51)\n    at UserUtilityController.getChatLists (/home/mubashir/Tutorials/Brocamp-Second-Project/server/src/controllers/user/userUtility.js:15:54)\n    at /home/mubashir/Tutorials/Brocamp-Second-Project/server/src/utils/errorHandling/catchAsync.js:3:9\n    at Layer.handle [as handle_request] (/home/mubashir/Tutorials/Brocamp-Second-Project/server/node_modules/express/lib/router/layer.js:95:5)\n    at next (/home/mubashir/Tutorials/Brocamp-Second-Project/server/node_modules/express/lib/router/route.js:144:13)\n    at checkToken (/home/mubashir/Tutorials/Brocamp-Second-Project/server/src/middlewares/auth/hasToken.js:25:9)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"}
+{"level":"error","message":"Something went wrong!:  this.bannerRepository.findPreviousConversations is not a function","stack":"TypeError: this.bannerRepository.findPreviousConversations is not a function\n    at UserUtilityService.getChatLists (/home/mubashir/Tutorials/Brocamp-Second-Project/server/src/services/user/userUtility.js:30:51)\n    at UserUtilityController.getChatLists (/home/mubashir/Tutorials/Brocamp-Second-Project/server/src/controllers/user/userUtility.js:15:54)\n    at /home/mubashir/Tutorials/Brocamp-Second-Project/server/src/utils/errorHandling/catchAsync.js:3:9\n    at Layer.handle [as handle_request] (/home/mubashir/Tutorials/Brocamp-Second-Project/server/node_modules/express/lib/router/layer.js:95:5)\n    at next (/home/mubashir/Tutorials/Brocamp-Second-Project/server/node_modules/express/lib/router/route.js:144:13)\n    at checkToken (/home/mubashir/Tutorials/Brocamp-Second-Project/server/src/middlewares/auth/hasToken.js:25:9)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"error","message":"Something went wrong!:  mongoose is not defined","stack":"ReferenceError: mongoose is not defined\n    at ConversationRepository.findPreviousConversations (/home/mubashir/Tutorials/Brocamp-Second-Project/server/src/repositories/conversation.js:18:41)\n    at UserUtilityService.getChatLists (/home/mubashir/Tutorials/Brocamp-Second-Project/server/src/services/user/userUtility.js:31:57)\n    at UserUtilityController.getChatLists (/home/mubashir/Tutorials/Brocamp-Second-Project/server/src/controllers/user/userUtility.js:15:54)\n    at /home/mubashir/Tutorials/Brocamp-Second-Project/server/src/utils/errorHandling/catchAsync.js:3:9\n    at Layer.handle [as handle_request] (/home/mubashir/Tutorials/Brocamp-Second-Project/server/node_modules/express/lib/router/layer.js:95:5)\n    at next (/home/mubashir/Tutorials/Brocamp-Second-Project/server/node_modules/express/lib/router/route.js:144:13)\n    at checkToken (/home/mubashir/Tutorials/Brocamp-Second-Project/server/src/middlewares/auth/hasToken.js:25:9)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"}
+{"level":"error","message":"Something went wrong!:  mongoose is not defined","stack":"ReferenceError: mongoose is not defined\n    at ConversationRepository.findPreviousConversations (/home/mubashir/Tutorials/Brocamp-Second-Project/server/src/repositories/conversation.js:18:41)\n    at UserUtilityService.getChatLists (/home/mubashir/Tutorials/Brocamp-Second-Project/server/src/services/user/userUtility.js:31:57)\n    at UserUtilityController.getChatLists (/home/mubashir/Tutorials/Brocamp-Second-Project/server/src/controllers/user/userUtility.js:15:54)\n    at /home/mubashir/Tutorials/Brocamp-Second-Project/server/src/utils/errorHandling/catchAsync.js:3:9\n    at Layer.handle [as handle_request] (/home/mubashir/Tutorials/Brocamp-Second-Project/server/node_modules/express/lib/router/layer.js:95:5)\n    at next (/home/mubashir/Tutorials/Brocamp-Second-Project/server/node_modules/express/lib/router/route.js:144:13)\n    at checkToken (/home/mubashir/Tutorials/Brocamp-Second-Project/server/src/middlewares/auth/hasToken.js:25:9)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Server shutting down..."}
+{"level":"info","message":"MongoDB disconnected"}
+{"level":"info","message":"Server shutting down..."}
+{"level":"info","message":"Server shutting down..."}

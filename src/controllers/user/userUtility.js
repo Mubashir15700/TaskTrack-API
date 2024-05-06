@@ -10,6 +10,12 @@ class UserUtilityController {
         sendResponse(res, result);
     };
 
+    async getChatLists(req, res) {
+        const { userId } = req.user;
+        const result = await this.userUtilityService.getChatLists(userId);
+        sendResponse(res, result);
+    };
+
     async updateMessagesReadStatus(req, res) {
         const messageIds = req.body;
         const result = await this.userUtilityService.updateMessagesReadStatus(messageIds);
