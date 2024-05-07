@@ -671,3 +671,9 @@
 {"level":"info","message":"MongoDB disconnected"}
 {"level":"info","message":"Server shutting down..."}
 {"level":"info","message":"Server shutting down..."}
+{"level":"info","message":"Server shut down gracefully."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Server shutting down..."}
+{"level":"info","message":"Server shutting down..."}
