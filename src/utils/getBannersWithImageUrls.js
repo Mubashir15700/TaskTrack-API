@@ -13,6 +13,7 @@ const getBannersWithPresignedUrls = async (banners) => {
         // Return a new object with the image URL and other properties from the banner
         return { ...banner._doc, image: imageUrl };
     }));
+    
     return bannersWithPresignedUrls;
 };
 

@@ -29,7 +29,11 @@ class BannerController {
 
     async editBanner(req, res) {
         const { id, title, description } = req.body;
-        const { key } = req.file;
+        let key = null;
+        if (req.file) {
+            key = req.file.key;
+        };
+
         const result = await this.bannerService.editBanner(
             id, title, description, key
         );

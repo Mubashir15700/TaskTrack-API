@@ -46,9 +46,9 @@ class BannerRepository {
         return await Banner.findById(id, { key: 1, _id: 0 });
     };
 
-    async editBanner(id, title, description, key) {
-        return await Banner.findByIdAndUpdate(id,
-            { title, description, key },
+    async editBanner(updateObject) {
+        return await Banner.findByIdAndUpdate(updateObject.id,
+            { $set: updateObject },
             { new: true }
         );
     };

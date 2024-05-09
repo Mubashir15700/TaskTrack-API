@@ -106,7 +106,17 @@ class BannerService {
 
         const prevImageKey = await this.bannerRepository.getBannerImageKey(id);
 
-        await this.bannerRepository.editBanner(id, title, description, key);
+        const updateObject = {
+            id,
+            title,
+            description
+        };
+
+        if (key) {
+            updateObject.key = key;
+        }
+
+        await this.bannerRepository.editBanner(updateObject);
         await deleteImage(prevImageKey.key);
 
         return {

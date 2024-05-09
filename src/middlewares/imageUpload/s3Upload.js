@@ -32,7 +32,7 @@ const upload = multer({
       cb(null, { fieldName: file.fieldname })
     },
     key: function (req, file, cb) {
-      cb(null, "Banners/" + Date.now().toString() + "-" + file.originalname)
+      cb(null, "Banners/" + Date.now().toString() + "-" + file.originalname);
     }
   }),
   fileFilter: function (req, file, cb) {
