@@ -47,7 +47,7 @@ class ConversationRepository {
                 $project: {
                     otherUser: {
                         $cond: [
-                            { $eq: ["$sender._id", userId] },
+                            { $eq: ["$sender._id", new mongoose.Types.ObjectId(userId)] },
                             "$receiver",
                             "$sender"
                         ]
