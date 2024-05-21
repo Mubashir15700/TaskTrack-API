@@ -18,7 +18,7 @@ const checkEnvVariables = () => {
         "REGION",
         "ACCESS_KEY",
         "SECRET_ACCESS_KEY",
-        "EMAIL",
+        "APP_EMAIL",
         "APP_PASSWORD"
     ];
 
