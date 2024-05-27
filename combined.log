@@ -1,3 +1,23 @@
 {"level":"info","message":"Connected to the database successfully."}
 {"level":"info","message":"Server running on port 3000"}
 {"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"code":"EAUTH","command":"AUTH PLAIN","level":"error","message":"Error:  Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials d2e1a72fcca58-6f4d2b2fe07sm19823255b3a.216 - gsmtp","response":"535-5.7.8 Username and Password not accepted. For more information, go to\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials d2e1a72fcca58-6f4d2b2fe07sm19823255b3a.216 - gsmtp","responseCode":535,"stack":"Error: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials d2e1a72fcca58-6f4d2b2fe07sm19823255b3a.216 - gsmtp\n    at SMTPConnection._formatError (/home/mubashir/Tutorials/Brocamp-Second-Project/server/node_modules/nodemailer/lib/smtp-connection/index.js:790:19)\n    at SMTPConnection._actionAUTHComplete (/home/mubashir/Tutorials/Brocamp-Second-Project/server/node_modules/nodemailer/lib/smtp-connection/index.js:1564:34)\n    at SMTPConnection.<anonymous> (/home/mubashir/Tutorials/Brocamp-Second-Project/server/node_modules/nodemailer/lib/smtp-connection/index.js:546:26)\n    at SMTPConnection._processResponse (/home/mubashir/Tutorials/Brocamp-Second-Project/server/node_modules/nodemailer/lib/smtp-connection/index.js:969:20)\n    at SMTPConnection._onData (/home/mubashir/Tutorials/Brocamp-Second-Project/server/node_modules/nodemailer/lib/smtp-connection/index.js:755:14)\n    at SMTPConnection._onSocketData (/home/mubashir/Tutorials/Brocamp-Second-Project/server/node_modules/nodemailer/lib/smtp-connection/index.js:193:44)\n    at TLSSocket.emit (node:events:519:28)\n    at addChunk (node:internal/streams/readable:559:12)\n    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)\n    at Readable.push (node:internal/streams/readable:390:5)"}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Server running on port 3000"}
+{"level":"info","message":"Press Ctrl+C to gracefully shut down the server."}
+{"level":"info","message":"Connected to the database successfully."}
+{"level":"info","message":"Email sent: "}
+{"level":"info","message":"Email sent: "}
+{"level":"info","message":"Email sent: "}
+{"level":"info","message":"Email sent: "}
+{"level":"info","message":"Email sent: "}
+{"level":"info","message":"Email sent: "}
+{"level":"info","message":"Email sent: "}
+{"level":"info","message":"Email sent: "}
+{"level":"info","message":"Email sent: "}
+{"level":"info","message":"Email sent: "}
+{"level":"info","message":"Email sent: "}
+{"level":"info","message":"Server shutting down..."}
+{"level":"info","message":"MongoDB disconnected"}
+{"level":"info","message":"Server shutting down..."}
+{"level":"info","message":"Server shutting down..."}

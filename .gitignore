@@ -6,3 +6,6 @@ node_modules/
 
 # Ignore docker-compose file
 docker-compose.yml
+
+# Ignore log files
+.log
